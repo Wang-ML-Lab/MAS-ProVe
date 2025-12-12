@@ -13,8 +13,6 @@ This system implements debate-based reasoning where multiple LLM agents collabor
 ## Installation
 
 ```bash
-# Install required packages
-pip install -r requirements.txt
 
 # Set OpenAI API key
 export OPENAI_API_KEY="your-api-key-here"
@@ -152,4 +150,5 @@ python run_benchmarks.py \
 - `--enable-summarization`: Enable response summarization
 - `--output-dir`: Directory for results (default: `results`)
 - `--max-aime-examples`: Max AIME problems to evaluate
+
 - `--aime-problem-ids`: Specific AIME problem IDs (e.g., `--aime-problem-ids 1 3 5`)
