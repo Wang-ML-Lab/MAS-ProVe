@@ -4,7 +4,7 @@ Evaluates each agent independently across rounds
 """
 
 from common import SearchNode as GreedyNode  # Alias for backward compatibility
-from .greedy_search import GreedySearchPRM, GreedySearchConfig
+from .greedy_search_decorator import GreedySearchPRM_Decorator as GreedySearchPRM, GreedySearchConfig
 
 # Backward compatibility aliases - ranking functionality is now integrated via judge_type parameter
 GreedySearchRankingPRM = GreedySearchPRM

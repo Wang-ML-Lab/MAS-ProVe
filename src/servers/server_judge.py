@@ -25,6 +25,8 @@ class ServerJudge(BaseServer):
         return "\n".join([trajectory["context"], trajectory["current-step"]])
     
     def feedback2rankings(self, feedback, trajectories_for_eval):
+        num_candidates = len(trajectories_for_eval)
+        print(num_candidates)
         if "<ranking>" in feedback and "</ranking>" in feedback:
             start = feedback.find("<ranking>") + len("<ranking>")
             end = feedback.find("</ranking>")
@@ -39,7 +41,9 @@ class ServerJudge(BaseServer):
                     return ranks
             except (ValueError, IndexError):
                 pass
-        return list(range(1,len(trajectories_for_eval)+1))
+        # Fallback: return sequential ranking
+        print(f"Warning: Could not parse ranking, using fallback [0,1,2,...]")
+        return list(range(num_candidates))
     
     async def _process_request(self, request):
         assert request["judge-type"] == "judge", "Invalid judge type"
@@ -73,7 +77,7 @@ class ServerJudge(BaseServer):
         return asyncio.run(self._process_request(request))
 
 
-def build_messages_for_judge(trajectories_for_eval, task_type=None): 
+def build_messages_for_judge(trajectories_for_eval, task_type=None, question=""): 
     # (vishal) implement this function with our current prompt template.
     # should be in the format of: 
     # [
@@ -129,3 +133,10 @@ After providing your explanation, you must output the ranking as a comma-separat
             {"role": "user", "content": trajectories_for_eval},
         ]
     return messages
+
+
+if __name__ == "__main__":
+    print("Starting ServerJudge...")
+    server = ServerJudge(model="gpt-5-mini", max_parallel_calls=50)
+    print(f"Judge server listening on {server.host}:{server.port}")
+    server.start()

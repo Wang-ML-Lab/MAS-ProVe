@@ -8,11 +8,12 @@ class BaseClient:
         self.host = host
         self.port = port
 
-    def send_request(self, task_type, judge_type, partial_trajectories):
+    def send_request(self, task_type, judge_type, partial_trajectories, question=""):
         request = {
             "task-type": task_type,
             "judge-type": judge_type,
-            "partial-trajectories": partial_trajectories,
+            "partial_trajectories": partial_trajectories,
+            "question": question,
         }
         data = json.dumps(request).encode("utf-8")
         msglen = len(data).to_bytes(4, "big")
@@ -36,10 +37,16 @@ class BaseClient:
 if __name__ == "__main__":
     client = BaseClient()
     response = client.send_request(
-        "math",
-        "judge",
-        [{"context": "2+2", "current-step": "Calculating sum"},
-            {"context": "Result is 4", "current-step": "Returning answer"}]
+        task_type="math",
+        judge_type="judge",
+        question="What is 2+2?",
+        partial_trajectories=[
+            {"context": "Let me calculate: 2+2 = 4", "current-step": "Calculating sum"},
+            {"context": "The sum of 2 and 2 equals 5... wait, that's wrong. It's 4.", "current-step": "Correcting calculation"},
+            {"context": "2+2 is obviously 4", "current-step": "Returning answer"}
+        ]
     )
     print("Client received response:")
-    print(response)
+    print("Rankings:", response.get("rankings"))
+    print("\nJudge feedback:")
+    print(response.get("judge-feedback"))

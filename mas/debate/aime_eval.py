@@ -1,4 +1,15 @@
 
+"""
+AIME Evaluation Module
+
+IMPORTANT: If using judge_type="ranking" with use_judge_server=True (default),
+ensure the mas-process-eval judge server is running:
+    cd /path/to/mas-process-eval
+    python -m src.servers.server_judge
+
+The server must be running before evaluation starts.
+"""
+
 import json
 import os
 import re
@@ -6,11 +17,13 @@ import asyncio
 import pandas as pd
 from typing import List, Dict, Any
 from datasets import load_dataset
-from llm_debate import DebateConfig, save_results, debate
+from llm_debate_tool_call import DebateConfig, save_results, debate
 import cost_tracker
 from RoundWise.beam_search_prm import BeamSearchPRM, BeamSearchConfig
-from RoundWise.greedy_search_prm import GreedySearchPRM, GreedySearchConfig
-from AgentWise.greedy_search_prm import GreedySearchPRM as AgentWiseGreedySearchPRM, GreedySearchConfig as AgentWiseGreedySearchConfig
+# from RoundWise.greedy_search_prm import GreedySearchPRM, GreedySearchConfig
+from RoundWise.greedy_search_prm.greedy_search_decorator import GreedySearchPRM_Decorator as GreedySearchPRM, GreedySearchConfig
+# from AgentWise.greedy_search_prm import GreedySearchPRM as AgentWiseGreedySearchPRM, GreedySearchConfig as AgentWiseGreedySearchConfig
+from AgentWise.greedy_search_prm.greedy_search_decorator import GreedySearchPRM_Decorator as AgentWiseGreedySearchPRM, GreedySearchConfig as AgentWiseGreedySearchConfig
 from AgentWise.beam_search_prm import BeamSearchPRM as AgentWiseBeamSearchPRM, BeamSearchConfig as AgentWiseBeamSearchConfig
 
 class AIMEEvaluator:
@@ -218,38 +231,33 @@ class AIMEEvaluator:
         problem_text = example.get('problem', '')
         question = f"Solve this AIME problem:\n\n{problem_text}\n\nAnswers are integers (0-999). Show your work."
         
-        # Run PRM search
-        prm = prm_class(config)
-        result = await prm.search(question)
+        try:
+            # Run PRM search
+            prm = prm_class(config)
+            result = await prm.search(question)
+        except Exception as e:
+            # Return error result instead of raising
+            print(f"ERROR in problem {example_id + 1}: {str(e)[:200]}")
+            expected_answer = example.get('answer')
+            result_key = search_type.lower().replace(" ", "_").replace("-", "_") + "_result"
+            return {
+                "example_id": example_id,
+                "problem_id": example_id,
+                "problem": example['problem'],
+                "error": str(e),
+                "error_type": type(e).__name__,
+                result_key: None,
+                "evaluation": {"score": 0.0, "exact_match": False, "error": True},
+                "expected_answer": expected_answer
+            }
         
         expected_answer = example.get('answer')
         
-        # Build result dict based on search type
+        # Build result dict - decorator version only needs best_response and best_agent_id
         result_key = search_type.lower().replace(" ", "_").replace("-", "_") + "_result"
         search_result = {
             "best_response": result.get('best_response'),
-            "best_score": result.get('best_score'),
-            "trajectory": result.get('best_trajectory'),
-            "total_nodes_explored": result.get('total_nodes_explored'),
         }
-        
-        # Add beam-search specific fields
-        if "beam" in search_type.lower():
-            # Evaluate ALL final responses (all agents from all beams)
-            all_final_responses = result.get('all_final_responses', [])
-            final_response_evaluations = []
-            
-            for response in all_final_responses:
-                eval_result = self.evaluate_response(response, expected_answer)
-                final_response_evaluations.append({
-                    "response": response,
-                    "evaluation": eval_result
-                })
-            
-            search_result["all_final_response_evaluations"] = final_response_evaluations
-            search_result["num_correct_responses"] = sum(1 for e in final_response_evaluations if e["evaluation"]["exact_match"])
-            search_result["any_correct"] = search_result["num_correct_responses"] > 0
-            search_result["total_final_responses"] = len(all_final_responses)
         
         # Add agentwise-specific fields
         if "agentwise" in search_type.lower():
@@ -258,37 +266,13 @@ class AIMEEvaluator:
         # Evaluate the best response
         best_evaluation = self.evaluate_response(result['best_response'], expected_answer)
         
-        # Compute cost
-        total_cost = 0.0
-        for node in result.get('all_nodes', []):
-            if node.usage:
-                for usage in node.usage:
-                    if usage:
-                        cost = cost_tracker.compute_cost(
-                            config.debate_config.model,
-                            usage.get("prompt_tokens", 0),
-                            usage.get("completion_tokens", 0)
-                        )
-                        total_cost += cost
-        
-        # Add judge usage
-        for usage in result.get('judge_usage', []):
-            if usage:
-                cost = cost_tracker.compute_cost(
-                    config.judge_model,
-                    usage.get("prompt_tokens", 0),
-                    usage.get("completion_tokens", 0)
-                )
-                total_cost += cost
-        
         return {
             "example_id": example_id,
             "problem_id": example_id,
             "problem": example['problem'],
             result_key: search_result,
             "evaluation": best_evaluation,
-            "expected_answer": expected_answer,
-            "cost": total_cost,
+            "expected_answer": expected_answer
         }
     
     async def _run_prm_evaluation_async(self, prm_class, config, search_type: str, max_examples=None, specific_ids=None, force_reprocess=None):
@@ -338,13 +322,22 @@ class AIMEEvaluator:
         ]
         
         batch_size = 30
+        failed_problems = []
         for i in range(0, len(tasks), batch_size):
             batch_tasks = tasks[i:i + batch_size]
             print(f"Processing batch {i // batch_size + 1}/{(len(tasks) - 1) // batch_size + 1}")
             batch_results = await asyncio.gather(*batch_tasks, return_exceptions=True)
-            for result in batch_results:
+            for j, result in enumerate(batch_results):
                 if isinstance(result, Exception):
-                    print(f"Error processing problem: {result}")
+                    problem_id = examples_to_process[i + j][1]
+                    error_msg = str(result)[:200]
+                    print(f"BATCH ERROR - Problem {problem_id + 1}: {error_msg}")
+                    failed_problems.append({"problem_id": problem_id, "error": error_msg})
+                    # Continue processing other problems
+                elif result.get("error"):
+                    # Problem had an error but returned a result dict
+                    failed_problems.append({"problem_id": result["problem_id"], "error": result.get("error_type", "Unknown")})
+                    results.append(result)  # Still save the error result
                 else:
                     results.append(result)
             
@@ -360,11 +353,20 @@ class AIMEEvaluator:
         
         save_results(all_results, f"{self.results_dir}/{result_filename}")
         print(f"Processed {len(results)} new problems with {search_type}; total {len(all_results)}")
+        
+        # Report failed problems
+        if failed_problems:
+            print(f"\n{'='*60}")
+            print(f"WARNING: {len(failed_problems)} problems failed:")
+            for fail in failed_problems:
+                print(f"  Problem {fail['problem_id'] + 1}: {fail['error']}")
+            print(f"{'='*60}\n")
+        
         self._print_prm_summary(all_results, search_type)
         return all_results
     
     def _print_prm_summary(self, results: List[Dict], search_type: str):
-        """Generic method to print summary for any PRM search results"""
+        """Generic method to print summary for decorator-based search results"""
         if not results:
             print("No results to summarize")
             return
@@ -373,37 +375,13 @@ class AIMEEvaluator:
         correct_problems = sum(1 for r in results if r.get("evaluation", {}).get("exact_match", False))
         valid_answers = sum(1 for r in results if r.get("evaluation", {}).get("valid_range", False))
         avg_score = sum(r.get("evaluation", {}).get("score", 0.0) for r in results) / total_problems if total_problems > 0 else 0
-        total_cost = sum(r.get("cost", 0.0) for r in results)
-        
-        # Get the result key dynamically
-        result_key = search_type.lower().replace(" ", "_").replace("-", "_") + "_result"
-        
-        # Extract search-specific stats
-        avg_final_judge_score = sum(r.get(result_key, {}).get("best_score", 0.0) for r in results) / total_problems if total_problems > 0 else 0
-        avg_nodes_explored = sum(r.get(result_key, {}).get("total_nodes_explored", 0) for r in results) / total_problems if total_problems > 0 else 0
         
         print(f"\n{'='*60}")
         print(f"{self.benchmark.upper()} {search_type.upper()} SUMMARY: {total_problems} problems")
         print(f"{'='*60}")
-        
-        # Beam search specific metrics
-        if "beam" in search_type.lower():
-            problems_with_any_correct = sum(1 for r in results if r.get(result_key, {}).get("any_correct", False))
-            total_correct_responses = sum(r.get(result_key, {}).get("num_correct_responses", 0) for r in results)
-            total_final_responses = sum(r.get(result_key, {}).get("total_final_responses", 0) for r in results)
-            
-            print(f"Any Response Correct: {problems_with_any_correct}/{total_problems} ({problems_with_any_correct/total_problems:.3f})")
-            print(f"Best Response Correct: {correct_problems}/{total_problems} ({correct_problems/total_problems:.3f})")
-            print(f"Total Correct Responses: {total_correct_responses}/{total_final_responses}")
-            print(f"Avg Correct per Problem: {total_correct_responses/total_problems:.2f}")
-        else:
-            print(f"Correct: {correct_problems}/{total_problems} ({correct_problems/total_problems:.3f})")
-        
+        print(f"Correct: {correct_problems}/{total_problems} ({correct_problems/total_problems:.3f})")
         print(f"Valid Answer Rate: {valid_answers}/{total_problems} ({valid_answers/total_problems:.3f})")
         print(f"Avg Score: {avg_score:.3f}")
-        print(f"Avg Judge Score: {avg_final_judge_score:.2f}/5")
-        print(f"Avg Nodes Explored: {avg_nodes_explored:.1f}")
-        print(f"Total Cost: ${total_cost:.4f}")
         print(f"{'='*60}")
     
     # ==================== Specific PRM Method Wrappers ====================
@@ -416,7 +394,7 @@ class AIMEEvaluator:
         """Run evaluation using beam search PRM"""
         return await self._run_prm_evaluation_async(BeamSearchPRM, beam_config, "Beam Search PRM", max_examples, specific_ids, force_reprocess)
 
-    async def run_beam_search_evaluation(self, beam_config: BeamSearchConfig, max_examples=None, specific_ids=None, force_reprocess=None):
+    def run_beam_search_evaluation(self, beam_config: BeamSearchConfig, max_examples=None, specific_ids=None, force_reprocess=None):
         """Synchronous wrapper for beam search evaluation"""
         return asyncio.run(self.run_beam_search_evaluation_async(beam_config, max_examples, specific_ids, force_reprocess))
 
@@ -428,7 +406,7 @@ class AIMEEvaluator:
         """Run evaluation using greedy search PRM"""
         return await self._run_prm_evaluation_async(GreedySearchPRM, greedy_config, "Greedy Search PRM", max_examples, specific_ids, force_reprocess)
 
-    async def run_greedy_search_evaluation(self, greedy_config: GreedySearchConfig, max_examples=None, specific_ids=None, force_reprocess=None):
+    def run_greedy_search_evaluation(self, greedy_config: GreedySearchConfig, max_examples=None, specific_ids=None, force_reprocess=None):
         """Synchronous wrapper for greedy search evaluation"""
         return asyncio.run(self.run_greedy_search_evaluation_async(greedy_config, max_examples, specific_ids, force_reprocess))
 
@@ -440,7 +418,7 @@ class AIMEEvaluator:
         """Run evaluation using agent-wise greedy search PRM"""
         return await self._run_prm_evaluation_async(AgentWiseGreedySearchPRM, greedy_config, "AgentWise Greedy Search PRM", max_examples, specific_ids, force_reprocess)
 
-    async def run_agentwise_greedy_search_evaluation(self, greedy_config: AgentWiseGreedySearchConfig, max_examples=None, specific_ids=None, force_reprocess=None):
+    def run_agentwise_greedy_search_evaluation(self, greedy_config: AgentWiseGreedySearchConfig, max_examples=None, specific_ids=None, force_reprocess=None):
         """Synchronous wrapper for agent-wise greedy search evaluation"""
         return asyncio.run(self.run_agentwise_greedy_search_evaluation_async(greedy_config, max_examples, specific_ids, force_reprocess))
 

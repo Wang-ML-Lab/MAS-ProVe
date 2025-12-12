@@ -15,7 +15,6 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from common import SearchNode as BeamNode, parse_judge_score, call_judge_llm, parse_ranking, calculate_prm_score
 from llm_debate_tool_call import DebateConfig, debate, direct, debate_refine
-# from llm_debate_simple_websearch import DebateConfig, direct, debate_refine
 from prompts.judge_prompts import judge
 from prompts.ranking_judge_prompts import judge_ranking
 import openai

@@ -1,5 +1,12 @@
 """
 GAIA Benchmark Evaluation for LLM Debate System
+
+IMPORTANT: If using judge_type="ranking" with use_judge_server=True (default),
+ensure the mas-process-eval judge server is running:
+    cd /path/to/mas-process-eval
+    python -m src.servers.server_judge
+
+The server must be running before evaluation starts.
 """
 
 import os
@@ -8,7 +15,7 @@ import asyncio
 from typing import List, Dict, Any
 from datasets import load_dataset
 # from llm_debate import DebateConfig, save_results, debate
-from llm_debate_simple_websearch import DebateConfig, save_results, debate
+from llm_debate_tool_call import DebateConfig, save_results, debate
 from collections import Counter
 import cost_tracker
 from RoundWise.beam_search_prm import BeamSearchPRM, BeamSearchConfig

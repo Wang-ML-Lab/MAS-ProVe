@@ -3,7 +3,6 @@ Prompt manager for dataset-specific prompts
 """
 
 from .aime24_prompts import get_aime24_prompts
-from .humaneval_prompts import get_humaneval_prompts
 from .gaia_prompts import get_gaia_prompts
 from .gaia_tool_prompts import get_gaia_tool_prompts
 
@@ -15,7 +14,6 @@ class PromptManager:
         self.prompt_getters = {
             "aime24": get_aime24_prompts,
             "aime25": get_aime24_prompts,
-            "humaneval": get_humaneval_prompts,
             "gaia": get_gaia_prompts,
             "gaia_tool": get_gaia_tool_prompts
         }

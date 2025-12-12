@@ -1,26 +1,20 @@
 """
 Unified Benchmark Runner for LLM Debate System
-Supports HumanEval, SWE-bench, GAIA, and AIME24 evaluations
+Supports GAIA and AIME24/25 evaluations
+- Decorator-based greedy search (main feature - uses client/server judge)
+- Beam search (for experimentation)
 """
 
 import argparse
 import os
 import asyncio
-from llm_debate import DebateConfig
-from humaneval_eval import HumanEvalEvaluator
+from llm_debate_tool_call import DebateConfig
 from gaia_eval import GAIAEvaluator
 from aime_eval import AIMEEvaluator
 from RoundWise.beam_search_prm import BeamSearchConfig
-from RoundWise.greedy_search_prm import GreedySearchConfig
-from AgentWise.greedy_search_prm import GreedySearchConfig as AgentWiseGreedySearchConfig
+from RoundWise.greedy_search_prm.greedy_search_decorator import GreedySearchConfig
+from AgentWise.greedy_search_prm.greedy_search_decorator import GreedySearchConfig as AgentWiseGreedySearchConfig
 from AgentWise.beam_search_prm import BeamSearchConfig as AgentWiseBeamSearchConfig
-
-def run_humaneval(config: DebateConfig, max_examples: int = 10):
-    """Run HumanEval evaluation"""
-    print("Starting HumanEval evaluation...")
-    config.dataset = "humaneval"
-    evaluator = HumanEvalEvaluator()
-    return evaluator.run_evaluation(config, max_examples)
 
 
 def run_gaia(config: DebateConfig, max_examples: int = 20):
@@ -68,6 +62,20 @@ def _create_search_config(config_class, config: DebateConfig, judge_type: str,
             search_config.prm_api_url = prm_api_url
         search_config.enable_summarization = enable_summarization
     
+    return search_config
+
+
+def _create_decorator_search_config(config_class, config: DebateConfig, task_type: str = "math",
+                                   judge_server_host: str = "127.0.0.1",
+                                   judge_server_port: int = 5555, **search_params):
+    """Helper to create decorator-based search configs (no judge_model/judge_type needed)"""
+    search_config = config_class(
+        debate_config=config,
+        task_type=task_type,
+        judge_server_host=judge_server_host,
+        judge_server_port=judge_server_port,
+        **search_params
+    )
     return search_config
 
 
@@ -135,28 +143,40 @@ def run_aime24_greedy_search(config: DebateConfig, max_examples: int = None,
                              greedy_rounds: int = 2, judge_type: str = "scoring",
                              prm_model_path: str = None, prm_api_url: str = None,
                              enable_summarization: bool = False, output_dir: str = "results"):
-    """Run AIME24 with greedy search process evaluation"""
-    return _run_search_evaluation(
-        "aime24", "Greedy Search PRM", GreedySearchConfig,
-        "run_greedy_search_evaluation", config, max_examples, specific_ids,
-        judge_type, prm_model_path, prm_api_url, enable_summarization,
-        output_dir,
-        num_candidates=num_candidates, num_rounds=greedy_rounds
+    """Run AIME24 with greedy search process evaluation (decorator version)"""
+    print(f"Starting AIME24 with Greedy Search PRM (Decorator)...")
+    config.dataset = "aime24"
+    
+    # Create decorator-based config (no judge_model/judge_type/num_candidates needed)
+    search_config = _create_decorator_search_config(
+        GreedySearchConfig, config, task_type="math",
+        num_rounds=greedy_rounds
     )
+    
+    # Create evaluator and run
+    from aime_eval import AIMEEvaluator
+    evaluator = AIMEEvaluator(benchmark="aime24", output_dir=output_dir)
+    return evaluator.run_greedy_search_evaluation(search_config, max_examples, specific_ids)
 
 
 def run_gaia_greedy_search(config: DebateConfig, max_examples: int = 20, 
                            num_candidates: int = 3, greedy_rounds: int = 2, judge_type: str = "scoring",
                            prm_model_path: str = None, prm_api_url: str = None,
                            enable_summarization: bool = False, output_dir: str = "results"):
-    """Run GAIA with greedy search process evaluation"""
-    return _run_search_evaluation(
-        "gaia", "Greedy Search PRM", GreedySearchConfig,
-        "run_greedy_search_evaluation", config, max_examples, None,
-        judge_type, prm_model_path, prm_api_url, enable_summarization,
-        output_dir,
-        num_candidates=num_candidates, num_rounds=greedy_rounds
+    """Run GAIA with greedy search process evaluation (decorator version)"""
+    print(f"Starting GAIA with Greedy Search PRM (Decorator)...")
+    config.dataset = "gaia"
+    
+    # Create decorator-based config (no judge_model/judge_type/num_candidates needed)
+    search_config = _create_decorator_search_config(
+        GreedySearchConfig, config, task_type="general",
+        num_rounds=greedy_rounds
     )
+    
+    # Create evaluator and run
+    from gaia_eval import GAIAEvaluator
+    evaluator = GAIAEvaluator(subset="test", output_dir=output_dir)
+    return evaluator.run_greedy_search_evaluation(search_config, max_examples)
 
 
 # ==================== AgentWise Greedy Search Functions ====================
@@ -166,14 +186,20 @@ def run_aime24_agentwise_greedy_search(config: DebateConfig, max_examples: int =
                                        greedy_rounds: int = 2, judge_type: str = "scoring",
                                        prm_model_path: str = None, prm_api_url: str = None,
                                        enable_summarization: bool = False, output_dir: str = "results"):
-    """Run AIME24 with agent-wise greedy search process evaluation"""
-    return _run_search_evaluation(
-        "aime24", "AgentWise Greedy Search PRM", AgentWiseGreedySearchConfig,
-        "run_agentwise_greedy_search_evaluation", config, max_examples, specific_ids,
-        judge_type, prm_model_path, prm_api_url, enable_summarization,
-        output_dir,
-        num_candidates=num_candidates, num_rounds=greedy_rounds
+    """Run AIME24 with agent-wise greedy search process evaluation (decorator version)"""
+    print(f"Starting AIME24 with AgentWise Greedy Search PRM (Decorator)...")
+    config.dataset = "aime24"
+    
+    # Create decorator-based config (no judge_model/judge_type/num_candidates needed)
+    search_config = _create_decorator_search_config(
+        AgentWiseGreedySearchConfig, config, task_type="math",
+        num_rounds=greedy_rounds
     )
+    
+    # Create evaluator and run
+    from aime_eval import AIMEEvaluator
+    evaluator = AIMEEvaluator(benchmark="aime24", output_dir=output_dir)
+    return evaluator.run_agentwise_greedy_search_evaluation(search_config, max_examples, specific_ids)
 
 
 def run_gaia_agentwise_greedy_search(config: DebateConfig, max_examples: int = 20, 
@@ -181,14 +207,20 @@ def run_gaia_agentwise_greedy_search(config: DebateConfig, max_examples: int = 2
                                      judge_type: str = "scoring",
                                      prm_model_path: str = None, prm_api_url: str = None,
                                      enable_summarization: bool = False, output_dir: str = "results"):
-    """Run GAIA with agent-wise greedy search process evaluation"""
-    return _run_search_evaluation(
-        "gaia", "AgentWise Greedy Search PRM", AgentWiseGreedySearchConfig,
-        "run_agentwise_greedy_search_evaluation", config, max_examples, None,
-        judge_type, prm_model_path, prm_api_url, enable_summarization,
-        output_dir,
-        num_candidates=num_candidates, num_rounds=greedy_rounds
+    """Run GAIA with agent-wise greedy search process evaluation (decorator version)"""
+    print(f"Starting GAIA with AgentWise Greedy Search PRM (Decorator)...")
+    config.dataset = "gaia"
+    
+    # Create decorator-based config (no judge_model/judge_type/num_candidates needed)
+    search_config = _create_decorator_search_config(
+        AgentWiseGreedySearchConfig, config, task_type="general",
+        num_rounds=greedy_rounds
     )
+    
+    # Create evaluator and run
+    from gaia_eval import GAIAEvaluator
+    evaluator = GAIAEvaluator(subset="test", output_dir=output_dir)
+    return evaluator.run_agentwise_greedy_search_evaluation(search_config, max_examples)
 
 
 # ==================== AgentWise Beam Search Functions ====================
@@ -227,7 +259,7 @@ def main():
     parser = argparse.ArgumentParser(description="Run LLM Debate benchmark evaluations")
     
     # Benchmark selection
-    parser.add_argument("--benchmark", type=str, choices=["humaneval", "swe-bench", "gaia", "aime24", "aime25", "all"], 
+    parser.add_argument("--benchmark", type=str, choices=["gaia", "aime24", "aime25", "all"], 
                        default="all", help="Which benchmark to run")
     
     # Model configuration
@@ -241,8 +273,6 @@ def main():
                        help="Temperature for model generation")
     
     # Evaluation limits
-    parser.add_argument("--max-humaneval-examples", type=int, default=10, 
-                       help="Max examples for HumanEval")
     parser.add_argument("--max-swe-examples", type=int, default=5, 
                        help="Max examples for SWE-bench")
     parser.add_argument("--max-gaia-examples", type=int, default=10, 
@@ -374,13 +404,6 @@ def main():
     results = {}
     
     try:
-        if args.benchmark in ["humaneval", "all"]:
-            print(f"\n{'='*60}")
-            print("RUNNING HUMANEVAL EVALUATION")
-            print(f"{'='*60}")
-            results["humaneval"] = run_humaneval(config, args.max_humaneval_examples)
-        
-        
         if args.benchmark in ["gaia", "all"]:
             print(f"\n{'='*60}")
             if args.gaia_use_tools:
