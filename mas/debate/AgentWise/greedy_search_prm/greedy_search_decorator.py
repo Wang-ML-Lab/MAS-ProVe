@@ -17,7 +17,7 @@ mas_eval_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../.
 sys.path.insert(0, mas_eval_path)
 
 from llm_debate_tool_call import DebateConfig, direct, debate_refine
-from src.clients.client_base import BaseClient
+from mas_proceval import BaseClient
 
 
 @dataclass

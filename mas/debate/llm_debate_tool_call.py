@@ -23,7 +23,7 @@ mas_eval_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')
 sys.path.insert(0, mas_eval_path)
 
 try:
-    from src.decorators.decorator_base import llm_parallel_search_decorator
+    from mas_proceval import llm_parallel_search_decorator
     DECORATOR_AVAILABLE = True
 except ImportError:
     DECORATOR_AVAILABLE = False

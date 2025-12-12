@@ -1,22 +1,19 @@
 import socket
 import threading
 import json
+import backoff
 
 
 class BaseClient:
-    def __init__(self, host='127.0.0.1', port=5555):
+    def __init__(self, host='127.0.0.1', port=5555, max_retries=3, initial_backoff=0.1, max_backoff=5.0):
         self.host = host
         self.port = port
+        self.max_retries = max_retries
+        self.initial_backoff = initial_backoff
+        self.max_backoff = max_backoff
 
-    def send_request(self, task_type, judge_type, partial_trajectories, question=""):
-        request = {
-            "task-type": task_type,
-            "judge-type": judge_type,
-            "partial_trajectories": partial_trajectories,
-            "question": question,
-        }
-        data = json.dumps(request).encode("utf-8")
-        msglen = len(data).to_bytes(4, "big")
+    def _send_request_internal(self, msglen, data):
+        """Internal method that performs the actual socket operation with retry logic."""
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
             sock.connect((self.host, self.port))
             sock.sendall(msglen + data)
@@ -32,6 +29,30 @@ class BaseClient:
                 resp_data += part
             response = json.loads(resp_data.decode("utf-8"))
             return response
+
+    def send_request(self, task_type, judge_type, partial_trajectories, question=""):
+        request = {
+            "task-type": task_type,
+            "judge-type": judge_type,
+            "partial_trajectories": partial_trajectories,
+            "question": question,
+        }
+        data = json.dumps(request).encode("utf-8")
+        msglen = len(data).to_bytes(4, "big")
+        
+        # Apply backoff decorator with instance-specific parameters
+        @backoff.on_exception(
+            backoff.expo,
+            (ConnectionRefusedError, ConnectionError, OSError, socket.timeout, socket.error),
+            max_tries=self.max_retries,
+            base=self.initial_backoff,
+            max_value=self.max_backoff,
+            on_backoff=lambda details: print(f"Connection attempt {details['tries']} failed: {details['exception']}. Retrying in {details['wait']:.2f} seconds...")
+        )
+        def send_with_retry(msglen, data):
+            return self._send_request_internal(msglen, data)
+        
+        return send_with_retry(msglen, data)
 
 
 if __name__ == "__main__":

@@ -1,4 +1,5 @@
 import asyncio
+import warnings
 from ..clients.client_base import BaseClient
 
 MAX_PARALLEL_SEARCH_CALLS = 3  # Can be overridden in the importing code
@@ -21,8 +22,16 @@ def llm_parallel_search_decorator(llm_func):
         # Each response is a tuple: (content, usage, tool_calls_info)
         print(f"Formatting {len(responses)} candidates for judging...")
         partial_trajectories = []
-        for i, response_tuple in enumerate(responses):
-            content = response_tuple[0] if isinstance(response_tuple, tuple) else response_tuple
+        for i, function_result in enumerate(responses):
+            if isinstance(function_result, tuple) or isinstance(function_result, list): 
+                # Protocol: if the function's result is a tuple or list, the first one should be the actual reasoning response.
+                content = function_result[0]
+            elif isinstance(function_result, dict):
+                content = function_result.get("response", "NA")
+                if content == "NA":
+                    warnings.warn(f"Wrapped function's intermediate result is a dict but does not contain a 'response' key. Got keys: {function_result.keys()}")
+            else:
+                content = function_result
             partial_trajectories.append({
                 "context": "",
                 "current-step": content
