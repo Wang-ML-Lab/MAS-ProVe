@@ -10,6 +10,7 @@ playground.ipynb
 data/
 checkpoints/
 notebooks/
+.github/
 *.png
 wandb
 *.csv
