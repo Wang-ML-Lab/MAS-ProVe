@@ -18,5 +18,5 @@ wandb
 tmp/
 */__pycache__
 *.
-src/config.yaml
+src/*/config.yaml
 results/
