@@ -1,0 +1,627 @@
+2025-11-20 00:57:06 - INFO - Skipping datasets as data/datasets already exists.
+2025-11-20 01:02:45 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-20 01:03:22 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-20 01:05:44 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-20 01:08:26 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-20 01:10:29 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-20 01:15:14 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-20 01:18:53 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-20 01:18:53 - INFO - Results saved to workspace/AIME25/workflows_test/round_1/0.62500_20251120_011853.csv
+2025-11-20 01:18:53 - INFO - Average score on AIME25 dataset: 0.62500
+2025-11-20 01:18:53 - INFO - Total Cost: 0.67032
+2025-11-20 01:21:15 - INFO - Skipping datasets as data/datasets already exists.
+2025-11-20 01:21:15 - ERROR - Error loading graph for round 1: No module named 'workspace.AIME24.workflows.round_3'
+2025-11-20 01:21:41 - INFO - Skipping datasets as data/datasets already exists.
+2025-11-20 01:22:10 - INFO - Results saved to workspace/AIME24/workflows/round_1/0.83333_20251120_012210.csv
+2025-11-20 01:22:10 - INFO - Average score on AIME24 dataset: 0.83333
+2025-11-20 01:22:10 - INFO - Total Cost: 0.01148
+2025-11-20 01:22:55 - INFO - Results saved to workspace/AIME24/workflows/round_1/0.83333_20251120_012255.csv
+2025-11-20 01:22:55 - INFO - Average score on AIME24 dataset: 0.83333
+2025-11-20 01:22:55 - INFO - Total Cost: 0.01379
+2025-11-20 01:24:20 - INFO - Results saved to workspace/AIME24/workflows/round_1/0.66667_20251120_012420.csv
+2025-11-20 01:24:20 - INFO - Average score on AIME24 dataset: 0.66667
+2025-11-20 01:24:20 - INFO - Total Cost: 0.01617
+2025-11-20 01:24:20 - INFO - 
+Mixed probability distribution: [1.]
+2025-11-20 01:24:20 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.7777777777777778}]
+2025-11-20 01:24:20 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.7777777777777778}
+2025-11-20 01:24:20 - INFO - Processed experience data saved to workspace/AIME24/workflows/processed_experience.json
+2025-11-20 01:24:20 - INFO - workspace/AIME24/workflows/round_1/log.json
+2025-11-20 01:24:39 - INFO - Graph optimization response received successfully
+2025-11-20 01:24:39 - INFO - Error occurred: unexpected character after line continuation character (graph.py, line 58). Retrying... (Attempt 1/1)
+2025-11-20 01:24:39 - INFO - Max retries reached. Moving to next round.
+2025-11-20 01:24:44 - INFO - Score for round 2: None
+2025-11-20 01:24:49 - INFO - 
+Mixed probability distribution: [1.]
+2025-11-20 01:24:49 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.7777777777777778}]
+2025-11-20 01:24:49 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.7777777777777778}
+2025-11-20 01:24:49 - INFO - Processed experience data saved to workspace/AIME24/workflows/processed_experience.json
+2025-11-20 01:24:49 - INFO - workspace/AIME24/workflows/round_1/log.json
+2025-11-20 01:25:14 - INFO - Graph optimization response received successfully
+2025-11-20 01:25:14 - INFO - workspace/AIME24/workflows/round_3
+2025-11-20 01:26:18 - INFO - Results saved to workspace/AIME24/workflows/round_3/1.00000_20251120_012618.csv
+2025-11-20 01:26:18 - INFO - Average score on AIME24 dataset: 1.00000
+2025-11-20 01:26:18 - INFO - Total Cost: 0.03302
+2025-11-20 01:27:42 - INFO - Results saved to workspace/AIME24/workflows/round_3/0.83333_20251120_012742.csv
+2025-11-20 01:27:42 - INFO - Average score on AIME24 dataset: 0.83333
+2025-11-20 01:27:42 - INFO - Total Cost: 0.03540
+2025-11-20 01:29:13 - INFO - Results saved to workspace/AIME24/workflows/round_3/0.66667_20251120_012913.csv
+2025-11-20 01:29:13 - INFO - Average score on AIME24 dataset: 0.66667
+2025-11-20 01:29:13 - INFO - Total Cost: 0.03430
+2025-11-20 01:29:13 - INFO - Score for round 3: 0.8333333333333334
+2025-11-20 01:29:18 - INFO - 
+Mixed probability distribution: [0.67663534 0.32336466]
+2025-11-20 01:29:18 - INFO - 
+Sorted rounds: [{'round': 3, 'score': 0.8333333333333334}, {'round': 1, 'score': 0.7777777777777778}]
+2025-11-20 01:29:18 - INFO - 
+Selected index: 1, Selected item: {'round': 1, 'score': 0.7777777777777778}
+2025-11-20 01:29:18 - INFO - Processed experience data saved to workspace/AIME24/workflows/processed_experience.json
+2025-11-20 01:29:18 - INFO - workspace/AIME24/workflows/round_1/log.json
+2025-11-20 01:29:37 - INFO - Graph optimization response received successfully
+2025-11-20 01:29:37 - INFO - Error occurred: EOF while scanning triple-quoted string literal (prompt.py, line 6). Retrying... (Attempt 1/1)
+2025-11-20 01:29:37 - INFO - Max retries reached. Moving to next round.
+2025-11-20 01:29:42 - INFO - Score for round 4: None
+2025-11-20 01:29:47 - INFO - 
+Mixed probability distribution: [0.67663534 0.32336466]
+2025-11-20 01:29:47 - INFO - 
+Sorted rounds: [{'round': 3, 'score': 0.8333333333333334}, {'round': 1, 'score': 0.7777777777777778}]
+2025-11-20 01:29:47 - INFO - 
+Selected index: 0, Selected item: {'round': 3, 'score': 0.8333333333333334}
+2025-11-20 01:29:47 - INFO - Processed experience data saved to workspace/AIME24/workflows/processed_experience.json
+2025-11-20 01:29:47 - INFO - workspace/AIME24/workflows/round_3/log.json
+2025-11-20 01:30:08 - INFO - Graph optimization response received successfully
+2025-11-20 01:30:08 - INFO - workspace/AIME24/workflows/round_5
+2025-11-20 01:32:47 - INFO - Results saved to workspace/AIME24/workflows/round_5/0.83333_20251120_013247.csv
+2025-11-20 01:32:47 - INFO - Average score on AIME24 dataset: 0.83333
+2025-11-20 01:32:47 - INFO - Total Cost: 0.03787
+2025-11-20 01:34:09 - INFO - Results saved to workspace/AIME24/workflows/round_5/0.66667_20251120_013409.csv
+2025-11-20 01:34:09 - INFO - Average score on AIME24 dataset: 0.66667
+2025-11-20 01:34:09 - INFO - Total Cost: 0.03336
+2025-11-20 01:35:58 - INFO - Results saved to workspace/AIME24/workflows/round_5/0.83333_20251120_013558.csv
+2025-11-20 01:35:58 - INFO - Average score on AIME24 dataset: 0.83333
+2025-11-20 01:35:58 - INFO - Total Cost: 0.03909
+2025-11-20 01:35:58 - INFO - Score for round 5: 0.7777777777777778
+2025-11-20 01:36:03 - INFO - 
+Mixed probability distribution: [0.52209715 0.23895142 0.23895142]
+2025-11-20 01:36:03 - INFO - 
+Sorted rounds: [{'round': 3, 'score': 0.8333333333333334}, {'round': 1, 'score': 0.7777777777777778}, {'round': 5, 'score': 0.7777777777777778}]
+2025-11-20 01:36:03 - INFO - 
+Selected index: 1, Selected item: {'round': 1, 'score': 0.7777777777777778}
+2025-11-20 01:36:03 - INFO - Processed experience data saved to workspace/AIME24/workflows/processed_experience.json
+2025-11-20 01:36:03 - INFO - workspace/AIME24/workflows/round_1/log.json
+2025-11-20 01:36:36 - INFO - Graph optimization response received successfully
+2025-11-20 01:36:36 - INFO - Error occurred: unexpected character after line continuation character (graph.py, line 75). Retrying... (Attempt 1/1)
+2025-11-20 01:36:36 - INFO - Max retries reached. Moving to next round.
+2025-11-20 01:36:41 - INFO - Score for round 6: None
+2025-11-20 01:36:46 - INFO - 
+Mixed probability distribution: [0.52209715 0.23895142 0.23895142]
+2025-11-20 01:36:46 - INFO - 
+Sorted rounds: [{'round': 3, 'score': 0.8333333333333334}, {'round': 1, 'score': 0.7777777777777778}, {'round': 5, 'score': 0.7777777777777778}]
+2025-11-20 01:36:46 - INFO - 
+Selected index: 0, Selected item: {'round': 3, 'score': 0.8333333333333334}
+2025-11-20 01:36:46 - INFO - Processed experience data saved to workspace/AIME24/workflows/processed_experience.json
+2025-11-20 01:36:46 - INFO - workspace/AIME24/workflows/round_3/log.json
+2025-11-20 01:37:09 - INFO - Graph optimization response received successfully
+2025-11-20 01:37:09 - INFO - workspace/AIME24/workflows/round_7
+2025-11-20 01:38:52 - INFO - Results saved to workspace/AIME24/workflows/round_7/0.66667_20251120_013852.csv
+2025-11-20 01:38:52 - INFO - Average score on AIME24 dataset: 0.66667
+2025-11-20 01:38:52 - INFO - Total Cost: 0.03641
+2025-11-20 01:40:08 - INFO - Results saved to workspace/AIME24/workflows/round_7/0.83333_20251120_014008.csv
+2025-11-20 01:40:08 - INFO - Average score on AIME24 dataset: 0.83333
+2025-11-20 01:40:08 - INFO - Total Cost: 0.03465
+2025-11-20 01:42:38 - INFO - Results saved to workspace/AIME24/workflows/round_7/0.83333_20251120_014238.csv
+2025-11-20 01:42:38 - INFO - Average score on AIME24 dataset: 0.83333
+2025-11-20 01:42:38 - INFO - Total Cost: 0.04454
+2025-11-20 01:42:38 - INFO - Score for round 7: 0.7777777777777778
+2025-11-20 01:42:43 - INFO - 
+Mixed probability distribution: [0.42718727 0.19093758 0.19093758 0.19093758]
+2025-11-20 01:42:43 - INFO - 
+Sorted rounds: [{'round': 3, 'score': 0.8333333333333334}, {'round': 1, 'score': 0.7777777777777778}, {'round': 5, 'score': 0.7777777777777778}, {'round': 7, 'score': 0.7777777777777778}]
+2025-11-20 01:42:43 - INFO - 
+Selected index: 0, Selected item: {'round': 3, 'score': 0.8333333333333334}
+2025-11-20 01:42:43 - INFO - Processed experience data saved to workspace/AIME24/workflows/processed_experience.json
+2025-11-20 01:42:43 - INFO - workspace/AIME24/workflows/round_3/log.json
+2025-11-20 01:43:16 - INFO - Graph optimization response received successfully
+2025-11-20 01:43:16 - INFO - workspace/AIME24/workflows/round_8
+2025-11-20 01:44:29 - INFO - Results saved to workspace/AIME24/workflows/round_8/1.00000_20251120_014429.csv
+2025-11-20 01:44:29 - INFO - Average score on AIME24 dataset: 1.00000
+2025-11-20 01:44:29 - INFO - Total Cost: 0.03355
+2025-11-20 01:45:27 - INFO - Results saved to workspace/AIME24/workflows/round_8/0.50000_20251120_014527.csv
+2025-11-20 01:45:27 - INFO - Average score on AIME24 dataset: 0.50000
+2025-11-20 01:45:27 - INFO - Total Cost: 0.03146
+2025-11-20 01:46:38 - INFO - Results saved to workspace/AIME24/workflows/round_8/0.66667_20251120_014638.csv
+2025-11-20 01:46:38 - INFO - Average score on AIME24 dataset: 0.66667
+2025-11-20 01:46:38 - INFO - Total Cost: 0.02968
+2025-11-20 01:46:38 - INFO - Score for round 8: 0.7222222222222222
+2025-11-20 01:46:43 - INFO - 
+Mixed probability distribution: [0.42718727 0.19093758 0.19093758 0.19093758]
+2025-11-20 01:46:43 - INFO - 
+Sorted rounds: [{'round': 3, 'score': 0.8333333333333334}, {'round': 1, 'score': 0.7777777777777778}, {'round': 5, 'score': 0.7777777777777778}, {'round': 7, 'score': 0.7777777777777778}]
+2025-11-20 01:46:43 - INFO - 
+Selected index: 0, Selected item: {'round': 3, 'score': 0.8333333333333334}
+2025-11-20 01:46:43 - INFO - Processed experience data saved to workspace/AIME24/workflows/processed_experience.json
+2025-11-20 01:46:43 - INFO - workspace/AIME24/workflows/round_3/log.json
+2025-11-20 01:47:10 - INFO - Graph optimization response received successfully
+2025-11-20 01:47:10 - INFO - workspace/AIME24/workflows/round_9
+2025-11-20 01:51:18 - INFO - Results saved to workspace/AIME24/workflows/round_9/0.00000_20251120_015118.csv
+2025-11-20 01:51:18 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-20 01:51:18 - INFO - Total Cost: 0.05240
+2025-11-20 01:53:35 - INFO - Results saved to workspace/AIME24/workflows/round_9/0.00000_20251120_015335.csv
+2025-11-20 01:53:35 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-20 01:53:35 - INFO - Total Cost: 0.04801
+2025-11-20 01:55:45 - INFO - Results saved to workspace/AIME24/workflows/round_9/0.00000_20251120_015545.csv
+2025-11-20 01:55:45 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-20 01:55:45 - INFO - Total Cost: 0.05340
+2025-11-20 01:55:46 - INFO - Score for round 9: 0.0
+2025-11-20 01:55:51 - INFO - 
+Mixed probability distribution: [0.42718727 0.19093758 0.19093758 0.19093758]
+2025-11-20 01:55:51 - INFO - 
+Sorted rounds: [{'round': 3, 'score': 0.8333333333333334}, {'round': 1, 'score': 0.7777777777777778}, {'round': 5, 'score': 0.7777777777777778}, {'round': 7, 'score': 0.7777777777777778}]
+2025-11-20 01:55:51 - INFO - 
+Selected index: 1, Selected item: {'round': 1, 'score': 0.7777777777777778}
+2025-11-20 01:55:51 - INFO - Processed experience data saved to workspace/AIME24/workflows/processed_experience.json
+2025-11-20 01:55:51 - INFO - workspace/AIME24/workflows/round_1/log.json
+2025-11-20 01:56:11 - INFO - Graph optimization response received successfully
+2025-11-20 01:56:11 - INFO - Error occurred: unexpected character after line continuation character (graph.py, line 62). Retrying... (Attempt 1/1)
+2025-11-20 01:56:11 - INFO - Max retries reached. Moving to next round.
+2025-11-20 01:56:16 - INFO - Score for round 10: None
+2025-11-20 01:56:21 - INFO - 
+Mixed probability distribution: [0.42718727 0.19093758 0.19093758 0.19093758]
+2025-11-20 01:56:21 - INFO - 
+Sorted rounds: [{'round': 3, 'score': 0.8333333333333334}, {'round': 1, 'score': 0.7777777777777778}, {'round': 5, 'score': 0.7777777777777778}, {'round': 7, 'score': 0.7777777777777778}]
+2025-11-20 01:56:21 - INFO - 
+Selected index: 0, Selected item: {'round': 3, 'score': 0.8333333333333334}
+2025-11-20 01:56:21 - INFO - Processed experience data saved to workspace/AIME24/workflows/processed_experience.json
+2025-11-20 01:56:21 - INFO - workspace/AIME24/workflows/round_3/log.json
+2025-11-20 01:56:43 - INFO - Graph optimization response received successfully
+2025-11-20 01:56:43 - INFO - workspace/AIME24/workflows/round_11
+2025-11-20 01:58:28 - INFO - Results saved to workspace/AIME24/workflows/round_11/0.66667_20251120_015828.csv
+2025-11-20 01:58:28 - INFO - Average score on AIME24 dataset: 0.66667
+2025-11-20 01:58:28 - INFO - Total Cost: 0.03317
+2025-11-20 02:00:09 - INFO - Results saved to workspace/AIME24/workflows/round_11/0.66667_20251120_020009.csv
+2025-11-20 02:00:09 - INFO - Average score on AIME24 dataset: 0.66667
+2025-11-20 02:00:09 - INFO - Total Cost: 0.03581
+2025-11-20 02:02:10 - INFO - Results saved to workspace/AIME24/workflows/round_11/0.33333_20251120_020210.csv
+2025-11-20 02:02:10 - INFO - Average score on AIME24 dataset: 0.33333
+2025-11-20 02:02:10 - INFO - Total Cost: 0.03976
+2025-11-20 02:02:10 - INFO - Score for round 11: 0.5555555555555555
+2025-11-20 02:02:15 - INFO - 
+Mixed probability distribution: [0.42718727 0.19093758 0.19093758 0.19093758]
+2025-11-20 02:02:15 - INFO - 
+Sorted rounds: [{'round': 3, 'score': 0.8333333333333334}, {'round': 1, 'score': 0.7777777777777778}, {'round': 5, 'score': 0.7777777777777778}, {'round': 7, 'score': 0.7777777777777778}]
+2025-11-20 02:02:15 - INFO - 
+Selected index: 3, Selected item: {'round': 7, 'score': 0.7777777777777778}
+2025-11-20 02:02:15 - INFO - Processed experience data saved to workspace/AIME24/workflows/processed_experience.json
+2025-11-20 02:02:15 - INFO - workspace/AIME24/workflows/round_7/log.json
+2025-11-20 02:02:42 - INFO - Graph optimization response received successfully
+2025-11-20 02:02:42 - INFO - workspace/AIME24/workflows/round_12
+2025-11-20 02:04:10 - INFO - Results saved to workspace/AIME24/workflows/round_12/0.50000_20251120_020410.csv
+2025-11-20 02:04:10 - INFO - Average score on AIME24 dataset: 0.50000
+2025-11-20 02:04:10 - INFO - Total Cost: 0.03847
+2025-11-20 02:05:08 - INFO - Results saved to workspace/AIME24/workflows/round_12/0.50000_20251120_020508.csv
+2025-11-20 02:05:08 - INFO - Average score on AIME24 dataset: 0.50000
+2025-11-20 02:05:08 - INFO - Total Cost: 0.03208
+2025-11-20 02:06:47 - INFO - Results saved to workspace/AIME24/workflows/round_12/0.83333_20251120_020647.csv
+2025-11-20 02:06:47 - INFO - Average score on AIME24 dataset: 0.83333
+2025-11-20 02:06:47 - INFO - Total Cost: 0.03585
+2025-11-20 02:06:47 - INFO - Score for round 12: 0.6111111111111112
+2025-11-20 02:06:47 - INFO - Convergence detected, occurred in round 3, final round is 7
+2025-11-20 02:06:47 - INFO - Round 1: Average Score = 0.7778, Standard Deviation = 0.0786
+2025-11-20 02:06:47 - INFO - Round 2: Average Score = 0.8333, Standard Deviation = 0.1361
+2025-11-20 02:06:47 - INFO - Round 3: Average Score = 0.7778, Standard Deviation = 0.0786
+2025-11-20 02:06:47 - INFO - Round 4: Average Score = 0.7778, Standard Deviation = 0.0786
+2025-11-20 02:06:47 - INFO - Round 5: Average Score = 0.7222, Standard Deviation = 0.2079
+2025-11-20 02:06:47 - INFO - Round 6: Average Score = 0.0000, Standard Deviation = 0.0000
+2025-11-20 02:06:47 - INFO - Round 7: Average Score = 0.5556, Standard Deviation = 0.1571
+2025-11-20 02:06:47 - INFO - Round 8: Average Score = 0.6111, Standard Deviation = 0.1571
+2025-11-20 03:12:35 - INFO - Skipping datasets as data/datasets already exists.
+2025-11-20 03:13:04 - INFO - Results saved to workspace/GAIA/workflows/round_1/0.25000_20251120_031304.csv
+2025-11-20 03:13:04 - INFO - Average score on GAIA dataset: 0.25000
+2025-11-20 03:13:04 - INFO - Total Cost: 0.01162
+2025-11-20 03:13:26 - INFO - Results saved to workspace/GAIA/workflows/round_1/0.20000_20251120_031326.csv
+2025-11-20 03:13:26 - INFO - Average score on GAIA dataset: 0.20000
+2025-11-20 03:13:26 - INFO - Total Cost: 0.01173
+2025-11-20 03:13:26 - INFO - 
+Mixed probability distribution: [1.]
+2025-11-20 03:13:26 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.225}]
+2025-11-20 03:13:26 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.225}
+2025-11-20 03:13:26 - INFO - Processed experience data saved to workspace/GAIA/workflows/processed_experience.json
+2025-11-20 03:13:26 - INFO - workspace/GAIA/workflows/round_1/log.json
+2025-11-20 03:13:37 - INFO - Graph optimization response received successfully
+2025-11-20 03:13:37 - INFO - workspace/GAIA/workflows/round_2
+2025-11-20 03:14:34 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:14:46 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:15:01 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:15:14 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:15:14 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:15:35 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:15:35 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:15:44 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:15:48 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:16:06 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:16:06 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:16:06 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:16:18 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:16:34 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:16:35 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:16:35 - INFO - Results saved to workspace/GAIA/workflows/round_2/0.05000_20251120_031635.csv
+2025-11-20 03:16:35 - INFO - Average score on GAIA dataset: 0.05000
+2025-11-20 03:16:35 - INFO - Total Cost: 0.11769
+2025-11-20 03:17:39 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:17:49 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:17:49 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:18:07 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:18:29 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:18:37 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:18:45 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:18:48 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:18:48 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:18:54 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:19:07 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:19:12 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-20 03:19:17 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:19:17 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:19:31 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:19:31 - INFO - Results saved to workspace/GAIA/workflows/round_2/0.10000_20251120_031931.csv
+2025-11-20 03:19:31 - INFO - Average score on GAIA dataset: 0.10000
+2025-11-20 03:19:31 - INFO - Total Cost: 0.11546
+2025-11-20 03:19:31 - INFO - Score for round 2: 0.07500000000000001
+2025-11-20 03:19:36 - INFO - 
+Mixed probability distribution: [0.81680189 0.18319811]
+2025-11-20 03:19:36 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.225}, {'round': 2, 'score': 0.07500000000000001}]
+2025-11-20 03:19:36 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.225}
+2025-11-20 03:19:36 - INFO - Processed experience data saved to workspace/GAIA/workflows/processed_experience.json
+2025-11-20 03:19:36 - INFO - workspace/GAIA/workflows/round_1/log.json
+2025-11-20 03:19:49 - INFO - Graph optimization response received successfully
+2025-11-20 03:19:49 - INFO - workspace/GAIA/workflows/round_3
+2025-11-20 03:22:32 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:22:32 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:22:36 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:24:08 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:24:08 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:25:31 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:25:31 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:25:31 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:25:34 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:25:38 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:25:48 - INFO - Results saved to workspace/GAIA/workflows/round_3/0.05000_20251120_032548.csv
+2025-11-20 03:25:48 - INFO - Average score on GAIA dataset: 0.05000
+2025-11-20 03:25:48 - INFO - Total Cost: 0.13937
+2025-11-20 03:29:18 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:29:20 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:30:32 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:32:50 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:33:01 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:33:16 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:33:28 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:33:50 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:34:06 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:34:08 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:34:15 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:34:18 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:34:19 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:34:34 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:35:02 - INFO - Maximum retries reached. Skipping this sample. Error: 'answer'
+2025-11-20 03:35:02 - INFO - Results saved to workspace/GAIA/workflows/round_3/0.10000_20251120_033502.csv
+2025-11-20 03:35:02 - INFO - Average score on GAIA dataset: 0.10000
+2025-11-20 03:35:02 - INFO - Total Cost: 0.18155
+2025-11-20 03:35:02 - INFO - Score for round 3: 0.07500000000000001
+2025-11-20 03:35:07 - INFO - 
+Mixed probability distribution: [0.7366101  0.13169495 0.13169495]
+2025-11-20 03:35:07 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.225}, {'round': 2, 'score': 0.07500000000000001}, {'round': 3, 'score': 0.07500000000000001}]
+2025-11-20 03:35:07 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.225}
+2025-11-20 03:35:07 - INFO - Processed experience data saved to workspace/GAIA/workflows/processed_experience.json
+2025-11-20 03:35:07 - INFO - workspace/GAIA/workflows/round_1/log.json
+2025-11-20 03:35:23 - INFO - Graph optimization response received successfully
+2025-11-20 03:35:23 - INFO - workspace/GAIA/workflows/round_4
+2025-11-20 03:37:35 - INFO - Results saved to workspace/GAIA/workflows/round_4/0.05000_20251120_033735.csv
+2025-11-20 03:37:35 - INFO - Average score on GAIA dataset: 0.05000
+2025-11-20 03:37:35 - INFO - Total Cost: 0.05665
+2025-11-20 03:39:46 - INFO - Results saved to workspace/GAIA/workflows/round_4/0.15000_20251120_033946.csv
+2025-11-20 03:39:46 - INFO - Average score on GAIA dataset: 0.15000
+2025-11-20 03:39:46 - INFO - Total Cost: 0.05300
+2025-11-20 03:39:46 - INFO - Score for round 4: 0.1
+2025-11-20 03:39:51 - INFO - 
+Mixed probability distribution: [0.66738741 0.12362612 0.10449323 0.10449323]
+2025-11-20 03:39:51 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.225}, {'round': 4, 'score': 0.1}, {'round': 2, 'score': 0.07500000000000001}, {'round': 3, 'score': 0.07500000000000001}]
+2025-11-20 03:39:51 - INFO - 
+Selected index: 1, Selected item: {'round': 4, 'score': 0.1}
+2025-11-20 03:39:51 - INFO - Processed experience data saved to workspace/GAIA/workflows/processed_experience.json
+2025-11-20 03:39:51 - INFO - workspace/GAIA/workflows/round_4/log.json
+2025-11-20 03:40:22 - INFO - Graph optimization response received successfully
+2025-11-20 03:40:22 - INFO - workspace/GAIA/workflows/round_5
+2025-11-20 03:43:10 - INFO - Results saved to workspace/GAIA/workflows/round_5/0.20000_20251120_034310.csv
+2025-11-20 03:43:10 - INFO - Average score on GAIA dataset: 0.20000
+2025-11-20 03:43:10 - INFO - Total Cost: 0.05995
+2025-11-20 03:46:59 - INFO - Results saved to workspace/GAIA/workflows/round_5/0.15000_20251120_034659.csv
+2025-11-20 03:46:59 - INFO - Average score on GAIA dataset: 0.15000
+2025-11-20 03:46:59 - INFO - Total Cost: 0.07150
+2025-11-20 03:46:59 - INFO - Score for round 5: 0.175
+2025-11-20 03:47:04 - INFO - 
+Mixed probability distribution: [0.54174399 0.24670552 0.11331268 0.09823781]
+2025-11-20 03:47:04 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.225}, {'round': 5, 'score': 0.175}, {'round': 4, 'score': 0.1}, {'round': 2, 'score': 0.07500000000000001}]
+2025-11-20 03:47:04 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.225}
+2025-11-20 03:47:04 - INFO - Processed experience data saved to workspace/GAIA/workflows/processed_experience.json
+2025-11-20 03:47:04 - INFO - workspace/GAIA/workflows/round_1/log.json
+2025-11-20 03:47:22 - INFO - Graph optimization response received successfully
+2025-11-20 03:47:22 - INFO - workspace/GAIA/workflows/round_6
+2025-11-20 03:49:48 - INFO - Results saved to workspace/GAIA/workflows/round_6/0.20000_20251120_034948.csv
+2025-11-20 03:49:48 - INFO - Average score on GAIA dataset: 0.20000
+2025-11-20 03:49:48 - INFO - Total Cost: 0.05733
+2025-11-20 03:52:28 - INFO - Results saved to workspace/GAIA/workflows/round_6/0.25000_20251120_035228.csv
+2025-11-20 03:52:28 - INFO - Average score on GAIA dataset: 0.25000
+2025-11-20 03:52:28 - INFO - Total Cost: 0.06380
+2025-11-20 03:52:28 - INFO - Score for round 6: 0.225
+2025-11-20 03:52:33 - INFO - 
+Mixed probability distribution: [0.36071843 0.36071843 0.18010994 0.0984532 ]
+2025-11-20 03:52:33 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.225}, {'round': 6, 'score': 0.225}, {'round': 5, 'score': 0.175}, {'round': 4, 'score': 0.1}]
+2025-11-20 03:52:33 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.225}
+2025-11-20 03:52:33 - INFO - Processed experience data saved to workspace/GAIA/workflows/processed_experience.json
+2025-11-20 03:52:33 - INFO - workspace/GAIA/workflows/round_1/log.json
+2025-11-20 03:52:49 - INFO - Graph optimization response received successfully
+2025-11-20 03:52:49 - INFO - workspace/GAIA/workflows/round_7
+2025-11-20 03:52:49 - INFO - Error occurred: __init__() missing 1 required positional argument: 'llm'. Retrying... (Attempt 1/1)
+2025-11-20 03:52:49 - INFO - Max retries reached. Moving to next round.
+2025-11-20 03:52:54 - INFO - Score for round 7: None
+2025-11-20 03:52:59 - INFO - 
+Mixed probability distribution: [0.36071843 0.36071843 0.18010994 0.0984532 ]
+2025-11-20 03:52:59 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.225}, {'round': 6, 'score': 0.225}, {'round': 5, 'score': 0.175}, {'round': 4, 'score': 0.1}]
+2025-11-20 03:52:59 - INFO - 
+Selected index: 2, Selected item: {'round': 5, 'score': 0.175}
+2025-11-20 03:52:59 - INFO - Processed experience data saved to workspace/GAIA/workflows/processed_experience.json
+2025-11-20 03:52:59 - INFO - workspace/GAIA/workflows/round_5/log.json
+2025-11-20 03:53:27 - INFO - Graph optimization response received successfully
+2025-11-20 03:53:27 - INFO - workspace/GAIA/workflows/round_8
+2025-11-20 03:56:52 - INFO - Results saved to workspace/GAIA/workflows/round_8/0.10000_20251120_035652.csv
+2025-11-20 03:56:52 - INFO - Average score on GAIA dataset: 0.10000
+2025-11-20 03:56:52 - INFO - Total Cost: 0.06475
+2025-11-20 03:59:47 - INFO - Results saved to workspace/GAIA/workflows/round_8/0.10000_20251120_035947.csv
+2025-11-20 03:59:47 - INFO - Average score on GAIA dataset: 0.10000
+2025-11-20 03:59:47 - INFO - Total Cost: 0.05998
+2025-11-20 03:59:47 - INFO - Score for round 8: 0.1
+2025-11-20 03:59:52 - INFO - 
+Mixed probability distribution: [0.36071843 0.36071843 0.18010994 0.0984532 ]
+2025-11-20 03:59:52 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.225}, {'round': 6, 'score': 0.225}, {'round': 5, 'score': 0.175}, {'round': 4, 'score': 0.1}]
+2025-11-20 03:59:52 - INFO - 
+Selected index: 2, Selected item: {'round': 5, 'score': 0.175}
+2025-11-20 03:59:52 - INFO - Processed experience data saved to workspace/GAIA/workflows/processed_experience.json
+2025-11-20 03:59:52 - INFO - workspace/GAIA/workflows/round_5/log.json
+2025-11-20 04:00:15 - INFO - Graph optimization response received successfully
+2025-11-20 04:00:15 - INFO - workspace/GAIA/workflows/round_9
+2025-11-20 04:03:54 - INFO - Results saved to workspace/GAIA/workflows/round_9/0.10000_20251120_040354.csv
+2025-11-20 04:03:54 - INFO - Average score on GAIA dataset: 0.10000
+2025-11-20 04:03:54 - INFO - Total Cost: 0.06953
+2025-11-20 04:07:02 - INFO - Results saved to workspace/GAIA/workflows/round_9/0.10000_20251120_040702.csv
+2025-11-20 04:07:02 - INFO - Average score on GAIA dataset: 0.10000
+2025-11-20 04:07:02 - INFO - Total Cost: 0.06312
+2025-11-20 04:07:02 - INFO - Score for round 9: 0.1
+2025-11-20 04:07:07 - INFO - 
+Mixed probability distribution: [0.36071843 0.36071843 0.18010994 0.0984532 ]
+2025-11-20 04:07:07 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.225}, {'round': 6, 'score': 0.225}, {'round': 5, 'score': 0.175}, {'round': 4, 'score': 0.1}]
+2025-11-20 04:07:07 - INFO - 
+Selected index: 2, Selected item: {'round': 5, 'score': 0.175}
+2025-11-20 04:07:07 - INFO - Processed experience data saved to workspace/GAIA/workflows/processed_experience.json
+2025-11-20 04:07:07 - INFO - workspace/GAIA/workflows/round_5/log.json
+2025-11-20 04:07:31 - INFO - Graph optimization response received successfully
+2025-11-20 04:07:31 - INFO - workspace/GAIA/workflows/round_10
+2025-11-20 04:10:57 - INFO - Results saved to workspace/GAIA/workflows/round_10/0.10000_20251120_041057.csv
+2025-11-20 04:10:57 - INFO - Average score on GAIA dataset: 0.10000
+2025-11-20 04:10:57 - INFO - Total Cost: 0.07483
+2025-11-20 04:13:16 - INFO - Results saved to workspace/GAIA/workflows/round_10/0.15000_20251120_041316.csv
+2025-11-20 04:13:16 - INFO - Average score on GAIA dataset: 0.15000
+2025-11-20 04:13:16 - INFO - Total Cost: 0.06252
+2025-11-20 04:13:16 - INFO - Score for round 10: 0.125
+2025-11-20 04:13:21 - INFO - 
+Mixed probability distribution: [0.35464041 0.35464041 0.17787396 0.11284521]
+2025-11-20 04:13:21 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.225}, {'round': 6, 'score': 0.225}, {'round': 5, 'score': 0.175}, {'round': 10, 'score': 0.125}]
+2025-11-20 04:13:21 - INFO - 
+Selected index: 1, Selected item: {'round': 6, 'score': 0.225}
+2025-11-20 04:13:21 - INFO - Processed experience data saved to workspace/GAIA/workflows/processed_experience.json
+2025-11-20 04:13:21 - INFO - workspace/GAIA/workflows/round_6/log.json
+2025-11-20 04:13:39 - INFO - Graph optimization response received successfully
+2025-11-20 04:13:39 - INFO - workspace/GAIA/workflows/round_11
+2025-11-20 04:16:28 - INFO - Results saved to workspace/GAIA/workflows/round_11/0.30000_20251120_041628.csv
+2025-11-20 04:16:28 - INFO - Average score on GAIA dataset: 0.30000
+2025-11-20 04:16:28 - INFO - Total Cost: 0.06649
+2025-11-20 04:18:34 - INFO - Results saved to workspace/GAIA/workflows/round_11/0.25000_20251120_041834.csv
+2025-11-20 04:18:34 - INFO - Average score on GAIA dataset: 0.25000
+2025-11-20 04:18:34 - INFO - Total Cost: 0.05810
+2025-11-20 04:18:34 - INFO - Score for round 11: 0.275
+2025-11-20 04:18:40 - INFO - 
+Mixed probability distribution: [0.44911265 0.21262835 0.21262835 0.12563064]
+2025-11-20 04:18:40 - INFO - 
+Sorted rounds: [{'round': 11, 'score': 0.275}, {'round': 1, 'score': 0.225}, {'round': 6, 'score': 0.225}, {'round': 5, 'score': 0.175}]
+2025-11-20 04:18:40 - INFO - 
+Selected index: 0, Selected item: {'round': 11, 'score': 0.275}
+2025-11-20 04:18:40 - INFO - Processed experience data saved to workspace/GAIA/workflows/processed_experience.json
+2025-11-20 04:18:40 - INFO - workspace/GAIA/workflows/round_11/log.json
+2025-11-20 04:18:57 - INFO - Graph optimization response received successfully
+2025-11-20 04:18:57 - INFO - workspace/GAIA/workflows/round_12
+2025-11-20 04:21:31 - INFO - Results saved to workspace/GAIA/workflows/round_12/0.30000_20251120_042131.csv
+2025-11-20 04:21:31 - INFO - Average score on GAIA dataset: 0.30000
+2025-11-20 04:21:31 - INFO - Total Cost: 0.07473
+2025-11-20 04:23:49 - INFO - Results saved to workspace/GAIA/workflows/round_12/0.30000_20251120_042349.csv
+2025-11-20 04:23:49 - INFO - Average score on GAIA dataset: 0.30000
+2025-11-20 04:23:49 - INFO - Total Cost: 0.06565
+2025-11-20 04:23:49 - INFO - Score for round 12: 0.3
+2025-11-20 04:23:54 - INFO - 
+Mixed probability distribution: [0.41599916 0.28182645 0.1510872  0.1510872 ]
+2025-11-20 04:23:54 - INFO - 
+Sorted rounds: [{'round': 12, 'score': 0.3}, {'round': 11, 'score': 0.275}, {'round': 1, 'score': 0.225}, {'round': 6, 'score': 0.225}]
+2025-11-20 04:23:54 - INFO - 
+Selected index: 3, Selected item: {'round': 6, 'score': 0.225}
+2025-11-20 04:23:54 - INFO - Processed experience data saved to workspace/GAIA/workflows/processed_experience.json
+2025-11-20 04:23:54 - INFO - workspace/GAIA/workflows/round_6/log.json
+2025-11-20 04:24:28 - INFO - Graph optimization response received successfully
+2025-11-20 04:24:28 - INFO - workspace/GAIA/workflows/round_13
+2025-11-20 04:26:35 - INFO - Results saved to workspace/GAIA/workflows/round_13/0.10000_20251120_042635.csv
+2025-11-20 04:26:35 - INFO - Average score on GAIA dataset: 0.10000
+2025-11-20 04:26:35 - INFO - Total Cost: 0.05762
+2025-11-20 04:28:53 - INFO - Results saved to workspace/GAIA/workflows/round_13/0.20000_20251120_042853.csv
+2025-11-20 04:28:53 - INFO - Average score on GAIA dataset: 0.20000
+2025-11-20 04:28:53 - INFO - Total Cost: 0.06168
+2025-11-20 04:28:53 - INFO - Score for round 13: 0.15000000000000002
+2025-11-20 04:28:58 - INFO - 
+Mixed probability distribution: [0.41599916 0.28182645 0.1510872  0.1510872 ]
+2025-11-20 04:28:58 - INFO - 
+Sorted rounds: [{'round': 12, 'score': 0.3}, {'round': 11, 'score': 0.275}, {'round': 1, 'score': 0.225}, {'round': 6, 'score': 0.225}]
+2025-11-20 04:28:58 - INFO - 
+Selected index: 0, Selected item: {'round': 12, 'score': 0.3}
+2025-11-20 04:28:58 - INFO - Processed experience data saved to workspace/GAIA/workflows/processed_experience.json
+2025-11-20 04:28:58 - INFO - workspace/GAIA/workflows/round_12/log.json
+2025-11-20 04:29:22 - INFO - Graph optimization response received successfully
+2025-11-20 04:29:22 - INFO - workspace/GAIA/workflows/round_14
+2025-11-20 04:32:07 - INFO - Results saved to workspace/GAIA/workflows/round_14/0.25000_20251120_043207.csv
+2025-11-20 04:32:07 - INFO - Average score on GAIA dataset: 0.25000
+2025-11-20 04:32:07 - INFO - Total Cost: 0.06292
+2025-11-20 04:35:32 - INFO - Results saved to workspace/GAIA/workflows/round_14/0.15000_20251120_043532.csv
+2025-11-20 04:35:32 - INFO - Average score on GAIA dataset: 0.15000
+2025-11-20 04:35:32 - INFO - Total Cost: 0.07127
+2025-11-20 04:35:32 - INFO - Score for round 14: 0.2
+2025-11-20 04:35:37 - INFO - 
+Mixed probability distribution: [0.41599916 0.28182645 0.1510872  0.1510872 ]
+2025-11-20 04:35:37 - INFO - 
+Sorted rounds: [{'round': 12, 'score': 0.3}, {'round': 11, 'score': 0.275}, {'round': 1, 'score': 0.225}, {'round': 6, 'score': 0.225}]
+2025-11-20 04:35:37 - INFO - 
+Selected index: 0, Selected item: {'round': 12, 'score': 0.3}
+2025-11-20 04:35:37 - INFO - Processed experience data saved to workspace/GAIA/workflows/processed_experience.json
+2025-11-20 04:35:37 - INFO - workspace/GAIA/workflows/round_12/log.json
+2025-11-20 04:36:00 - INFO - Graph optimization response received successfully
+2025-11-20 04:36:00 - INFO - workspace/GAIA/workflows/round_15
+2025-11-20 04:38:34 - INFO - Results saved to workspace/GAIA/workflows/round_15/0.30000_20251120_043834.csv
+2025-11-20 04:38:34 - INFO - Average score on GAIA dataset: 0.30000
+2025-11-20 04:38:34 - INFO - Total Cost: 0.06467
+2025-11-20 04:41:02 - INFO - Results saved to workspace/GAIA/workflows/round_15/0.20000_20251120_044102.csv
+2025-11-20 04:41:02 - INFO - Average score on GAIA dataset: 0.20000
+2025-11-20 04:41:02 - INFO - Total Cost: 0.06602
+2025-11-20 04:41:02 - INFO - Score for round 15: 0.25
+2025-11-20 04:41:07 - INFO - 
+Mixed probability distribution: [0.39353796 0.26820304 0.19218357 0.14607543]
+2025-11-20 04:41:07 - INFO - 
+Sorted rounds: [{'round': 12, 'score': 0.3}, {'round': 11, 'score': 0.275}, {'round': 15, 'score': 0.25}, {'round': 1, 'score': 0.225}]
+2025-11-20 04:41:07 - INFO - 
+Selected index: 0, Selected item: {'round': 12, 'score': 0.3}
+2025-11-20 04:41:07 - INFO - Processed experience data saved to workspace/GAIA/workflows/processed_experience.json
+2025-11-20 04:41:07 - INFO - workspace/GAIA/workflows/round_12/log.json
+2025-11-20 04:41:33 - INFO - Graph optimization response received successfully
+2025-11-20 04:41:33 - INFO - workspace/GAIA/workflows/round_16
+2025-11-20 04:44:20 - INFO - Results saved to workspace/GAIA/workflows/round_16/0.15000_20251120_044420.csv
+2025-11-20 04:44:20 - INFO - Average score on GAIA dataset: 0.15000
+2025-11-20 04:44:20 - INFO - Total Cost: 0.06727
+2025-11-20 04:47:12 - INFO - Results saved to workspace/GAIA/workflows/round_16/0.25000_20251120_044712.csv
+2025-11-20 04:47:12 - INFO - Average score on GAIA dataset: 0.25000
+2025-11-20 04:47:12 - INFO - Total Cost: 0.06346
+2025-11-20 04:47:12 - INFO - Score for round 16: 0.2
+2025-11-20 04:47:17 - INFO - 
+Mixed probability distribution: [0.39353796 0.26820304 0.19218357 0.14607543]
+2025-11-20 04:47:17 - INFO - 
+Sorted rounds: [{'round': 12, 'score': 0.3}, {'round': 11, 'score': 0.275}, {'round': 15, 'score': 0.25}, {'round': 1, 'score': 0.225}]
+2025-11-20 04:47:17 - INFO - 
+Selected index: 1, Selected item: {'round': 11, 'score': 0.275}
+2025-11-20 04:47:17 - INFO - Processed experience data saved to workspace/GAIA/workflows/processed_experience.json
+2025-11-20 04:47:17 - INFO - workspace/GAIA/workflows/round_11/log.json
+2025-11-20 04:47:48 - INFO - Graph optimization response received successfully
+2025-11-20 04:47:48 - INFO - workspace/GAIA/workflows/round_17
+2025-11-20 04:50:04 - INFO - Results saved to workspace/GAIA/workflows/round_17/0.20000_20251120_045004.csv
+2025-11-20 04:50:04 - INFO - Average score on GAIA dataset: 0.20000
+2025-11-20 04:50:04 - INFO - Total Cost: 0.06512
+2025-11-20 04:52:34 - INFO - Results saved to workspace/GAIA/workflows/round_17/0.20000_20251120_045234.csv
+2025-11-20 04:52:34 - INFO - Average score on GAIA dataset: 0.20000
+2025-11-20 04:52:34 - INFO - Total Cost: 0.06197
+2025-11-20 04:52:34 - INFO - Score for round 17: 0.2
+2025-11-20 04:52:39 - INFO - 
+Mixed probability distribution: [0.39353796 0.26820304 0.19218357 0.14607543]
+2025-11-20 04:52:39 - INFO - 
+Sorted rounds: [{'round': 12, 'score': 0.3}, {'round': 11, 'score': 0.275}, {'round': 15, 'score': 0.25}, {'round': 1, 'score': 0.225}]
+2025-11-20 04:52:39 - INFO - 
+Selected index: 0, Selected item: {'round': 12, 'score': 0.3}
+2025-11-20 04:52:39 - INFO - Processed experience data saved to workspace/GAIA/workflows/processed_experience.json
+2025-11-20 04:52:39 - INFO - workspace/GAIA/workflows/round_12/log.json
+2025-11-20 04:53:04 - INFO - Graph optimization response received successfully
+2025-11-20 04:53:04 - INFO - workspace/GAIA/workflows/round_18
+2025-11-20 04:55:00 - INFO - Results saved to workspace/GAIA/workflows/round_18/0.15000_20251120_045500.csv
+2025-11-20 04:55:00 - INFO - Average score on GAIA dataset: 0.15000
+2025-11-20 04:55:00 - INFO - Total Cost: 0.05546
+2025-11-20 04:56:43 - INFO - Results saved to workspace/GAIA/workflows/round_18/0.10000_20251120_045643.csv
+2025-11-20 04:56:43 - INFO - Average score on GAIA dataset: 0.10000
+2025-11-20 04:56:43 - INFO - Total Cost: 0.05390
+2025-11-20 04:56:43 - INFO - Score for round 18: 0.125
+2025-11-20 04:56:48 - INFO - 
+Mixed probability distribution: [0.39353796 0.26820304 0.19218357 0.14607543]
+2025-11-20 04:56:48 - INFO - 
+Sorted rounds: [{'round': 12, 'score': 0.3}, {'round': 11, 'score': 0.275}, {'round': 15, 'score': 0.25}, {'round': 1, 'score': 0.225}]
+2025-11-20 04:56:48 - INFO - 
+Selected index: 1, Selected item: {'round': 11, 'score': 0.275}
+2025-11-20 04:56:48 - INFO - Processed experience data saved to workspace/GAIA/workflows/processed_experience.json
+2025-11-20 04:56:48 - INFO - workspace/GAIA/workflows/round_11/log.json
+2025-11-20 04:57:14 - INFO - Graph optimization response received successfully
+2025-11-20 04:57:14 - INFO - workspace/GAIA/workflows/round_19
+2025-11-20 05:00:36 - INFO - Results saved to workspace/GAIA/workflows/round_19/0.25000_20251120_050036.csv
+2025-11-20 05:00:36 - INFO - Average score on GAIA dataset: 0.25000
+2025-11-20 05:00:36 - INFO - Total Cost: 0.07204
+2025-11-20 05:02:45 - INFO - Results saved to workspace/GAIA/workflows/round_19/0.15000_20251120_050245.csv
+2025-11-20 05:02:45 - INFO - Average score on GAIA dataset: 0.15000
+2025-11-20 05:02:45 - INFO - Total Cost: 0.05999
+2025-11-20 05:02:45 - INFO - Score for round 19: 0.2
+2025-11-20 05:02:50 - INFO - 
+Mixed probability distribution: [0.39353796 0.26820304 0.19218357 0.14607543]
+2025-11-20 05:02:50 - INFO - 
+Sorted rounds: [{'round': 12, 'score': 0.3}, {'round': 11, 'score': 0.275}, {'round': 15, 'score': 0.25}, {'round': 1, 'score': 0.225}]
+2025-11-20 05:02:50 - INFO - 
+Selected index: 0, Selected item: {'round': 12, 'score': 0.3}
+2025-11-20 05:02:50 - INFO - Processed experience data saved to workspace/GAIA/workflows/processed_experience.json
+2025-11-20 05:02:50 - INFO - workspace/GAIA/workflows/round_12/log.json
+2025-11-20 05:03:32 - INFO - Graph optimization response received successfully
+2025-11-20 05:03:32 - INFO - workspace/GAIA/workflows/round_20
+2025-11-20 05:05:49 - INFO - Results saved to workspace/GAIA/workflows/round_20/0.20000_20251120_050549.csv
+2025-11-20 05:05:49 - INFO - Average score on GAIA dataset: 0.20000
+2025-11-20 05:05:49 - INFO - Total Cost: 0.06462
+2025-11-20 05:09:40 - INFO - Results saved to workspace/GAIA/workflows/round_20/0.20000_20251120_050940.csv
+2025-11-20 05:09:40 - INFO - Average score on GAIA dataset: 0.20000
+2025-11-20 05:09:40 - INFO - Total Cost: 0.06825
+2025-11-20 05:09:40 - INFO - Score for round 20: 0.2
+2025-11-20 05:09:40 - INFO - Convergence detected, occurred in round 14, final round is 18
+2025-11-20 05:09:40 - INFO - Round 1: Average Score = 0.2250, Standard Deviation = 0.0250
+2025-11-20 05:09:40 - INFO - Round 2: Average Score = 0.0750, Standard Deviation = 0.0250
+2025-11-20 05:09:40 - INFO - Round 3: Average Score = 0.0750, Standard Deviation = 0.0250
+2025-11-20 05:09:40 - INFO - Round 4: Average Score = 0.1000, Standard Deviation = 0.0500
+2025-11-20 05:09:40 - INFO - Round 5: Average Score = 0.1750, Standard Deviation = 0.0250
+2025-11-20 05:09:40 - INFO - Round 6: Average Score = 0.2250, Standard Deviation = 0.0250
+2025-11-20 05:09:40 - INFO - Round 7: Average Score = 0.1000, Standard Deviation = 0.0000
+2025-11-20 05:09:40 - INFO - Round 8: Average Score = 0.1000, Standard Deviation = 0.0000
+2025-11-20 05:09:40 - INFO - Round 9: Average Score = 0.1250, Standard Deviation = 0.0250
+2025-11-20 05:09:40 - INFO - Round 10: Average Score = 0.2750, Standard Deviation = 0.0250
+2025-11-20 05:09:40 - INFO - Round 11: Average Score = 0.3000, Standard Deviation = 0.0000
+2025-11-20 05:09:40 - INFO - Round 12: Average Score = 0.1500, Standard Deviation = 0.0500
+2025-11-20 05:09:40 - INFO - Round 13: Average Score = 0.2000, Standard Deviation = 0.0500
+2025-11-20 05:09:40 - INFO - Round 14: Average Score = 0.2500, Standard Deviation = 0.0500
+2025-11-20 05:09:40 - INFO - Round 15: Average Score = 0.2000, Standard Deviation = 0.0500
+2025-11-20 05:09:40 - INFO - Round 16: Average Score = 0.2000, Standard Deviation = 0.0000
+2025-11-20 05:09:40 - INFO - Round 17: Average Score = 0.1250, Standard Deviation = 0.0250
+2025-11-20 05:09:40 - INFO - Round 18: Average Score = 0.2000, Standard Deviation = 0.0500
+2025-11-20 05:09:40 - INFO - Round 19: Average Score = 0.2000, Standard Deviation = 0.0000
+2025-11-20 14:31:26 - INFO - Skipping datasets as data/datasets already exists.
+2025-11-20 14:31:27 - ERROR - Error loading graph for round 1: No module named 'workspace.GAIA.workflows_test.round_1.graph'
+2025-11-20 14:32:04 - INFO - Skipping datasets as data/datasets already exists.
+2025-11-20 14:38:16 - INFO - Results saved to workspace/GAIA/workflows_test/round_1/0.08434_20251120_143816.csv
+2025-11-20 14:38:16 - INFO - Average score on GAIA dataset: 0.08434
+2025-11-20 14:38:16 - INFO - Total Cost: 0.31571

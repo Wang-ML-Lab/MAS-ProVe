@@ -1,0 +1,159 @@
+2025-11-17 16:46:07 - Error: .
+ Solution: def order_by_points(nums):
+    """
+    Sort the given list of integers in ascending order according to the sum of their digits.
+    If sums are equal, preserve original order (stable sort by index).
+    """
+
+    def digit_sum(n):
+        return sum((int(ch) for ch in str(abs(n))))
+    return sorted(nums, key=lambda x: digit_sum(x)).
+ Test: def check(candidate):
+
+    # Check some simple cases
+    assert candidate([1, 11, -1, -11, -12]) == [-1, -11, 1, -12, 11]
+    assert candidate([1234,423,463,145,2,423,423,53,6,37,3457,3,56,0,46]) == [0, 2, 3, 6, 53, 423, 423, 423, 1234, 145, 37, 46, 56, 463, 3457]
+    assert candidate([]) == []
+    assert candidate([1, -11, -32, 43, 54, -98, 2, -3]) == [-3, -32, -98, -11, 1, 2, 43, 54]
+    assert candidate([1,2,3,4,5,6,7,8,9,10,11]) == [1, 10, 2, 11, 3, 4, 5, 6, 7, 8, 9]
+    assert candidate([0,6,6,-76,-21,23,4]) == [-76, -21, 0, 4, 23, 6, 6]
+
+    # Check some edge cases that are easy to work out by hand.
+    assert True, "This prints if this assert fails 2 (also good for debugging!)"
+
+
+2025-11-17 16:46:14 - Error: .
+ Solution: def is_multiply_prime(a):
+    """Return True if a is the product of exactly 3 primes (primes may repeat), False otherwise."""
+    if not isinstance(a, int) or a <= 0 or a >= 100:
+        return False
+
+    def is_prime(n):
+        if n <= 1:
+            return False
+        if n <= 3:
+            return True
+        if n % 2 == 0:
+            return False
+        i = 3
+        while i * i <= n:
+            if n % i == 0:
+                return False
+            i += 2
+        return True
+    for p in range(2, a + 1):
+        if a % p != 0:
+            continue
+        if not is_prime(p):
+            continue
+        a1 = a // p
+        for q in range(2, a1 + 1):
+            if a1 % q != 0:
+                continue
+            if not is_prime(q):
+                continue
+            r = a1 // q
+            if r >= 2 and is_prime(r):
+                return True
+    return False.
+ Test: def check(candidate):
+
+    assert candidate(5) == False
+    assert candidate(30) == True
+    assert candidate(8) == True
+    assert candidate(10) == False
+    assert candidate(125) == True
+    assert candidate(3 * 5 * 7) == True
+    assert candidate(3 * 6 * 7) == False
+    assert candidate(9 * 9 * 9) == False
+    assert candidate(11 * 9 * 9) == False
+    assert candidate(11 * 13 * 7) == True
+
+
+2025-11-17 18:05:57 - Error: .
+ Solution: def order_by_points(nums):
+    """
+    Sort the given list of integers in ascending order according to the sum of their digits.
+    If sums are equal, preserve the original order (stable sort).
+    """
+
+    def digit_sum(n):
+        return sum((int(ch) for ch in str(abs(n))))
+    return [x for (_, x) in sorted(enumerate(nums), key=lambda iv: (digit_sum(iv[1]), iv[0]))].
+ Test: def check(candidate):
+
+    # Check some simple cases
+    assert candidate([1, 11, -1, -11, -12]) == [-1, -11, 1, -12, 11]
+    assert candidate([1234,423,463,145,2,423,423,53,6,37,3457,3,56,0,46]) == [0, 2, 3, 6, 53, 423, 423, 423, 1234, 145, 37, 46, 56, 463, 3457]
+    assert candidate([]) == []
+    assert candidate([1, -11, -32, 43, 54, -98, 2, -3]) == [-3, -32, -98, -11, 1, 2, 43, 54]
+    assert candidate([1,2,3,4,5,6,7,8,9,10,11]) == [1, 10, 2, 11, 3, 4, 5, 6, 7, 8, 9]
+    assert candidate([0,6,6,-76,-21,23,4]) == [-76, -21, 0, 4, 23, 6, 6]
+
+    # Check some edge cases that are easy to work out by hand.
+    assert True, "This prints if this assert fails 2 (also good for debugging!)"
+
+
+2025-11-17 18:06:53 - Error: .
+ Solution: def order_by_points(nums):
+    """
+    Sort list of integers ascending by the sum of their digits.
+    If sums are equal, preserve original order (stable).
+    For negative numbers, their sign does not affect the digit sum.
+    """
+
+    def digit_sum(n):
+        s = abs(n)
+        if s == 0:
+            return 0
+        total = 0
+        while s:
+            total += s % 10
+            s //= 10
+        return total
+    return sorted(nums, key=digit_sum).
+ Test: def check(candidate):
+
+    # Check some simple cases
+    assert candidate([1, 11, -1, -11, -12]) == [-1, -11, 1, -12, 11]
+    assert candidate([1234,423,463,145,2,423,423,53,6,37,3457,3,56,0,46]) == [0, 2, 3, 6, 53, 423, 423, 423, 1234, 145, 37, 46, 56, 463, 3457]
+    assert candidate([]) == []
+    assert candidate([1, -11, -32, 43, 54, -98, 2, -3]) == [-3, -32, -98, -11, 1, 2, 43, 54]
+    assert candidate([1,2,3,4,5,6,7,8,9,10,11]) == [1, 10, 2, 11, 3, 4, 5, 6, 7, 8, 9]
+    assert candidate([0,6,6,-76,-21,23,4]) == [-76, -21, 0, 4, 23, 6, 6]
+
+    # Check some edge cases that are easy to work out by hand.
+    assert True, "This prints if this assert fails 2 (also good for debugging!)"
+
+
+2025-11-17 18:07:54 - Error: .
+ Solution: def order_by_points(nums):
+    """
+    Sort integers in ascending order by the sum of their decimal digits.
+    Ties preserve original order.
+    """
+
+    def digit_sum(n):
+        n = abs(n)
+        s = 0
+        if n == 0:
+            return 0
+        while n:
+            s += n % 10
+            n //= 10
+        return s
+    return sorted(enumerate(nums), key=lambda iv: (digit_sum(iv[1]), iv[0])) and [v for (_, v) in sorted(enumerate(nums), key=lambda iv: (digit_sum(iv[1]), iv[0]))].
+ Test: def check(candidate):
+
+    # Check some simple cases
+    assert candidate([1, 11, -1, -11, -12]) == [-1, -11, 1, -12, 11]
+    assert candidate([1234,423,463,145,2,423,423,53,6,37,3457,3,56,0,46]) == [0, 2, 3, 6, 53, 423, 423, 423, 1234, 145, 37, 46, 56, 463, 3457]
+    assert candidate([]) == []
+    assert candidate([1, -11, -32, 43, 54, -98, 2, -3]) == [-3, -32, -98, -11, 1, 2, 43, 54]
+    assert candidate([1,2,3,4,5,6,7,8,9,10,11]) == [1, 10, 2, 11, 3, 4, 5, 6, 7, 8, 9]
+    assert candidate([0,6,6,-76,-21,23,4]) == [-76, -21, 0, 4, 23, 6, 6]
+
+    # Check some edge cases that are easy to work out by hand.
+    assert True, "This prints if this assert fails 2 (also good for debugging!)"
+
+

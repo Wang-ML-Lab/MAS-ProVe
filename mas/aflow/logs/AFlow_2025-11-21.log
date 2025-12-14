@@ -1,0 +1,1770 @@
+2025-11-21 00:38:27 - INFO - Skipping datasets as data/datasets already exists.
+2025-11-21 00:42:26 - INFO - Skipping datasets as data/datasets already exists.
+2025-11-21 00:43:40 - INFO - Results saved to test2/AIME24/workflows/round_1/0.66667_20251121_004340.csv
+2025-11-21 00:43:40 - INFO - Average score on AIME24 dataset: 0.66667
+2025-11-21 00:43:40 - INFO - Total Cost: 0.01193
+2025-11-21 00:44:06 - INFO - Results saved to test2/AIME24/workflows/round_1/0.83333_20251121_004406.csv
+2025-11-21 00:44:06 - INFO - Average score on AIME24 dataset: 0.83333
+2025-11-21 00:44:06 - INFO - Total Cost: 0.01377
+2025-11-21 00:44:38 - INFO - Results saved to test2/AIME24/workflows/round_1/0.83333_20251121_004438.csv
+2025-11-21 00:44:38 - INFO - Average score on AIME24 dataset: 0.83333
+2025-11-21 00:44:38 - INFO - Total Cost: 0.01395
+2025-11-21 00:44:38 - INFO - 
+Mixed probability distribution: [1.]
+2025-11-21 00:44:38 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.7777777777777778}]
+2025-11-21 00:44:38 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.7777777777777778}
+2025-11-21 00:44:38 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 00:44:38 - INFO - test2/AIME24/workflows/round_1/log.json
+2025-11-21 00:44:54 - INFO - Graph optimization response received successfully
+2025-11-21 00:44:54 - INFO - test2/AIME24/workflows/round_2
+2025-11-21 00:44:58 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'STRUCTURED_PROMPT'
+2025-11-21 00:44:58 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'STRUCTURED_PROMPT'
+2025-11-21 00:44:58 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'STRUCTURED_PROMPT'
+2025-11-21 00:44:58 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'STRUCTURED_PROMPT'
+2025-11-21 00:44:58 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'STRUCTURED_PROMPT'
+2025-11-21 00:44:58 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'STRUCTURED_PROMPT'
+2025-11-21 00:44:58 - INFO - Results saved to test2/AIME24/workflows/round_2/0.00000_20251121_004458.csv
+2025-11-21 00:44:58 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-21 00:44:58 - INFO - Total Cost: 0.00000
+2025-11-21 00:45:02 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'STRUCTURED_PROMPT'
+2025-11-21 00:45:02 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'STRUCTURED_PROMPT'
+2025-11-21 00:45:02 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'STRUCTURED_PROMPT'
+2025-11-21 00:45:02 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'STRUCTURED_PROMPT'
+2025-11-21 00:45:02 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'STRUCTURED_PROMPT'
+2025-11-21 00:45:02 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'STRUCTURED_PROMPT'
+2025-11-21 00:45:02 - INFO - Results saved to test2/AIME24/workflows/round_2/0.00000_20251121_004502.csv
+2025-11-21 00:45:02 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-21 00:45:02 - INFO - Total Cost: 0.00000
+2025-11-21 00:45:06 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'STRUCTURED_PROMPT'
+2025-11-21 00:45:06 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'STRUCTURED_PROMPT'
+2025-11-21 00:45:06 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'STRUCTURED_PROMPT'
+2025-11-21 00:45:06 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'STRUCTURED_PROMPT'
+2025-11-21 00:45:06 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'STRUCTURED_PROMPT'
+2025-11-21 00:45:06 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'STRUCTURED_PROMPT'
+2025-11-21 00:45:06 - INFO - Results saved to test2/AIME24/workflows/round_2/0.00000_20251121_004506.csv
+2025-11-21 00:45:06 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-21 00:45:06 - INFO - Total Cost: 0.00000
+2025-11-21 00:45:06 - INFO - Score for round 2: 0.0
+2025-11-21 00:45:11 - INFO - 
+Mixed probability distribution: [0.84999988 0.15000012]
+2025-11-21 00:45:11 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.7777777777777778}, {'round': 2, 'score': 0.0}]
+2025-11-21 00:45:11 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.7777777777777778}
+2025-11-21 00:45:11 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 00:45:11 - INFO - test2/AIME24/workflows/round_1/log.json
+2025-11-21 00:45:25 - INFO - Graph optimization response received successfully
+2025-11-21 00:45:25 - INFO - test2/AIME24/workflows/round_3
+2025-11-21 00:45:29 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'AIME_PROMPT'
+2025-11-21 00:45:29 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'AIME_PROMPT'
+2025-11-21 00:45:29 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'AIME_PROMPT'
+2025-11-21 00:45:29 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'AIME_PROMPT'
+2025-11-21 00:45:29 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'AIME_PROMPT'
+2025-11-21 00:45:29 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'AIME_PROMPT'
+2025-11-21 00:45:29 - INFO - Results saved to test2/AIME24/workflows/round_3/0.00000_20251121_004529.csv
+2025-11-21 00:45:29 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-21 00:45:29 - INFO - Total Cost: 0.00000
+2025-11-21 00:45:33 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'AIME_PROMPT'
+2025-11-21 00:45:33 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'AIME_PROMPT'
+2025-11-21 00:45:33 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'AIME_PROMPT'
+2025-11-21 00:45:33 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'AIME_PROMPT'
+2025-11-21 00:45:33 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'AIME_PROMPT'
+2025-11-21 00:45:33 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'AIME_PROMPT'
+2025-11-21 00:45:33 - INFO - Results saved to test2/AIME24/workflows/round_3/0.00000_20251121_004533.csv
+2025-11-21 00:45:33 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-21 00:45:33 - INFO - Total Cost: 0.00000
+2025-11-21 00:45:37 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'AIME_PROMPT'
+2025-11-21 00:45:37 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'AIME_PROMPT'
+2025-11-21 00:45:37 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'AIME_PROMPT'
+2025-11-21 00:45:37 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'AIME_PROMPT'
+2025-11-21 00:45:37 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'AIME_PROMPT'
+2025-11-21 00:45:37 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'AIME_PROMPT'
+2025-11-21 00:45:37 - INFO - Results saved to test2/AIME24/workflows/round_3/0.00000_20251121_004537.csv
+2025-11-21 00:45:37 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-21 00:45:37 - INFO - Total Cost: 0.00000
+2025-11-21 00:45:37 - INFO - Score for round 3: 0.0
+2025-11-21 00:45:42 - INFO - 
+Mixed probability distribution: [0.79999975 0.10000012 0.10000012]
+2025-11-21 00:45:42 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.7777777777777778}, {'round': 2, 'score': 0.0}, {'round': 3, 'score': 0.0}]
+2025-11-21 00:45:42 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.7777777777777778}
+2025-11-21 00:45:42 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 00:45:42 - INFO - test2/AIME24/workflows/round_1/log.json
+2025-11-21 00:46:00 - INFO - Graph optimization response received successfully
+2025-11-21 00:46:00 - INFO - Error occurred: EOF while scanning triple-quoted string literal (prompt.py, line 6). Retrying... (Attempt 1/1)
+2025-11-21 00:46:00 - INFO - Max retries reached. Moving to next round.
+2025-11-21 00:46:05 - INFO - Score for round 4: None
+2025-11-21 00:46:10 - INFO - 
+Mixed probability distribution: [0.79999975 0.10000012 0.10000012]
+2025-11-21 00:46:10 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.7777777777777778}, {'round': 2, 'score': 0.0}, {'round': 3, 'score': 0.0}]
+2025-11-21 00:46:10 - INFO - 
+Selected index: 2, Selected item: {'round': 3, 'score': 0.0}
+2025-11-21 00:46:10 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 00:46:25 - INFO - Graph optimization response received successfully
+2025-11-21 00:46:25 - INFO - test2/AIME24/workflows/round_5
+2025-11-21 00:46:29 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_5.prompt' has no attribute 'AIME_PROMPT'
+2025-11-21 00:46:29 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_5.prompt' has no attribute 'AIME_PROMPT'
+2025-11-21 00:46:29 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_5.prompt' has no attribute 'AIME_PROMPT'
+2025-11-21 00:46:29 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_5.prompt' has no attribute 'AIME_PROMPT'
+2025-11-21 00:46:29 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_5.prompt' has no attribute 'AIME_PROMPT'
+2025-11-21 00:46:29 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_5.prompt' has no attribute 'AIME_PROMPT'
+2025-11-21 00:46:29 - INFO - Results saved to test2/AIME24/workflows/round_5/0.00000_20251121_004629.csv
+2025-11-21 00:46:29 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-21 00:46:29 - INFO - Total Cost: 0.00000
+2025-11-21 00:46:33 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_5.prompt' has no attribute 'AIME_PROMPT'
+2025-11-21 00:46:33 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_5.prompt' has no attribute 'AIME_PROMPT'
+2025-11-21 00:46:33 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_5.prompt' has no attribute 'AIME_PROMPT'
+2025-11-21 00:46:33 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_5.prompt' has no attribute 'AIME_PROMPT'
+2025-11-21 00:46:33 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_5.prompt' has no attribute 'AIME_PROMPT'
+2025-11-21 00:46:33 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_5.prompt' has no attribute 'AIME_PROMPT'
+2025-11-21 00:46:33 - INFO - Results saved to test2/AIME24/workflows/round_5/0.00000_20251121_004633.csv
+2025-11-21 00:46:33 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-21 00:46:33 - INFO - Total Cost: 0.00000
+2025-11-21 00:46:37 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_5.prompt' has no attribute 'AIME_PROMPT'
+2025-11-21 00:46:37 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_5.prompt' has no attribute 'AIME_PROMPT'
+2025-11-21 00:46:37 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_5.prompt' has no attribute 'AIME_PROMPT'
+2025-11-21 00:46:37 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_5.prompt' has no attribute 'AIME_PROMPT'
+2025-11-21 00:46:37 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_5.prompt' has no attribute 'AIME_PROMPT'
+2025-11-21 00:46:37 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_5.prompt' has no attribute 'AIME_PROMPT'
+2025-11-21 00:46:37 - INFO - Results saved to test2/AIME24/workflows/round_5/0.00000_20251121_004637.csv
+2025-11-21 00:46:37 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-21 00:46:37 - INFO - Total Cost: 0.00000
+2025-11-21 00:46:37 - INFO - Score for round 5: 0.0
+2025-11-21 00:46:42 - INFO - 
+Mixed probability distribution: [0.77499963 0.07500012 0.07500012 0.07500012]
+2025-11-21 00:46:42 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.7777777777777778}, {'round': 2, 'score': 0.0}, {'round': 3, 'score': 0.0}, {'round': 5, 'score': 0.0}]
+2025-11-21 00:46:42 - INFO - 
+Selected index: 1, Selected item: {'round': 2, 'score': 0.0}
+2025-11-21 00:46:42 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 00:46:56 - INFO - Graph optimization response received successfully
+2025-11-21 00:46:56 - INFO - test2/AIME24/workflows/round_6
+2025-11-21 00:47:00 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_6.prompt' has no attribute 'STRUCTURED_PROMPT'
+2025-11-21 00:47:00 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_6.prompt' has no attribute 'STRUCTURED_PROMPT'
+2025-11-21 00:47:00 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_6.prompt' has no attribute 'STRUCTURED_PROMPT'
+2025-11-21 00:47:00 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_6.prompt' has no attribute 'STRUCTURED_PROMPT'
+2025-11-21 00:47:00 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_6.prompt' has no attribute 'STRUCTURED_PROMPT'
+2025-11-21 00:47:00 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_6.prompt' has no attribute 'STRUCTURED_PROMPT'
+2025-11-21 00:47:00 - INFO - Results saved to test2/AIME24/workflows/round_6/0.00000_20251121_004700.csv
+2025-11-21 00:47:00 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-21 00:47:00 - INFO - Total Cost: 0.00000
+2025-11-21 00:47:04 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_6.prompt' has no attribute 'STRUCTURED_PROMPT'
+2025-11-21 00:47:04 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_6.prompt' has no attribute 'STRUCTURED_PROMPT'
+2025-11-21 00:47:04 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_6.prompt' has no attribute 'STRUCTURED_PROMPT'
+2025-11-21 00:47:04 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_6.prompt' has no attribute 'STRUCTURED_PROMPT'
+2025-11-21 00:47:04 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_6.prompt' has no attribute 'STRUCTURED_PROMPT'
+2025-11-21 00:47:04 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_6.prompt' has no attribute 'STRUCTURED_PROMPT'
+2025-11-21 00:47:04 - INFO - Results saved to test2/AIME24/workflows/round_6/0.00000_20251121_004704.csv
+2025-11-21 00:47:04 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-21 00:47:04 - INFO - Total Cost: 0.00000
+2025-11-21 00:58:05 - INFO - Skipping datasets as data/datasets already exists.
+2025-11-21 00:58:35 - INFO - Results saved to test2/AIME24/workflows/round_1/0.83333_20251121_005835.csv
+2025-11-21 00:58:35 - INFO - Average score on AIME24 dataset: 0.83333
+2025-11-21 00:58:35 - INFO - Total Cost: 0.01255
+2025-11-21 00:59:08 - INFO - Results saved to test2/AIME24/workflows/round_1/0.83333_20251121_005908.csv
+2025-11-21 00:59:08 - INFO - Average score on AIME24 dataset: 0.83333
+2025-11-21 00:59:08 - INFO - Total Cost: 0.01132
+2025-11-21 00:59:39 - INFO - Results saved to test2/AIME24/workflows/round_1/0.83333_20251121_005939.csv
+2025-11-21 00:59:39 - INFO - Average score on AIME24 dataset: 0.83333
+2025-11-21 00:59:39 - INFO - Total Cost: 0.01359
+2025-11-21 00:59:39 - INFO - 
+Mixed probability distribution: [1.]
+2025-11-21 00:59:39 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.8333333333333334}]
+2025-11-21 00:59:39 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.8333333333333334}
+2025-11-21 00:59:39 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 00:59:39 - INFO - test2/AIME24/workflows/round_1/log.json
+2025-11-21 00:59:52 - INFO - Graph optimization response received successfully
+2025-11-21 00:59:52 - INFO - test2/AIME24/workflows/round_2
+2025-11-21 00:59:56 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'DETAILED_PROMPT'
+2025-11-21 00:59:56 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'DETAILED_PROMPT'
+2025-11-21 00:59:56 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'DETAILED_PROMPT'
+2025-11-21 00:59:56 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'DETAILED_PROMPT'
+2025-11-21 00:59:56 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'DETAILED_PROMPT'
+2025-11-21 00:59:56 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'DETAILED_PROMPT'
+2025-11-21 00:59:56 - INFO - Results saved to test2/AIME24/workflows/round_2/0.00000_20251121_005956.csv
+2025-11-21 00:59:56 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-21 00:59:56 - INFO - Total Cost: 0.00000
+2025-11-21 01:00:00 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'DETAILED_PROMPT'
+2025-11-21 01:00:00 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'DETAILED_PROMPT'
+2025-11-21 01:00:00 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'DETAILED_PROMPT'
+2025-11-21 01:00:00 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'DETAILED_PROMPT'
+2025-11-21 01:00:00 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'DETAILED_PROMPT'
+2025-11-21 01:00:00 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'DETAILED_PROMPT'
+2025-11-21 01:00:00 - INFO - Results saved to test2/AIME24/workflows/round_2/0.00000_20251121_010000.csv
+2025-11-21 01:00:00 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-21 01:00:00 - INFO - Total Cost: 0.00000
+2025-11-21 01:00:04 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'DETAILED_PROMPT'
+2025-11-21 01:00:04 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'DETAILED_PROMPT'
+2025-11-21 01:00:04 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'DETAILED_PROMPT'
+2025-11-21 01:00:04 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'DETAILED_PROMPT'
+2025-11-21 01:00:04 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'DETAILED_PROMPT'
+2025-11-21 01:00:04 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'DETAILED_PROMPT'
+2025-11-21 01:00:04 - INFO - Results saved to test2/AIME24/workflows/round_2/0.00000_20251121_010004.csv
+2025-11-21 01:00:04 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-21 01:00:04 - INFO - Total Cost: 0.00000
+2025-11-21 01:00:04 - INFO - Score for round 2: 0.0
+2025-11-21 01:00:09 - INFO - 
+Mixed probability distribution: [0.84999996 0.15000004]
+2025-11-21 01:00:09 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.8333333333333334}, {'round': 2, 'score': 0.0}]
+2025-11-21 01:00:09 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.8333333333333334}
+2025-11-21 01:00:09 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 01:00:09 - INFO - test2/AIME24/workflows/round_1/log.json
+2025-11-21 01:05:02 - INFO - Skipping datasets as data/datasets already exists.
+2025-11-21 01:05:50 - INFO - Results saved to test2/AIME24/workflows/round_1/0.66667_20251121_010550.csv
+2025-11-21 01:05:50 - INFO - Average score on AIME24 dataset: 0.66667
+2025-11-21 01:05:50 - INFO - Total Cost: 0.01102
+2025-11-21 01:06:19 - INFO - Results saved to test2/AIME24/workflows/round_1/0.66667_20251121_010619.csv
+2025-11-21 01:06:19 - INFO - Average score on AIME24 dataset: 0.66667
+2025-11-21 01:06:19 - INFO - Total Cost: 0.01487
+2025-11-21 01:06:57 - INFO - Results saved to test2/AIME24/workflows/round_1/0.66667_20251121_010657.csv
+2025-11-21 01:06:57 - INFO - Average score on AIME24 dataset: 0.66667
+2025-11-21 01:06:57 - INFO - Total Cost: 0.01593
+2025-11-21 01:06:57 - INFO - 
+Mixed probability distribution: [0.84999979 0.15000021]
+2025-11-21 01:06:57 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.75}, {'round': 2, 'score': 0.0}]
+2025-11-21 01:06:57 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.75}
+2025-11-21 01:06:57 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 01:06:57 - INFO - test2/AIME24/workflows/round_1/log.json
+2025-11-21 01:07:16 - INFO - Graph optimization response received successfully
+2025-11-21 01:07:16 - INFO - Error occurred: unexpected character after line continuation character (graph.py, line 57). Retrying... (Attempt 1/1)
+2025-11-21 01:07:16 - INFO - Max retries reached. Moving to next round.
+2025-11-21 01:07:21 - INFO - Score for round 2: None
+2025-11-21 01:07:26 - INFO - 
+Mixed probability distribution: [0.84999979 0.15000021]
+2025-11-21 01:07:26 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.75}, {'round': 2, 'score': 0.0}]
+2025-11-21 01:07:26 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.75}
+2025-11-21 01:07:26 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 01:07:26 - INFO - test2/AIME24/workflows/round_1/log.json
+2025-11-21 01:07:43 - INFO - Graph optimization response received successfully
+2025-11-21 01:07:43 - INFO - test2/AIME24/workflows/round_3
+2025-11-21 01:07:47 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'SOLVE_PROMPT'
+2025-11-21 01:07:47 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'SOLVE_PROMPT'
+2025-11-21 01:07:47 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'SOLVE_PROMPT'
+2025-11-21 01:07:47 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'SOLVE_PROMPT'
+2025-11-21 01:07:47 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'SOLVE_PROMPT'
+2025-11-21 01:07:47 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'SOLVE_PROMPT'
+2025-11-21 01:07:47 - INFO - Results saved to test2/AIME24/workflows/round_3/0.00000_20251121_010747.csv
+2025-11-21 01:07:47 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-21 01:07:47 - INFO - Total Cost: 0.00000
+2025-11-21 01:07:51 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'SOLVE_PROMPT'
+2025-11-21 01:07:51 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'SOLVE_PROMPT'
+2025-11-21 01:07:51 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'SOLVE_PROMPT'
+2025-11-21 01:07:51 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'SOLVE_PROMPT'
+2025-11-21 01:07:51 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'SOLVE_PROMPT'
+2025-11-21 01:07:51 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'SOLVE_PROMPT'
+2025-11-21 01:07:51 - INFO - Results saved to test2/AIME24/workflows/round_3/0.00000_20251121_010751.csv
+2025-11-21 01:07:51 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-21 01:07:51 - INFO - Total Cost: 0.00000
+2025-11-21 01:07:55 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'SOLVE_PROMPT'
+2025-11-21 01:07:55 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'SOLVE_PROMPT'
+2025-11-21 01:07:55 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'SOLVE_PROMPT'
+2025-11-21 01:07:55 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'SOLVE_PROMPT'
+2025-11-21 01:07:55 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'SOLVE_PROMPT'
+2025-11-21 01:07:55 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'SOLVE_PROMPT'
+2025-11-21 01:07:55 - INFO - Results saved to test2/AIME24/workflows/round_3/0.00000_20251121_010755.csv
+2025-11-21 01:07:55 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-21 01:07:55 - INFO - Total Cost: 0.00000
+2025-11-21 01:07:55 - INFO - Score for round 3: 0.0
+2025-11-21 01:08:00 - INFO - 
+Mixed probability distribution: [0.79999957 0.10000021 0.10000021]
+2025-11-21 01:08:00 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.75}, {'round': 2, 'score': 0.0}, {'round': 3, 'score': 0.0}]
+2025-11-21 01:08:00 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.75}
+2025-11-21 01:08:00 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 01:08:00 - INFO - test2/AIME24/workflows/round_1/log.json
+2025-11-21 01:08:10 - INFO - Graph optimization response received successfully
+2025-11-21 01:08:10 - INFO - Error occurred: EOF while scanning triple-quoted string literal (prompt.py, line 6). Retrying... (Attempt 1/1)
+2025-11-21 01:08:10 - INFO - Max retries reached. Moving to next round.
+2025-11-21 01:08:15 - INFO - Score for round 4: None
+2025-11-21 01:08:20 - INFO - 
+Mixed probability distribution: [0.79999957 0.10000021 0.10000021]
+2025-11-21 01:08:20 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.75}, {'round': 2, 'score': 0.0}, {'round': 3, 'score': 0.0}]
+2025-11-21 01:08:20 - INFO - 
+Selected index: 1, Selected item: {'round': 2, 'score': 0.0}
+2025-11-21 01:08:20 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 01:08:36 - INFO - Graph optimization response received successfully
+2025-11-21 01:08:36 - INFO - test2/AIME24/workflows/round_5
+2025-11-21 01:08:40 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_5.prompt' has no attribute 'GEOM_PROMPT'
+2025-11-21 01:08:40 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_5.prompt' has no attribute 'GEOM_PROMPT'
+2025-11-21 01:08:40 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_5.prompt' has no attribute 'GEOM_PROMPT'
+2025-11-21 01:08:40 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_5.prompt' has no attribute 'GEOM_PROMPT'
+2025-11-21 01:08:40 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_5.prompt' has no attribute 'GEOM_PROMPT'
+2025-11-21 01:08:40 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_5.prompt' has no attribute 'GEOM_PROMPT'
+2025-11-21 01:08:40 - INFO - Results saved to test2/AIME24/workflows/round_5/0.00000_20251121_010840.csv
+2025-11-21 01:08:40 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-21 01:08:40 - INFO - Total Cost: 0.00000
+2025-11-21 01:08:44 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_5.prompt' has no attribute 'GEOM_PROMPT'
+2025-11-21 01:08:44 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_5.prompt' has no attribute 'GEOM_PROMPT'
+2025-11-21 01:08:44 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_5.prompt' has no attribute 'GEOM_PROMPT'
+2025-11-21 01:08:44 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_5.prompt' has no attribute 'GEOM_PROMPT'
+2025-11-21 01:08:44 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_5.prompt' has no attribute 'GEOM_PROMPT'
+2025-11-21 01:08:44 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_5.prompt' has no attribute 'GEOM_PROMPT'
+2025-11-21 01:08:44 - INFO - Results saved to test2/AIME24/workflows/round_5/0.00000_20251121_010844.csv
+2025-11-21 01:08:44 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-21 01:08:44 - INFO - Total Cost: 0.00000
+2025-11-21 01:12:55 - INFO - Skipping datasets as data/datasets already exists.
+2025-11-21 01:13:46 - INFO - Results saved to test2/AIME24/workflows/round_1/0.50000_20251121_011346.csv
+2025-11-21 01:13:46 - INFO - Average score on AIME24 dataset: 0.50000
+2025-11-21 01:13:46 - INFO - Total Cost: 0.01993
+2025-11-21 01:14:02 - INFO - Results saved to test2/AIME24/workflows/round_1/0.66667_20251121_011402.csv
+2025-11-21 01:14:02 - INFO - Average score on AIME24 dataset: 0.66667
+2025-11-21 01:14:02 - INFO - Total Cost: 0.01000
+2025-11-21 01:15:09 - INFO - Results saved to test2/AIME24/workflows/round_1/0.66667_20251121_011509.csv
+2025-11-21 01:15:09 - INFO - Average score on AIME24 dataset: 0.66667
+2025-11-21 01:15:09 - INFO - Total Cost: 0.02072
+2025-11-21 01:15:09 - INFO - 
+Mixed probability distribution: [1.]
+2025-11-21 01:15:09 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.611111111111111}]
+2025-11-21 01:15:09 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.611111111111111}
+2025-11-21 01:15:09 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 01:15:09 - INFO - test2/AIME24/workflows/round_1/log.json
+2025-11-21 01:15:25 - INFO - Graph optimization response received successfully
+2025-11-21 01:15:25 - INFO - Error occurred: unexpected character after line continuation character (graph.py, line 65). Retrying... (Attempt 1/1)
+2025-11-21 01:15:25 - INFO - Max retries reached. Moving to next round.
+2025-11-21 01:15:30 - INFO - Score for round 2: None
+2025-11-21 01:15:35 - INFO - 
+Mixed probability distribution: [1.]
+2025-11-21 01:15:35 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.611111111111111}]
+2025-11-21 01:15:35 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.611111111111111}
+2025-11-21 01:15:35 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 01:15:35 - INFO - test2/AIME24/workflows/round_1/log.json
+2025-11-21 01:15:48 - INFO - Graph optimization response received successfully
+2025-11-21 01:15:48 - INFO - Error occurred: unexpected character after line continuation character (graph.py, line 65). Retrying... (Attempt 1/1)
+2025-11-21 01:15:48 - INFO - Max retries reached. Moving to next round.
+2025-11-21 01:15:53 - INFO - Score for round 3: None
+2025-11-21 01:15:58 - INFO - 
+Mixed probability distribution: [1.]
+2025-11-21 01:15:58 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.611111111111111}]
+2025-11-21 01:15:58 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.611111111111111}
+2025-11-21 01:15:58 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 01:15:58 - INFO - test2/AIME24/workflows/round_1/log.json
+2025-11-21 01:16:09 - INFO - Graph optimization response received successfully
+2025-11-21 01:16:09 - INFO - Error occurred: EOF while scanning triple-quoted string literal (prompt.py, line 6). Retrying... (Attempt 1/1)
+2025-11-21 01:16:09 - INFO - Max retries reached. Moving to next round.
+2025-11-21 01:16:14 - INFO - Score for round 4: None
+2025-11-21 01:16:19 - INFO - 
+Mixed probability distribution: [1.]
+2025-11-21 01:16:19 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.611111111111111}]
+2025-11-21 01:16:19 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.611111111111111}
+2025-11-21 01:16:19 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 01:16:19 - INFO - test2/AIME24/workflows/round_1/log.json
+2025-11-21 01:16:34 - INFO - Graph optimization response received successfully
+2025-11-21 01:16:34 - INFO - test2/AIME24/workflows/round_5
+2025-11-21 01:16:38 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_5.prompt' has no attribute 'HEX_PROMPT'
+2025-11-21 01:16:38 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_5.prompt' has no attribute 'HEX_PROMPT'
+2025-11-21 01:16:38 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_5.prompt' has no attribute 'HEX_PROMPT'
+2025-11-21 01:16:38 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_5.prompt' has no attribute 'HEX_PROMPT'
+2025-11-21 01:16:38 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_5.prompt' has no attribute 'HEX_PROMPT'
+2025-11-21 01:16:38 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_5.prompt' has no attribute 'HEX_PROMPT'
+2025-11-21 01:16:38 - INFO - Results saved to test2/AIME24/workflows/round_5/0.00000_20251121_011638.csv
+2025-11-21 01:16:38 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-21 01:16:38 - INFO - Total Cost: 0.00000
+2025-11-21 01:16:42 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_5.prompt' has no attribute 'HEX_PROMPT'
+2025-11-21 01:16:42 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_5.prompt' has no attribute 'HEX_PROMPT'
+2025-11-21 01:16:42 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_5.prompt' has no attribute 'HEX_PROMPT'
+2025-11-21 01:16:42 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_5.prompt' has no attribute 'HEX_PROMPT'
+2025-11-21 01:16:42 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_5.prompt' has no attribute 'HEX_PROMPT'
+2025-11-21 01:16:42 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_5.prompt' has no attribute 'HEX_PROMPT'
+2025-11-21 01:16:42 - INFO - Results saved to test2/AIME24/workflows/round_5/0.00000_20251121_011642.csv
+2025-11-21 01:16:42 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-21 01:16:42 - INFO - Total Cost: 0.00000
+2025-11-21 01:16:46 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_5.prompt' has no attribute 'HEX_PROMPT'
+2025-11-21 01:16:46 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_5.prompt' has no attribute 'HEX_PROMPT'
+2025-11-21 01:16:46 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_5.prompt' has no attribute 'HEX_PROMPT'
+2025-11-21 01:16:46 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_5.prompt' has no attribute 'HEX_PROMPT'
+2025-11-21 01:16:46 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_5.prompt' has no attribute 'HEX_PROMPT'
+2025-11-21 01:16:46 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_5.prompt' has no attribute 'HEX_PROMPT'
+2025-11-21 01:16:46 - INFO - Results saved to test2/AIME24/workflows/round_5/0.00000_20251121_011646.csv
+2025-11-21 01:16:46 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-21 01:16:46 - INFO - Total Cost: 0.00000
+2025-11-21 01:16:46 - INFO - Score for round 5: 0.0
+2025-11-21 01:16:51 - INFO - 
+Mixed probability distribution: [0.84999656 0.15000344]
+2025-11-21 01:16:51 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.611111111111111}, {'round': 5, 'score': 0.0}]
+2025-11-21 01:16:51 - INFO - 
+Selected index: 1, Selected item: {'round': 5, 'score': 0.0}
+2025-11-21 01:16:51 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 01:17:03 - INFO - Graph optimization response received successfully
+2025-11-21 01:17:03 - INFO - test2/AIME24/workflows/round_6
+2025-11-21 01:17:07 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_6.prompt' has no attribute 'HEX_PROMPT'
+2025-11-21 01:17:07 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_6.prompt' has no attribute 'HEX_PROMPT'
+2025-11-21 01:17:07 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_6.prompt' has no attribute 'HEX_PROMPT'
+2025-11-21 01:17:07 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_6.prompt' has no attribute 'HEX_PROMPT'
+2025-11-21 01:17:07 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_6.prompt' has no attribute 'HEX_PROMPT'
+2025-11-21 01:17:07 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_6.prompt' has no attribute 'HEX_PROMPT'
+2025-11-21 01:17:07 - INFO - Results saved to test2/AIME24/workflows/round_6/0.00000_20251121_011707.csv
+2025-11-21 01:17:07 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-21 01:17:07 - INFO - Total Cost: 0.00000
+2025-11-21 01:17:11 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_6.prompt' has no attribute 'HEX_PROMPT'
+2025-11-21 01:17:11 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_6.prompt' has no attribute 'HEX_PROMPT'
+2025-11-21 01:17:11 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_6.prompt' has no attribute 'HEX_PROMPT'
+2025-11-21 01:17:11 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_6.prompt' has no attribute 'HEX_PROMPT'
+2025-11-21 01:17:11 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_6.prompt' has no attribute 'HEX_PROMPT'
+2025-11-21 01:17:11 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_6.prompt' has no attribute 'HEX_PROMPT'
+2025-11-21 01:17:11 - INFO - Results saved to test2/AIME24/workflows/round_6/0.00000_20251121_011711.csv
+2025-11-21 01:17:11 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-21 01:17:11 - INFO - Total Cost: 0.00000
+2025-11-21 01:17:15 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_6.prompt' has no attribute 'HEX_PROMPT'
+2025-11-21 01:17:15 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_6.prompt' has no attribute 'HEX_PROMPT'
+2025-11-21 01:17:15 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_6.prompt' has no attribute 'HEX_PROMPT'
+2025-11-21 01:17:15 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_6.prompt' has no attribute 'HEX_PROMPT'
+2025-11-21 01:17:15 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_6.prompt' has no attribute 'HEX_PROMPT'
+2025-11-21 01:17:15 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_6.prompt' has no attribute 'HEX_PROMPT'
+2025-11-21 01:17:15 - INFO - Results saved to test2/AIME24/workflows/round_6/0.00000_20251121_011715.csv
+2025-11-21 01:17:15 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-21 01:17:15 - INFO - Total Cost: 0.00000
+2025-11-21 01:17:15 - INFO - Score for round 6: 0.0
+2025-11-21 01:17:20 - INFO - 
+Mixed probability distribution: [0.79999311 0.10000344 0.10000344]
+2025-11-21 01:17:20 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.611111111111111}, {'round': 5, 'score': 0.0}, {'round': 6, 'score': 0.0}]
+2025-11-21 01:17:20 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.611111111111111}
+2025-11-21 01:17:20 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 01:17:20 - INFO - test2/AIME24/workflows/round_1/log.json
+2025-11-21 01:17:35 - INFO - Graph optimization response received successfully
+2025-11-21 01:17:35 - INFO - test2/AIME24/workflows/round_7
+2025-11-21 01:17:39 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_7.prompt' has no attribute 'ENSEMBLE_PROMPT'
+2025-11-21 01:17:39 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_7.prompt' has no attribute 'ENSEMBLE_PROMPT'
+2025-11-21 01:17:39 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_7.prompt' has no attribute 'ENSEMBLE_PROMPT'
+2025-11-21 01:17:39 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_7.prompt' has no attribute 'ENSEMBLE_PROMPT'
+2025-11-21 01:17:39 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_7.prompt' has no attribute 'ENSEMBLE_PROMPT'
+2025-11-21 01:17:39 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_7.prompt' has no attribute 'ENSEMBLE_PROMPT'
+2025-11-21 01:17:39 - INFO - Results saved to test2/AIME24/workflows/round_7/0.00000_20251121_011739.csv
+2025-11-21 01:17:39 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-21 01:17:39 - INFO - Total Cost: 0.00000
+2025-11-21 01:17:43 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_7.prompt' has no attribute 'ENSEMBLE_PROMPT'
+2025-11-21 01:17:43 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_7.prompt' has no attribute 'ENSEMBLE_PROMPT'
+2025-11-21 01:17:43 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_7.prompt' has no attribute 'ENSEMBLE_PROMPT'
+2025-11-21 01:17:43 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_7.prompt' has no attribute 'ENSEMBLE_PROMPT'
+2025-11-21 01:17:43 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_7.prompt' has no attribute 'ENSEMBLE_PROMPT'
+2025-11-21 01:17:43 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_7.prompt' has no attribute 'ENSEMBLE_PROMPT'
+2025-11-21 01:17:43 - INFO - Results saved to test2/AIME24/workflows/round_7/0.00000_20251121_011743.csv
+2025-11-21 01:17:43 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-21 01:17:43 - INFO - Total Cost: 0.00000
+2025-11-21 01:17:47 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_7.prompt' has no attribute 'ENSEMBLE_PROMPT'
+2025-11-21 01:17:47 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_7.prompt' has no attribute 'ENSEMBLE_PROMPT'
+2025-11-21 01:17:47 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_7.prompt' has no attribute 'ENSEMBLE_PROMPT'
+2025-11-21 01:17:47 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_7.prompt' has no attribute 'ENSEMBLE_PROMPT'
+2025-11-21 01:17:47 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_7.prompt' has no attribute 'ENSEMBLE_PROMPT'
+2025-11-21 01:17:47 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_7.prompt' has no attribute 'ENSEMBLE_PROMPT'
+2025-11-21 01:17:47 - INFO - Results saved to test2/AIME24/workflows/round_7/0.00000_20251121_011747.csv
+2025-11-21 01:17:47 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-21 01:17:47 - INFO - Total Cost: 0.00000
+2025-11-21 01:17:47 - INFO - Score for round 7: 0.0
+2025-11-21 01:17:52 - INFO - 
+Mixed probability distribution: [0.77498967 0.07500344 0.07500344 0.07500344]
+2025-11-21 01:17:52 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.611111111111111}, {'round': 5, 'score': 0.0}, {'round': 6, 'score': 0.0}, {'round': 7, 'score': 0.0}]
+2025-11-21 01:17:52 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.611111111111111}
+2025-11-21 01:17:52 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 01:17:52 - INFO - test2/AIME24/workflows/round_1/log.json
+2025-11-21 01:18:07 - INFO - Graph optimization response received successfully
+2025-11-21 01:18:07 - INFO - Error occurred: unexpected character after line continuation character (graph.py, line 70). Retrying... (Attempt 1/1)
+2025-11-21 01:18:07 - INFO - Max retries reached. Moving to next round.
+2025-11-21 01:18:12 - INFO - Score for round 8: None
+2025-11-21 01:18:17 - INFO - 
+Mixed probability distribution: [0.77498967 0.07500344 0.07500344 0.07500344]
+2025-11-21 01:18:17 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.611111111111111}, {'round': 5, 'score': 0.0}, {'round': 6, 'score': 0.0}, {'round': 7, 'score': 0.0}]
+2025-11-21 01:18:17 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.611111111111111}
+2025-11-21 01:18:17 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 01:18:17 - INFO - test2/AIME24/workflows/round_1/log.json
+2025-11-21 01:18:35 - INFO - Graph optimization response received successfully
+2025-11-21 01:18:35 - INFO - test2/AIME24/workflows/round_9
+2025-11-21 01:18:39 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_9.prompt' has no attribute 'CUSTOM_SOLVE_PROMPT'
+2025-11-21 01:18:39 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_9.prompt' has no attribute 'CUSTOM_SOLVE_PROMPT'
+2025-11-21 01:18:39 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_9.prompt' has no attribute 'CUSTOM_SOLVE_PROMPT'
+2025-11-21 01:18:39 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_9.prompt' has no attribute 'CUSTOM_SOLVE_PROMPT'
+2025-11-21 01:18:39 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_9.prompt' has no attribute 'CUSTOM_SOLVE_PROMPT'
+2025-11-21 01:18:39 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_9.prompt' has no attribute 'CUSTOM_SOLVE_PROMPT'
+2025-11-21 01:18:39 - INFO - Results saved to test2/AIME24/workflows/round_9/0.00000_20251121_011839.csv
+2025-11-21 01:18:39 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-21 01:18:39 - INFO - Total Cost: 0.00000
+2025-11-21 01:18:43 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_9.prompt' has no attribute 'CUSTOM_SOLVE_PROMPT'
+2025-11-21 01:18:43 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_9.prompt' has no attribute 'CUSTOM_SOLVE_PROMPT'
+2025-11-21 01:18:43 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_9.prompt' has no attribute 'CUSTOM_SOLVE_PROMPT'
+2025-11-21 01:18:43 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_9.prompt' has no attribute 'CUSTOM_SOLVE_PROMPT'
+2025-11-21 01:18:43 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_9.prompt' has no attribute 'CUSTOM_SOLVE_PROMPT'
+2025-11-21 01:18:43 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_9.prompt' has no attribute 'CUSTOM_SOLVE_PROMPT'
+2025-11-21 01:18:43 - INFO - Results saved to test2/AIME24/workflows/round_9/0.00000_20251121_011843.csv
+2025-11-21 01:18:43 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-21 01:18:43 - INFO - Total Cost: 0.00000
+2025-11-21 01:18:47 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_9.prompt' has no attribute 'CUSTOM_SOLVE_PROMPT'
+2025-11-21 01:18:47 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_9.prompt' has no attribute 'CUSTOM_SOLVE_PROMPT'
+2025-11-21 01:18:47 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_9.prompt' has no attribute 'CUSTOM_SOLVE_PROMPT'
+2025-11-21 01:18:47 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_9.prompt' has no attribute 'CUSTOM_SOLVE_PROMPT'
+2025-11-21 01:18:47 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_9.prompt' has no attribute 'CUSTOM_SOLVE_PROMPT'
+2025-11-21 01:18:47 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_9.prompt' has no attribute 'CUSTOM_SOLVE_PROMPT'
+2025-11-21 01:18:47 - INFO - Results saved to test2/AIME24/workflows/round_9/0.00000_20251121_011847.csv
+2025-11-21 01:18:47 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-21 01:18:47 - INFO - Total Cost: 0.00000
+2025-11-21 01:18:47 - INFO - Score for round 9: 0.0
+2025-11-21 01:18:52 - INFO - 
+Mixed probability distribution: [0.77498967 0.07500344 0.07500344 0.07500344]
+2025-11-21 01:18:52 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.611111111111111}, {'round': 5, 'score': 0.0}, {'round': 6, 'score': 0.0}, {'round': 7, 'score': 0.0}]
+2025-11-21 01:18:52 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.611111111111111}
+2025-11-21 01:18:52 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 01:18:52 - INFO - test2/AIME24/workflows/round_1/log.json
+2025-11-21 01:19:04 - INFO - Graph optimization response received successfully
+2025-11-21 01:19:04 - INFO - test2/AIME24/workflows/round_10
+2025-11-21 01:19:08 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_10.prompt' has no attribute 'CUSTOM_SOLVE_PROMPT'
+2025-11-21 01:19:08 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_10.prompt' has no attribute 'CUSTOM_SOLVE_PROMPT'
+2025-11-21 01:19:08 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_10.prompt' has no attribute 'CUSTOM_SOLVE_PROMPT'
+2025-11-21 01:19:08 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_10.prompt' has no attribute 'CUSTOM_SOLVE_PROMPT'
+2025-11-21 01:19:08 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_10.prompt' has no attribute 'CUSTOM_SOLVE_PROMPT'
+2025-11-21 01:19:08 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_10.prompt' has no attribute 'CUSTOM_SOLVE_PROMPT'
+2025-11-21 01:19:08 - INFO - Results saved to test2/AIME24/workflows/round_10/0.00000_20251121_011908.csv
+2025-11-21 01:19:08 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-21 01:19:08 - INFO - Total Cost: 0.00000
+2025-11-21 01:19:12 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_10.prompt' has no attribute 'CUSTOM_SOLVE_PROMPT'
+2025-11-21 01:19:12 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_10.prompt' has no attribute 'CUSTOM_SOLVE_PROMPT'
+2025-11-21 01:19:12 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_10.prompt' has no attribute 'CUSTOM_SOLVE_PROMPT'
+2025-11-21 01:19:12 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_10.prompt' has no attribute 'CUSTOM_SOLVE_PROMPT'
+2025-11-21 01:19:12 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_10.prompt' has no attribute 'CUSTOM_SOLVE_PROMPT'
+2025-11-21 01:19:12 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_10.prompt' has no attribute 'CUSTOM_SOLVE_PROMPT'
+2025-11-21 01:19:12 - INFO - Results saved to test2/AIME24/workflows/round_10/0.00000_20251121_011912.csv
+2025-11-21 01:19:12 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-21 01:19:12 - INFO - Total Cost: 0.00000
+2025-11-21 01:19:16 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_10.prompt' has no attribute 'CUSTOM_SOLVE_PROMPT'
+2025-11-21 01:19:16 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_10.prompt' has no attribute 'CUSTOM_SOLVE_PROMPT'
+2025-11-21 01:19:16 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_10.prompt' has no attribute 'CUSTOM_SOLVE_PROMPT'
+2025-11-21 01:19:16 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_10.prompt' has no attribute 'CUSTOM_SOLVE_PROMPT'
+2025-11-21 01:19:16 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_10.prompt' has no attribute 'CUSTOM_SOLVE_PROMPT'
+2025-11-21 01:19:16 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_10.prompt' has no attribute 'CUSTOM_SOLVE_PROMPT'
+2025-11-21 01:19:16 - INFO - Results saved to test2/AIME24/workflows/round_10/0.00000_20251121_011916.csv
+2025-11-21 01:19:16 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-21 01:19:16 - INFO - Total Cost: 0.00000
+2025-11-21 01:19:16 - INFO - Score for round 10: 0.0
+2025-11-21 01:19:21 - INFO - 
+Mixed probability distribution: [0.77498967 0.07500344 0.07500344 0.07500344]
+2025-11-21 01:19:21 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.611111111111111}, {'round': 5, 'score': 0.0}, {'round': 6, 'score': 0.0}, {'round': 7, 'score': 0.0}]
+2025-11-21 01:19:21 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.611111111111111}
+2025-11-21 01:19:21 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 01:19:21 - INFO - test2/AIME24/workflows/round_1/log.json
+2025-11-21 01:19:33 - INFO - Graph optimization response received successfully
+2025-11-21 01:19:33 - INFO - test2/AIME24/workflows/round_11
+2025-11-21 01:19:38 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_11.prompt' has no attribute 'CUSTOM_SOLVE_PROMPT'
+2025-11-21 01:19:38 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_11.prompt' has no attribute 'CUSTOM_SOLVE_PROMPT'
+2025-11-21 01:19:38 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_11.prompt' has no attribute 'CUSTOM_SOLVE_PROMPT'
+2025-11-21 01:19:38 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_11.prompt' has no attribute 'CUSTOM_SOLVE_PROMPT'
+2025-11-21 01:19:38 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_11.prompt' has no attribute 'CUSTOM_SOLVE_PROMPT'
+2025-11-21 01:19:38 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_11.prompt' has no attribute 'CUSTOM_SOLVE_PROMPT'
+2025-11-21 01:19:38 - INFO - Results saved to test2/AIME24/workflows/round_11/0.00000_20251121_011938.csv
+2025-11-21 01:19:38 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-21 01:19:38 - INFO - Total Cost: 0.00000
+2025-11-21 01:19:42 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_11.prompt' has no attribute 'CUSTOM_SOLVE_PROMPT'
+2025-11-21 01:19:42 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_11.prompt' has no attribute 'CUSTOM_SOLVE_PROMPT'
+2025-11-21 01:19:42 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_11.prompt' has no attribute 'CUSTOM_SOLVE_PROMPT'
+2025-11-21 01:19:42 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_11.prompt' has no attribute 'CUSTOM_SOLVE_PROMPT'
+2025-11-21 01:19:42 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_11.prompt' has no attribute 'CUSTOM_SOLVE_PROMPT'
+2025-11-21 01:19:42 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_11.prompt' has no attribute 'CUSTOM_SOLVE_PROMPT'
+2025-11-21 01:19:42 - INFO - Results saved to test2/AIME24/workflows/round_11/0.00000_20251121_011942.csv
+2025-11-21 01:19:42 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-21 01:19:42 - INFO - Total Cost: 0.00000
+2025-11-21 01:26:26 - INFO - Skipping datasets as data/datasets already exists.
+2025-11-21 01:27:37 - INFO - Results saved to test2/AIME24/workflows/round_1/0.66667_20251121_012737.csv
+2025-11-21 01:27:37 - INFO - Average score on AIME24 dataset: 0.66667
+2025-11-21 01:27:37 - INFO - Total Cost: 0.01632
+2025-11-21 01:28:37 - INFO - Results saved to test2/AIME24/workflows/round_1/0.66667_20251121_012837.csv
+2025-11-21 01:28:37 - INFO - Average score on AIME24 dataset: 0.66667
+2025-11-21 01:28:37 - INFO - Total Cost: 0.01377
+2025-11-21 01:30:28 - INFO - Results saved to test2/AIME24/workflows/round_1/0.66667_20251121_013028.csv
+2025-11-21 01:30:28 - INFO - Average score on AIME24 dataset: 0.66667
+2025-11-21 01:30:28 - INFO - Total Cost: 0.01659
+2025-11-21 01:30:28 - INFO - 
+Mixed probability distribution: [1.]
+2025-11-21 01:30:28 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.6666666666666666}]
+2025-11-21 01:30:28 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.6666666666666666}
+2025-11-21 01:30:28 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 01:30:28 - INFO - test2/AIME24/workflows/round_1/log.json
+2025-11-21 01:30:28 - INFO - Error occurred: 'problem'. Retrying... (Attempt 1/1)
+2025-11-21 01:30:28 - INFO - Max retries reached. Moving to next round.
+2025-11-21 01:30:33 - INFO - Score for round 2: None
+2025-11-21 01:30:38 - INFO - 
+Mixed probability distribution: [1.]
+2025-11-21 01:30:38 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.6666666666666666}]
+2025-11-21 01:30:38 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.6666666666666666}
+2025-11-21 01:30:38 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 01:30:38 - INFO - test2/AIME24/workflows/round_1/log.json
+2025-11-21 01:30:38 - INFO - Error occurred: 'problem'. Retrying... (Attempt 1/1)
+2025-11-21 01:30:38 - INFO - Max retries reached. Moving to next round.
+2025-11-21 01:30:43 - INFO - Score for round 3: None
+2025-11-21 01:30:48 - INFO - 
+Mixed probability distribution: [1.]
+2025-11-21 01:30:48 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.6666666666666666}]
+2025-11-21 01:30:48 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.6666666666666666}
+2025-11-21 01:30:48 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 01:30:48 - INFO - test2/AIME24/workflows/round_1/log.json
+2025-11-21 01:30:48 - INFO - Error occurred: 'problem'. Retrying... (Attempt 1/1)
+2025-11-21 01:30:48 - INFO - Max retries reached. Moving to next round.
+2025-11-21 01:30:53 - INFO - Score for round 4: None
+2025-11-21 01:30:58 - INFO - 
+Mixed probability distribution: [1.]
+2025-11-21 01:30:58 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.6666666666666666}]
+2025-11-21 01:30:58 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.6666666666666666}
+2025-11-21 01:30:58 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 01:30:58 - INFO - test2/AIME24/workflows/round_1/log.json
+2025-11-21 01:30:58 - INFO - Error occurred: 'problem'. Retrying... (Attempt 1/1)
+2025-11-21 01:30:58 - INFO - Max retries reached. Moving to next round.
+2025-11-21 01:34:23 - INFO - Skipping datasets as data/datasets already exists.
+2025-11-21 01:36:30 - INFO - Results saved to test2/AIME24/workflows/round_1/0.66667_20251121_013630.csv
+2025-11-21 01:36:30 - INFO - Average score on AIME24 dataset: 0.66667
+2025-11-21 01:36:30 - INFO - Total Cost: 0.00919
+2025-11-21 01:37:02 - INFO - Results saved to test2/AIME24/workflows/round_1/0.66667_20251121_013702.csv
+2025-11-21 01:37:02 - INFO - Average score on AIME24 dataset: 0.66667
+2025-11-21 01:37:02 - INFO - Total Cost: 0.01091
+2025-11-21 01:37:24 - INFO - Results saved to test2/AIME24/workflows/round_1/0.66667_20251121_013724.csv
+2025-11-21 01:37:24 - INFO - Average score on AIME24 dataset: 0.66667
+2025-11-21 01:37:24 - INFO - Total Cost: 0.00954
+2025-11-21 01:37:24 - INFO - 
+Mixed probability distribution: [1.]
+2025-11-21 01:37:24 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.6666666666666666}]
+2025-11-21 01:37:24 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.6666666666666666}
+2025-11-21 01:37:24 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 01:37:24 - INFO - test2/AIME24/workflows/round_1/log.json
+2025-11-21 01:37:24 - INFO - Error occurred: 'problem'. Retrying... (Attempt 1/1)
+2025-11-21 01:37:24 - INFO - Max retries reached. Moving to next round.
+2025-11-21 01:37:29 - INFO - Score for round 2: None
+2025-11-21 01:37:34 - INFO - 
+Mixed probability distribution: [1.]
+2025-11-21 01:37:34 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.6666666666666666}]
+2025-11-21 01:37:34 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.6666666666666666}
+2025-11-21 01:37:34 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 01:37:34 - INFO - test2/AIME24/workflows/round_1/log.json
+2025-11-21 01:37:34 - INFO - Error occurred: 'problem'. Retrying... (Attempt 1/1)
+2025-11-21 01:37:34 - INFO - Max retries reached. Moving to next round.
+2025-11-21 01:37:39 - INFO - Score for round 3: None
+2025-11-21 01:37:44 - INFO - 
+Mixed probability distribution: [1.]
+2025-11-21 01:37:44 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.6666666666666666}]
+2025-11-21 01:37:44 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.6666666666666666}
+2025-11-21 01:37:44 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 01:37:44 - INFO - test2/AIME24/workflows/round_1/log.json
+2025-11-21 01:37:44 - INFO - Error occurred: 'problem'. Retrying... (Attempt 1/1)
+2025-11-21 01:37:44 - INFO - Max retries reached. Moving to next round.
+2025-11-21 01:37:49 - INFO - Score for round 4: None
+2025-11-21 01:37:54 - INFO - 
+Mixed probability distribution: [1.]
+2025-11-21 01:37:54 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.6666666666666666}]
+2025-11-21 01:37:54 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.6666666666666666}
+2025-11-21 01:37:54 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 01:37:54 - INFO - test2/AIME24/workflows/round_1/log.json
+2025-11-21 01:37:54 - INFO - Error occurred: 'problem'. Retrying... (Attempt 1/1)
+2025-11-21 01:37:54 - INFO - Max retries reached. Moving to next round.
+2025-11-21 01:37:59 - INFO - Score for round 5: None
+2025-11-21 01:38:04 - INFO - 
+Mixed probability distribution: [1.]
+2025-11-21 01:38:04 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.6666666666666666}]
+2025-11-21 01:38:04 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.6666666666666666}
+2025-11-21 01:38:04 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 01:38:04 - INFO - test2/AIME24/workflows/round_1/log.json
+2025-11-21 01:38:04 - INFO - Error occurred: 'problem'. Retrying... (Attempt 1/1)
+2025-11-21 01:38:04 - INFO - Max retries reached. Moving to next round.
+2025-11-21 01:38:09 - INFO - Score for round 6: None
+2025-11-21 01:38:14 - INFO - 
+Mixed probability distribution: [1.]
+2025-11-21 01:38:14 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.6666666666666666}]
+2025-11-21 01:38:14 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.6666666666666666}
+2025-11-21 01:38:14 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 01:38:14 - INFO - test2/AIME24/workflows/round_1/log.json
+2025-11-21 01:38:14 - INFO - Error occurred: 'problem'. Retrying... (Attempt 1/1)
+2025-11-21 01:38:14 - INFO - Max retries reached. Moving to next round.
+2025-11-21 01:38:19 - INFO - Score for round 7: None
+2025-11-21 01:38:24 - INFO - 
+Mixed probability distribution: [1.]
+2025-11-21 01:38:24 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.6666666666666666}]
+2025-11-21 01:38:24 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.6666666666666666}
+2025-11-21 01:38:24 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 01:38:24 - INFO - test2/AIME24/workflows/round_1/log.json
+2025-11-21 01:38:24 - INFO - Error occurred: 'problem'. Retrying... (Attempt 1/1)
+2025-11-21 01:38:24 - INFO - Max retries reached. Moving to next round.
+2025-11-21 01:38:29 - INFO - Score for round 8: None
+2025-11-21 01:38:34 - INFO - 
+Mixed probability distribution: [1.]
+2025-11-21 01:38:34 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.6666666666666666}]
+2025-11-21 01:38:34 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.6666666666666666}
+2025-11-21 01:38:34 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 01:38:34 - INFO - test2/AIME24/workflows/round_1/log.json
+2025-11-21 01:38:34 - INFO - Error occurred: 'problem'. Retrying... (Attempt 1/1)
+2025-11-21 01:38:34 - INFO - Max retries reached. Moving to next round.
+2025-11-21 01:38:39 - INFO - Score for round 9: None
+2025-11-21 01:38:44 - INFO - 
+Mixed probability distribution: [1.]
+2025-11-21 01:38:44 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.6666666666666666}]
+2025-11-21 01:38:44 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.6666666666666666}
+2025-11-21 01:38:44 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 01:38:44 - INFO - test2/AIME24/workflows/round_1/log.json
+2025-11-21 01:38:44 - INFO - Error occurred: 'problem'. Retrying... (Attempt 1/1)
+2025-11-21 01:38:44 - INFO - Max retries reached. Moving to next round.
+2025-11-21 01:38:49 - INFO - Score for round 10: None
+2025-11-21 01:38:54 - INFO - 
+Mixed probability distribution: [1.]
+2025-11-21 01:38:54 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.6666666666666666}]
+2025-11-21 01:38:54 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.6666666666666666}
+2025-11-21 01:38:54 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 01:38:54 - INFO - test2/AIME24/workflows/round_1/log.json
+2025-11-21 01:38:54 - INFO - Error occurred: 'problem'. Retrying... (Attempt 1/1)
+2025-11-21 01:38:54 - INFO - Max retries reached. Moving to next round.
+2025-11-21 01:38:59 - INFO - Score for round 11: None
+2025-11-21 01:39:04 - INFO - 
+Mixed probability distribution: [1.]
+2025-11-21 01:39:04 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.6666666666666666}]
+2025-11-21 01:39:04 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.6666666666666666}
+2025-11-21 01:39:04 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 01:39:04 - INFO - test2/AIME24/workflows/round_1/log.json
+2025-11-21 01:39:05 - INFO - Error occurred: 'problem'. Retrying... (Attempt 1/1)
+2025-11-21 01:39:05 - INFO - Max retries reached. Moving to next round.
+2025-11-21 01:39:10 - INFO - Score for round 12: None
+2025-11-21 01:39:15 - INFO - 
+Mixed probability distribution: [1.]
+2025-11-21 01:39:15 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.6666666666666666}]
+2025-11-21 01:39:15 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.6666666666666666}
+2025-11-21 01:39:15 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 01:39:15 - INFO - test2/AIME24/workflows/round_1/log.json
+2025-11-21 01:39:15 - INFO - Error occurred: 'problem'. Retrying... (Attempt 1/1)
+2025-11-21 01:39:15 - INFO - Max retries reached. Moving to next round.
+2025-11-21 01:39:20 - INFO - Score for round 13: None
+2025-11-21 01:39:25 - INFO - 
+Mixed probability distribution: [1.]
+2025-11-21 01:39:25 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.6666666666666666}]
+2025-11-21 01:39:25 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.6666666666666666}
+2025-11-21 01:39:25 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 01:39:25 - INFO - test2/AIME24/workflows/round_1/log.json
+2025-11-21 01:39:25 - INFO - Error occurred: 'problem'. Retrying... (Attempt 1/1)
+2025-11-21 01:39:25 - INFO - Max retries reached. Moving to next round.
+2025-11-21 01:39:30 - INFO - Score for round 14: None
+2025-11-21 01:39:35 - INFO - 
+Mixed probability distribution: [1.]
+2025-11-21 01:39:35 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.6666666666666666}]
+2025-11-21 01:39:35 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.6666666666666666}
+2025-11-21 01:39:35 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 01:39:35 - INFO - test2/AIME24/workflows/round_1/log.json
+2025-11-21 01:39:35 - INFO - Error occurred: 'problem'. Retrying... (Attempt 1/1)
+2025-11-21 01:39:35 - INFO - Max retries reached. Moving to next round.
+2025-11-21 01:39:40 - INFO - Score for round 15: None
+2025-11-21 01:39:45 - INFO - 
+Mixed probability distribution: [1.]
+2025-11-21 01:39:45 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.6666666666666666}]
+2025-11-21 01:39:45 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.6666666666666666}
+2025-11-21 01:39:45 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 01:39:45 - INFO - test2/AIME24/workflows/round_1/log.json
+2025-11-21 01:39:45 - INFO - Error occurred: 'problem'. Retrying... (Attempt 1/1)
+2025-11-21 01:39:45 - INFO - Max retries reached. Moving to next round.
+2025-11-21 01:39:50 - INFO - Score for round 16: None
+2025-11-21 01:39:55 - INFO - 
+Mixed probability distribution: [1.]
+2025-11-21 01:39:55 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.6666666666666666}]
+2025-11-21 01:39:55 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.6666666666666666}
+2025-11-21 01:39:55 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 01:39:55 - INFO - test2/AIME24/workflows/round_1/log.json
+2025-11-21 01:39:55 - INFO - Error occurred: 'problem'. Retrying... (Attempt 1/1)
+2025-11-21 01:39:55 - INFO - Max retries reached. Moving to next round.
+2025-11-21 01:40:00 - INFO - Score for round 17: None
+2025-11-21 01:40:05 - INFO - 
+Mixed probability distribution: [1.]
+2025-11-21 01:40:05 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.6666666666666666}]
+2025-11-21 01:40:05 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.6666666666666666}
+2025-11-21 01:40:05 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 01:40:05 - INFO - test2/AIME24/workflows/round_1/log.json
+2025-11-21 01:40:05 - INFO - Error occurred: 'problem'. Retrying... (Attempt 1/1)
+2025-11-21 01:40:05 - INFO - Max retries reached. Moving to next round.
+2025-11-21 01:40:10 - INFO - Score for round 18: None
+2025-11-21 01:40:15 - INFO - 
+Mixed probability distribution: [1.]
+2025-11-21 01:40:15 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.6666666666666666}]
+2025-11-21 01:40:15 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.6666666666666666}
+2025-11-21 01:40:15 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 01:40:15 - INFO - test2/AIME24/workflows/round_1/log.json
+2025-11-21 01:40:15 - INFO - Error occurred: 'problem'. Retrying... (Attempt 1/1)
+2025-11-21 01:40:15 - INFO - Max retries reached. Moving to next round.
+2025-11-21 01:40:20 - INFO - Score for round 19: None
+2025-11-21 01:40:25 - INFO - 
+Mixed probability distribution: [1.]
+2025-11-21 01:40:25 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.6666666666666666}]
+2025-11-21 01:40:25 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.6666666666666666}
+2025-11-21 01:40:25 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 01:40:25 - INFO - test2/AIME24/workflows/round_1/log.json
+2025-11-21 01:40:25 - INFO - Error occurred: 'problem'. Retrying... (Attempt 1/1)
+2025-11-21 01:40:25 - INFO - Max retries reached. Moving to next round.
+2025-11-21 01:40:30 - INFO - Score for round 20: None
+2025-11-21 01:40:35 - INFO - 
+Mixed probability distribution: [1.]
+2025-11-21 01:40:35 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.6666666666666666}]
+2025-11-21 01:40:35 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.6666666666666666}
+2025-11-21 01:40:35 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 01:40:35 - INFO - test2/AIME24/workflows/round_1/log.json
+2025-11-21 01:40:35 - INFO - Error occurred: 'problem'. Retrying... (Attempt 1/1)
+2025-11-21 01:40:35 - INFO - Max retries reached. Moving to next round.
+2025-11-21 01:40:40 - INFO - Score for round 21: None
+2025-11-21 02:56:53 - INFO - Skipping datasets as data/datasets already exists.
+2025-11-21 02:56:53 - ERROR - Error loading graph for round 1: No module named 'test2.AIME24.workflows.round_1.graph'
+2025-11-21 02:56:53 - INFO - Error occurred: No module named 'test2.AIME24.workflows.round_1.graph'. Retrying... (Attempt 1/1)
+2025-11-21 02:56:53 - INFO - Max retries reached. Moving to next round.
+2025-11-21 02:56:58 - INFO - Score for round 2: None
+2025-11-21 02:58:46 - INFO - Skipping datasets as data/datasets already exists.
+2025-11-21 03:00:15 - INFO - Results saved to test2/AIME24/workflows/round_1/0.50000_20251121_030015.csv
+2025-11-21 03:00:15 - INFO - Average score on AIME24 dataset: 0.50000
+2025-11-21 03:00:15 - INFO - Total Cost: 0.01509
+2025-11-21 03:00:49 - INFO - Results saved to test2/AIME24/workflows/round_1/0.33333_20251121_030049.csv
+2025-11-21 03:00:49 - INFO - Average score on AIME24 dataset: 0.33333
+2025-11-21 03:00:49 - INFO - Total Cost: 0.01465
+2025-11-21 03:02:33 - INFO - Results saved to test2/AIME24/workflows/round_1/0.66667_20251121_030233.csv
+2025-11-21 03:02:33 - INFO - Average score on AIME24 dataset: 0.66667
+2025-11-21 03:02:33 - INFO - Total Cost: 0.01143
+2025-11-21 03:02:33 - INFO - 
+Mixed probability distribution: [1.]
+2025-11-21 03:02:33 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.5}]
+2025-11-21 03:02:33 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.5}
+2025-11-21 03:02:33 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 03:02:33 - INFO - test2/AIME24/workflows/round_1/log.json
+2025-11-21 03:02:50 - INFO - Graph optimization response received successfully
+2025-11-21 03:02:50 - INFO - Error occurred: unexpected character after line continuation character (graph.py, line 43). Retrying... (Attempt 1/1)
+2025-11-21 03:02:50 - INFO - Max retries reached. Moving to next round.
+2025-11-21 03:02:55 - INFO - Score for round 2: None
+2025-11-21 03:03:00 - INFO - 
+Mixed probability distribution: [1.]
+2025-11-21 03:03:00 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.5}]
+2025-11-21 03:03:00 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.5}
+2025-11-21 03:03:00 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 03:03:00 - INFO - test2/AIME24/workflows/round_1/log.json
+2025-11-21 03:03:13 - INFO - Graph optimization response received successfully
+2025-11-21 03:03:13 - INFO - test2/AIME24/workflows/round_3
+2025-11-21 03:03:17 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'CONSENSUS_PROMPT'
+2025-11-21 03:03:17 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'CONSENSUS_PROMPT'
+2025-11-21 03:03:17 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'CONSENSUS_PROMPT'
+2025-11-21 03:03:17 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'CONSENSUS_PROMPT'
+2025-11-21 03:03:17 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'CONSENSUS_PROMPT'
+2025-11-21 03:03:17 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'CONSENSUS_PROMPT'
+2025-11-21 03:03:17 - INFO - Results saved to test2/AIME24/workflows/round_3/0.00000_20251121_030317.csv
+2025-11-21 03:03:17 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-21 03:03:17 - INFO - Total Cost: 0.00000
+2025-11-21 03:17:53 - INFO - Skipping datasets as data/datasets already exists.
+2025-11-21 03:19:23 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-21 03:19:23 - INFO - Results saved to test2/AIME24/workflows/round_1/0.33333_20251121_031923.csv
+2025-11-21 03:19:23 - INFO - Average score on AIME24 dataset: 0.33333
+2025-11-21 03:19:23 - INFO - Total Cost: 0.01132
+2025-11-21 03:21:04 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-21 03:21:04 - INFO - Results saved to test2/AIME24/workflows/round_1/0.33333_20251121_032104.csv
+2025-11-21 03:21:04 - INFO - Average score on AIME24 dataset: 0.33333
+2025-11-21 03:21:04 - INFO - Total Cost: 0.00894
+2025-11-21 03:22:29 - INFO - Results saved to test2/AIME24/workflows/round_1/0.50000_20251121_032229.csv
+2025-11-21 03:22:29 - INFO - Average score on AIME24 dataset: 0.50000
+2025-11-21 03:22:29 - INFO - Total Cost: 0.01343
+2025-11-21 03:22:29 - INFO - 
+Mixed probability distribution: [1.]
+2025-11-21 03:22:29 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.38888888888888884}]
+2025-11-21 03:22:29 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.38888888888888884}
+2025-11-21 03:22:29 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 03:22:29 - INFO - test2/AIME24/workflows/round_1/log.json
+2025-11-21 03:22:38 - INFO - Graph optimization response received successfully
+2025-11-21 03:22:38 - INFO - test2/AIME24/workflows/round_2
+2025-11-21 03:22:42 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'MATH_SOLVE_PROMPT'
+2025-11-21 03:22:42 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'MATH_SOLVE_PROMPT'
+2025-11-21 03:22:42 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'MATH_SOLVE_PROMPT'
+2025-11-21 03:22:42 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'MATH_SOLVE_PROMPT'
+2025-11-21 03:22:42 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'MATH_SOLVE_PROMPT'
+2025-11-21 03:22:42 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'MATH_SOLVE_PROMPT'
+2025-11-21 03:22:42 - INFO - Results saved to test2/AIME24/workflows/round_2/0.00000_20251121_032242.csv
+2025-11-21 03:22:42 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-21 03:22:42 - INFO - Total Cost: 0.00000
+2025-11-21 03:22:46 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'MATH_SOLVE_PROMPT'
+2025-11-21 03:22:46 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'MATH_SOLVE_PROMPT'
+2025-11-21 03:22:46 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'MATH_SOLVE_PROMPT'
+2025-11-21 03:22:46 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'MATH_SOLVE_PROMPT'
+2025-11-21 03:22:46 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'MATH_SOLVE_PROMPT'
+2025-11-21 03:22:46 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'MATH_SOLVE_PROMPT'
+2025-11-21 03:22:46 - INFO - Results saved to test2/AIME24/workflows/round_2/0.00000_20251121_032246.csv
+2025-11-21 03:22:46 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-21 03:22:46 - INFO - Total Cost: 0.00000
+2025-11-21 03:22:50 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'MATH_SOLVE_PROMPT'
+2025-11-21 03:22:50 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'MATH_SOLVE_PROMPT'
+2025-11-21 03:22:50 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'MATH_SOLVE_PROMPT'
+2025-11-21 03:22:50 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'MATH_SOLVE_PROMPT'
+2025-11-21 03:22:50 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'MATH_SOLVE_PROMPT'
+2025-11-21 03:22:50 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_2.prompt' has no attribute 'MATH_SOLVE_PROMPT'
+2025-11-21 03:22:50 - INFO - Results saved to test2/AIME24/workflows/round_2/0.00000_20251121_032250.csv
+2025-11-21 03:22:50 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-21 03:22:50 - INFO - Total Cost: 0.00000
+2025-11-21 03:22:50 - INFO - Score for round 2: 0.0
+2025-11-21 03:22:55 - INFO - 
+Mixed probability distribution: [0.84970686 0.15029314]
+2025-11-21 03:22:55 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.38888888888888884}, {'round': 2, 'score': 0.0}]
+2025-11-21 03:22:55 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.38888888888888884}
+2025-11-21 03:22:55 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 03:22:55 - INFO - test2/AIME24/workflows/round_1/log.json
+2025-11-21 03:23:05 - INFO - Graph optimization response received successfully
+2025-11-21 03:23:05 - INFO - test2/AIME24/workflows/round_3
+2025-11-21 03:23:09 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'MATH_PROMPT'
+2025-11-21 03:23:09 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'MATH_PROMPT'
+2025-11-21 03:23:09 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'MATH_PROMPT'
+2025-11-21 03:23:09 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'MATH_PROMPT'
+2025-11-21 03:23:09 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'MATH_PROMPT'
+2025-11-21 03:23:09 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'MATH_PROMPT'
+2025-11-21 03:23:09 - INFO - Results saved to test2/AIME24/workflows/round_3/0.00000_20251121_032309.csv
+2025-11-21 03:23:09 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-21 03:23:09 - INFO - Total Cost: 0.00000
+2025-11-21 03:23:13 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'MATH_PROMPT'
+2025-11-21 03:23:13 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'MATH_PROMPT'
+2025-11-21 03:23:13 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'MATH_PROMPT'
+2025-11-21 03:23:13 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'MATH_PROMPT'
+2025-11-21 03:23:13 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'MATH_PROMPT'
+2025-11-21 03:23:13 - INFO - Maximum retries reached. Skipping this sample. Error: module 'workspace.AIME24.workflows.round_3.prompt' has no attribute 'MATH_PROMPT'
+2025-11-21 03:23:13 - INFO - Results saved to test2/AIME24/workflows/round_3/0.00000_20251121_032313.csv
+2025-11-21 03:23:13 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-21 03:23:13 - INFO - Total Cost: 0.00000
+2025-11-21 03:26:13 - INFO - Skipping datasets as data/datasets already exists.
+2025-11-21 03:26:59 - INFO - Results saved to test2/AIME24/workflows/round_1/0.66667_20251121_032659.csv
+2025-11-21 03:26:59 - INFO - Average score on AIME24 dataset: 0.66667
+2025-11-21 03:26:59 - INFO - Total Cost: 0.01600
+2025-11-21 03:27:44 - INFO - Results saved to test2/AIME24/workflows/round_1/0.16667_20251121_032744.csv
+2025-11-21 03:27:44 - INFO - Average score on AIME24 dataset: 0.16667
+2025-11-21 03:27:44 - INFO - Total Cost: 0.01280
+2025-11-21 03:29:45 - INFO - Results saved to test2/AIME24/workflows/round_1/0.33333_20251121_032945.csv
+2025-11-21 03:29:45 - INFO - Average score on AIME24 dataset: 0.33333
+2025-11-21 03:29:45 - INFO - Total Cost: 0.01492
+2025-11-21 03:29:45 - INFO - 
+Mixed probability distribution: [0.79941397 0.10029301 0.10029301]
+2025-11-21 03:29:45 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.38888888888888884}, {'round': 2, 'score': 0.0}, {'round': 3, 'score': 0.0}]
+2025-11-21 03:29:45 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.38888888888888884}
+2025-11-21 03:29:45 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 03:29:45 - INFO - test2/AIME24/workflows/round_1/log.json
+2025-11-21 03:29:55 - INFO - Graph optimization response received successfully
+2025-11-21 03:29:55 - INFO - test2/AIME24/workflows/round_2
+2025-11-21 03:32:35 - INFO - Results saved to test2/AIME24/workflows/round_2/0.50000_20251121_033235.csv
+2025-11-21 03:32:35 - INFO - Average score on AIME24 dataset: 0.50000
+2025-11-21 03:32:35 - INFO - Total Cost: 0.05822
+2025-11-21 03:34:46 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-21 03:37:33 - INFO - Results saved to test2/AIME24/workflows/round_2/0.50000_20251121_033733.csv
+2025-11-21 03:37:33 - INFO - Average score on AIME24 dataset: 0.50000
+2025-11-21 03:37:33 - INFO - Total Cost: 0.06841
+2025-11-21 03:39:44 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-21 03:41:06 - INFO - Results saved to test2/AIME24/workflows/round_2/0.33333_20251121_034106.csv
+2025-11-21 03:41:06 - INFO - Average score on AIME24 dataset: 0.33333
+2025-11-21 03:41:06 - INFO - Total Cost: 0.06220
+2025-11-21 03:41:06 - INFO - Score for round 2: 0.4444444444444444
+2025-11-21 03:41:11 - INFO - 
+Mixed probability distribution: [0.77561507 0.12410189 0.10028304]
+2025-11-21 03:41:11 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.38888888888888884}, {'round': 2, 'score': 0.2222222222222222}, {'round': 3, 'score': 0.0}]
+2025-11-21 03:41:11 - INFO - 
+Selected index: 2, Selected item: {'round': 3, 'score': 0.0}
+2025-11-21 03:41:11 - ERROR - Error: File not found for round 3: [Errno 2] No such file or directory: 'test2/AIME24/workflows/round_3/prompt.py'
+2025-11-21 03:41:11 - INFO - Error occurred: [Errno 2] No such file or directory: 'test2/AIME24/workflows/round_3/prompt.py'. Retrying... (Attempt 1/1)
+2025-11-21 03:41:11 - INFO - Max retries reached. Moving to next round.
+2025-11-21 03:41:16 - INFO - Score for round 3: None
+2025-11-21 03:41:21 - INFO - 
+Mixed probability distribution: [0.77561507 0.12410189 0.10028304]
+2025-11-21 03:41:21 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.38888888888888884}, {'round': 2, 'score': 0.2222222222222222}, {'round': 3, 'score': 0.0}]
+2025-11-21 03:41:21 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.38888888888888884}
+2025-11-21 03:41:21 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 03:41:21 - INFO - test2/AIME24/workflows/round_1/log.json
+2025-11-21 03:41:34 - INFO - Graph optimization response received successfully
+2025-11-21 03:41:34 - INFO - test2/AIME24/workflows/round_4
+2025-11-21 03:49:23 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-21 03:49:23 - INFO - Results saved to test2/AIME24/workflows/round_4/0.16667_20251121_034923.csv
+2025-11-21 03:49:23 - INFO - Average score on AIME24 dataset: 0.16667
+2025-11-21 03:49:23 - INFO - Total Cost: 0.03779
+2025-11-21 03:54:00 - INFO - Results saved to test2/AIME24/workflows/round_4/0.33333_20251121_035400.csv
+2025-11-21 03:54:00 - INFO - Average score on AIME24 dataset: 0.33333
+2025-11-21 03:54:00 - INFO - Total Cost: 0.04933
+2025-11-21 04:00:25 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-21 04:00:26 - INFO - Results saved to test2/AIME24/workflows/round_4/0.16667_20251121_040026.csv
+2025-11-21 04:00:26 - INFO - Average score on AIME24 dataset: 0.16667
+2025-11-21 04:00:26 - INFO - Total Cost: 0.04603
+2025-11-21 04:00:26 - INFO - Score for round 4: 0.2222222222222222
+2025-11-21 04:00:31 - INFO - 
+Mixed probability distribution: [0.72812708 0.09829965 0.09829965 0.07527362]
+2025-11-21 04:00:31 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.38888888888888884}, {'round': 2, 'score': 0.2222222222222222}, {'round': 4, 'score': 0.2222222222222222}, {'round': 3, 'score': 0.0}]
+2025-11-21 04:00:31 - INFO - 
+Selected index: 3, Selected item: {'round': 3, 'score': 0.0}
+2025-11-21 04:00:31 - ERROR - Error: File not found for round 3: [Errno 2] No such file or directory: 'test2/AIME24/workflows/round_3/prompt.py'
+2025-11-21 04:00:31 - INFO - Error occurred: [Errno 2] No such file or directory: 'test2/AIME24/workflows/round_3/prompt.py'. Retrying... (Attempt 1/1)
+2025-11-21 04:00:31 - INFO - Max retries reached. Moving to next round.
+2025-11-21 04:00:36 - INFO - Score for round 5: None
+2025-11-21 04:00:41 - INFO - 
+Mixed probability distribution: [0.72812708 0.09829965 0.09829965 0.07527362]
+2025-11-21 04:00:41 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.38888888888888884}, {'round': 2, 'score': 0.2222222222222222}, {'round': 4, 'score': 0.2222222222222222}, {'round': 3, 'score': 0.0}]
+2025-11-21 04:00:41 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.38888888888888884}
+2025-11-21 04:00:41 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 04:00:41 - INFO - test2/AIME24/workflows/round_1/log.json
+2025-11-21 04:00:58 - INFO - Graph optimization response received successfully
+2025-11-21 04:00:58 - INFO - test2/AIME24/workflows/round_6
+2025-11-21 04:02:28 - INFO - Maximum retries reached. Skipping this sample. Error: 'ScEnsemble' object has no attribute 'sc_ensemble'
+2025-11-21 04:02:42 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-21 04:03:04 - INFO - Maximum retries reached. Skipping this sample. Error: 'ScEnsemble' object has no attribute 'sc_ensemble'
+2025-11-21 04:05:05 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-21 04:05:59 - INFO - Maximum retries reached. Skipping this sample. Error: 'ScEnsemble' object has no attribute 'sc_ensemble'
+2025-11-21 04:07:23 - INFO - Maximum retries reached. Skipping this sample. Error: 'ScEnsemble' object has no attribute 'sc_ensemble'
+2025-11-21 04:07:23 - INFO - Results saved to test2/AIME24/workflows/round_6/0.00000_20251121_040723.csv
+2025-11-21 04:07:23 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-21 04:07:23 - INFO - Total Cost: 0.00000
+2025-11-21 04:09:08 - INFO - Maximum retries reached. Skipping this sample. Error: 'ScEnsemble' object has no attribute 'sc_ensemble'
+2025-11-21 04:09:10 - INFO - Maximum retries reached. Skipping this sample. Error: 'ScEnsemble' object has no attribute 'sc_ensemble'
+2025-11-21 04:09:44 - INFO - Maximum retries reached. Skipping this sample. Error: 'ScEnsemble' object has no attribute 'sc_ensemble'
+2025-11-21 04:11:07 - INFO - Maximum retries reached. Skipping this sample. Error: 'ScEnsemble' object has no attribute 'sc_ensemble'
+2025-11-21 04:12:49 - INFO - Maximum retries reached. Skipping this sample. Error: 'ScEnsemble' object has no attribute 'sc_ensemble'
+2025-11-21 04:13:19 - INFO - Maximum retries reached. Skipping this sample. Error: 'ScEnsemble' object has no attribute 'sc_ensemble'
+2025-11-21 04:13:19 - INFO - Results saved to test2/AIME24/workflows/round_6/0.00000_20251121_041319.csv
+2025-11-21 04:13:19 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-21 04:13:19 - INFO - Total Cost: 0.00000
+2025-11-21 04:14:51 - INFO - Maximum retries reached. Skipping this sample. Error: 'ScEnsemble' object has no attribute 'sc_ensemble'
+2025-11-21 04:14:58 - INFO - Maximum retries reached. Skipping this sample. Error: 'ScEnsemble' object has no attribute 'sc_ensemble'
+2025-11-21 04:15:54 - INFO - Maximum retries reached. Skipping this sample. Error: 'ScEnsemble' object has no attribute 'sc_ensemble'
+2025-11-21 04:15:55 - INFO - Maximum retries reached. Skipping this sample. Error: 'ScEnsemble' object has no attribute 'sc_ensemble'
+2025-11-21 04:17:38 - INFO - Maximum retries reached. Skipping this sample. Error: 'ScEnsemble' object has no attribute 'sc_ensemble'
+2025-11-21 04:19:12 - INFO - Maximum retries reached. Skipping this sample. Error: 'ScEnsemble' object has no attribute 'sc_ensemble'
+2025-11-21 04:19:12 - INFO - Results saved to test2/AIME24/workflows/round_6/0.00000_20251121_041912.csv
+2025-11-21 04:19:12 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-21 04:19:12 - INFO - Total Cost: 0.00000
+2025-11-21 04:19:12 - INFO - Score for round 6: 0.0
+2025-11-21 04:19:17 - INFO - 
+Mixed probability distribution: [0.72812708 0.09829965 0.09829965 0.07527362]
+2025-11-21 04:19:17 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.38888888888888884}, {'round': 2, 'score': 0.2222222222222222}, {'round': 4, 'score': 0.2222222222222222}, {'round': 3, 'score': 0.0}]
+2025-11-21 04:19:17 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.38888888888888884}
+2025-11-21 04:19:17 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 04:19:17 - INFO - test2/AIME24/workflows/round_1/log.json
+2025-11-21 04:19:25 - INFO - Graph optimization response received successfully
+2025-11-21 04:19:25 - INFO - test2/AIME24/workflows/round_7
+2025-11-21 04:21:19 - INFO - Results saved to test2/AIME24/workflows/round_7/0.66667_20251121_042119.csv
+2025-11-21 04:21:19 - INFO - Average score on AIME24 dataset: 0.66667
+2025-11-21 04:21:19 - INFO - Total Cost: 0.06252
+2025-11-21 04:25:24 - INFO - Results saved to test2/AIME24/workflows/round_7/0.50000_20251121_042524.csv
+2025-11-21 04:25:24 - INFO - Average score on AIME24 dataset: 0.50000
+2025-11-21 04:25:24 - INFO - Total Cost: 0.08004
+2025-11-21 04:27:28 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-21 04:27:28 - INFO - Results saved to test2/AIME24/workflows/round_7/0.66667_20251121_042728.csv
+2025-11-21 04:27:28 - INFO - Average score on AIME24 dataset: 0.66667
+2025-11-21 04:27:28 - INFO - Total Cost: 0.04923
+2025-11-21 04:27:28 - INFO - Score for round 7: 0.611111111111111
+2025-11-21 04:27:33 - INFO - 
+Mixed probability distribution: [0.76630237 0.0831184  0.07528962 0.07528962]
+2025-11-21 04:27:33 - INFO - 
+Sorted rounds: [{'round': 7, 'score': 0.611111111111111}, {'round': 1, 'score': 0.38888888888888884}, {'round': 2, 'score': 0.2222222222222222}, {'round': 4, 'score': 0.2222222222222222}]
+2025-11-21 04:27:33 - INFO - 
+Selected index: 0, Selected item: {'round': 7, 'score': 0.611111111111111}
+2025-11-21 04:27:33 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 04:27:33 - INFO - test2/AIME24/workflows/round_7/log.json
+2025-11-21 04:27:45 - INFO - Graph optimization response received successfully
+2025-11-21 04:27:45 - INFO - test2/AIME24/workflows/round_8
+2025-11-21 04:29:39 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-21 04:29:39 - INFO - Results saved to test2/AIME24/workflows/round_8/0.00000_20251121_042939.csv
+2025-11-21 04:29:39 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-21 04:29:39 - INFO - Total Cost: 0.04585
+2025-11-21 04:32:16 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-21 04:32:16 - INFO - Results saved to test2/AIME24/workflows/round_8/0.00000_20251121_043216.csv
+2025-11-21 04:32:16 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-21 04:32:16 - INFO - Total Cost: 0.04261
+2025-11-21 04:35:49 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-21 04:35:49 - INFO - Results saved to test2/AIME24/workflows/round_8/0.00000_20251121_043549.csv
+2025-11-21 04:35:49 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-21 04:35:49 - INFO - Total Cost: 0.05025
+2025-11-21 04:35:49 - INFO - Score for round 8: 0.0
+2025-11-21 04:35:54 - INFO - 
+Mixed probability distribution: [0.76630237 0.0831184  0.07528962 0.07528962]
+2025-11-21 04:35:54 - INFO - 
+Sorted rounds: [{'round': 7, 'score': 0.611111111111111}, {'round': 1, 'score': 0.38888888888888884}, {'round': 2, 'score': 0.2222222222222222}, {'round': 4, 'score': 0.2222222222222222}]
+2025-11-21 04:35:54 - INFO - 
+Selected index: 3, Selected item: {'round': 4, 'score': 0.2222222222222222}
+2025-11-21 04:35:54 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 04:35:54 - INFO - test2/AIME24/workflows/round_4/log.json
+2025-11-21 04:36:05 - INFO - Graph optimization response received successfully
+2025-11-21 04:36:05 - INFO - test2/AIME24/workflows/round_9
+2025-11-21 04:38:21 - INFO - Results saved to test2/AIME24/workflows/round_9/0.16667_20251121_043821.csv
+2025-11-21 04:38:21 - INFO - Average score on AIME24 dataset: 0.16667
+2025-11-21 04:38:21 - INFO - Total Cost: 0.05313
+2025-11-21 04:41:16 - INFO - Results saved to test2/AIME24/workflows/round_9/0.33333_20251121_044116.csv
+2025-11-21 04:41:16 - INFO - Average score on AIME24 dataset: 0.33333
+2025-11-21 04:41:16 - INFO - Total Cost: 0.05562
+2025-11-21 04:42:23 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-21 04:42:24 - INFO - Results saved to test2/AIME24/workflows/round_9/0.33333_20251121_044224.csv
+2025-11-21 04:42:24 - INFO - Average score on AIME24 dataset: 0.33333
+2025-11-21 04:42:24 - INFO - Total Cost: 0.03293
+2025-11-21 04:42:24 - INFO - Score for round 9: 0.27777777777777773
+2025-11-21 04:42:29 - INFO - 
+Mixed probability distribution: [0.76572004 0.08311156 0.07587903 0.07528937]
+2025-11-21 04:42:29 - INFO - 
+Sorted rounds: [{'round': 7, 'score': 0.611111111111111}, {'round': 1, 'score': 0.38888888888888884}, {'round': 9, 'score': 0.27777777777777773}, {'round': 2, 'score': 0.2222222222222222}]
+2025-11-21 04:42:29 - INFO - 
+Selected index: 0, Selected item: {'round': 7, 'score': 0.611111111111111}
+2025-11-21 04:42:29 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 04:42:29 - INFO - test2/AIME24/workflows/round_7/log.json
+2025-11-21 04:42:40 - INFO - Graph optimization response received successfully
+2025-11-21 04:42:40 - INFO - test2/AIME24/workflows/round_10
+2025-11-21 04:45:34 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-21 04:45:34 - INFO - Results saved to test2/AIME24/workflows/round_10/0.50000_20251121_044534.csv
+2025-11-21 04:45:34 - INFO - Average score on AIME24 dataset: 0.50000
+2025-11-21 04:45:34 - INFO - Total Cost: 0.06396
+2025-11-21 04:48:08 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-21 04:48:47 - INFO - Results saved to test2/AIME24/workflows/round_10/0.50000_20251121_044847.csv
+2025-11-21 04:48:47 - INFO - Average score on AIME24 dataset: 0.50000
+2025-11-21 04:48:47 - INFO - Total Cost: 0.07440
+2025-11-21 04:51:37 - INFO - Results saved to test2/AIME24/workflows/round_10/0.50000_20251121_045137.csv
+2025-11-21 04:51:37 - INFO - Average score on AIME24 dataset: 0.50000
+2025-11-21 04:51:37 - INFO - Total Cost: 0.07797
+2025-11-21 04:51:37 - INFO - Score for round 10: 0.5
+2025-11-21 04:51:42 - INFO - 
+Mixed probability distribution: [0.69922847 0.14264641 0.08233071 0.07579441]
+2025-11-21 04:51:42 - INFO - 
+Sorted rounds: [{'round': 7, 'score': 0.611111111111111}, {'round': 10, 'score': 0.5}, {'round': 1, 'score': 0.38888888888888884}, {'round': 9, 'score': 0.27777777777777773}]
+2025-11-21 04:51:42 - INFO - 
+Selected index: 0, Selected item: {'round': 7, 'score': 0.611111111111111}
+2025-11-21 04:51:42 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 04:51:42 - INFO - test2/AIME24/workflows/round_7/log.json
+2025-11-21 04:51:55 - INFO - Graph optimization response received successfully
+2025-11-21 04:51:55 - INFO - test2/AIME24/workflows/round_11
+2025-11-21 04:53:40 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-21 04:53:40 - INFO - Results saved to test2/AIME24/workflows/round_11/0.33333_20251121_045340.csv
+2025-11-21 04:53:40 - INFO - Average score on AIME24 dataset: 0.33333
+2025-11-21 04:53:40 - INFO - Total Cost: 0.05311
+2025-11-21 04:56:03 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-21 04:56:03 - INFO - Results saved to test2/AIME24/workflows/round_11/0.66667_20251121_045603.csv
+2025-11-21 04:56:03 - INFO - Average score on AIME24 dataset: 0.66667
+2025-11-21 04:56:03 - INFO - Total Cost: 0.04890
+2025-11-21 04:59:01 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-21 04:59:54 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-21 04:59:54 - INFO - Results saved to test2/AIME24/workflows/round_11/0.33333_20251121_045954.csv
+2025-11-21 04:59:54 - INFO - Average score on AIME24 dataset: 0.33333
+2025-11-21 04:59:54 - INFO - Total Cost: 0.04750
+2025-11-21 04:59:54 - INFO - Score for round 11: 0.4444444444444444
+2025-11-21 04:59:59 - INFO - 
+Mixed probability distribution: [0.68064864 0.14063295 0.09660591 0.08211251]
+2025-11-21 04:59:59 - INFO - 
+Sorted rounds: [{'round': 7, 'score': 0.611111111111111}, {'round': 10, 'score': 0.5}, {'round': 11, 'score': 0.4444444444444444}, {'round': 1, 'score': 0.38888888888888884}]
+2025-11-21 04:59:59 - INFO - 
+Selected index: 0, Selected item: {'round': 7, 'score': 0.611111111111111}
+2025-11-21 04:59:59 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 04:59:59 - INFO - test2/AIME24/workflows/round_7/log.json
+2025-11-21 05:00:13 - INFO - Graph optimization response received successfully
+2025-11-21 05:00:13 - INFO - test2/AIME24/workflows/round_12
+2025-11-21 05:06:16 - INFO - Results saved to test2/AIME24/workflows/round_12/0.66667_20251121_050616.csv
+2025-11-21 05:06:16 - INFO - Average score on AIME24 dataset: 0.66667
+2025-11-21 05:06:16 - INFO - Total Cost: 0.10274
+2025-11-21 05:08:45 - INFO - Results saved to test2/AIME24/workflows/round_12/0.83333_20251121_050845.csv
+2025-11-21 05:08:45 - INFO - Average score on AIME24 dataset: 0.83333
+2025-11-21 05:08:45 - INFO - Total Cost: 0.07021
+2025-11-21 05:13:19 - INFO - Results saved to test2/AIME24/workflows/round_12/0.66667_20251121_051319.csv
+2025-11-21 05:13:19 - INFO - Average score on AIME24 dataset: 0.66667
+2025-11-21 05:13:19 - INFO - Total Cost: 0.08818
+2025-11-21 05:13:19 - INFO - Score for round 12: 0.7222222222222222
+2025-11-21 05:13:24 - INFO - 
+Mixed probability distribution: [0.69922847 0.14264641 0.08233071 0.07579441]
+2025-11-21 05:13:24 - INFO - 
+Sorted rounds: [{'round': 12, 'score': 0.7222222222222222}, {'round': 7, 'score': 0.611111111111111}, {'round': 10, 'score': 0.5}, {'round': 1, 'score': 0.38888888888888884}]
+2025-11-21 05:13:24 - INFO - 
+Selected index: 0, Selected item: {'round': 12, 'score': 0.7222222222222222}
+2025-11-21 05:13:24 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 05:13:24 - INFO - test2/AIME24/workflows/round_12/log.json
+2025-11-21 05:13:41 - INFO - Graph optimization response received successfully
+2025-11-21 05:13:41 - INFO - test2/AIME24/workflows/round_13
+2025-11-21 05:15:57 - INFO - Results saved to test2/AIME24/workflows/round_13/0.66667_20251121_051557.csv
+2025-11-21 05:15:57 - INFO - Average score on AIME24 dataset: 0.66667
+2025-11-21 05:15:57 - INFO - Total Cost: 0.06971
+2025-11-21 05:18:08 - INFO - Results saved to test2/AIME24/workflows/round_13/0.83333_20251121_051808.csv
+2025-11-21 05:18:08 - INFO - Average score on AIME24 dataset: 0.83333
+2025-11-21 05:18:08 - INFO - Total Cost: 0.06350
+2025-11-21 05:23:12 - INFO - Results saved to test2/AIME24/workflows/round_13/0.83333_20251121_052312.csv
+2025-11-21 05:23:12 - INFO - Average score on AIME24 dataset: 0.83333
+2025-11-21 05:23:12 - INFO - Total Cost: 0.10300
+2025-11-21 05:23:12 - INFO - Score for round 13: 0.7777777777777778
+2025-11-21 05:23:17 - INFO - 
+Mixed probability distribution: [0.58771312 0.24378156 0.09329052 0.0752148 ]
+2025-11-21 05:23:17 - INFO - 
+Sorted rounds: [{'round': 13, 'score': 0.7777777777777778}, {'round': 12, 'score': 0.7222222222222222}, {'round': 7, 'score': 0.611111111111111}, {'round': 1, 'score': 0.38888888888888884}]
+2025-11-21 05:23:17 - INFO - 
+Selected index: 0, Selected item: {'round': 13, 'score': 0.7777777777777778}
+2025-11-21 05:23:17 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 05:23:17 - INFO - test2/AIME24/workflows/round_13/log.json
+2025-11-21 05:23:39 - INFO - Graph optimization response received successfully
+2025-11-21 05:23:39 - INFO - test2/AIME24/workflows/round_14
+2025-11-21 05:26:23 - INFO - Results saved to test2/AIME24/workflows/round_14/0.50000_20251121_052623.csv
+2025-11-21 05:26:23 - INFO - Average score on AIME24 dataset: 0.50000
+2025-11-21 05:26:23 - INFO - Total Cost: 0.09726
+2025-11-21 05:28:40 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-21 05:30:26 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-21 05:30:26 - INFO - Results saved to test2/AIME24/workflows/round_14/0.66667_20251121_053026.csv
+2025-11-21 05:30:26 - INFO - Average score on AIME24 dataset: 0.66667
+2025-11-21 05:30:26 - INFO - Total Cost: 0.10070
+2025-11-21 05:35:34 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-21 05:35:34 - INFO - Results saved to test2/AIME24/workflows/round_14/0.50000_20251121_053534.csv
+2025-11-21 05:35:34 - INFO - Average score on AIME24 dataset: 0.50000
+2025-11-21 05:35:34 - INFO - Total Cost: 0.12677
+2025-11-21 05:35:34 - INFO - Score for round 14: 0.5555555555555555
+2025-11-21 05:35:39 - INFO - 
+Mixed probability distribution: [0.58771312 0.24378156 0.09329052 0.0752148 ]
+2025-11-21 05:35:39 - INFO - 
+Sorted rounds: [{'round': 13, 'score': 0.7777777777777778}, {'round': 12, 'score': 0.7222222222222222}, {'round': 7, 'score': 0.611111111111111}, {'round': 1, 'score': 0.38888888888888884}]
+2025-11-21 05:35:39 - INFO - 
+Selected index: 3, Selected item: {'round': 1, 'score': 0.38888888888888884}
+2025-11-21 05:35:39 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 05:35:39 - INFO - test2/AIME24/workflows/round_1/log.json
+2025-11-21 05:35:49 - INFO - Graph optimization response received successfully
+2025-11-21 05:35:49 - INFO - test2/AIME24/workflows/round_15
+2025-11-21 05:37:38 - INFO - Results saved to test2/AIME24/workflows/round_15/0.50000_20251121_053738.csv
+2025-11-21 05:37:38 - INFO - Average score on AIME24 dataset: 0.50000
+2025-11-21 05:37:38 - INFO - Total Cost: 0.05441
+2025-11-21 05:38:47 - INFO - Results saved to test2/AIME24/workflows/round_15/0.50000_20251121_053847.csv
+2025-11-21 05:38:47 - INFO - Average score on AIME24 dataset: 0.50000
+2025-11-21 05:38:47 - INFO - Total Cost: 0.03838
+2025-11-21 05:40:25 - INFO - Results saved to test2/AIME24/workflows/round_15/0.50000_20251121_054025.csv
+2025-11-21 05:40:25 - INFO - Average score on AIME24 dataset: 0.50000
+2025-11-21 05:40:25 - INFO - Total Cost: 0.03969
+2025-11-21 05:40:25 - INFO - Score for round 15: 0.5
+2025-11-21 05:40:30 - INFO - 
+Mixed probability distribution: [0.58771312 0.24378156 0.09329052 0.0752148 ]
+2025-11-21 05:40:30 - INFO - 
+Sorted rounds: [{'round': 13, 'score': 0.7777777777777778}, {'round': 12, 'score': 0.7222222222222222}, {'round': 7, 'score': 0.611111111111111}, {'round': 1, 'score': 0.38888888888888884}]
+2025-11-21 05:40:30 - INFO - 
+Selected index: 0, Selected item: {'round': 13, 'score': 0.7777777777777778}
+2025-11-21 05:40:30 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 05:40:30 - INFO - test2/AIME24/workflows/round_13/log.json
+2025-11-21 05:40:42 - INFO - Graph optimization response received successfully
+2025-11-21 05:40:42 - INFO - test2/AIME24/workflows/round_16
+2025-11-21 05:46:00 - INFO - Results saved to test2/AIME24/workflows/round_16/0.50000_20251121_054600.csv
+2025-11-21 05:46:00 - INFO - Average score on AIME24 dataset: 0.50000
+2025-11-21 05:46:00 - INFO - Total Cost: 0.11258
+2025-11-21 05:50:55 - INFO - Results saved to test2/AIME24/workflows/round_16/0.66667_20251121_055055.csv
+2025-11-21 05:50:55 - INFO - Average score on AIME24 dataset: 0.66667
+2025-11-21 05:50:55 - INFO - Total Cost: 0.11352
+2025-11-21 05:54:28 - INFO - Results saved to test2/AIME24/workflows/round_16/0.66667_20251121_055428.csv
+2025-11-21 05:54:28 - INFO - Average score on AIME24 dataset: 0.66667
+2025-11-21 05:54:28 - INFO - Total Cost: 0.10902
+2025-11-21 05:54:28 - INFO - Score for round 16: 0.611111111111111
+2025-11-21 05:54:33 - INFO - 
+Mixed probability distribution: [0.58771312 0.24378156 0.09329052 0.0752148 ]
+2025-11-21 05:54:33 - INFO - 
+Sorted rounds: [{'round': 13, 'score': 0.7777777777777778}, {'round': 12, 'score': 0.7222222222222222}, {'round': 7, 'score': 0.611111111111111}, {'round': 1, 'score': 0.38888888888888884}]
+2025-11-21 05:54:33 - INFO - 
+Selected index: 0, Selected item: {'round': 13, 'score': 0.7777777777777778}
+2025-11-21 05:54:33 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 05:54:33 - INFO - test2/AIME24/workflows/round_13/log.json
+2025-11-21 05:54:50 - INFO - Graph optimization response received successfully
+2025-11-21 05:54:50 - INFO - test2/AIME24/workflows/round_17
+2025-11-21 05:56:57 - INFO - Results saved to test2/AIME24/workflows/round_17/0.66667_20251121_055657.csv
+2025-11-21 05:56:57 - INFO - Average score on AIME24 dataset: 0.66667
+2025-11-21 05:56:57 - INFO - Total Cost: 0.07221
+2025-11-21 06:01:23 - INFO - Results saved to test2/AIME24/workflows/round_17/0.83333_20251121_060123.csv
+2025-11-21 06:01:23 - INFO - Average score on AIME24 dataset: 0.83333
+2025-11-21 06:01:23 - INFO - Total Cost: 0.08760
+2025-11-21 06:06:35 - INFO - Results saved to test2/AIME24/workflows/round_17/0.66667_20251121_060635.csv
+2025-11-21 06:06:35 - INFO - Average score on AIME24 dataset: 0.66667
+2025-11-21 06:06:35 - INFO - Total Cost: 0.07853
+2025-11-21 06:06:35 - INFO - Score for round 17: 0.7222222222222222
+2025-11-21 06:06:40 - INFO - 
+Mixed probability distribution: [0.49699055 0.21391633 0.21391633 0.07517679]
+2025-11-21 06:06:40 - INFO - 
+Sorted rounds: [{'round': 13, 'score': 0.7777777777777778}, {'round': 12, 'score': 0.7222222222222222}, {'round': 17, 'score': 0.7222222222222222}, {'round': 1, 'score': 0.38888888888888884}]
+2025-11-21 06:06:40 - INFO - 
+Selected index: 3, Selected item: {'round': 1, 'score': 0.38888888888888884}
+2025-11-21 06:06:40 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 06:06:40 - INFO - test2/AIME24/workflows/round_1/log.json
+2025-11-21 06:06:55 - INFO - Graph optimization response received successfully
+2025-11-21 06:06:55 - INFO - test2/AIME24/workflows/round_18
+2025-11-21 06:09:20 - INFO - Results saved to test2/AIME24/workflows/round_18/0.16667_20251121_060920.csv
+2025-11-21 06:09:20 - INFO - Average score on AIME24 dataset: 0.16667
+2025-11-21 06:09:20 - INFO - Total Cost: 0.03524
+2025-11-21 06:10:52 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-21 06:10:52 - INFO - Results saved to test2/AIME24/workflows/round_18/0.00000_20251121_061052.csv
+2025-11-21 06:10:52 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-21 06:10:52 - INFO - Total Cost: 0.03433
+2025-11-21 06:12:55 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-21 06:13:40 - INFO - Results saved to test2/AIME24/workflows/round_18/0.16667_20251121_061340.csv
+2025-11-21 06:13:40 - INFO - Average score on AIME24 dataset: 0.16667
+2025-11-21 06:13:40 - INFO - Total Cost: 0.03851
+2025-11-21 06:13:40 - INFO - Score for round 18: 0.1111111111111111
+2025-11-21 06:13:45 - INFO - 
+Mixed probability distribution: [0.49699055 0.21391633 0.21391633 0.07517679]
+2025-11-21 06:13:45 - INFO - 
+Sorted rounds: [{'round': 13, 'score': 0.7777777777777778}, {'round': 12, 'score': 0.7222222222222222}, {'round': 17, 'score': 0.7222222222222222}, {'round': 1, 'score': 0.38888888888888884}]
+2025-11-21 06:13:45 - INFO - 
+Selected index: 3, Selected item: {'round': 1, 'score': 0.38888888888888884}
+2025-11-21 06:13:45 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 06:13:45 - INFO - test2/AIME24/workflows/round_1/log.json
+2025-11-21 06:14:03 - INFO - Graph optimization response received successfully
+2025-11-21 06:14:03 - INFO - test2/AIME24/workflows/round_19
+2025-11-21 06:15:25 - INFO - Maximum retries reached. Skipping this sample. Error: 'ScEnsemble' object has no attribute 'sc_ensemble'
+2025-11-21 06:15:26 - INFO - Maximum retries reached. Skipping this sample. Error: 'ScEnsemble' object has no attribute 'sc_ensemble'
+2025-11-21 06:16:00 - INFO - Maximum retries reached. Skipping this sample. Error: 'ScEnsemble' object has no attribute 'sc_ensemble'
+2025-11-21 06:16:20 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-21 06:17:33 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-21 06:17:46 - INFO - Maximum retries reached. Skipping this sample. Error: 'ScEnsemble' object has no attribute 'sc_ensemble'
+2025-11-21 06:17:46 - INFO - Results saved to test2/AIME24/workflows/round_19/0.00000_20251121_061746.csv
+2025-11-21 06:17:46 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-21 06:17:46 - INFO - Total Cost: 0.00000
+2025-11-21 06:18:52 - INFO - Maximum retries reached. Skipping this sample. Error: 'ScEnsemble' object has no attribute 'sc_ensemble'
+2025-11-21 06:18:53 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-21 06:19:08 - INFO - Maximum retries reached. Skipping this sample. Error: 'ScEnsemble' object has no attribute 'sc_ensemble'
+2025-11-21 06:20:36 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-21 06:21:13 - INFO - Maximum retries reached. Skipping this sample. Error: 'ScEnsemble' object has no attribute 'sc_ensemble'
+2025-11-21 06:22:20 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-21 06:22:20 - INFO - Results saved to test2/AIME24/workflows/round_19/0.00000_20251121_062220.csv
+2025-11-21 06:22:20 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-21 06:22:20 - INFO - Total Cost: 0.00000
+2025-11-21 06:23:32 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-21 06:23:42 - INFO - Maximum retries reached. Skipping this sample. Error: 'ScEnsemble' object has no attribute 'sc_ensemble'
+2025-11-21 06:24:25 - INFO - Maximum retries reached. Skipping this sample. Error: 'ScEnsemble' object has no attribute 'sc_ensemble'
+2025-11-21 06:24:47 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-21 06:25:33 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-21 06:25:54 - INFO - Maximum retries reached. Skipping this sample. Error: 'ScEnsemble' object has no attribute 'sc_ensemble'
+2025-11-21 06:25:54 - INFO - Results saved to test2/AIME24/workflows/round_19/0.00000_20251121_062554.csv
+2025-11-21 06:25:54 - INFO - Average score on AIME24 dataset: 0.00000
+2025-11-21 06:25:54 - INFO - Total Cost: 0.00000
+2025-11-21 06:25:54 - INFO - Score for round 19: 0.0
+2025-11-21 06:25:59 - INFO - 
+Mixed probability distribution: [0.49699055 0.21391633 0.21391633 0.07517679]
+2025-11-21 06:25:59 - INFO - 
+Sorted rounds: [{'round': 13, 'score': 0.7777777777777778}, {'round': 12, 'score': 0.7222222222222222}, {'round': 17, 'score': 0.7222222222222222}, {'round': 1, 'score': 0.38888888888888884}]
+2025-11-21 06:25:59 - INFO - 
+Selected index: 2, Selected item: {'round': 17, 'score': 0.7222222222222222}
+2025-11-21 06:25:59 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 06:25:59 - INFO - test2/AIME24/workflows/round_17/log.json
+2025-11-21 06:26:18 - INFO - Graph optimization response received successfully
+2025-11-21 06:26:18 - INFO - test2/AIME24/workflows/round_20
+2025-11-21 06:32:11 - INFO - Results saved to test2/AIME24/workflows/round_20/0.66667_20251121_063211.csv
+2025-11-21 06:32:11 - INFO - Average score on AIME24 dataset: 0.66667
+2025-11-21 06:32:11 - INFO - Total Cost: 0.09139
+2025-11-21 06:36:38 - INFO - Results saved to test2/AIME24/workflows/round_20/0.66667_20251121_063638.csv
+2025-11-21 06:36:38 - INFO - Average score on AIME24 dataset: 0.66667
+2025-11-21 06:36:38 - INFO - Total Cost: 0.07043
+2025-11-21 06:41:20 - INFO - Results saved to test2/AIME24/workflows/round_20/0.83333_20251121_064120.csv
+2025-11-21 06:41:20 - INFO - Average score on AIME24 dataset: 0.83333
+2025-11-21 06:41:20 - INFO - Total Cost: 0.08322
+2025-11-21 06:41:20 - INFO - Score for round 20: 0.7222222222222222
+2025-11-21 06:41:25 - INFO - 
+Mixed probability distribution: [0.49699055 0.21391633 0.21391633 0.07517679]
+2025-11-21 06:41:25 - INFO - 
+Sorted rounds: [{'round': 13, 'score': 0.7777777777777778}, {'round': 12, 'score': 0.7222222222222222}, {'round': 17, 'score': 0.7222222222222222}, {'round': 1, 'score': 0.38888888888888884}]
+2025-11-21 06:41:25 - INFO - 
+Selected index: 0, Selected item: {'round': 13, 'score': 0.7777777777777778}
+2025-11-21 06:41:25 - INFO - Processed experience data saved to test2/AIME24/workflows/processed_experience.json
+2025-11-21 06:41:25 - INFO - test2/AIME24/workflows/round_13/log.json
+2025-11-21 06:41:47 - INFO - Graph optimization response received successfully
+2025-11-21 06:41:47 - INFO - test2/AIME24/workflows/round_21
+2025-11-21 06:49:12 - INFO - Results saved to test2/AIME24/workflows/round_21/0.50000_20251121_064912.csv
+2025-11-21 06:49:12 - INFO - Average score on AIME24 dataset: 0.50000
+2025-11-21 06:49:12 - INFO - Total Cost: 0.10133
+2025-11-21 06:56:47 - INFO - Results saved to test2/AIME24/workflows/round_21/0.66667_20251121_065647.csv
+2025-11-21 06:56:47 - INFO - Average score on AIME24 dataset: 0.66667
+2025-11-21 06:56:47 - INFO - Total Cost: 0.11060
+2025-11-21 07:00:02 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-21 07:01:45 - INFO - Results saved to test2/AIME24/workflows/round_21/0.50000_20251121_070145.csv
+2025-11-21 07:01:45 - INFO - Average score on AIME24 dataset: 0.50000
+2025-11-21 07:01:45 - INFO - Total Cost: 0.08197
+2025-11-21 07:01:45 - INFO - Score for round 21: 0.5555555555555555
+2025-11-21 14:14:05 - INFO - Skipping datasets as data/datasets already exists.
+2025-11-21 14:18:20 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-21 14:18:29 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-21 14:18:43 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-21 14:20:56 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-21 14:23:49 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-21 14:23:49 - INFO - Results saved to test2/AIME24/workflows_test/round_1/0.62500_20251121_142349.csv
+2025-11-21 14:23:49 - INFO - Average score on AIME24 dataset: 0.62500
+2025-11-21 14:23:49 - INFO - Total Cost: 0.41611
+2025-11-21 14:26:20 - INFO - Skipping datasets as data/datasets already exists.
+2025-11-21 14:26:20 - ERROR - Error loading graph for round 1: No module named 'test2.AIME25.workflows.round_1.graph'
+2025-11-21 14:26:20 - INFO - Error occurred: No module named 'test2.AIME25.workflows.round_1.graph'. Retrying... (Attempt 1/1)
+2025-11-21 14:26:20 - INFO - Max retries reached. Moving to next round.
+2025-11-21 14:29:00 - INFO - Skipping datasets as data/datasets already exists.
+2025-11-21 14:30:22 - INFO - Skipping datasets as data/datasets already exists.
+2025-11-21 14:30:52 - INFO - Results saved to test2/AIME25/workflows/round_1/0.66667_20251121_143052.csv
+2025-11-21 14:30:52 - INFO - Average score on AIME25 dataset: 0.66667
+2025-11-21 14:30:52 - INFO - Total Cost: 0.01164
+2025-11-21 14:31:49 - INFO - Results saved to test2/AIME25/workflows/round_1/0.50000_20251121_143148.csv
+2025-11-21 14:31:49 - INFO - Average score on AIME25 dataset: 0.50000
+2025-11-21 14:31:49 - INFO - Total Cost: 0.01251
+2025-11-21 14:32:21 - INFO - Results saved to test2/AIME25/workflows/round_1/0.33333_20251121_143221.csv
+2025-11-21 14:32:21 - INFO - Average score on AIME25 dataset: 0.33333
+2025-11-21 14:32:21 - INFO - Total Cost: 0.00817
+2025-11-21 14:32:21 - INFO - 
+Mixed probability distribution: [1.]
+2025-11-21 14:32:21 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.5}]
+2025-11-21 14:32:21 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.5}
+2025-11-21 14:32:21 - INFO - Processed experience data saved to test2/AIME25/workflows/processed_experience.json
+2025-11-21 14:32:21 - INFO - test2/AIME25/workflows/round_1/log.json
+2025-11-21 14:32:33 - INFO - Graph optimization response received successfully
+2025-11-21 14:32:33 - INFO - test2/AIME25/workflows/round_2
+2025-11-21 14:41:11 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-21 14:41:11 - INFO - Results saved to test2/AIME25/workflows/round_2/0.00000_20251121_144111.csv
+2025-11-21 14:41:11 - INFO - Average score on AIME25 dataset: 0.00000
+2025-11-21 14:41:11 - INFO - Total Cost: 0.04663
+2025-11-21 14:47:26 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-21 14:47:26 - INFO - Results saved to test2/AIME25/workflows/round_2/0.00000_20251121_144726.csv
+2025-11-21 14:47:26 - INFO - Average score on AIME25 dataset: 0.00000
+2025-11-21 14:47:26 - INFO - Total Cost: 0.04736
+2025-11-21 14:53:43 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-21 14:53:43 - INFO - Results saved to test2/AIME25/workflows/round_2/0.00000_20251121_145343.csv
+2025-11-21 14:53:43 - INFO - Average score on AIME25 dataset: 0.00000
+2025-11-21 14:53:43 - INFO - Total Cost: 0.06013
+2025-11-21 14:53:43 - INFO - Score for round 2: 0.0
+2025-11-21 14:53:48 - INFO - 
+Mixed probability distribution: [0.84996822 0.15003178]
+2025-11-21 14:53:48 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.5}, {'round': 2, 'score': 0.0}]
+2025-11-21 14:53:48 - INFO - 
+Selected index: 1, Selected item: {'round': 2, 'score': 0.0}
+2025-11-21 14:53:48 - INFO - Processed experience data saved to test2/AIME25/workflows/processed_experience.json
+2025-11-21 14:53:48 - INFO - test2/AIME25/workflows/round_2/log.json
+2025-11-21 14:54:05 - INFO - Graph optimization response received successfully
+2025-11-21 14:54:05 - INFO - test2/AIME25/workflows/round_3
+2025-11-21 14:58:27 - INFO - Skipping datasets as data/datasets already exists.
+2025-11-21 14:59:08 - INFO - Results saved to test2/AIME25/workflows/round_1/0.83333_20251121_145908.csv
+2025-11-21 14:59:08 - INFO - Average score on AIME25 dataset: 0.83333
+2025-11-21 14:59:08 - INFO - Total Cost: 0.01443
+2025-11-21 14:59:08 - INFO - 
+Mixed probability distribution: [0.849994 0.150006]
+2025-11-21 14:59:08 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.5833333333333333}, {'round': 2, 'score': 0.0}]
+2025-11-21 14:59:08 - INFO - 
+Selected index: 1, Selected item: {'round': 2, 'score': 0.0}
+2025-11-21 14:59:08 - ERROR - Error: File not found for round 2: [Errno 2] No such file or directory: 'test2/AIME25/workflows/round_2/prompt.py'
+2025-11-21 14:59:08 - INFO - Error occurred: [Errno 2] No such file or directory: 'test2/AIME25/workflows/round_2/prompt.py'. Retrying... (Attempt 1/1)
+2025-11-21 14:59:08 - INFO - Max retries reached. Moving to next round.
+2025-11-21 14:59:13 - INFO - Score for round 2: None
+2025-11-21 14:59:18 - INFO - 
+Mixed probability distribution: [0.849994 0.150006]
+2025-11-21 14:59:18 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.5833333333333333}, {'round': 2, 'score': 0.0}]
+2025-11-21 14:59:18 - INFO - 
+Selected index: 1, Selected item: {'round': 2, 'score': 0.0}
+2025-11-21 14:59:18 - ERROR - Error: File not found for round 2: [Errno 2] No such file or directory: 'test2/AIME25/workflows/round_2/prompt.py'
+2025-11-21 14:59:18 - INFO - Error occurred: [Errno 2] No such file or directory: 'test2/AIME25/workflows/round_2/prompt.py'. Retrying... (Attempt 1/1)
+2025-11-21 14:59:18 - INFO - Max retries reached. Moving to next round.
+2025-11-21 14:59:23 - INFO - Score for round 3: None
+2025-11-21 14:59:28 - INFO - 
+Mixed probability distribution: [0.849994 0.150006]
+2025-11-21 14:59:28 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.5833333333333333}, {'round': 2, 'score': 0.0}]
+2025-11-21 14:59:28 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.5833333333333333}
+2025-11-21 14:59:28 - INFO - Processed experience data saved to test2/AIME25/workflows/processed_experience.json
+2025-11-21 14:59:28 - INFO - test2/AIME25/workflows/round_1/log.json
+2025-11-21 14:59:42 - INFO - Graph optimization response received successfully
+2025-11-21 14:59:42 - INFO - test2/AIME25/workflows/round_4
+2025-11-21 15:00:21 - INFO - Results saved to test2/AIME25/workflows/round_4/0.50000_20251121_150021.csv
+2025-11-21 15:00:21 - INFO - Average score on AIME25 dataset: 0.50000
+2025-11-21 15:00:21 - INFO - Total Cost: 0.02769
+2025-11-21 15:00:21 - INFO - Score for round 4: 0.5
+2025-11-21 15:00:26 - INFO - 
+Mixed probability distribution: [0.68878738 0.21120757 0.10000505]
+2025-11-21 15:00:26 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.5833333333333333}, {'round': 4, 'score': 0.5}, {'round': 2, 'score': 0.0}]
+2025-11-21 15:00:26 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.5833333333333333}
+2025-11-21 15:00:26 - INFO - Processed experience data saved to test2/AIME25/workflows/processed_experience.json
+2025-11-21 15:00:26 - INFO - test2/AIME25/workflows/round_1/log.json
+2025-11-21 15:00:41 - INFO - Graph optimization response received successfully
+2025-11-21 15:00:41 - INFO - test2/AIME25/workflows/round_5
+2025-11-21 15:02:36 - INFO - Maximum retries reached. Skipping this sample. Error: name 're' is not defined
+2025-11-21 15:02:38 - INFO - Maximum retries reached. Skipping this sample. Error: name 're' is not defined
+2025-11-21 15:04:59 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-21 15:06:15 - INFO - Maximum retries reached. Skipping this sample. Error: name 're' is not defined
+2025-11-21 15:06:27 - INFO - Maximum retries reached. Skipping this sample. Error: name 're' is not defined
+2025-11-21 15:06:48 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-21 15:06:48 - INFO - Results saved to test2/AIME25/workflows/round_5/0.00000_20251121_150648.csv
+2025-11-21 15:06:48 - INFO - Average score on AIME25 dataset: 0.00000
+2025-11-21 15:06:48 - INFO - Total Cost: 0.00000
+2025-11-21 15:06:48 - INFO - Score for round 5: 0.0
+2025-11-21 15:06:53 - INFO - 
+Mixed probability distribution: [0.66378313 0.18620677 0.07500505 0.07500505]
+2025-11-21 15:06:53 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.5833333333333333}, {'round': 4, 'score': 0.5}, {'round': 2, 'score': 0.0}, {'round': 5, 'score': 0.0}]
+2025-11-21 15:06:53 - INFO - 
+Selected index: 1, Selected item: {'round': 4, 'score': 0.5}
+2025-11-21 15:06:53 - INFO - Processed experience data saved to test2/AIME25/workflows/processed_experience.json
+2025-11-21 15:06:53 - INFO - test2/AIME25/workflows/round_4/log.json
+2025-11-21 15:07:10 - INFO - Graph optimization response received successfully
+2025-11-21 15:07:10 - INFO - test2/AIME25/workflows/round_6
+2025-11-21 15:10:45 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-21 15:10:45 - INFO - Results saved to test2/AIME25/workflows/round_6/0.50000_20251121_151045.csv
+2025-11-21 15:10:45 - INFO - Average score on AIME25 dataset: 0.50000
+2025-11-21 15:10:45 - INFO - Total Cost: 0.05068
+2025-11-21 15:10:45 - INFO - Score for round 6: 0.5
+2025-11-21 15:10:50 - INFO - 
+Mixed probability distribution: [0.58307115 0.17096225 0.17096225 0.07500436]
+2025-11-21 15:10:50 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.5833333333333333}, {'round': 4, 'score': 0.5}, {'round': 6, 'score': 0.5}, {'round': 2, 'score': 0.0}]
+2025-11-21 15:10:50 - INFO - 
+Selected index: 2, Selected item: {'round': 6, 'score': 0.5}
+2025-11-21 15:10:50 - INFO - Processed experience data saved to test2/AIME25/workflows/processed_experience.json
+2025-11-21 15:10:50 - INFO - test2/AIME25/workflows/round_6/log.json
+2025-11-21 15:11:10 - INFO - Graph optimization response received successfully
+2025-11-21 15:11:10 - INFO - test2/AIME25/workflows/round_7
+2025-11-21 15:11:33 - INFO - Maximum retries reached. Skipping this sample. Error: module 'test2.AIME25.workflows.round_7.prompt' has no attribute 'CONCISE_PROMPT'
+2025-11-21 15:11:49 - INFO - Maximum retries reached. Skipping this sample. Error: module 'test2.AIME25.workflows.round_7.prompt' has no attribute 'CONCISE_PROMPT'
+2025-11-21 15:12:01 - INFO - Maximum retries reached. Skipping this sample. Error: module 'test2.AIME25.workflows.round_7.prompt' has no attribute 'CONCISE_PROMPT'
+2025-11-21 15:12:04 - INFO - Maximum retries reached. Skipping this sample. Error: module 'test2.AIME25.workflows.round_7.prompt' has no attribute 'CONCISE_PROMPT'
+2025-11-21 15:12:22 - INFO - Maximum retries reached. Skipping this sample. Error: module 'test2.AIME25.workflows.round_7.prompt' has no attribute 'CONCISE_PROMPT'
+2025-11-21 15:12:37 - INFO - Maximum retries reached. Skipping this sample. Error: module 'test2.AIME25.workflows.round_7.prompt' has no attribute 'CONCISE_PROMPT'
+2025-11-21 15:12:37 - INFO - Results saved to test2/AIME25/workflows/round_7/0.00000_20251121_151237.csv
+2025-11-21 15:12:37 - INFO - Average score on AIME25 dataset: 0.00000
+2025-11-21 15:12:37 - INFO - Total Cost: 0.00000
+2025-11-21 15:12:37 - INFO - Score for round 7: 0.0
+2025-11-21 15:12:42 - INFO - 
+Mixed probability distribution: [0.58307115 0.17096225 0.17096225 0.07500436]
+2025-11-21 15:12:42 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.5833333333333333}, {'round': 4, 'score': 0.5}, {'round': 6, 'score': 0.5}, {'round': 2, 'score': 0.0}]
+2025-11-21 15:12:42 - INFO - 
+Selected index: 2, Selected item: {'round': 6, 'score': 0.5}
+2025-11-21 15:12:42 - INFO - Processed experience data saved to test2/AIME25/workflows/processed_experience.json
+2025-11-21 15:12:42 - INFO - test2/AIME25/workflows/round_6/log.json
+2025-11-21 15:13:05 - INFO - Graph optimization response received successfully
+2025-11-21 15:13:05 - INFO - test2/AIME25/workflows/round_8
+2025-11-21 15:14:17 - INFO - Results saved to test2/AIME25/workflows/round_8/0.50000_20251121_151417.csv
+2025-11-21 15:14:17 - INFO - Average score on AIME25 dataset: 0.50000
+2025-11-21 15:14:17 - INFO - Total Cost: 0.04198
+2025-11-21 15:14:17 - INFO - Score for round 8: 0.5
+2025-11-21 15:14:22 - INFO - 
+Mixed probability distribution: [0.52181988 0.15939337 0.15939337 0.15939337]
+2025-11-21 15:14:22 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.5833333333333333}, {'round': 4, 'score': 0.5}, {'round': 6, 'score': 0.5}, {'round': 8, 'score': 0.5}]
+2025-11-21 15:14:22 - INFO - 
+Selected index: 1, Selected item: {'round': 4, 'score': 0.5}
+2025-11-21 15:14:22 - INFO - Processed experience data saved to test2/AIME25/workflows/processed_experience.json
+2025-11-21 15:14:22 - INFO - test2/AIME25/workflows/round_4/log.json
+2025-11-21 15:14:42 - INFO - Graph optimization response received successfully
+2025-11-21 15:14:42 - INFO - test2/AIME25/workflows/round_9
+2025-11-21 15:16:25 - INFO - Results saved to test2/AIME25/workflows/round_9/0.33333_20251121_151625.csv
+2025-11-21 15:16:25 - INFO - Average score on AIME25 dataset: 0.33333
+2025-11-21 15:16:25 - INFO - Total Cost: 0.04282
+2025-11-21 15:16:25 - INFO - Score for round 9: 0.3333333333333333
+2025-11-21 15:16:30 - INFO - 
+Mixed probability distribution: [0.52181988 0.15939337 0.15939337 0.15939337]
+2025-11-21 15:16:30 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.5833333333333333}, {'round': 4, 'score': 0.5}, {'round': 6, 'score': 0.5}, {'round': 8, 'score': 0.5}]
+2025-11-21 15:16:30 - INFO - 
+Selected index: 1, Selected item: {'round': 4, 'score': 0.5}
+2025-11-21 15:16:30 - INFO - Processed experience data saved to test2/AIME25/workflows/processed_experience.json
+2025-11-21 15:16:30 - INFO - test2/AIME25/workflows/round_4/log.json
+2025-11-21 15:16:45 - INFO - Graph optimization response received successfully
+2025-11-21 15:16:45 - INFO - test2/AIME25/workflows/round_10
+2025-11-21 15:20:04 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-21 15:20:04 - INFO - Results saved to test2/AIME25/workflows/round_10/0.66667_20251121_152004.csv
+2025-11-21 15:20:04 - INFO - Average score on AIME25 dataset: 0.66667
+2025-11-21 15:20:04 - INFO - Total Cost: 0.04291
+2025-11-21 15:20:04 - INFO - Score for round 10: 0.6666666666666666
+2025-11-21 15:20:09 - INFO - 
+Mixed probability distribution: [0.63045699 0.17991227 0.09481537 0.09481537]
+2025-11-21 15:20:09 - INFO - 
+Sorted rounds: [{'round': 10, 'score': 0.6666666666666666}, {'round': 1, 'score': 0.5833333333333333}, {'round': 4, 'score': 0.5}, {'round': 6, 'score': 0.5}]
+2025-11-21 15:20:09 - INFO - 
+Selected index: 0, Selected item: {'round': 10, 'score': 0.6666666666666666}
+2025-11-21 15:20:09 - INFO - Processed experience data saved to test2/AIME25/workflows/processed_experience.json
+2025-11-21 15:20:09 - INFO - test2/AIME25/workflows/round_10/log.json
+2025-11-21 15:20:25 - INFO - Graph optimization response received successfully
+2025-11-21 15:20:25 - INFO - test2/AIME25/workflows/round_11
+2025-11-21 15:21:38 - INFO - Results saved to test2/AIME25/workflows/round_11/0.83333_20251121_152138.csv
+2025-11-21 15:21:38 - INFO - Average score on AIME25 dataset: 0.83333
+2025-11-21 15:21:38 - INFO - Total Cost: 0.04411
+2025-11-21 15:21:38 - INFO - Score for round 11: 0.8333333333333334
+2025-11-21 15:21:43 - INFO - 
+Mixed probability distribution: [0.74570072 0.09892657 0.07951915 0.07585356]
+2025-11-21 15:21:43 - INFO - 
+Sorted rounds: [{'round': 11, 'score': 0.8333333333333334}, {'round': 10, 'score': 0.6666666666666666}, {'round': 1, 'score': 0.5833333333333333}, {'round': 4, 'score': 0.5}]
+2025-11-21 15:21:43 - INFO - 
+Selected index: 2, Selected item: {'round': 1, 'score': 0.5833333333333333}
+2025-11-21 15:21:43 - INFO - Processed experience data saved to test2/AIME25/workflows/processed_experience.json
+2025-11-21 15:21:43 - INFO - test2/AIME25/workflows/round_1/log.json
+2025-11-21 15:21:57 - INFO - Graph optimization response received successfully
+2025-11-21 15:21:57 - INFO - test2/AIME25/workflows/round_12
+2025-11-21 15:24:29 - INFO - Results saved to test2/AIME25/workflows/round_12/0.66667_20251121_152429.csv
+2025-11-21 15:24:29 - INFO - Average score on AIME25 dataset: 0.66667
+2025-11-21 15:24:29 - INFO - Total Cost: 0.04473
+2025-11-21 15:24:29 - INFO - Score for round 12: 0.6666666666666666
+2025-11-21 15:24:34 - INFO - 
+Mixed probability distribution: [0.72429889 0.09816308 0.09816308 0.07937494]
+2025-11-21 15:24:34 - INFO - 
+Sorted rounds: [{'round': 11, 'score': 0.8333333333333334}, {'round': 10, 'score': 0.6666666666666666}, {'round': 12, 'score': 0.6666666666666666}, {'round': 1, 'score': 0.5833333333333333}]
+2025-11-21 15:24:34 - INFO - 
+Selected index: 1, Selected item: {'round': 10, 'score': 0.6666666666666666}
+2025-11-21 15:24:34 - INFO - Processed experience data saved to test2/AIME25/workflows/processed_experience.json
+2025-11-21 15:24:34 - INFO - test2/AIME25/workflows/round_10/log.json
+2025-11-21 15:24:52 - INFO - Graph optimization response received successfully
+2025-11-21 15:24:52 - INFO - test2/AIME25/workflows/round_13
+2025-11-21 15:27:26 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-21 15:28:05 - INFO - Results saved to test2/AIME25/workflows/round_13/0.00000_20251121_152805.csv
+2025-11-21 15:28:05 - INFO - Average score on AIME25 dataset: 0.00000
+2025-11-21 15:28:05 - INFO - Total Cost: 0.11274
+2025-11-21 15:28:05 - INFO - Score for round 13: 0.0
+2025-11-21 15:28:10 - INFO - 
+Mixed probability distribution: [0.72429889 0.09816308 0.09816308 0.07937494]
+2025-11-21 15:28:10 - INFO - 
+Sorted rounds: [{'round': 11, 'score': 0.8333333333333334}, {'round': 10, 'score': 0.6666666666666666}, {'round': 12, 'score': 0.6666666666666666}, {'round': 1, 'score': 0.5833333333333333}]
+2025-11-21 15:28:10 - INFO - 
+Selected index: 3, Selected item: {'round': 1, 'score': 0.5833333333333333}
+2025-11-21 15:28:10 - INFO - Processed experience data saved to test2/AIME25/workflows/processed_experience.json
+2025-11-21 15:28:10 - INFO - test2/AIME25/workflows/round_1/log.json
+2025-11-21 15:28:24 - INFO - Graph optimization response received successfully
+2025-11-21 15:28:24 - INFO - test2/AIME25/workflows/round_14
+2025-11-21 15:29:04 - INFO - Maximum retries reached. Skipping this sample. Error: module 'test2.AIME25.workflows.template.operator' has no attribute 'sc_ensemble'
+2025-11-21 15:29:04 - INFO - Maximum retries reached. Skipping this sample. Error: module 'test2.AIME25.workflows.template.operator' has no attribute 'sc_ensemble'
+2025-11-21 15:29:12 - INFO - Maximum retries reached. Skipping this sample. Error: module 'test2.AIME25.workflows.template.operator' has no attribute 'sc_ensemble'
+2025-11-21 15:29:28 - INFO - Maximum retries reached. Skipping this sample. Error: module 'test2.AIME25.workflows.template.operator' has no attribute 'sc_ensemble'
+2025-11-21 15:29:56 - INFO - Maximum retries reached. Skipping this sample. Error: module 'test2.AIME25.workflows.template.operator' has no attribute 'sc_ensemble'
+2025-11-21 15:30:27 - INFO - Maximum retries reached. Skipping this sample. Error: module 'test2.AIME25.workflows.template.operator' has no attribute 'sc_ensemble'
+2025-11-21 15:30:27 - INFO - Results saved to test2/AIME25/workflows/round_14/0.00000_20251121_153027.csv
+2025-11-21 15:30:27 - INFO - Average score on AIME25 dataset: 0.00000
+2025-11-21 15:30:27 - INFO - Total Cost: 0.00000
+2025-11-21 15:30:27 - INFO - Score for round 14: 0.0
+2025-11-21 15:30:32 - INFO - 
+Mixed probability distribution: [0.72429889 0.09816308 0.09816308 0.07937494]
+2025-11-21 15:30:32 - INFO - 
+Sorted rounds: [{'round': 11, 'score': 0.8333333333333334}, {'round': 10, 'score': 0.6666666666666666}, {'round': 12, 'score': 0.6666666666666666}, {'round': 1, 'score': 0.5833333333333333}]
+2025-11-21 15:30:32 - INFO - 
+Selected index: 0, Selected item: {'round': 11, 'score': 0.8333333333333334}
+2025-11-21 15:30:32 - INFO - Processed experience data saved to test2/AIME25/workflows/processed_experience.json
+2025-11-21 15:30:32 - INFO - test2/AIME25/workflows/round_11/log.json
+2025-11-21 15:30:56 - INFO - Graph optimization response received successfully
+2025-11-21 15:30:56 - INFO - test2/AIME25/workflows/round_15
+2025-11-21 15:33:28 - INFO - Results saved to test2/AIME25/workflows/round_15/0.66667_20251121_153328.csv
+2025-11-21 15:33:28 - INFO - Average score on AIME25 dataset: 0.66667
+2025-11-21 15:33:28 - INFO - Total Cost: 0.05035
+2025-11-21 15:33:28 - INFO - Score for round 15: 0.6666666666666666
+2025-11-21 15:33:33 - INFO - 
+Mixed probability distribution: [0.72429889 0.09816308 0.09816308 0.07937494]
+2025-11-21 15:33:33 - INFO - 
+Sorted rounds: [{'round': 11, 'score': 0.8333333333333334}, {'round': 10, 'score': 0.6666666666666666}, {'round': 12, 'score': 0.6666666666666666}, {'round': 1, 'score': 0.5833333333333333}]
+2025-11-21 15:33:33 - INFO - 
+Selected index: 0, Selected item: {'round': 11, 'score': 0.8333333333333334}
+2025-11-21 15:33:33 - INFO - Processed experience data saved to test2/AIME25/workflows/processed_experience.json
+2025-11-21 15:33:33 - INFO - test2/AIME25/workflows/round_11/log.json
+2025-11-21 15:33:55 - INFO - Graph optimization response received successfully
+2025-11-21 15:33:55 - INFO - test2/AIME25/workflows/round_16
+2025-11-21 15:36:26 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-21 15:36:26 - INFO - Results saved to test2/AIME25/workflows/round_16/0.66667_20251121_153626.csv
+2025-11-21 15:36:26 - INFO - Average score on AIME25 dataset: 0.66667
+2025-11-21 15:36:26 - INFO - Total Cost: 0.05592
+2025-11-21 15:36:26 - INFO - Score for round 16: 0.6666666666666666
+2025-11-21 15:36:31 - INFO - 
+Mixed probability distribution: [0.72429889 0.09816308 0.09816308 0.07937494]
+2025-11-21 15:36:31 - INFO - 
+Sorted rounds: [{'round': 11, 'score': 0.8333333333333334}, {'round': 10, 'score': 0.6666666666666666}, {'round': 12, 'score': 0.6666666666666666}, {'round': 1, 'score': 0.5833333333333333}]
+2025-11-21 15:36:31 - INFO - 
+Selected index: 0, Selected item: {'round': 11, 'score': 0.8333333333333334}
+2025-11-21 15:36:31 - INFO - Processed experience data saved to test2/AIME25/workflows/processed_experience.json
+2025-11-21 15:36:31 - INFO - test2/AIME25/workflows/round_11/log.json
+2025-11-21 15:36:52 - INFO - Graph optimization response received successfully
+2025-11-21 15:36:52 - INFO - test2/AIME25/workflows/round_17
+2025-11-21 15:40:37 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-21 15:40:37 - INFO - Results saved to test2/AIME25/workflows/round_17/0.50000_20251121_154037.csv
+2025-11-21 15:40:37 - INFO - Average score on AIME25 dataset: 0.50000
+2025-11-21 15:40:37 - INFO - Total Cost: 0.04741
+2025-11-21 15:40:37 - INFO - Score for round 17: 0.5
+2025-11-21 15:40:37 - INFO - Convergence detected, occurred in round 11, final round is 15
+2025-11-21 15:40:37 - INFO - Round 1: Average Score = 0.5833, Standard Deviation = 0.1863
+2025-11-21 15:40:37 - INFO - Round 2: Average Score = 0.0000, Standard Deviation = 0.0000
+2025-11-21 15:40:37 - INFO - Round 3: Average Score = 0.5000, Standard Deviation = 0.0000
+2025-11-21 15:40:37 - INFO - Round 4: Average Score = 0.0000, Standard Deviation = 0.0000
+2025-11-21 15:40:37 - INFO - Round 5: Average Score = 0.5000, Standard Deviation = 0.0000
+2025-11-21 15:40:37 - INFO - Round 6: Average Score = 0.0000, Standard Deviation = 0.0000
+2025-11-21 15:40:37 - INFO - Round 7: Average Score = 0.5000, Standard Deviation = 0.0000
+2025-11-21 15:40:37 - INFO - Round 8: Average Score = 0.3333, Standard Deviation = 0.0000
+2025-11-21 15:40:37 - INFO - Round 9: Average Score = 0.6667, Standard Deviation = 0.0000
+2025-11-21 15:40:37 - INFO - Round 10: Average Score = 0.8333, Standard Deviation = 0.0000
+2025-11-21 15:40:37 - INFO - Round 11: Average Score = 0.6667, Standard Deviation = 0.0000
+2025-11-21 15:40:37 - INFO - Round 12: Average Score = 0.0000, Standard Deviation = 0.0000
+2025-11-21 15:40:37 - INFO - Round 13: Average Score = 0.0000, Standard Deviation = 0.0000
+2025-11-21 15:40:37 - INFO - Round 14: Average Score = 0.6667, Standard Deviation = 0.0000
+2025-11-21 15:40:37 - INFO - Round 15: Average Score = 0.6667, Standard Deviation = 0.0000
+2025-11-21 15:40:37 - INFO - Round 16: Average Score = 0.5000, Standard Deviation = 0.0000
+2025-11-21 16:11:50 - INFO - Skipping datasets as data/datasets already exists.
+2025-11-21 16:14:26 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-21 16:15:16 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-11-21 16:18:27 - INFO - Results saved to test2/AIME25/workflows_test/round_1/0.50000_20251121_161827.csv
+2025-11-21 16:18:27 - INFO - Average score on AIME25 dataset: 0.50000
+2025-11-21 16:18:27 - INFO - Total Cost: 0.28267

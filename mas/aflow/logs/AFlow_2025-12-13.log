@@ -1,0 +1,324 @@
+2025-12-13 17:07:25 - INFO - Skipping datasets as data/datasets already exists.
+2025-12-13 17:07:30 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 401 - {'error': {'message': 'Incorrect API key provided: OPENAI_A**_KEY. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-12-13 17:07:30 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 401 - {'error': {'message': 'Incorrect API key provided: OPENAI_A**_KEY. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-12-13 17:07:30 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 401 - {'error': {'message': 'Incorrect API key provided: OPENAI_A**_KEY. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-12-13 17:07:30 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 401 - {'error': {'message': 'Incorrect API key provided: OPENAI_A**_KEY. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-12-13 17:07:30 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 401 - {'error': {'message': 'Incorrect API key provided: OPENAI_A**_KEY. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-12-13 17:07:31 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 401 - {'error': {'message': 'Incorrect API key provided: OPENAI_A**_KEY. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-12-13 17:07:31 - INFO - Results saved to workspace/AIME25/workflows/round_1/0.00000_20251213_170731.csv
+2025-12-13 17:07:31 - INFO - Average score on AIME25 dataset: 0.00000
+2025-12-13 17:07:31 - INFO - Total Cost: 0.00000
+2025-12-13 17:07:35 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 401 - {'error': {'message': 'Incorrect API key provided: OPENAI_A**_KEY. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-12-13 17:07:35 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 401 - {'error': {'message': 'Incorrect API key provided: OPENAI_A**_KEY. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-12-13 17:07:35 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 401 - {'error': {'message': 'Incorrect API key provided: OPENAI_A**_KEY. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-12-13 17:07:35 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 401 - {'error': {'message': 'Incorrect API key provided: OPENAI_A**_KEY. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-12-13 17:07:35 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 401 - {'error': {'message': 'Incorrect API key provided: OPENAI_A**_KEY. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-12-13 17:07:35 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 401 - {'error': {'message': 'Incorrect API key provided: OPENAI_A**_KEY. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-12-13 17:07:35 - INFO - Results saved to workspace/AIME25/workflows/round_1/0.00000_20251213_170735.csv
+2025-12-13 17:07:35 - INFO - Average score on AIME25 dataset: 0.00000
+2025-12-13 17:07:35 - INFO - Total Cost: 0.00000
+2025-12-13 17:07:40 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 401 - {'error': {'message': 'Incorrect API key provided: OPENAI_A**_KEY. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-12-13 17:07:40 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 401 - {'error': {'message': 'Incorrect API key provided: OPENAI_A**_KEY. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-12-13 17:07:40 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 401 - {'error': {'message': 'Incorrect API key provided: OPENAI_A**_KEY. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-12-13 17:07:40 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 401 - {'error': {'message': 'Incorrect API key provided: OPENAI_A**_KEY. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-12-13 17:07:40 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 401 - {'error': {'message': 'Incorrect API key provided: OPENAI_A**_KEY. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-12-13 17:07:40 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 401 - {'error': {'message': 'Incorrect API key provided: OPENAI_A**_KEY. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-12-13 17:07:40 - INFO - Results saved to workspace/AIME25/workflows/round_1/0.00000_20251213_170740.csv
+2025-12-13 17:07:40 - INFO - Average score on AIME25 dataset: 0.00000
+2025-12-13 17:07:40 - INFO - Total Cost: 0.00000
+2025-12-13 17:07:40 - INFO - 
+Mixed probability distribution: [1.]
+2025-12-13 17:07:40 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.0}]
+2025-12-13 17:07:40 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.0}
+2025-12-13 17:07:40 - INFO - Processed experience data saved to workspace/AIME25/workflows/processed_experience.json
+2025-12-13 17:07:40 - INFO - workspace/AIME25/workflows/round_1/log.json
+2025-12-13 17:07:40 - INFO - Error occurred: read json file: workspace/AIME25/workflows/round_1/log.json failed. Retrying... (Attempt 1/1)
+2025-12-13 17:07:40 - INFO - Max retries reached. Moving to next round.
+2025-12-13 17:07:45 - INFO - Score for round 2: None
+2025-12-13 17:07:50 - INFO - 
+Mixed probability distribution: [1.]
+2025-12-13 17:07:50 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.0}]
+2025-12-13 17:07:50 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.0}
+2025-12-13 17:07:50 - INFO - Processed experience data saved to workspace/AIME25/workflows/processed_experience.json
+2025-12-13 17:07:50 - INFO - workspace/AIME25/workflows/round_1/log.json
+2025-12-13 17:07:50 - INFO - Error occurred: read json file: workspace/AIME25/workflows/round_1/log.json failed. Retrying... (Attempt 1/1)
+2025-12-13 17:07:50 - INFO - Max retries reached. Moving to next round.
+2025-12-13 17:07:55 - INFO - Score for round 3: None
+2025-12-13 17:11:32 - INFO - Skipping datasets as data/datasets already exists.
+2025-12-13 17:11:47 - INFO - Results saved to workspace/AIME25/workflows/round_1/0.83333_20251213_171147.csv
+2025-12-13 17:11:47 - INFO - Average score on AIME25 dataset: 0.83333
+2025-12-13 17:11:47 - INFO - Total Cost: 0.00780
+2025-12-13 17:12:01 - INFO - Results saved to workspace/AIME25/workflows/round_1/0.83333_20251213_171201.csv
+2025-12-13 17:12:01 - INFO - Average score on AIME25 dataset: 0.83333
+2025-12-13 17:12:01 - INFO - Total Cost: 0.00957
+2025-12-13 17:12:17 - INFO - Results saved to workspace/AIME25/workflows/round_1/1.00000_20251213_171217.csv
+2025-12-13 17:12:17 - INFO - Average score on AIME25 dataset: 1.00000
+2025-12-13 17:12:17 - INFO - Total Cost: 0.00854
+2025-12-13 17:12:17 - INFO - 
+Mixed probability distribution: [1.]
+2025-12-13 17:12:17 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.4444444444444445}]
+2025-12-13 17:12:17 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.4444444444444445}
+2025-12-13 17:12:17 - INFO - Processed experience data saved to workspace/AIME25/workflows/processed_experience.json
+2025-12-13 17:12:17 - INFO - workspace/AIME25/workflows/round_1/log.json
+2025-12-13 17:12:27 - INFO - Graph optimization response received successfully
+2025-12-13 17:12:27 - INFO - workspace/AIME25/workflows/round_2
+2025-12-13 17:13:19 - INFO - Results saved to workspace/AIME25/workflows/round_2/0.00000_20251213_171319.csv
+2025-12-13 17:13:19 - INFO - Average score on AIME25 dataset: 0.00000
+2025-12-13 17:13:19 - INFO - Total Cost: 0.04831
+2025-12-13 17:14:13 - INFO - Results saved to workspace/AIME25/workflows/round_2/0.00000_20251213_171413.csv
+2025-12-13 17:14:13 - INFO - Average score on AIME25 dataset: 0.00000
+2025-12-13 17:14:13 - INFO - Total Cost: 0.04703
+2025-12-13 17:15:29 - INFO - Skipping datasets as data/datasets already exists.
+2025-12-13 17:15:43 - INFO - Results saved to workspace/AIME25/workflows/round_1/0.83333_20251213_171543.csv
+2025-12-13 17:15:43 - INFO - Average score on AIME25 dataset: 0.83333
+2025-12-13 17:15:43 - INFO - Total Cost: 0.00757
+2025-12-13 17:16:00 - INFO - Results saved to workspace/AIME25/workflows/round_1/0.83333_20251213_171600.csv
+2025-12-13 17:16:00 - INFO - Average score on AIME25 dataset: 0.83333
+2025-12-13 17:16:00 - INFO - Total Cost: 0.00967
+2025-12-13 17:16:21 - INFO - Results saved to workspace/AIME25/workflows/round_1/0.83333_20251213_171621.csv
+2025-12-13 17:16:21 - INFO - Average score on AIME25 dataset: 0.83333
+2025-12-13 17:16:21 - INFO - Total Cost: 0.00999
+2025-12-13 17:16:21 - INFO - 
+Mixed probability distribution: [0.84999278 0.15000722]
+2025-12-13 17:16:21 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.5740740740740741}, {'round': 2, 'score': 0.0}]
+2025-12-13 17:16:21 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.5740740740740741}
+2025-12-13 17:16:21 - INFO - Processed experience data saved to workspace/AIME25/workflows/processed_experience.json
+2025-12-13 17:16:21 - INFO - workspace/AIME25/workflows/round_1/log.json
+2025-12-13 17:16:34 - INFO - Graph optimization response received successfully
+2025-12-13 17:16:34 - INFO - workspace/AIME25/workflows/round_2
+2025-12-13 17:17:44 - INFO - Results saved to workspace/AIME25/workflows/round_2/1.00000_20251213_171744.csv
+2025-12-13 17:17:44 - INFO - Average score on AIME25 dataset: 1.00000
+2025-12-13 17:17:44 - INFO - Total Cost: 0.02703
+2025-12-13 17:18:21 - INFO - Results saved to workspace/AIME25/workflows/round_2/1.00000_20251213_171821.csv
+2025-12-13 17:18:21 - INFO - Average score on AIME25 dataset: 1.00000
+2025-12-13 17:18:21 - INFO - Total Cost: 0.02597
+2025-12-13 17:19:03 - INFO - Results saved to workspace/AIME25/workflows/round_2/1.00000_20251213_171903.csv
+2025-12-13 17:19:03 - INFO - Average score on AIME25 dataset: 1.00000
+2025-12-13 17:19:03 - INFO - Total Cost: 0.02681
+2025-12-13 17:19:03 - INFO - Score for round 2: 1.0
+2025-12-13 17:19:08 - INFO - 
+Mixed probability distribution: [0.5887609 0.4112391]
+2025-12-13 17:19:08 - INFO - 
+Sorted rounds: [{'round': 2, 'score': 0.6}, {'round': 1, 'score': 0.5740740740740741}]
+2025-12-13 17:19:08 - INFO - 
+Selected index: 1, Selected item: {'round': 1, 'score': 0.5740740740740741}
+2025-12-13 17:19:08 - INFO - Processed experience data saved to workspace/AIME25/workflows/processed_experience.json
+2025-12-13 17:19:08 - INFO - workspace/AIME25/workflows/round_1/log.json
+2025-12-13 17:19:18 - INFO - Graph optimization response received successfully
+2025-12-13 17:19:18 - INFO - workspace/AIME25/workflows/round_3
+2025-12-13 17:20:28 - INFO - Results saved to workspace/AIME25/workflows/round_3/0.83333_20251213_172028.csv
+2025-12-13 17:20:28 - INFO - Average score on AIME25 dataset: 0.83333
+2025-12-13 17:20:28 - INFO - Total Cost: 0.03204
+2025-12-13 17:21:17 - INFO - Results saved to workspace/AIME25/workflows/round_3/0.83333_20251213_172117.csv
+2025-12-13 17:21:17 - INFO - Average score on AIME25 dataset: 0.83333
+2025-12-13 17:21:17 - INFO - Total Cost: 0.02939
+2025-12-13 17:21:46 - INFO - Results saved to workspace/AIME25/workflows/round_3/0.83333_20251213_172146.csv
+2025-12-13 17:21:46 - INFO - Average score on AIME25 dataset: 0.83333
+2025-12-13 17:21:46 - INFO - Total Cost: 0.02596
+2025-12-13 17:21:46 - INFO - Score for round 3: 0.8333333333333334
+2025-12-13 17:45:47 - INFO - Skipping datasets as data/datasets already exists.
+2025-12-13 17:45:53 - INFO - Maximum retries reached. Skipping this sample. Error: A 'client' must be provided as a kwarg to the decorated function.
+2025-12-13 17:45:53 - INFO - Maximum retries reached. Skipping this sample. Error: A 'client' must be provided as a kwarg to the decorated function.
+2025-12-13 17:45:53 - INFO - Maximum retries reached. Skipping this sample. Error: A 'client' must be provided as a kwarg to the decorated function.
+2025-12-13 17:45:53 - INFO - Maximum retries reached. Skipping this sample. Error: A 'client' must be provided as a kwarg to the decorated function.
+2025-12-13 17:45:53 - INFO - Maximum retries reached. Skipping this sample. Error: A 'client' must be provided as a kwarg to the decorated function.
+2025-12-13 17:45:53 - INFO - Maximum retries reached. Skipping this sample. Error: A 'client' must be provided as a kwarg to the decorated function.
+2025-12-13 17:45:53 - INFO - Results saved to workspace/AIME24/workflows/round_1/0.00000_20251213_174553.csv
+2025-12-13 17:45:53 - INFO - Average score on AIME24 dataset: 0.00000
+2025-12-13 17:45:53 - INFO - Total Cost: 0.00000
+2025-12-13 17:45:57 - INFO - Maximum retries reached. Skipping this sample. Error: A 'client' must be provided as a kwarg to the decorated function.
+2025-12-13 17:45:57 - INFO - Maximum retries reached. Skipping this sample. Error: A 'client' must be provided as a kwarg to the decorated function.
+2025-12-13 17:45:57 - INFO - Maximum retries reached. Skipping this sample. Error: A 'client' must be provided as a kwarg to the decorated function.
+2025-12-13 17:45:57 - INFO - Maximum retries reached. Skipping this sample. Error: A 'client' must be provided as a kwarg to the decorated function.
+2025-12-13 17:45:57 - INFO - Maximum retries reached. Skipping this sample. Error: A 'client' must be provided as a kwarg to the decorated function.
+2025-12-13 17:45:57 - INFO - Maximum retries reached. Skipping this sample. Error: A 'client' must be provided as a kwarg to the decorated function.
+2025-12-13 17:45:57 - INFO - Results saved to workspace/AIME24/workflows/round_1/0.00000_20251213_174557.csv
+2025-12-13 17:45:57 - INFO - Average score on AIME24 dataset: 0.00000
+2025-12-13 17:45:57 - INFO - Total Cost: 0.00000
+2025-12-13 17:46:01 - INFO - Maximum retries reached. Skipping this sample. Error: A 'client' must be provided as a kwarg to the decorated function.
+2025-12-13 17:46:01 - INFO - Maximum retries reached. Skipping this sample. Error: A 'client' must be provided as a kwarg to the decorated function.
+2025-12-13 17:46:01 - INFO - Maximum retries reached. Skipping this sample. Error: A 'client' must be provided as a kwarg to the decorated function.
+2025-12-13 17:46:01 - INFO - Maximum retries reached. Skipping this sample. Error: A 'client' must be provided as a kwarg to the decorated function.
+2025-12-13 17:46:01 - INFO - Maximum retries reached. Skipping this sample. Error: A 'client' must be provided as a kwarg to the decorated function.
+2025-12-13 17:46:01 - INFO - Maximum retries reached. Skipping this sample. Error: A 'client' must be provided as a kwarg to the decorated function.
+2025-12-13 17:46:01 - INFO - Results saved to workspace/AIME24/workflows/round_1/0.00000_20251213_174601.csv
+2025-12-13 17:46:01 - INFO - Average score on AIME24 dataset: 0.00000
+2025-12-13 17:46:01 - INFO - Total Cost: 0.00000
+2025-12-13 17:46:01 - INFO - 
+Mixed probability distribution: [1.]
+2025-12-13 17:46:01 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.0}]
+2025-12-13 17:46:01 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.0}
+2025-12-13 17:46:01 - INFO - Processed experience data saved to workspace/AIME24/workflows/processed_experience.json
+2025-12-13 17:46:01 - INFO - workspace/AIME24/workflows/round_1/log.json
+2025-12-13 17:46:01 - INFO - Error occurred: read json file: workspace/AIME24/workflows/round_1/log.json failed. Retrying... (Attempt 1/1)
+2025-12-13 17:46:01 - INFO - Max retries reached. Moving to next round.
+2025-12-13 17:54:00 - INFO - Skipping datasets as data/datasets already exists.
+2025-12-13 17:54:05 - INFO - Maximum retries reached. Skipping this sample. Error: A 'client' must be provided as a kwarg to the decorated function.
+2025-12-13 17:54:05 - INFO - Maximum retries reached. Skipping this sample. Error: A 'client' must be provided as a kwarg to the decorated function.
+2025-12-13 17:54:05 - INFO - Maximum retries reached. Skipping this sample. Error: A 'client' must be provided as a kwarg to the decorated function.
+2025-12-13 17:54:05 - INFO - Maximum retries reached. Skipping this sample. Error: A 'client' must be provided as a kwarg to the decorated function.
+2025-12-13 17:54:05 - INFO - Maximum retries reached. Skipping this sample. Error: A 'client' must be provided as a kwarg to the decorated function.
+2025-12-13 17:54:05 - INFO - Maximum retries reached. Skipping this sample. Error: A 'client' must be provided as a kwarg to the decorated function.
+2025-12-13 17:54:05 - INFO - Results saved to workspace/AIME24/workflows/round_1/0.00000_20251213_175405.csv
+2025-12-13 17:54:05 - INFO - Average score on AIME24 dataset: 0.00000
+2025-12-13 17:54:05 - INFO - Total Cost: 0.00000
+2025-12-13 17:54:09 - INFO - Maximum retries reached. Skipping this sample. Error: A 'client' must be provided as a kwarg to the decorated function.
+2025-12-13 17:54:09 - INFO - Maximum retries reached. Skipping this sample. Error: A 'client' must be provided as a kwarg to the decorated function.
+2025-12-13 17:54:09 - INFO - Maximum retries reached. Skipping this sample. Error: A 'client' must be provided as a kwarg to the decorated function.
+2025-12-13 17:54:09 - INFO - Maximum retries reached. Skipping this sample. Error: A 'client' must be provided as a kwarg to the decorated function.
+2025-12-13 17:54:09 - INFO - Maximum retries reached. Skipping this sample. Error: A 'client' must be provided as a kwarg to the decorated function.
+2025-12-13 17:54:09 - INFO - Maximum retries reached. Skipping this sample. Error: A 'client' must be provided as a kwarg to the decorated function.
+2025-12-13 17:54:09 - INFO - Results saved to workspace/AIME24/workflows/round_1/0.00000_20251213_175409.csv
+2025-12-13 17:54:09 - INFO - Average score on AIME24 dataset: 0.00000
+2025-12-13 17:54:09 - INFO - Total Cost: 0.00000
+2025-12-13 17:54:09 - INFO - 
+Mixed probability distribution: [1.]
+2025-12-13 17:54:09 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.0}]
+2025-12-13 17:54:09 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.0}
+2025-12-13 17:54:09 - INFO - Processed experience data saved to workspace/AIME24/workflows/processed_experience.json
+2025-12-13 17:54:09 - INFO - workspace/AIME24/workflows/round_1/log.json
+2025-12-13 17:54:09 - INFO - Error occurred: read json file: workspace/AIME24/workflows/round_1/log.json failed. Retrying... (Attempt 1/1)
+2025-12-13 17:54:09 - INFO - Max retries reached. Moving to next round.
+2025-12-13 17:58:36 - INFO - Skipping datasets as data/datasets already exists.
+2025-12-13 17:58:42 - INFO - Maximum retries reached. Skipping this sample. Error: Custom.__call__() got an unexpected keyword argument 'question'
+2025-12-13 17:58:42 - INFO - Maximum retries reached. Skipping this sample. Error: Custom.__call__() got an unexpected keyword argument 'question'
+2025-12-13 17:58:42 - INFO - Maximum retries reached. Skipping this sample. Error: Custom.__call__() got an unexpected keyword argument 'question'
+2025-12-13 17:58:42 - INFO - Maximum retries reached. Skipping this sample. Error: Custom.__call__() got an unexpected keyword argument 'question'
+2025-12-13 17:58:42 - INFO - Maximum retries reached. Skipping this sample. Error: Custom.__call__() got an unexpected keyword argument 'question'
+2025-12-13 17:58:42 - INFO - Maximum retries reached. Skipping this sample. Error: Custom.__call__() got an unexpected keyword argument 'question'
+2025-12-13 17:58:42 - INFO - Results saved to workspace/AIME24/workflows/round_1/0.00000_20251213_175842.csv
+2025-12-13 17:58:42 - INFO - Average score on AIME24 dataset: 0.00000
+2025-12-13 17:58:42 - INFO - Total Cost: 0.00000
+2025-12-13 17:58:46 - INFO - Maximum retries reached. Skipping this sample. Error: Custom.__call__() got an unexpected keyword argument 'question'
+2025-12-13 17:58:46 - INFO - Maximum retries reached. Skipping this sample. Error: Custom.__call__() got an unexpected keyword argument 'question'
+2025-12-13 17:58:46 - INFO - Maximum retries reached. Skipping this sample. Error: Custom.__call__() got an unexpected keyword argument 'question'
+2025-12-13 17:58:46 - INFO - Maximum retries reached. Skipping this sample. Error: Custom.__call__() got an unexpected keyword argument 'question'
+2025-12-13 17:58:46 - INFO - Maximum retries reached. Skipping this sample. Error: Custom.__call__() got an unexpected keyword argument 'question'
+2025-12-13 17:58:46 - INFO - Maximum retries reached. Skipping this sample. Error: Custom.__call__() got an unexpected keyword argument 'question'
+2025-12-13 17:58:46 - INFO - Results saved to workspace/AIME24/workflows/round_1/0.00000_20251213_175846.csv
+2025-12-13 17:58:46 - INFO - Average score on AIME24 dataset: 0.00000
+2025-12-13 17:58:46 - INFO - Total Cost: 0.00000
+2025-12-13 17:58:46 - INFO - 
+Mixed probability distribution: [1.]
+2025-12-13 17:58:46 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.0}]
+2025-12-13 17:58:46 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.0}
+2025-12-13 17:58:46 - INFO - Processed experience data saved to workspace/AIME24/workflows/processed_experience.json
+2025-12-13 17:58:46 - INFO - workspace/AIME24/workflows/round_1/log.json
+2025-12-13 17:58:46 - INFO - Error occurred: read json file: workspace/AIME24/workflows/round_1/log.json failed. Retrying... (Attempt 1/1)
+2025-12-13 17:58:46 - INFO - Max retries reached. Moving to next round.
+2025-12-13 17:58:51 - INFO - Score for round 2: None
+2025-12-13 18:03:54 - INFO - Skipping datasets as data/datasets already exists.
+2025-12-13 18:04:32 - INFO - Skipping datasets as data/datasets already exists.
+2025-12-13 18:07:12 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-12-13 18:07:30 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-12-13 18:08:01 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-12-13 18:08:01 - INFO - Results saved to workspace/AIME24/workflows/round_1/0.33333_20251213_180801.csv
+2025-12-13 18:08:01 - INFO - Average score on AIME24 dataset: 0.33333
+2025-12-13 18:08:01 - INFO - Total Cost: 0.04218
+2025-12-13 18:08:01 - INFO - 
+Mixed probability distribution: [1.]
+2025-12-13 18:08:01 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.06666666666666667}]
+2025-12-13 18:08:01 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.06666666666666667}
+2025-12-13 18:08:01 - INFO - Processed experience data saved to workspace/AIME24/workflows/processed_experience.json
+2025-12-13 18:08:01 - INFO - workspace/AIME24/workflows/round_1/log.json
+2025-12-13 18:08:11 - INFO - Graph optimization response received successfully
+2025-12-13 18:08:11 - INFO - workspace/AIME24/workflows/round_2
+2025-12-13 18:15:44 - INFO - Skipping datasets as data/datasets already exists.
+2025-12-13 18:20:25 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-12-13 18:20:32 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-12-13 18:20:32 - INFO - Results saved to workspace/AIME24/workflows/round_1/0.33333_20251213_182032.csv
+2025-12-13 18:20:32 - INFO - Average score on AIME24 dataset: 0.33333
+2025-12-13 18:20:32 - INFO - Total Cost: 0.06022
+2025-12-13 18:20:32 - INFO - 
+Mixed probability distribution: [1.]
+2025-12-13 18:20:32 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.3333333333333333}]
+2025-12-13 18:20:32 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.3333333333333333}
+2025-12-13 18:20:32 - INFO - Processed experience data saved to workspace/AIME24/workflows/processed_experience.json
+2025-12-13 18:20:32 - INFO - workspace/AIME24/workflows/round_1/log.json
+2025-12-13 18:20:50 - INFO - Graph optimization response received successfully
+2025-12-13 18:20:50 - INFO - Error occurred: unexpected character after line continuation character (graph.py, line 74). Retrying... (Attempt 1/1)
+2025-12-13 18:20:50 - INFO - Max retries reached. Moving to next round.
+2025-12-13 18:20:55 - INFO - Score for round 2: None
+2025-12-13 18:21:00 - INFO - 
+Mixed probability distribution: [1.]
+2025-12-13 18:21:00 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.3333333333333333}]
+2025-12-13 18:21:00 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.3333333333333333}
+2025-12-13 18:21:00 - INFO - Processed experience data saved to workspace/AIME24/workflows/processed_experience.json
+2025-12-13 18:21:00 - INFO - workspace/AIME24/workflows/round_1/log.json
+2025-12-13 18:21:11 - INFO - Graph optimization response received successfully
+2025-12-13 18:21:11 - INFO - workspace/AIME24/workflows/round_3
+2025-12-13 18:24:59 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-12-13 18:24:59 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-12-13 18:24:59 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-12-13 18:25:13 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-12-13 18:27:06 - INFO - Maximum retries reached. Skipping this sample. Error: RetryError[<Future at 0x79e80e85d5a0 state=finished raised TypeError>]
+2025-12-13 18:27:10 - INFO - Maximum retries reached. Skipping this sample. Error: RetryError[<Future at 0x79e80e85efb0 state=finished raised TypeError>]
+2025-12-13 18:27:10 - INFO - Results saved to workspace/AIME24/workflows/round_3/0.00000_20251213_182710.csv
+2025-12-13 18:27:10 - INFO - Average score on AIME24 dataset: 0.00000
+2025-12-13 18:27:10 - INFO - Total Cost: 0.00000
+2025-12-13 18:27:10 - INFO - Score for round 3: 0.0
+2025-12-13 18:40:41 - INFO - Skipping datasets as data/datasets already exists.
+2025-12-13 18:46:10 - INFO - Results saved to workspace/AIME24/workflows/round_1/0.33333_20251213_184610.csv
+2025-12-13 18:46:10 - INFO - Average score on AIME24 dataset: 0.33333
+2025-12-13 18:46:10 - INFO - Total Cost: 0.08872
+2025-12-13 18:46:10 - INFO - 
+Mixed probability distribution: [1.]
+2025-12-13 18:46:10 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.3333333333333333}]
+2025-12-13 18:46:10 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.3333333333333333}
+2025-12-13 18:46:10 - INFO - Processed experience data saved to workspace/AIME24/workflows/processed_experience.json
+2025-12-13 18:46:10 - INFO - workspace/AIME24/workflows/round_1/log.json
+2025-12-13 18:46:26 - INFO - Graph optimization response received successfully
+2025-12-13 18:46:26 - INFO - workspace/AIME24/workflows/round_2
+2025-12-13 19:02:41 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-12-13 19:04:49 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-12-13 19:06:31 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-12-13 19:08:50 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-12-13 19:09:16 - INFO - Maximum retries reached. Skipping this sample. Error: 'NoneType' object has no attribute 'strip'
+2025-12-13 19:12:28 - INFO - Maximum retries reached. Skipping this sample. Error: 'NoneType' object has no attribute 'strip'
+2025-12-13 19:12:28 - INFO - Results saved to workspace/AIME24/workflows/round_2/0.00000_20251213_191228.csv
+2025-12-13 19:12:28 - INFO - Average score on AIME24 dataset: 0.00000
+2025-12-13 19:12:28 - INFO - Total Cost: 0.00000
+2025-12-13 19:12:28 - INFO - Score for round 2: 0.0
+2025-12-13 19:12:33 - INFO - 
+Mixed probability distribution: [0.84911029 0.15088971]
+2025-12-13 19:12:33 - INFO - 
+Sorted rounds: [{'round': 1, 'score': 0.3333333333333333}, {'round': 2, 'score': 0.0}]
+2025-12-13 19:12:33 - INFO - 
+Selected index: 0, Selected item: {'round': 1, 'score': 0.3333333333333333}
+2025-12-13 19:12:33 - INFO - Processed experience data saved to workspace/AIME24/workflows/processed_experience.json
+2025-12-13 19:12:33 - INFO - workspace/AIME24/workflows/round_1/log.json
+2025-12-13 19:12:50 - INFO - Graph optimization response received successfully
+2025-12-13 19:12:50 - INFO - workspace/AIME24/workflows/round_3
+2025-12-13 19:23:53 - INFO - Results saved to workspace/AIME24/workflows/round_3/0.16667_20251213_192353.csv
+2025-12-13 19:23:53 - INFO - Average score on AIME24 dataset: 0.16667
+2025-12-13 19:23:53 - INFO - Total Cost: 0.15051
+2025-12-13 19:23:53 - INFO - Score for round 3: 0.16666666666666666
+2025-12-13 23:42:09 - INFO - Skipping datasets as data/datasets already exists.
+2025-12-13 23:42:09 - ERROR - Error loading graph for round 1: No module named 'workspace.AIME24.workflows_test.round_1.graph'
+2025-12-13 23:45:40 - INFO - Skipping datasets as data/datasets already exists.
+2025-12-14 00:15:57 - INFO - Maximum retries reached. Skipping this sample. Error: Error code: 400 - {'error': {'message': 'Invalid prompt: your prompt was flagged as potentially violating our usage policy. Please try again with a different prompt: https://platform.openai.com/docs/guides/reasoning#advice-on-prompting', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_prompt'}}
+2025-12-14 00:15:57 - INFO - Results saved to workspace/AIME24/workflows_test/round_1/0.54167_20251214_001557.csv
+2025-12-14 00:15:57 - INFO - Average score on AIME24 dataset: 0.54167
+2025-12-14 00:15:57 - INFO - Total Cost: 0.37469
