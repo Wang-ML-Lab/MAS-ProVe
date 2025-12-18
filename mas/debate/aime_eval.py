@@ -26,6 +26,9 @@ from RoundWise.greedy_search_prm.greedy_search_decorator import GreedySearchPRM_
 from AgentWise.greedy_search_prm.greedy_search_decorator import GreedySearchPRM_Decorator as AgentWiseGreedySearchPRM, GreedySearchConfig as AgentWiseGreedySearchConfig
 from AgentWise.beam_search_prm import BeamSearchPRM as AgentWiseBeamSearchPRM, BeamSearchConfig as AgentWiseBeamSearchConfig
 
+from mas_debate import MASDebate
+from mas_proceval.clients.client_base import BaseClient
+
 class AIMEEvaluator:
     def __init__(self, benchmark: str = "aime24", output_dir: str = "results"):
         """
@@ -130,55 +133,59 @@ class AIMEEvaluator:
         }
 
     async def process_problem_async(self, example: Dict, example_id: int, debate_config: DebateConfig) -> Dict:
-        print(f"Processing problem {example_id + 1}")
-        problem_text = example.get('problem', '')
-        question = f"Solve this AIME problem:\n\n{problem_text}\n\nAnswers are integers (0-999). Show your work."
+        print(f"Inside the function!!!")
+        mas_debate = MASDebate(example, example_id, debate_config, self.benchmark, "math")
+        print(f"MASDebate created!!!")
+        return await mas_debate.run()
+        # print(f"Processing problem {example_id + 1}")
+        # problem_text = example.get('problem', '')
+        # question = f"Solve this AIME problem:\n\n{problem_text}\n\nAnswers are integers (0-999). Show your work."
         
-        debate_result, log = await debate(
-            model=debate_config.model,
-            question=question,
-            num_agents=debate_config.num_agents,
-            num_rounds=debate_config.num_rounds,
-            dataset=self.benchmark,
-            temperature=debate_config.temperature,
-            max_tokens=debate_config.max_tokens
-        )
-        all_round_responses = log[0]["refine_results"]
-        final_responses = all_round_responses[-1]
-        expected_answer = example.get('answer')
-        evaluations = [{
-            "agent_id": j,
-            "answer": response,
-            "evaluation": self.evaluate_response(response, expected_answer)
-        } for j, response in enumerate(final_responses)]
+        # debate_result, log = await debate(
+        #     model=debate_config.model,
+        #     question=question,
+        #     num_agents=debate_config.num_agents,
+        #     num_rounds=debate_config.num_rounds,
+        #     dataset=self.benchmark,
+        #     temperature=debate_config.temperature,
+        #     max_tokens=debate_config.max_tokens
+        # )
+        # all_round_responses = log[0]["refine_results"]
+        # final_responses = all_round_responses[-1]
+        # expected_answer = example.get('answer')
+        # evaluations = [{
+        #     "agent_id": j,
+        #     "answer": response,
+        #     "evaluation": self.evaluate_response(response, expected_answer)
+        # } for j, response in enumerate(final_responses)]
         
-        # Compute cost from usage data
-        usage_list = debate_result.get("usage", [])
-        total_cost = 0.0
-        if usage_list:
-            for usage in usage_list:
-                if usage:
-                    cost = cost_tracker.compute_cost(
-                        debate_config.model,
-                        usage.get("prompt_tokens", 0),
-                        usage.get("completion_tokens", 0)
-                    )
-                    total_cost += cost
+        # # Compute cost from usage data
+        # usage_list = debate_result.get("usage", [])
+        # total_cost = 0.0
+        # if usage_list:
+        #     for usage in usage_list:
+        #         if usage:
+        #             cost = cost_tracker.compute_cost(
+        #                 debate_config.model,
+        #                 usage.get("prompt_tokens", 0),
+        #                 usage.get("completion_tokens", 0)
+        #             )
+        #             total_cost += cost
         
-        return {
-            "example_id": example_id,
-            "problem_id": example_id,
-            "problem": example['problem'],
-            "debate_result": {
-                "round_history": all_round_responses,
-                "final_responses": final_responses,
-                "selected_response": debate_result["response"],
-                "selected_answer": debate_result["answer"],
-            },
-            "agent_evaluations": evaluations,
-            "expected_answer": expected_answer,
-            "cost": total_cost,
-        }
+        # return {
+        #     "example_id": example_id,
+        #     "problem_id": example_id,
+        #     "problem": example['problem'],
+        #     "debate_result": {
+        #         "round_history": all_round_responses,
+        #         "final_responses": final_responses,
+        #         "selected_response": debate_result["response"],
+        #         "selected_answer": debate_result["answer"],
+        #     },
+        #     "agent_evaluations": evaluations,
+        #     "expected_answer": expected_answer,
+        #     "cost": total_cost,
+        # }
 
     async def run_evaluation_async(self, debate_config: DebateConfig, max_examples=None, specific_ids=None, force_reprocess=None):
         if not self.load_dataset():
@@ -201,7 +208,8 @@ class AIMEEvaluator:
         for i in range(0, len(tasks), batch_size):
             batch_tasks = tasks[i:i + batch_size]
             print(f"Processing batch {i // batch_size + 1}/{(len(tasks) - 1) // batch_size + 1}")
-            batch_results = await asyncio.gather(*batch_tasks, return_exceptions=True)
+            # batch_results = await asyncio.gather(*batch_tasks, return_exceptions=True)
+            batch_results = [await task for task in batch_tasks]
             for result in batch_results:
                 if not isinstance(result, Exception):
                     results.append(result)

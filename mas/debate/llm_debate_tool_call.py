@@ -27,6 +27,8 @@ try:
     DECORATOR_AVAILABLE = True
 except ImportError:
     DECORATOR_AVAILABLE = False
+    import warnings
+    warnings.warn("mas_proceval library not found. Using no-op decorator.")
     # Define a no-op decorator if the library is not available
     def llm_parallel_search_decorator(func):
         return func
@@ -190,7 +192,7 @@ async def call_llm(model: str, prompt: str, temperature: float = 0.7, max_tokens
     return content, usage, tool_calls_info
 
 
-@llm_parallel_search_decorator
+# @llm_parallel_search_decorator
 async def direct(model: str, question: str, dataset: str = "aime24", use_tools: bool = False, **kwargs) -> tuple:
     """Generate initial solution for a problem using dataset-specific prompts. 
     
@@ -222,7 +224,7 @@ async def direct(model: str, question: str, dataset: str = "aime24", use_tools: 
     return response, usage, tool_calls_info
 
 
-@llm_parallel_search_decorator
+# @llm_parallel_search_decorator
 async def debate_refine(model: str, question: str, original_cot_response: str, other_agents_responses: list, dataset: str = "aime24", use_tools: bool = False, **kwargs) -> tuple:
     """Refine solution based on other agents' responses using dataset-specific prompts.
     
@@ -362,7 +364,7 @@ async def debate(model: str,
     log[index].update({
         "refine_results": all_round_responses,
         "num_agents": num_agents,
-        "num_rounds": num_rounds,
+        "num_rounds": num_rounds,   
         "final_answer": answer,
         "usage": all_usage,
         "tool_calls": all_tool_calls  # Log all tool calls

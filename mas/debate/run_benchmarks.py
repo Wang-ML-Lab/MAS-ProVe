@@ -403,132 +403,132 @@ def main():
     
     results = {}
     
-    try:
-        if args.benchmark in ["gaia", "all"]:
-            print(f"\n{'='*60}")
-            if args.gaia_use_tools:
-                print("RUNNING GAIA EVALUATION (with web search enabled)")
-            else:
-                print("RUNNING GAIA EVALUATION (without web search)")
-            print(f"{'='*60}")
-            config.use_tools = args.gaia_use_tools  # Use command-line flag
-            
-            if args.beam_search:
-                results["gaia"] = run_gaia_beam_search(
-                    config, 
-                    args.max_gaia_examples,
-                    args.beam_width,
-                    args.beam_rounds,
-                    args.judge_type,
-                    args.prm_model_path,
-                    args.prm_api_url,
-                    args.prm_enable_summarization,
-                    args.output_dir
-                )
-            elif args.greedy_search:
-                results["gaia"] = run_gaia_greedy_search(
-                    config, 
-                    args.max_gaia_examples,
-                    args.greedy_candidates,
-                    args.greedy_rounds,
-                    args.judge_type,
-                    args.prm_model_path,
-                    args.prm_api_url,
-                    args.prm_enable_summarization,
-                    args.output_dir
-                )
-            elif args.agentwise_greedy_search:
-                results["gaia"] = run_gaia_agentwise_greedy_search(
-                    config, 
-                    args.max_gaia_examples,
-                    args.agentwise_greedy_candidates,
-                    args.agentwise_greedy_rounds,
-                    args.judge_type,
-                    args.prm_model_path,
-                    args.prm_api_url,
-                    args.prm_enable_summarization,
-                    args.output_dir
-                )
-            elif args.agentwise_beam_search:
-                results["gaia"] = run_gaia_agentwise_beam_search(
-                    config, 
-                    args.max_gaia_examples,
-                    args.agentwise_beam_width,
-                    args.agentwise_beam_rounds,
-                    args.judge_type,
-                    args.prm_model_path,
-                    args.prm_api_url,
-                    args.prm_enable_summarization,
-                    args.output_dir
-                )
-            else:
-                results["gaia"] = run_gaia(config, args.max_gaia_examples)
-            
-            config.use_tools = False  # Reset for other benchmarks
+    # try:
+    if args.benchmark in ["gaia", "all"]:
+        print(f"\n{'='*60}")
+        if args.gaia_use_tools:
+            print("RUNNING GAIA EVALUATION (with web search enabled)")
+        else:
+            print("RUNNING GAIA EVALUATION (without web search)")
+        print(f"{'='*60}")
+        config.use_tools = args.gaia_use_tools  # Use command-line flag
         
-        if args.benchmark in ["aime24", "all"]:
-            print(f"\n{'='*60}")
-            print("RUNNING AIME24 EVALUATION")
-            if args.aime_problem_ids:
-                print(f"Specific Problem IDs: {args.aime_problem_ids}")
-            print(f"{'='*60}")
-            
-            if args.beam_search:
-                results["aime24"] = run_aime24_beam_search(
-                    config, 
-                    args.max_aime_examples, 
-                    args.aime_problem_ids,
-                    args.beam_width,
-                    args.beam_rounds,
-                    args.judge_type,
-                    args.prm_model_path,
-                    args.prm_api_url,
-                    args.prm_enable_summarization,
-                    args.output_dir
-                )
-            elif args.greedy_search:
-                results["aime24"] = run_aime24_greedy_search(
-                    config, 
-                    args.max_aime_examples, 
-                    args.aime_problem_ids,
-                    args.greedy_candidates,
-                    args.greedy_rounds,
-                    args.judge_type,
-                    args.prm_model_path,
-                    args.prm_api_url,
-                    args.prm_enable_summarization,
-                    args.output_dir
-                )
-            elif args.agentwise_greedy_search:
-                results["aime24"] = run_aime24_agentwise_greedy_search(
-                    config, 
-                    args.max_aime_examples, 
-                    args.aime_problem_ids,
-                    args.agentwise_greedy_candidates,
-                    args.agentwise_greedy_rounds,
-                    args.judge_type,
-                    args.prm_model_path,
-                    args.prm_api_url,
-                    args.prm_enable_summarization,
-                    args.output_dir
-                )
-            elif args.agentwise_beam_search:
-                results["aime24"] = run_aime24_agentwise_beam_search(
-                    config, 
-                    args.max_aime_examples, 
-                    args.aime_problem_ids,
-                    args.agentwise_beam_width,
-                    args.agentwise_beam_rounds,
-                    args.judge_type,
-                    args.prm_model_path,
-                    args.prm_api_url,
-                    args.prm_enable_summarization,
-                    args.output_dir
-                )
-            else:
-                results["aime24"] = run_aime24(config, args.max_aime_examples, args.aime_problem_ids)
+        if args.beam_search:
+            results["gaia"] = run_gaia_beam_search(
+                config, 
+                args.max_gaia_examples,
+                args.beam_width,
+                args.beam_rounds,
+                args.judge_type,
+                args.prm_model_path,
+                args.prm_api_url,
+                args.prm_enable_summarization,
+                args.output_dir
+            )
+        elif args.greedy_search:
+            results["gaia"] = run_gaia_greedy_search(
+                config, 
+                args.max_gaia_examples,
+                args.greedy_candidates,
+                args.greedy_rounds,
+                args.judge_type,
+                args.prm_model_path,
+                args.prm_api_url,
+                args.prm_enable_summarization,
+                args.output_dir
+            )
+        elif args.agentwise_greedy_search:
+            results["gaia"] = run_gaia_agentwise_greedy_search(
+                config, 
+                args.max_gaia_examples,
+                args.agentwise_greedy_candidates,
+                args.agentwise_greedy_rounds,
+                args.judge_type,
+                args.prm_model_path,
+                args.prm_api_url,
+                args.prm_enable_summarization,
+                args.output_dir
+            )
+        elif args.agentwise_beam_search:
+            results["gaia"] = run_gaia_agentwise_beam_search(
+                config, 
+                args.max_gaia_examples,
+                args.agentwise_beam_width,
+                args.agentwise_beam_rounds,
+                args.judge_type,
+                args.prm_model_path,
+                args.prm_api_url,
+                args.prm_enable_summarization,
+                args.output_dir
+            )
+        else:
+            results["gaia"] = run_gaia(config, args.max_gaia_examples)
         
-        if args.benchmark in ["aime25", "all"]:
+        config.use_tools = False  # Reset for other benchmarks
+    
+    if args.benchmark in ["aime24", "all"]:
+        print(f"\n{'='*60}")
+        print("RUNNING AIME24 EVALUATION")
+        if args.aime_problem_ids:
+            print(f"Specific Problem IDs: {args.aime_problem_ids}")
+        print(f"{'='*60}")
+        
+        if args.beam_search:
+            results["aime24"] = run_aime24_beam_search(
+                config, 
+                args.max_aime_examples, 
+                args.aime_problem_ids,
+                args.beam_width,
+                args.beam_rounds,
+                args.judge_type,
+                args.prm_model_path,
+                args.prm_api_url,
+                args.prm_enable_summarization,
+                args.output_dir
+            )
+        elif args.greedy_search:
+            results["aime24"] = run_aime24_greedy_search(
+                config, 
+                args.max_aime_examples, 
+                args.aime_problem_ids,
+                args.greedy_candidates,
+                args.greedy_rounds,
+                args.judge_type,
+                args.prm_model_path,
+                args.prm_api_url,
+                args.prm_enable_summarization,
+                args.output_dir
+            )
+        elif args.agentwise_greedy_search:
+            results["aime24"] = run_aime24_agentwise_greedy_search(
+                config, 
+                args.max_aime_examples, 
+                args.aime_problem_ids,
+                args.agentwise_greedy_candidates,
+                args.agentwise_greedy_rounds,
+                args.judge_type,
+                args.prm_model_path,
+                args.prm_api_url,
+                args.prm_enable_summarization,
+                args.output_dir
+            )
+        elif args.agentwise_beam_search:
+            results["aime24"] = run_aime24_agentwise_beam_search(
+                config, 
+                args.max_aime_examples, 
+                args.aime_problem_ids,
+                args.agentwise_beam_width,
+                args.agentwise_beam_rounds,
+                args.judge_type,
+                args.prm_model_path,
+                args.prm_api_url,
+                args.prm_enable_summarization,
+                args.output_dir
+            )
+        else:
+            results["aime24"] = run_aime24(config, args.max_aime_examples, args.aime_problem_ids)
+    
+    if args.benchmark in ["aime25", "all"]:
             print(f"\n{'='*60}")
             print("RUNNING AIME25 EVALUATION")
             if args.aime25_problem_ids:
@@ -570,10 +570,10 @@ def main():
             else:
                 results["aime25"] = run_aime25(config, args.max_aime25_examples, args.aime25_problem_ids)
             
-    except KeyboardInterrupt:
-        print("\nEvaluation interrupted by user")
-    except Exception as e:
-        print(f"Error during evaluation: {e}")
+    # except KeyboardInterrupt:
+    #     print("\nEvaluation interrupted by user")
+    # except Exception as e:
+    #     print(f"Error during evaluation: {e}")
     
     print(f"\n{'='*60}")
     print("EVALUATION COMPLETE")

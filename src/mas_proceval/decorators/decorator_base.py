@@ -17,7 +17,8 @@ def llm_parallel_search_decorator(llm_func):
         print(f" Generated {len(responses)} candidates")
         return responses
 
-    def send_to_server(responses, client: BaseClient, task_type=None, question=""):
+    def send_to_server(responses, task_type=None, question=""):
+        client = BaseClient(host='127.0.0.1', port=5555)
         # Format responses as trajectories for the judge server
         # Each response is a tuple: (content, usage, tool_calls_info)
         print(f"Formatting {len(responses)} candidates for judging...")
@@ -47,24 +48,22 @@ def llm_parallel_search_decorator(llm_func):
     async def async_decorator_wrapper(*args, **kwargs):
         """
         Async wrapper that handles the decorated function call.
-        kwargs must include 'client', 'task_type', and should have 'question'
+        kwargs should include 'task_type', and should have 'question'.
+        The decorator creates its own client instance for thread-safe async operations.
         """
         print(f"DECORATOR CALLED")
         task_type = kwargs.pop('task_type', None)
-        client = kwargs.pop('client', None)
         # Extract question - it's the second positional arg for both direct() and debate_refine()
         question = kwargs.get('question', args[1] if len(args) > 1 else "")
         print(f"      Task type: {task_type}")
         print(f"      Question: {question[:100]}..." if len(question) > 100 else f"      Question: {question}")
-        
-        if client is None:
-            raise ValueError("A 'client' must be provided as a kwarg to the decorated function.")
 
         # Run the LLM calls in parallel & collect results
         responses = await gather_calls(*args, **kwargs)
 
         # Send all results to the server judge and get rankings
-        server_result = send_to_server(responses, client, task_type, question)
+        # send_to_server creates its own client instance for this call
+        server_result = send_to_server(responses, task_type, question)
         rankings = server_result.get("rankings", list(range(len(responses))))
         best_idx = rankings[0] if rankings else 0
         
