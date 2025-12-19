@@ -18,18 +18,23 @@ class MASBase:
         Should be called automatically by wrappers of generation calls.
         """
         async def wrapper(self, *args, **kwargs):
-            # protocol: if the result is a tuple: first one should be the actual reasoning response.
+            # Get the original result from the decorated function
             result = await func(self, *args, **kwargs)
+            
+            # Extract content for trajectory while preserving original result
+            trajectory_content = result
             if isinstance(result, tuple) or isinstance(result, list):
-                result = result[0]
-            # protocol: if the result is a dict, it should be converted to a string.
-            if isinstance(result, dict):
-                result = json.dumps(result)
+                trajectory_content = result[0]
+            # Convert dict to string for trajectory storage
+            if isinstance(trajectory_content, dict):
+                trajectory_content = json.dumps(trajectory_content)
             
             async with self.trajectory_lock:
-                self.trajectory.append(result)
+                self.trajectory.append(trajectory_content)
                 # check the current progress.
                 print(self.progress)
+            
+            # Return the ORIGINAL result unchanged
             return result
         return wrapper
 

@@ -14,7 +14,7 @@ class BaseServer:
     def start(self):
         self.server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.server_socket.bind((self.host, self.port))
-        self.server_socket.listen(socket.SOMAXCONN)
+        self.server_socket.listen(1000)
         self.is_running = True
         print(f"Server listening on {self.host}:{self.port}")
         try:
