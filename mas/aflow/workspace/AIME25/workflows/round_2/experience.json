@@ -1,7 +1,0 @@
-{
-    "father node": 1,
-    "modification": "modify: add ensemble and programmer operators; change Workflow to call Custom twice with two different carefully written prompts, then use ScEnsemble on the two custom responses plus a Programmer verification; add required tool properties in __init__; small code changes (<=5 lines)",
-    "before": 0.5740740740740741,
-    "after": 1.0,
-    "succeed": true
-}

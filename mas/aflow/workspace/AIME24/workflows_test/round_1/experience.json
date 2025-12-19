@@ -1,7 +1,0 @@
-{
-    "father node": 1,
-    "modification": "Modified workflow: replaced single Custom-only pipeline with a three-step pipeline (Custom analysis -> Programmer rigorous calculation -> ScEnsemble verify/vote). Added tool properties, imports, and ensured BaseClient initialized. All operator calls now include required kwargs client, task_type, question. Introduced a single prompt variable ANALYSIS_PROMPT in prompt_custom. Kept code changes within 5 lines in body where applicable and ensured new properties and prompt are included. Removed unused prompts.",
-    "before": 0.3333333333333333,
-    "after": 0.16666666666666666,
-    "succeed": false
-}
