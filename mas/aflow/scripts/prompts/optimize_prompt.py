@@ -1,17 +1,4 @@
 WORKFLOW_OPTIMIZE_PROMPT = """You are building a Graph and corresponding Prompt to jointly solve {type} problems. 
-
-CRITICAL REQUIREMENTS (MUST FOLLOW):
-1. ALWAYS initialize BaseClient in __init__: self.client = BaseClient(host='127.0.0.1', port=5555)
-2. EVERY operator call (Custom, Programmer, etc.) MUST include these three kwargs:
-   - client=self.client
-   - task_type="math"
-   - question=problem
-3. Example of CORRECT operator call:
-   response = await self.custom(input=problem, instruction=prompt_custom.SOME_PROMPT, 
-                                client=self.client, task_type="math", question=problem)
-4. Example of WRONG operator call (missing kwargs - DO NOT DO THIS):
-   response = await self.custom(input=problem, instruction=prompt_custom.SOME_PROMPT)
-
 Referring to the given graph and prompt, which forms a basic example of a {type} solution approach, 
 please reconstruct and optimize them. You can add, modify, or delete nodes, parameters, or prompts. Include your 
 single modification in XML tags in your reply. Ensure they are complete and correct to avoid runtime failures. When 
@@ -48,20 +35,7 @@ def tool_functions(self, value: Dict[str, Callable]):
     self._tool_functions = value
     self.llm.tool_functions = value
 ```
-These properties MUST be included in every generated Workflow class.
-
-MANDATORY: The Workflow class __init__ method MUST initialize BaseClient:
-```python
-self.client = BaseClient(host='127.0.0.1', port=5555)
-```
-
-MANDATORY: ALL operator calls MUST include these three kwargs (or they will fail at runtime):
-```python
-await self.custom(input=..., instruction=..., client=self.client, task_type="math", question=problem)
-await self.programmer(problem=..., analysis=..., client=self.client, task_type="math", question=problem)
-await self.sc_ensemble(solutions=..., problem=..., client=self.client, task_type="math", question=problem)
-```
-If you do not include client=self.client, task_type="math", and question=problem in EVERY operator call, the workflow will crash with "A 'client' must be provided as a kwarg" error."""
+These properties MUST be included in every generated Workflow class."""
 
 
 WORKFLOW_INPUT = """
@@ -116,7 +90,7 @@ WORKFLOW_TEMPLATE = """from typing import Literal, List, Dict, Callable, Optiona
 import {base_path}.{dataset}.workflows.template.operator as operator
 import {base_path}.{dataset}.workflows.round_{round}.prompt as prompt_custom
 from scripts.async_llm import create_llm_instance
-from mas_proceval.clients.client_base import BaseClient
+
 
 from scripts.evaluator import DatasetType
 

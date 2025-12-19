@@ -16,6 +16,7 @@ from benchmarks.livecodebench import LiveCodeBench
 from benchmarks.aime24 import AIME24Benchmark
 from benchmarks.aime25 import AIME25Benchmark
 from benchmarks.gaia import GAIABenchmark
+from scripts.mas_aflow import MASAFlow
 
 # If you want to customize tasks, add task types here and provide evaluation functions, just like the ones given above
 DatasetType = Literal["HumanEval", "MBPP", "GSM8K", "MATH", "HotpotQA", "DROP", "LiveCodeBench", "AIME24", "AIME25", "GAIA"]
@@ -40,6 +41,20 @@ class Evaluator:
             "AIME25": AIME25Benchmark,
             "GAIA": GAIABenchmark,
         }
+        
+        # Map datasets to their task types
+        self.task_types: Dict[DatasetType, str] = {
+            "GSM8K": "math",
+            "MATH": "math",
+            "AIME24": "math",
+            "AIME25": "math",
+            "HumanEval": "code",
+            "MBPP": "code",
+            "LiveCodeBench": "code",
+            "HotpotQA": "qa",
+            "DROP": "qa",
+            "GAIA": "qa",
+        }
 
     async def graph_evaluate(
         self, dataset: DatasetType, graph, params: dict, path: str, is_test: bool = False
@@ -56,7 +71,7 @@ class Evaluator:
         if is_test:
             va_list = None # For test data, generally use None to test all
         else:
-            va_list = None # Use None to test all Validation data, or set va_list (e.g., [1, 2, 3]) to use partial data
+            va_list = [2] # Use None to test all Validation data, or set va_list (e.g., [1, 2, 3]) to use partial data
         return await benchmark.run_evaluation(configured_graph, va_list)
 
     async def _configure_graph(self, dataset, graph, params: dict):
@@ -64,7 +79,18 @@ class Evaluator:
         # For example: set LLM configuration, dataset configuration, etc.
         dataset_config = params.get("dataset", {})
         llm_config = params.get("llm_config", {})
-        return graph(name=dataset, llm_config=llm_config, dataset=dataset_config)
+        
+        # Instantiate the base workflow
+        workflow_instance = graph(name=dataset, llm_config=llm_config, dataset=dataset_config)
+        
+        # Get task type
+        task_type = self.task_types.get(dataset, "math")
+        
+        # Wrap with MASAFlow ONCE - operators are decorated at this point
+        mas_aflow = MASAFlow(workflow_instance, task_type)
+        
+        # Return the mas_aflow.run method which accepts problem as parameter
+        return mas_aflow.run
 
     def _get_data_path(self, dataset: DatasetType, test: bool) -> str:
         base_path = f"data/datasets/{dataset.lower()}"
