@@ -102,20 +102,19 @@ class Programmer(Operator):
         code = None
         output = None
         feedback = ""
-        for i in range(3):
-            code_response = await self.code_generate(problem, analysis, feedback, mode="code_fill")
-            code = code_response.get("code")
-            if not code:
-                return {"code": code, "output": "No code generated"}
-            status, output = await self.exec_code(code)
-            if status == "Success":
-                return {"code": code, "output": output}
-            else:
-                print(f"Execution error on attempt {i + 1}, error message: {output}")
-                feedback = (
-                    f"\nThe result of the error from the code you wrote in the previous round:\n"
-                    f"Code: {code}\n\nStatus: {status}, {output}"
-                )
+        code_response = await self.code_generate(problem, analysis, feedback, mode="code_fill")
+        code = code_response.get("code")
+        if not code:
+            return {"code": code, "output": "No code generated"}
+        status, output = await self.exec_code(code)
+        if status == "Success":
+            return {"code": code, "output": output}
+        else:
+            print(f"Execution error on attempt {i + 1}, error message: {output}")
+            feedback = (
+                f"\nThe result of the error from the code you wrote in the previous round:\n"
+                f"Code: {code}\n\nStatus: {status}, {output}"
+            )
         return {"code": code, "output": output}
 
 
