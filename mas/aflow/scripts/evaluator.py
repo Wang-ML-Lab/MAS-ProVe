@@ -57,7 +57,7 @@ class Evaluator:
         }
 
     async def graph_evaluate(
-        self, dataset: DatasetType, graph, params: dict, path: str, is_test: bool = False
+        self, dataset: DatasetType, graph, params: dict, path: str, is_test: bool = False, use_mas: bool = False
     ) -> Tuple[float, float, float]:
         if dataset not in self.dataset_configs:
             raise ValueError(f"Unsupported dataset: {dataset}")
@@ -67,30 +67,71 @@ class Evaluator:
         benchmark = benchmark_class(name=dataset, file_path=data_path, log_path=path)
 
         # Use params to configure the graph and benchmark
-        configured_graph = await self._configure_graph(dataset, graph, params)
+        configured_graph = await self._configure_graph(dataset, graph, params, use_mas=use_mas)
         if is_test:
             va_list = None # For test data, generally use None to test all
         else:
-            va_list = [2] # Use None to test all Validation data, or set va_list (e.g., [1, 2, 3]) to use partial data
+            va_list = None # Use None to test all Validation data, or set va_list (e.g., [1, 2, 3]) to use partial data
         return await benchmark.run_evaluation(configured_graph, va_list)
 
-    async def _configure_graph(self, dataset, graph, params: dict):
-        # Here you can configure the graph based on params
-        # For example: set LLM configuration, dataset configuration, etc.
+    async def _configure_graph(self, dataset, graph, params: dict, use_mas: bool = False, tools=None, tool_functions=None):
+    # Here you can configure the graph based on params
+    # For example: set LLM configuration, dataset configuration, etc.
         dataset_config = params.get("dataset", {})
         llm_config = params.get("llm_config", {})
         
-        # Instantiate the base workflow
-        workflow_instance = graph(name=dataset, llm_config=llm_config, dataset=dataset_config)
+        # If use_mas is False, return the workflow directly without MAS wrapping
+        if not use_mas:
+            workflow_instance = graph(name=dataset, llm_config=llm_config, dataset=dataset_config)
+            return workflow_instance
         
         # Get task type
         task_type = self.task_types.get(dataset, "math")
         
-        # Wrap with MASAFlow ONCE - operators are decorated at this point
-        mas_aflow = MASAFlow(workflow_instance, task_type)
+        # Create a wrapper that instantiates a fresh MASAFlow per call
+        class MASAFlowWrapper:
+            def __init__(self, graph_class, dataset, llm_config, dataset_config, task_type):
+                self.graph_class = graph_class
+                self.dataset = dataset
+                self.llm_config = llm_config
+                self.dataset_config = dataset_config
+                self.task_type = task_type
+                self._tools = None
+                self._tool_functions = None
+            
+            @property
+            def tools(self):
+                return self._tools
+            
+            @tools.setter
+            def tools(self, value):
+                self._tools = value
+            
+            @property
+            def tool_functions(self):
+                return self._tool_functions
+            
+            @tool_functions.setter
+            def tool_functions(self, value):
+                self._tool_functions = value
+            
+            async def __call__(self, problem):
+                # Create fresh workflow instance for this problem
+                workflow = self.graph_class(name=self.dataset, llm_config=self.llm_config, dataset=self.dataset_config)
+                
+                # Set tools if provided
+                if self._tools is not None and hasattr(workflow, 'tools'):
+                    workflow.tools = self._tools
+                if self._tool_functions is not None and hasattr(workflow, 'tool_functions'):
+                    workflow.tool_functions = self._tool_functions
+                
+                # Create fresh MASAFlow instance for this problem
+                mas_aflow = MASAFlow(workflow, self.task_type)
+                
+                # Execute and return
+                return await mas_aflow(problem)
         
-        # Return the mas_aflow.run method which accepts problem as parameter
-        return mas_aflow.run
+        return MASAFlowWrapper(graph, dataset, llm_config, dataset_config, task_type)
 
     def _get_data_path(self, dataset: DatasetType, test: bool) -> str:
         base_path = f"data/datasets/{dataset.lower()}"

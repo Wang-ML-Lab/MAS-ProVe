@@ -82,19 +82,20 @@ class GAIABenchmark(BaseBenchmark):
     #     return data
 
     def extract_answer(self, response: str) -> str:
-        """
-        Extract answer from response, handling <answer></answer> tags.
-        If tags are present, extract content between them.
-        Otherwise, return the stripped response.
-        """
+    # Try <answer> tags first
         if "<answer>" in response and "</answer>" in response:
             start = response.find("<answer>") + len("<answer>")
             end = response.find("</answer>")
-            extracted_answer = response[start:end].strip()
-        else:
-            extracted_answer = response.strip()
+            return response[start:end].strip()
         
-        return extracted_answer
+        # Fallback: look for "Answer: X" pattern at the end
+        import re
+        answer_match = re.search(r'Answer:\s*(.+?)(?:\s*\(.*?\))?\s*\.?\s*$', response, re.IGNORECASE)
+        if answer_match:
+            return answer_match.group(1).strip()
+        
+        # Last resort: return the whole response
+        return response.strip()
 
     def normalize_text(self, text: str) -> str:
         """

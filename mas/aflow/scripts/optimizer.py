@@ -69,12 +69,14 @@ class Optimizer:
         self.convergence_utils = ConvergenceUtils(self.root_path)
 
     def optimize(self, mode: OptimizerType = "Graph"):
+
         if mode == "Test":
             test_n = 1  # validation datasets's execution number
             for i in range(test_n):
                 loop = asyncio.new_event_loop()
                 asyncio.set_event_loop(loop)
                 score = loop.run_until_complete(self.test())
+                # loop.close()
             return None
 
         for opt_round in range(self.max_rounds):
@@ -99,9 +101,11 @@ class Optimizer:
                     time.sleep(wait_time)
 
                 if retry_count < max_retries:
+                    # loop.close()
                     loop = asyncio.new_event_loop()
                     asyncio.set_event_loop(loop)
 
+            # loop.close()
             self.round += 1
             logger.info(f"Score for round {self.round}: {score}")
 
@@ -248,7 +252,7 @@ class Optimizer:
             directory = self.graph_utils.create_round_directory(graph_path, round)
             self.graph = self.graph_utils.load_graph(round, graph_path)
 
-            score, avg_cost, total_cost = await self.evaluation_utils.evaluate_graph_test(self, directory, is_test=True)
+            score, avg_cost, total_cost = await self.evaluation_utils.evaluate_graph_test(self, directory, is_test=True, use_mas=False)
 
             new_data = self.data_utils.create_result_data(round, score, avg_cost, total_cost)
             data.append(new_data)

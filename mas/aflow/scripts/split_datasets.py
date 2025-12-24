@@ -13,7 +13,7 @@ from sklearn.model_selection import train_test_split
 
 def split_and_save_dataset(dataset_name: str, hf_dataset_path: str = None, 
                            local_json_path: str = None, validation_size: float = 0.2,
-                           output_dir: str = "data/datasets", use_random_split: bool = False):
+                           output_dir: str = "data/datasets", use_random_split: bool = True):
     """
     Load a dataset and split it into validation and test sets.
     
@@ -53,7 +53,7 @@ def split_and_save_dataset(dataset_name: str, hf_dataset_path: str = None,
         train_data, test_data = train_test_split(
             data, 
             test_size=(1 - validation_size),
-            random_state=43,
+            random_state=20,
             shuffle=True
         )
         print(f"Validation samples: {len(train_data)} ({validation_size*100:.0f}% random split)")
@@ -86,7 +86,7 @@ def main():
     """Main function to split all datasets"""
     print("\n" + "="*60)
     print("DATASET SPLITTING SCRIPT")
-    print("Splitting datasets: First 6 questions for validation, rest for test")
+    print("Splitting datasets with random validation/test split (20%/80%)")
     print("="*60)
     
     # GAIA dataset (from local JSON file) - use random split
@@ -105,24 +105,24 @@ def main():
     except Exception as e:
         print(f"\n✗ Error processing GAIA: {e}")
     
-    # AIME24 dataset (from HuggingFace) - use first 6 questions
+    # AIME24 dataset (from HuggingFace) - use random split
     try:
         split_and_save_dataset(
             dataset_name="aime24",
             hf_dataset_path="simplescaling/aime24_nofigures",
             validation_size=0.2,
-            use_random_split=False
+            use_random_split=True
         )
     except Exception as e:
         print(f"\n✗ Error processing AIME24: {e}")
     
-    # AIME25 dataset (from HuggingFace) - use first 6 questions
+    # AIME25 dataset (from HuggingFace) - use random split
     try:
         split_and_save_dataset(
             dataset_name="aime25",
             hf_dataset_path="simplescaling/aime25_nofigures",
             validation_size=0.2,
-            use_random_split=False
+            use_random_split=True
         )
     except Exception as e:
         print(f"\n✗ Error processing AIME25: {e}")

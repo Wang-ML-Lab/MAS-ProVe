@@ -21,7 +21,6 @@ class Custom(Operator):
     def __init__(self, llm: AsyncLLM, name: str = "Custom"):
         super().__init__(llm, name)
 
-    @llm_parallel_search_decorator
     async def __call__(self, input, instruction, **kwargs):
         prompt = instruction + input
         response = await self._fill_node(GenerateOp, prompt, mode="single_fill")
@@ -91,10 +90,11 @@ class Programmer(Operator):
             feedback=feedback
         )
         response = await self._fill_node(CodeGenerateOp, prompt, mode, function_name="solve")
+        print(f"DEBUG code_generate response: {response}")  # Add this
+        print(f"DEBUG code_generate response type: {type(response)}")  # And this
         return response
 
     @retry(stop=stop_after_attempt(3), wait=wait_fixed(2))
-    @llm_parallel_search_decorator
     async def __call__(self, problem: str, analysis: str = "None", **kwargs):
         """
         Call method, generate code and execute, retry up to 3 times.
@@ -103,7 +103,7 @@ class Programmer(Operator):
         output = None
         feedback = ""
         code_response = await self.code_generate(problem, analysis, feedback, mode="code_fill")
-        code = code_response.get("code")
+        code = code_response.get("code") or code_response.get("response")
         if not code:
             return {"code": code, "output": "No code generated"}
         status, output = await self.exec_code(code)
@@ -128,8 +128,7 @@ class ScEnsemble(Operator):
 
     def __init__(self, llm: AsyncLLM, name: str = "ScEnsemble"):
         super().__init__(llm, name)
-
-    @llm_parallel_search_decorator
+        
     async def __call__(self, solutions: List[str], problem: str, **kwargs):
         answer_mapping = {}
         solution_text = ""

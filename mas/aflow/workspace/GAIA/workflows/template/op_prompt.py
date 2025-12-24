@@ -9,7 +9,7 @@ In the "thought" field, provide a detailed explanation of your thought process. 
 
 ANSWER_GENERATION_PROMPT = """
 Think step by step and solve the problem.
-1. In the "thought" field, explain your thinking process in detail.
+1. In the "thought" field, write how you arrived at the answer.
 2. In the "answer" field, provide the final answer concisely and clearly. The answer should be a direct response to the question, without including explanations or reasoning.
 Your task: {input}
 """

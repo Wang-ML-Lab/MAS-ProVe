@@ -77,6 +77,28 @@ class MASAFlow(MASBase):
             
             self.workflow.answer_generate = answer_generate_wrapper
     
+    @property
+    def tools(self):
+        """Expose workflow's tools property"""
+        return getattr(self.workflow, 'tools', None)
+    
+    @tools.setter
+    def tools(self, value):
+        """Set tools on the underlying workflow"""
+        if hasattr(self.workflow, 'tools'):
+            self.workflow.tools = value
+    
+    @property
+    def tool_functions(self):
+        """Expose workflow's tool_functions property"""
+        return getattr(self.workflow, 'tool_functions', None)
+    
+    @tool_functions.setter
+    def tool_functions(self, value):
+        """Set tool_functions on the underlying workflow"""
+        if hasattr(self.workflow, 'tool_functions'):
+            self.workflow.tool_functions = value
+    
     @MASBase.update_trajectory
     @llm_parallel_search_decorator
     async def _call_custom(self, *args, **kwargs):
@@ -102,7 +124,7 @@ class MASAFlow(MASBase):
         """Decorated answer_generate operator call"""
         return await self._original_answer_generate(*args, **kwargs)
     
-    async def run(self, problem: str):
+    async def __call__(self, problem: str):
         """
         Execute the workflow with trajectory tracking for a specific problem.
         Returns same format as normal workflow: (final_answer, cost)
@@ -114,3 +136,7 @@ class MASAFlow(MASBase):
         # Execute workflow
         result = await self.workflow(problem)
         return result
+    
+    async def run(self, problem: str):
+        """Alias for __call__ for backwards compatibility"""
+        return await self(problem)

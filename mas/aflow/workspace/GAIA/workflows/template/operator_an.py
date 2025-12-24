@@ -14,5 +14,5 @@ class ScEnsembleOp(BaseModel):
     solution_letter: str = Field(default="", description="The letter of most consistent solution.")
 
 class AnswerGenerateOp(BaseModel):
-    thought: str = Field(default="", description="The step by step thinking process")
+    thought: str = Field(default="", description="The context for generating the final answer")
     answer: str = Field(default="", description="The final answer to the question")

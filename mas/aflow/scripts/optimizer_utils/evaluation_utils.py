@@ -52,7 +52,7 @@ class EvaluationUtils:
 
         return sum_score / validation_n
 
-    async def evaluate_graph_test(self, optimizer, directory, is_test=True):
+    async def evaluate_graph_test(self, optimizer, directory, is_test=True, use_mas=False):
         evaluator = Evaluator(eval_path=directory)
         return await evaluator.graph_evaluate(
             optimizer.dataset,
@@ -60,4 +60,5 @@ class EvaluationUtils:
             {"dataset": optimizer.dataset, "llm_config": optimizer.execute_llm_config},
             directory,
             is_test=is_test,
+            use_mas=use_mas,
         )

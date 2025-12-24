@@ -13,7 +13,6 @@ from workspace.GAIA.workflows.template.op_prompt import *
 from scripts.async_llm import AsyncLLM
 from scripts.logs import logger
 import re
-from mas_proceval.decorators.decorator_base import llm_parallel_search_decorator
 
 
 from scripts.operators import Operator
@@ -23,7 +22,6 @@ class Custom(Operator):
     def __init__(self, llm: AsyncLLM, name: str = "Custom"):
         super().__init__(llm, name)
 
-    @llm_parallel_search_decorator
     async def __call__(self, input, instruction, **kwargs):
         prompt = instruction + input
         response = await self._fill_node(GenerateOp, prompt, mode="single_fill")
@@ -33,7 +31,6 @@ class AnswerGenerate(Operator):
     def __init__(self, llm: AsyncLLM, name: str = "AnswerGenerate"):
         super().__init__(llm, name)
 
-    @llm_parallel_search_decorator
     async def __call__(self, input: str, mode: str = None, **kwargs) -> Tuple[str, str]:
         prompt = ANSWER_GENERATION_PROMPT.format(input=input)
         response = await self._fill_node(AnswerGenerateOp, prompt, mode="xml_fill")
@@ -50,8 +47,7 @@ class ScEnsemble(Operator):
     def __init__(self, llm: AsyncLLM, name: str = "ScEnsemble"):
         super().__init__(llm, name)
 
-    @llm_parallel_search_decorator
-    async def __call__(self, solutions: List[str], **kwargs):
+    async def __call__(self, solutions: List[str], problem: str, **kwargs):
         answer_mapping = {}
         solution_text = ""
         for index, solution in enumerate(solutions):

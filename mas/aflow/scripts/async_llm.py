@@ -299,7 +299,7 @@ class AsyncLLM:
         else:
             ret = response_message.content
         
-        print(ret)
+        # print(ret)
         
         # Print token usage information
         print(f"Token usage: {input_tokens} input + {output_tokens} output = {input_tokens + output_tokens} total")

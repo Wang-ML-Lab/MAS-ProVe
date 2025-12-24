@@ -1,1 +1,53 @@
-{}
+{
+    "3": {
+        "score": 0.8333333333333334,
+        "success": {},
+        "failure": {
+            "4": {
+                "modification": "modify: Add a lightweight validation & fallback step that ensures the extracted integer is within 0-999 and never None; if extraction fails, call Programmer again with a concise verification prompt. Changed up to 5 lines in __call__ to add validation and a fallback Programmer call.",
+                "score": 0.8333333333333334
+            },
+            "8": {
+                "modification": "Modified extraction and validation logic: replaced the simple regex with a robust extraction function that (1) collects all signed integers from ensemble, programmer, and final texts; (2) normalizes whitespace and commas; (3) enforces bounds 0-999; (4) retries Programmer once with a concise verification prompt if no valid integer found; limited changes to 5 lines in __call__ (added import re, defined extract_and_validate, replaced extraction/fallback block). Also updated prompt_custom to include a VERIFY_PROMPT used for the single retry. (Changed behavior vs sample: added explicit retry using Programmer verification prompt, and stricter normalization/acceptance of signed numbers.)",
+                "score": 0.16666666666666666
+            },
+            "6": {
+                "modification": "modified: Added a lightweight validation+retry step that (1) extracts integers robustly from ensemble, programmer, and final texts; (2) ensures the integer is in 0-999; (3) if extraction/validation fails, re-invokes Programmer with a concise verification prompt and uses its output; (4) limits changes to 5 lines in __call__. Also changed regex to accept optional negative sign and whitespace then enforce 0-999 bounds and never return None (use -1 fallback if all else fails).",
+                "score": 0.6666666666666666
+            }
+        }
+    },
+    "1": {
+        "score": 0.6666666666666666,
+        "success": {
+            "3": {
+                "modification": "modify: Add ScEnsemble and Programmer usage to __call__, run Custom twice with two different prompts (analysis and final), then use Programmer to verify numeric result, and ScEnsemble to pick consensus; changes limited to <=5 lines. Also add and expose a new prompt prompt_custom.ANALYZE_PROMPT and prompt_custom.FINAL_PROMPT. (Modified ~5 lines)",
+                "score": 0.8333333333333334
+            }
+        },
+        "failure": {
+            "2": {
+                "modification": "modified: added a ScEnsemble node and a Programmer node to validate and compute numeric answers; changed __call__ to run Custom twice with two different tailored prompts (analysis and final answer), then use Programmer to verify computations and ScEnsemble to pick consensus. Minor edits: adjusted return to ensure formatted integer answer and cost. (Changed ~5 lines)",
+                "score": 0.0
+            }
+        }
+    },
+    "4": {
+        "score": 0.8333333333333334,
+        "success": {},
+        "failure": {
+            "9": {
+                "modification": "Modified extraction and ensemble tie-break behavior: (1) tightened regex to prefer a line starting with \"Answer:\" and capture standalone integer; (2) changed ensemble selection to prefer Programmer output when there's a tie or no clear majority; (3) added small sanitization to strip non-digit characters around numbers. Changes kept within 5 lines. Also removed unused fallback ordering to attempt final_text before programmer on first fallback. (Changed ~4 lines)",
+                "score": 0.6666666666666666
+            },
+            "10": {
+                "modification": "Modified extraction and ensemble tie-break behavior: (1) tightened integer extraction to prefer explicit \"Answer: N\" lines first, then boxed LaTeX, then standalone 1-3 digit tokens; (2) changed ensemble selection to prefer Programmer output when there's no clear majority and to prefer FINAL_PROMPT over ANALYZE_PROMPT when Programmer not decisive; (3) added an extra validation step to re-call Programmer with strict instruction to output only \"Answer: N\" if previous attempts fail. Changes limited to 5 lines modified/added in the Workflow.__call__ method and added import re at top of method. Also updated prompt_custom to only include ANALYZE_PROMPT and FINAL_PROMPT (no extra prompts).",
+                "score": 0.8333333333333334
+            },
+            "7": {
+                "modification": "modify: Change ensemble strategy to include simple majority voting plus confidence tie-breaker by preferring Programmer output; add import re; tighten integer extraction regex to prefer standalone \"Answer: N\" lines. (Changed ~4 lines)",
+                "score": 0.8333333333333334
+            }
+        }
+    }
+}
