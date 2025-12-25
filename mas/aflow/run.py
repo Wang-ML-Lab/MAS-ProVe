@@ -149,7 +149,7 @@ if __name__ == "__main__":
     )
 
     # Optimize workflow via setting the optimizer's mode to 'Graph'
-    # optimizer.optimize("Graph")
+    optimizer.optimize("Graph")
 
     # Test workflow via setting the optimizer's mode to 'Test'
-    optimizer.optimize("Test")
+    # optimizer.optimize("Test")

@@ -1,58 +1,15 @@
 {
-    "3": {
-        "score": 0.03333333333333333,
-        "success": {},
-        "failure": {
-            "6": {
-                "modification": "modify: Add a verification-and-extraction step after AnswerGenerate to robustly extract single concise answer tokens (prefer quoted/Answer: lines, else last line) and add a small normalization to prefer alphabetic/digit tokens; limit changes to ≤5 lines.",
-                "score": 0.03333333333333333
-            },
-            "7": {
-                "modification": "Modified candidate extraction and AnswerGenerate usage: (1) Change Custom prompt to request five diverse concise candidates labeled Candidate1..Candidate5 to improve robust parsing. (2) After AnswerGenerate call, prefer extracting 'answer' then fallback to parsing final token from 'thought' (last quoted/Answer: line). (3) Add simple regex-based extraction and stricter normalization to keep alphabetic/digit and single spaces. Changes limited to <=5 lines in main graph logic and one new prompt. These changes aim to reduce verbose fallbacks and improve normalized answer correctness.",
-                "score": 0.03333333333333333
-            }
-        }
-    },
     "1": {
-        "score": 0.11666666666666665,
-        "success": {
-            "8": {
-                "modification": "Modified Workflow.__call__ to incorporate AnswerGenerate and ScEnsemble alongside Custom. Added two await calls to produce three concise candidate answers (one from Custom, two from AnswerGenerate variants), then call sc_ensemble to pick the best. Changes limited to ~5 lines in __call__ and added a new prompt variable prompt_custom.ANSWER_PROMPT. Note: preserved required tool properties and imports.",
-                "score": 0.16666666666666666
-            },
-            "4": {
-                "modification": "Modified Workflow.__call__ to use AnswerGenerate and ScEnsemble in addition to Custom: added two await calls (answer_generate and sc_ensemble), assembled 3 concise candidate answers from AnswerGenerate outputs, and chose final response via ScEnsemble. Changed ~4 lines. Also updated prompt_custom name and text. (Only one small functional change in __call__ and new prompt included.)",
-                "score": 0.13333333333333333
-            }
-        },
+        "score": 0.1,
+        "success": {},
         "failure": {
             "2": {
-                "modification": "modify: Add an AnswerGenerate + ScEnsemble usage and adjust Custom prompt to produce 3 candidate concise answers; small code changes in __call__ to call answer_generate and sc_ensemble, and format final return. (Changed ~4 lines)",
-                "score": 0.06666666666666667
-            }
-        }
-    },
-    "8": {
-        "score": 0.16666666666666666,
-        "success": {},
-        "failure": {
-            "10": {
-                "modification": "Modified to: 1) Replace one of the two AnswerGenerate calls with operator.Custom using a different concise-instruction variant to increase diversity while keeping total candidate count at three. 2) Add a lightweight verification-and-formatting Custom step that enforces \"final-answer-only\" (no commentary) and returns that cleaned string; call it right before returning final. Changes are within 5 lines: replaced second answer_generate invocation, added one Custom verification call, and adjusted ensemble inputs accordingly. Also updated prompt_custom to include both concise-answer and verify-final prompts.",
-                "score": 0.08333333333333333
+                "modification": "modify: Added an AnswerGenerate operator call and a ScEnsemble aggregation; updated __call__ to run two different custom prompts (direct answer and step-by-step), then use AnswerGenerate to produce thought+answer, and ScEnsemble to vote between multiple runs. Also added minimal error handling and preserved tools/tool_functions properties. Changed at most 5 lines in core code logic (async __call__ body adjusted).",
+                "score": 0.0
             },
-            "9": {
-                "modification": "modify: add a short verification-and-formatting step using Custom to enforce concise final-answer-only output and include its prompt; changed <=5 lines in __call__ to call this new custom step before returning. Also removed one redundant AnswerGenerate call and updated ensemble inputs accordingly.",
-                "score": 0.10000000000000002
-            }
-        }
-    },
-    "2": {
-        "score": 0.06666666666666667,
-        "success": {},
-        "failure": {
             "3": {
-                "modification": "modify: change candidate generation to produce 5 diverse candidates and add a lightweight validation step plus use AnswerGenerate for both thought+answer and a short normalized answer extraction before ensemble; limited edits (5 lines changed)",
-                "score": 0.03333333333333333
+                "modification": "Modified __call__ to run two different custom prompts (direct answer and step-by-step), call AnswerGenerate to produce thought+answer, then call ScEnsemble to pick final response. Added use of the AnswerGenerate and ScEnsemble operators, preserved tools/tool_functions properties. Changed 4 lines in async __call__ body and added import typing for List, Dict, Callable. Kept changes minimal.",
+                "score": 0.05
             }
         }
     }
