@@ -56,7 +56,7 @@ class ServerPRM(BaseServer):
         self.model = model or config["prm"]["model_path"]
         self.api_url = api_url or config["prm"]["api_url"]
         self.max_parallel_calls = max_parallel_calls
-        self.semaphore = asyncio.Semaphore(max_parallel_calls)
+        
 
         # summarization should be performed when the context is too long for the PRM model.
         assert summary_mode in ["enforce", "optional"], "Invalid summary mode"
@@ -116,6 +116,7 @@ class ServerPRM(BaseServer):
         return sorted(indices, key=lambda i: rewards[i], reverse=True)
 
     async def _process_request(self, request):
+        semaphore = asyncio.Semaphore(self.max_parallel_calls)
         assert request.get(
             "judge-type", None) == "prm", "Invalid judge type for PRM"
         task_type = request.get("task-type", None)
@@ -144,7 +145,7 @@ class ServerPRM(BaseServer):
                    for conversation_str in conversation_strs]
 
         rewards = []
-        async with self.semaphore:
+        async with semaphore:
             # Since requests is not async, run each prompt in thread pool
             import aiohttp
 

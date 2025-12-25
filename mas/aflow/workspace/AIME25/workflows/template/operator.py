@@ -90,8 +90,8 @@ class Programmer(Operator):
             feedback=feedback
         )
         response = await self._fill_node(CodeGenerateOp, prompt, mode, function_name="solve")
-        print(f"DEBUG code_generate response: {response}")  # Add this
-        print(f"DEBUG code_generate response type: {type(response)}")  # And this
+        # print(f"DEBUG code_generate response: {response}")  # Add this
+        # print(f"DEBUG code_generate response type: {type(response)}")  # And this
         return response
 
     @retry(stop=stop_after_attempt(3), wait=wait_fixed(2))

@@ -32,22 +32,35 @@ def llm_parallel_search_decorator(llm_func):
         # Each response is a tuple: (content, usage, tool_calls_info)
         print(f"Formatting {len(responses)} candidates for judging...")
         
-        # Build context from trajectory
+        # Build context from trajectory[]
         context_str = ""
-        if trajectory and len(trajectory) > 0:
+        if len(responses) > 0 and isinstance(responses[0], dict) and "context" in responses[0]:
+            context_str = responses[0]["context"]
+        elif trajectory and len(trajectory) > 0:
             context_str = "\n\n".join([f"Step {i+1}: {step}" for i, step in enumerate(trajectory)])
             print(f"        Context: {len(trajectory)} previous steps")
         
+        def flatten_to_str(obj):
+            if isinstance(obj, str):
+                return obj
+            elif isinstance(obj, (list, tuple)):
+                # Recursively flatten and join with newlines
+                return '\n'.join(flatten_to_str(item) for item in obj)
+            elif isinstance(obj, dict):
+                # Try to extract 'response' or first non-empty value
+                if "response" in obj and obj["response"]:
+                    return flatten_to_str(obj["response"])
+                else:
+                    for v in obj.values():
+                        if v:
+                            return flatten_to_str(v)
+                return str(obj)
+            else:
+                return str(obj)
+
         partial_trajectories = []
         for i, function_result in enumerate(responses):
-            if isinstance(function_result, tuple) or isinstance(function_result, list): 
-                # Protocol: if the function's result is a tuple or list, the first one should be the actual reasoning response.
-                content = function_result[0]
-            elif isinstance(function_result, dict):
-                # Extract first non-None, non-empty value from dict, or stringify the whole dict
-                content = next((v for v in function_result.values() if v), str(function_result))
-            else:
-                content = function_result
+            content = flatten_to_str(function_result)
             partial_trajectories.append({
                 "context": context_str,
                 "current-step": content
@@ -70,6 +83,7 @@ def llm_parallel_search_decorator(llm_func):
         print(f"DECORATOR CALLED")
         task_type = kwargs.pop('task_type', None)
         trajectory = kwargs.pop('trajectory', None)
+        # trajectory=None
         # Extract question - it's the second positional arg for both direct() and debate_refine()
         question = kwargs.get('question', args[1] if len(args) > 1 else "")
         print(f"      Task type: {task_type}")

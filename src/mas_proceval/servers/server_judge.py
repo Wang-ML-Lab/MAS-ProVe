@@ -1,4 +1,3 @@
-from openai import Client
 from .server_base import BaseServer
 from ..utils import read_config_yaml
 import asyncio
@@ -12,7 +11,7 @@ class ServerJudge(BaseServer):
                  host=global_config["server"]["host"],
                  port=global_config["server"]["port"],
                  model="gpt-5-mini",
-                 max_parallel_calls=10):
+                 max_parallel_calls=50):
         super().__init__(host, port)
 
         self.openai_api_key = global_config["api_keys"]["openai"]
@@ -22,7 +21,9 @@ class ServerJudge(BaseServer):
 
     def format_trajectory_for_eval(self, trajectory):
         # here we leave the autonomacy fo the context generation to the MAS systems.
-        return "\n".join([trajectory["context"], trajectory["current-step"]])
+        context = trajectory["context"] if isinstance(trajectory["context"], str) else str(trajectory["context"])
+        current_step = trajectory["current-step"] if isinstance(trajectory["current-step"], str) else str(trajectory["current-step"])
+        return "\n".join([context, current_step])
     
     def feedback2rankings(self, feedback, trajectories_for_eval):
         num_candidates = len(trajectories_for_eval)
@@ -91,7 +92,7 @@ def build_messages_for_judge(trajectories_for_eval, task_type=None, question="")
     {candidates_text}
     """.strip()
 
-    if task_type == "math":
+    if "qa" in task_type.lower() or "math" in task_type.lower():
         # Use ranking-based judging
         system_prompt = """Please act as an impartial judge and evaluate the quality of multiple responses provided by AI assistants to the user prompt displayed below. You will be given several candidate responses.
 
@@ -122,10 +123,10 @@ After providing your explanation, you must output the ranking as a comma-separat
             {"role": "user", "content": prompt_formatted}
         ]
         return messages
-    elif task_type == "swe":
-        pass
-    elif task_type == "web-search":
-        pass
+    # elif task_type == "swe":
+    #     pass
+    # elif task_type == "web-search":
+    #     pass
     else: 
         warnings.warn(f"Unknown task type: {task_type}, using the default prompt for judge.")
         messages = [
@@ -137,6 +138,6 @@ After providing your explanation, you must output the ranking as a comma-separat
 
 if __name__ == "__main__":
     print("Starting ServerJudge...")
-    server = ServerJudge(model="gpt-5-mini", max_parallel_calls=50)
+    server = ServerJudge(model="gpt-5-mini", max_parallel_calls=100)
     print(f"Judge server listening on {server.host}:{server.port}")
     server.start()
