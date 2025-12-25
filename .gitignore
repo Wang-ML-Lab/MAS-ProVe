@@ -16,10 +16,11 @@ wandb
 *.csv
 *.pkl
 tmp/
-*/__pycache__
 *.
 src/*/config.yaml
 results/
 mas/aflow/logs/*
 mas/aflow/workspace/*
 mas/aflow/*.txt
+**/results*/
+**/*result*
