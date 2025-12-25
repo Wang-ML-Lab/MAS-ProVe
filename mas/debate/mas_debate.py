@@ -16,7 +16,7 @@ import random
 import cost_tracker
 
 class MASDebate(MASBase):
-    def __init__(self, example: Dict, example_id: int, debate_config: DebateConfig, benchmark: str, task_type: str = "math"):
+    def __init__(self, example: Dict, example_id: int, debate_config: DebateConfig, benchmtask_typeark: str, : str = "math"):
         super().__init__()
         self.example = example
         self.example_id = example_id

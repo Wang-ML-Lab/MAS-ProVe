@@ -21,8 +21,12 @@ from blocks.websearch import WebSearch
 from sampler import get_model
 from shared_vars import get_global, add_to_global_cost
 
+from mas_proceval.decorators.decorator_base import llm_parallel_search_decorator
+
 Message = dict[str, Any]  # keys role, content
 MessageList = list[Message]
+
+
 
 # as of 02/25 https://platform.openai.com/docs/pricing
 # note that o3 mini is cheaper
@@ -282,7 +286,7 @@ def get_json_response_from_gpt(
 
     return json_dict
 
-
+@llm_parallel_search_decorator
 @backoff.on_exception(backoff.expo, openai.RateLimitError)
 async def get_json_response_from_gpt_local(
         msg,
@@ -290,6 +294,7 @@ async def get_json_response_from_gpt_local(
         output_fields,
         temperature,
         extra_info,
+        **kwargs
 ):
     # We do not do anything with system prompt
 

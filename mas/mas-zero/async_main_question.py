@@ -390,6 +390,7 @@ async def main(args):
                 extra_info["dataset"] = args.dataset
                 extra_info["instance_id"] = instance_id
                 extra_info["code_snippet"] = code_snippet
+                # extra_info["mas_trajectory"] = []
 
                 # search
                 await search.search(extra_info, task_queue, meta_model, blocks, verifier_model, args.n_generation,

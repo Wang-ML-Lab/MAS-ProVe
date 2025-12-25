@@ -161,9 +161,21 @@ class LLMAgentBase:
         prompt = [
             _pack_message(content=system_prompt, role="system"),
             _pack_message(content=prompt, role="user")]
-        # use system prompt
-        response_json = await get_json_response_from_gpt_local(prompt, self.model, self.output_fields, self.temperature, extra_info)
-        print("\n This is the response from agent:", self.__repr__(), "content:", response_json)
+        
+        dataset = extra_info.get('dataset', '')
+        task_type = "math" if "aime" in dataset else "qa" if "gaia" in dataset else "general"
+        
+        trajectory_context = []
+        for info in input_infos:
+            # Only include if author is not 'User'
+            if hasattr(info, 'author') and info.author != 'User' and hasattr(info, 'content'):
+                trajectory_context.append(f"[{info.author}]: {info.content}")
+        
+        # 2. Extract Question
+        question = extra_info.get('questions', '')
+        
+        response_json = await get_json_response_from_gpt_local(prompt, self.model, self.output_fields, self.temperature, extra_info,trajectory=trajectory_context, task_type=task_type, question=question)
+        # print("\n This is the response from agent:", self.__repr__(), "content:", response_json)
         output_infos = []
         for key, value in response_json.items():
             info = Info(key, self.__repr__(), value, prompt, None, None, iteration_idx)

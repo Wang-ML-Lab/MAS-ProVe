@@ -1,4 +1,14 @@
 {
+    "2": {
+        "score": 0.0,
+        "success": {},
+        "failure": {
+            "5": {
+                "modification": "modify: Add validation, stricter answer extraction, and a short voting step using simple frequency count; limited changes (<=5 lines) to __call__ to include normalization and fallback numeric-extraction. Also add a new concise CHAIN_PROMPT variant and keep DIRECT_PROMPT. Changes: - normalize candidate answers by stripping extraneous text and extracting numeric tokens when possible; - add simple voting before sc_ens when candidates are numeric; modified lines are inline in graph.",
+                "score": 0.0
+            }
+        }
+    },
     "1": {
         "score": 0.1,
         "success": {},
