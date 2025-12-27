@@ -194,7 +194,7 @@ class ServerPRM(BaseServer):
                         # print(f"[ERROR] Exception during backend call: {e}")
                         raise
 
-        # print(f"[DEBUG] Rewards: {rewards}")
+        print(f"[DEBUG] Rewards: {rewards}")
         assert len(rewards) == len(
             responses), "Rewards length mismatch with candidates"
 
@@ -218,7 +218,7 @@ if __name__ == "__main__":
 
     # Command to start vllm PRM server
     vllm_command = [
-        "CUDA_VISIBLE_DEVICES=0",
+        "CUDA_VISIBLE_DEVICES=1",
         "vllm",
         "serve",
         "/research/projects/mllab/public_llms/reward_models/qwen_rms/Qwen2.5-Math-PRM-7B",
@@ -247,7 +247,7 @@ if __name__ == "__main__":
     parser.add_argument("--prm-model-path", type=str, default="/research/projects/mllab/public_llms/reward_models/qwen_rms/Qwen2.5-Math-PRM-7B", help="Path to the PRM model")
     parser.add_argument("--summary-model", type=str, default="gpt-5-mini", help="Model to use for summarization")
     parser.add_argument("--api-url", type=str, default="http://localhost:8000/pooling", help="URL for the PRM API endpoint")
-    parser.add_argument("--max-parallel-calls", type=int, default=50, help="Max parallel calls for evaluation")
+    parser.add_argument("--max-parallel-calls", type=int, default=20, help="Max parallel calls for evaluation")
     parser.add_argument("--summary-mode", type=str, choices=["enforce", "optional"], default="enforce", help="Summary mode")
     parser.add_argument("--max-context-length", type=int, default=4096, help="Max context length before triggering summarization")
 

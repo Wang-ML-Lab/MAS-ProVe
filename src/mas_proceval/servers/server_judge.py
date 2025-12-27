@@ -138,6 +138,6 @@ After providing your explanation, you must output the ranking as a comma-separat
 
 if __name__ == "__main__":
     print("Starting ServerJudge...")
-    server = ServerJudge(model="gpt-5-mini", max_parallel_calls=100)
+    server = ServerJudge(model="gpt-5-mini", max_parallel_calls=100, port=5556)
     print(f"Judge server listening on {server.host}:{server.port}")
     server.start()
