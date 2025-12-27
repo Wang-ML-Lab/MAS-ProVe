@@ -286,7 +286,78 @@ def get_json_response_from_gpt(
 
     return json_dict
 
+
 @llm_parallel_search_decorator
+@backoff.on_exception(backoff.expo, openai.RateLimitError)
+async def get_json_response_from_gpt_local_parallel(
+        msg,
+        model,
+        output_fields,
+        temperature,
+        extra_info,
+        **kwargs):
+    # We do not do anything with system prompt
+    # print('msg: ',msg)
+    # print('model: ',model)
+    # model_sampler_map = get_global("global_model_sampler_map")
+    # sampler = model_sampler_map[model]
+    sampler = get_model(model)
+
+    debug_count = 0
+    while True:
+        debug_count += 1
+        response_text = ""
+        try:
+            sampler_return = await sampler(msg, temperature)
+
+            # # TODO: we do not want to break here. If it is just excution, it must be runnable by keep retrying
+            if sampler_return == "" or debug_count > 1:  # bad request
+                json_dict = {key: "" for key in output_fields}
+                json_dict["error"] = "bad request. Please try again with higher temperature."
+                return json_dict
+
+            response_text, usage = sampler_return
+            json_dict = json.loads(response_text)
+            keys = json_dict.keys()
+            # print(json_dict)
+            is_valid_answer = True
+            if 'answer' in keys:
+                if isinstance(json_dict['answer'], str) and len(json_dict['answer'].strip()) == 0:
+                    is_valid_answer = False
+
+            # Hacked by Fangkai to run Qwen3-235B
+            if 'thinking' in output_fields and 'think' in keys and 'thinking' in keys:
+                json_dict.pop('think')
+                keys = json_dict.keys()
+
+            if set(output_fields).issubset(set(keys)) and is_valid_answer:
+                break
+            # elif set(json_dict.keys()) == {'thinking', 'answer'} or set(json_dict.keys()) == {'feedback', 'correct'}:
+            #     break
+            else:
+                print(f'require output_fields: {output_fields}, json_dict: {keys}; is_valid_answer: {is_valid_answer}')
+
+        except Exception as e:
+            print(f'Execute Error: {e}; response_text: {response_text}')
+
+    # print('json_dict: ',json_dict)
+    if isinstance(usage, dict):
+        prompt_tokens = usage["prompt_tokens"]
+        completion_tokens = usage["completion_tokens"]
+    else:
+        prompt_tokens = usage.prompt_tokens
+        completion_tokens = usage.completion_tokens
+    cost = (
+                   prompt_tokens * model_price_map[model]['prompt']
+                   + completion_tokens * model_price_map[model]['completion']
+           ) / 1000000
+    # add_to_global_cost(cost)
+    # print('COST_TOTAL: ',cost)
+    extra_info["COST_TOTAL"] += cost
+
+    return json_dict
+
+
 @backoff.on_exception(backoff.expo, openai.RateLimitError)
 async def get_json_response_from_gpt_local(
         msg,
@@ -294,7 +365,7 @@ async def get_json_response_from_gpt_local(
         output_fields,
         temperature,
         extra_info,
-        **kwargs
+        # **kwargs
 ):
     # We do not do anything with system prompt
 

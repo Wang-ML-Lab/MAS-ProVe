@@ -42,7 +42,20 @@ def _strip_string(string):
             string = string[:-1]
         if string[-1] == "/":
             string = string[:-1]
-    
+        # Remove leading zeros for pure integer/float answers (but not for '0' itself)
+        # Only if string is all digits (possibly with a leading minus sign)
+        s = string
+        if s.startswith('-'):
+            sign = '-'
+            s = s[1:]
+        else:
+            sign = ''
+        if s.isdigit():
+            # Remove leading zeros, but keep '0' as is
+            s = s.lstrip('0')
+            if s == '':
+                s = '0'
+            string = sign + s
     return string
 
 

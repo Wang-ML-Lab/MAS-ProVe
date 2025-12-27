@@ -16,7 +16,7 @@ from tqdm import tqdm
 import common
 from common import ANSWER_PATTERN, shorten_context, merge_context
 from common import HTML_JINJA, get_init_archive_local, get_prompt_local, SingleEvalResult, get_reflexion_after_eval_local
-from common import get_json_response_from_gpt_local, get_json_response_from_gpt_reflect_local, _pack_message
+from common import get_json_response_from_gpt_local, get_json_response_from_gpt_reflect_local, _pack_message, get_json_response_from_gpt_local_parallel
 from prompts.swe.patch_oracle import AGENTLESS_REPAIR
 from utils import extract_xml
 from score import DataScorer
@@ -165,16 +165,22 @@ class LLMAgentBase:
         dataset = extra_info.get('dataset', '')
         task_type = "math" if "aime" in dataset else "qa" if "gaia" in dataset else "general"
         
-        trajectory_context = []
-        for info in input_infos:
-            # Only include if author is not 'User'
-            if hasattr(info, 'author') and info.author != 'User' and hasattr(info, 'content'):
-                trajectory_context.append(f"[{info.author}]: {info.content}")
-        
         # 2. Extract Question
         question = extra_info.get('questions', '')
         
-        response_json = await get_json_response_from_gpt_local(prompt, self.model, self.output_fields, self.temperature, extra_info,trajectory=trajectory_context, task_type=task_type, question=question)
+        # print("\nThis is input infos", input_infos)
+        # print("\n This is extra info:", extra_info)
+        # response_json = await get_json_response_from_gpt_local(prompt, self.model, self.output_fields, self.temperature, extra_info,trajectory=trajectory_context, task_type=task_type, question=question)
+        
+        if isinstance(extra_info.get('n', -1), int):
+            trajectory_context = []
+            for info in input_infos:
+                # Only include if author is not 'User'
+                if hasattr(info, 'author') and info.author != 'User' and hasattr(info, 'content'):
+                    trajectory_context.append(f"[{info.author}]: {info.content}")
+            response_json = await get_json_response_from_gpt_local_parallel(prompt, self.model, self.output_fields, self.temperature, extra_info,trajectory=trajectory_context, task_type=task_type, question=question)
+        else:
+            response_json = await get_json_response_from_gpt_local(prompt, self.model, self.output_fields, self.temperature, extra_info)
         # print("\n This is the response from agent:", self.__repr__(), "content:", response_json)
         output_infos = []
         for key, value in response_json.items():
@@ -538,72 +544,19 @@ async def search(extra_info, task_queue, meta_model, blocks, verifier_model, n_g
         results = None
         sub_tasks = None
         final_response = None
-        for _ in range(debug_max):
-            try:  # in case the generated code is not correct
-                acc_oracle_verifier_list, acc_model_verifier_list, results, sub_tasks, agents, final_response = await evaluate_forward_fn(
-                    extra_info, next_solution["code"]
-                )
-                if use_oracle_verifier:
-                    acc_list = acc_oracle_verifier_list
-                else:
-                    acc_list = acc_model_verifier_list
-                break
-            except Exception as e:
-                # %%%%%%%%%%%%% only for debug
-                import traceback
-                traceback.print_exc()
-                print("During evaluation:")
-                print(e)
-                debug_list = copy.deepcopy(msg_list)  # deep copy
-                print('finish deep copy')
+        try:
+            acc_oracle_verifier_list, acc_model_verifier_list, results, agents, sub_tasks, final_response = await evaluate_forward_fn(extra_info, next_solution["code"])
+        except Exception as e:
+            import traceback
+            traceback.print_exc()
+            # print(solution['code'])
+            continue
+        if use_oracle_verifier:
+            acc_list = acc_oracle_verifier_list
+        else:
+            acc_list = acc_model_verifier_list
 
-                debug_list.append({"role": "assistant", "content": next_solution})
-
-                if format_choice == 'xml':
-
-                    _shorten_context = extra_info["shorten_context"]
-                    if _shorten_context:
-                        debug_list_reflect = shorten_context(debug_list)
-                    else:
-                        debug_list_reflect = debug_list
-                    debug_list_reflect.append({"role": "user",
-                                               "content": f"Error during evaluation:\n{e}\n"
-                                                          f"Carefully consider where you went wrong in your latest implementation. "
-                                                          f"Using insights from previous attempts, try to debug the current code to implement the exact same "
-                                                          f"thought without any shortcut. You still need to follow all the requirement mentioned "
-                                                          f"in this history. Give the fixed (implement the same thought) code in 'code'. "
-                                                          f"Repeat your previous thought in 'thought', and put your thinking for debugging in 'debug_thought'. "
-                                                          f"Repeat name in 'name'\n\nMake sure to return in a WELL-FORMED XML object. "
-                                                          f"Wrap the required entries with <(entry_name)> and </(entry_name)>. "
-                                                          f"For example, 'code' entry should be wrapped by <code> ...(your code)... </code>. "
-                                                          f"However, Do not use XML format inside each entry"})
-                else:
-                    debug_list_reflect = debug_list  # if you have enough length
-                    debug_list_reflect.append({"role": "user",
-                                               "content": f"Error during evaluation:\n{e}\n"
-                                                          f"Carefully consider where you went wrong in your latest implementation. "
-                                                          f"Using insights from previous attempts, try to debug the current code to implement the same thought. "
-                                                          f"You still need to follow all the requirement mentioned in this history. "
-                                                          f"Give the fixed (implement the same thought) code in 'code'. "
-                                                          f"Repeat your previous thought in 'thought', and put your thinking for debugging in 'debug_thought'. "
-                                                          f"Repeat name in 'name',"})
-                    # TODO: sometimes still cannot fix. The reason is, the forward is a string, which provide limited error information
-                try:
-                    next_solution = await get_json_response_from_gpt_reflect_local(debug_list_reflect, meta_model, extra_info)
-                except Exception as e:
-                    import traceback
-                    traceback.print_exc()
-                    print("During LLM generate new solution:")
-                    print(e)
-                    continue
-                # %%%%%%%%%%%%%
-
-                continue
-
-        # if not acc_list:
-        #     n -= 1  # rerun
-        #     continue
-
+        
         if defer_verifier:
             fitness_str = bootstrap_confidence_interval([0.0])
             next_solution["acc"] = [0.0]

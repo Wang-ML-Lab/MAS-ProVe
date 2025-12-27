@@ -6,7 +6,7 @@ import pandas as pd
 from datasets import load_dataset
 from tqdm.asyncio import tqdm_asyncio
 
-import async_search as search
+import async_search_iter as search
 from prompts.swe.patch_oracle import AGENTLESS_REPAIR
 from sampler import init_model
 from utils import extract_xml

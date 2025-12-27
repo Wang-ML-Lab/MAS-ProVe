@@ -1,4 +1,14 @@
 {
+    "3": {
+        "score": 0.05,
+        "success": {
+            "6": {
+                "modification": "modify: add an extra validation-and-formatting ensemble step using AnswerGenerate on the concatenation of direct and step outputs, and include a short extraction post-processing to force concise numeric or named answers. Changes under 5 lines in __call__.",
+                "score": 0.1
+            }
+        },
+        "failure": {}
+    },
     "2": {
         "score": 0.0,
         "success": {},
@@ -20,6 +30,40 @@
             "3": {
                 "modification": "Modified __call__ to run two different custom prompts (direct answer and step-by-step), call AnswerGenerate to produce thought+answer, then call ScEnsemble to pick final response. Added use of the AnswerGenerate and ScEnsemble operators, preserved tools/tool_functions properties. Changed 4 lines in async __call__ body and added import typing for List, Dict, Callable. Kept changes minimal.",
                 "score": 0.05
+            }
+        }
+    },
+    "7": {
+        "score": 0.1,
+        "success": {
+            "8": {
+                "modification": "modify: add one stricter EXTRACT_PROMPT to normalize numeric-only answers and prefer single-token; change small post-process normalization (replace commas with semicolons and ensure single token/numeric-only). (Modified lines <=5)",
+                "score": 0.15
+            }
+        },
+        "failure": {}
+    },
+    "6": {
+        "score": 0.1,
+        "success": {},
+        "failure": {
+            "7": {
+                "modification": "modify: add a validation+extraction postprocessing step that enforces short-format final answers (prefer numeric or single-token or semicolon-separated tokens), add a third Custom prompt for an \"EXTRACT_PROMPT\" to ask the model to output only the final concise answer in a normalized format; integrate AnswerGenerate on that extract output and use ScEnsemble over four candidates (direct, step, combined, extract) and ensure final never None. Changed <=5 lines in __call__ to add new call and include in ensemble list and improved final selection logic.",
+                "score": 0.1
+            }
+        }
+    },
+    "8": {
+        "score": 0.15,
+        "success": {},
+        "failure": {
+            "10": {
+                "modification": "Modified: added a focused EXTRACT_NAME_PROMPT and one extra Custom call to produce a single-token normalized candidate (name-only) and integrated its result into the ensemble; tightened postprocessing to prefer exact token matches from that extraction. Changes limited to adding one prompt and <=5 lines in Workflow.__call__ plus small postprocess adjustments. Also removed unused EXTRACT_PROMPT from prompt_custom and replaced with new prompt name.",
+                "score": 0.0
+            },
+            "9": {
+                "modification": "modify: add one additional focused extraction step that asks Custom to output a short normalized candidate limited to names or single tokens (NAME_EXTRACT_PROMPT) and include it into ensemble; also tighten final normalization to prefer exact token matches; changes limited to adding one Custom call and minor postprocess lines (<=5 lines changed)",
+                "score": 0.0
             }
         }
     }

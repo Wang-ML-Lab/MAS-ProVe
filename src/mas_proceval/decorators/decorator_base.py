@@ -70,7 +70,7 @@ def llm_parallel_search_decorator(llm_func):
         
         # Send to server for ranking
         print(f"Sending to judge server (task_type={task_type})...")
-        result = client.send_request(task_type, "judge", partial_trajectories, question)
+        result = client.send_request(task_type, "rm", partial_trajectories, question)
         print(f"Received rankings from server: {result.get('rankings', [])}")
         return result
     

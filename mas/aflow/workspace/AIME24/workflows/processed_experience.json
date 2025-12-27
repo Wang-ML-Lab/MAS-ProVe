@@ -1,65 +1,46 @@
 {
-    "5": {
-        "score": 0.7777777777777778,
+    "4": {
+        "score": 0.6666666666666666,
         "success": {},
         "failure": {
             "6": {
-                "modification": "modify: adjust ensemble usage and add a lightweight majority-vote fallback; change 4 lines in __call__ to compute simple vote tally and prefer Programmer-verified numeric when available.",
-                "score": 0.7222222222222222
-            },
-            "7": {
-                "modification": "modify: Change ensemble selection to do a lightweight majority vote on numeric Answer lines (prefer Programmer output when it provides a clear integer), add minimal parsing & tie-break logic; modify 4 lines in __call__ to implement vote tally and preference. Also remove unused cand4 usage and replace CONSISTENCY_PROMPT with a tighter NUMERIC_PROMPT. Updated prompt set accordingly.",
-                "score": 0.7222222222222223
+                "modification": "modify: Change the workflow's candidate generation and verification logic to (1) generate 9 candidates using two slightly different math prompts (5 with a concise-solution prompt and 4 with a step-check prompt) to increase diversity; (2) use ScEnsemble to pick top-2 distinct candidates and if they disagree, run Programmer to verify both candidates and choose the one whose verification matches the ensemble or numeric check; (3) tighten final answer formatting to always ensure a single final \"Answer: N\" line. Changed lines: loop count and custom calls (added second prompt), ensemble handling to select top-2, programmer calls up to two verifications, and final formatting block adjusted. (4) Added import typing List/Dict/Optional/Callable at top of graph if missing. All changes within 5 lines modified.",
+                "score": 0.6666666666666666
             }
         }
     },
     "3": {
-        "score": 0.7777777777777778,
+        "score": 0.6666666666666666,
         "success": {},
         "failure": {
             "5": {
-                "modification": "modify: add a short intermediate \"CONSISTENCY_PROMPT\" and change call order to generate 4 candidates (DETAILS, SHORT, VERIFY, CONSISTENCY) and pass their raw responses (not just 'response') into ScEnsemble; minor adjustments in assembling solutions (use get('response', '') safely). (Changed ~5 lines)",
-                "score": 0.7777777777777778
-            }
-        }
-    },
-    "7": {
-        "score": 0.7222222222222223,
-        "success": {},
-        "failure": {
-            "8": {
-                "modification": "modify: add a simple sanity-check majority bias towards Programmer when Programmer returns an integer; tighten regex to accept larger integers and decimals; adjust extract_int_answer to prefer largest-magnitude plausible integer when multiple matches; (changed <=5 lines)",
-                "score": 0.7222222222222222
+                "modification": "modify: Increase candidates to 7, add stricter numeric-check tokens, enforce final-line \"Answer: <value>\" in the Custom prompt by updating prompt_custom.MATH_PROMPT, and add small postprocessing in __call__ (<=5 lines changed) to (1) ensure the final answer line starts with 'Answer:', (2) strip extraneous text, and (3) increase verification threshold by verifying when any digit or token present. Also adjust unanimous check to use stripped final Answer line. (Changes: modify 5 lines in __call__ and replace prompt text.)",
+                "score": 0.5833333333333333
+            },
+            "4": {
+                "modification": "modify: Improve verification logic and extraction robustness by (1) increasing candidates to 7 for better self-consistency, (2) stricter numeric/check triggers, (3) always wrap final answer line as \"Answer: <value>\" if not present, and (4) add small postprocessing to strip extraneous text to help extractor. Changes confined to <=5 lines in __call__.",
+                "score": 0.6666666666666666
             }
         }
     },
     "1": {
-        "score": 0.611111111111111,
-        "success": {
+        "score": 0.5833333333333333,
+        "success": {},
+        "failure": {
             "2": {
-                "modification": "modify: add a ScEnsemble and Programmer operator call and a robust prompt_custom prompt; change Workflow.__call__ to first generate two diverse solutions via Custom (using two different short instructions) then call ScEnsemble on their responses and finally verify with Programmer for numeric-final answer. Also import re in prompted extraction is not allowed here; only code changes inside Workflow: add calls and minimal logic (≤5 lines changed).",
-                "score": 0.7222222222222222
-            },
-            "9": {
-                "modification": "modify: change Workflow.__call__ to call Custom twice with two distinct concise instructions to generate two diverse solutions, then call operator.sc_ensemble on the two responses to choose a consensus, then call operator.programmer to verify and produce a numeric final answer. Limit changes to ≤5 lines in __call__ and add necessary awaits and usages. Also add import math at top of file (single-line import).",
-                "score": 0.7222222222222222
+                "modification": "modify: Add a simple ScEnsemble step to validate Custom outputs by generating 3 variants via Custom, then use ScEnsemble to pick best; change __call__ to call custom three times and sc_ensemble, minor modifications (4 lines changed).",
+                "score": 0.5833333333333333
+            }
+        }
+    },
+    "2": {
+        "score": 0.5833333333333333,
+        "success": {
+            "3": {
+                "modification": "modify: Add a verification step that runs Programmer whenever the Custom responses disagree (self-consistency vote not unanimous) or whenever the chosen answer is numeric; also increase Custom candidate generations to 5 and improve ensemble usage. Changed ~5 lines in __call__ (loop count, ensemble call and programmer conditions) and added import typing for Optional/Dict/Callable usage already present. Kept other structure same.",
+                "score": 0.6666666666666666
             }
         },
         "failure": {}
-    },
-    "2": {
-        "score": 0.7222222222222222,
-        "success": {
-            "3": {
-                "modification": "modify: add a third Custom prompt (VERIFY_PROMPT) and call Custom a third time to produce a verification-focused concise numeric-only check; integrate this third response into ScEnsemble inputs and slightly adjust ensemble fallback. (Changed ~4 lines in __call__ to add third custom call and include it in solutions.)",
-                "score": 0.7777777777777778
-            }
-        },
-        "failure": {
-            "4": {
-                "modification": "modify: add a third Custom call that asks for a terse numeric-only verification (VERIFY_PROMPT) and include it in ensemble input; also slightly adjust ScEnsemble call to weight the numeric-only verification last as a tiebreaker. Changes: ~4 lines in __call__ (add third custom call, append its response, and pass a flag to sc).",
-                "score": 0.7222222222222222
-            }
-        }
     }
 }

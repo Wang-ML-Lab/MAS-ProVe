@@ -183,7 +183,55 @@ class LLMNeuron_AIME:
 
         print(f"Winner Answer: {self.answer}")
         print([edge.weight for edge in self.from_edges])
+    
+    
+    # def activate(self, question):
+    #     self.question = question
+    #     self.active = True
         
+    #     # Get context and generate reply
+    #     contexts, formers = self.get_context()
+        
+    #     # Shuffle formers
+    #     original_idxs = [mess[1] for mess in formers]
+    #     random.shuffle(formers)
+    #     shuffled_idxs = [mess[1] for mess in formers]
+    #     formers = [mess[0] for mess in formers]
+
+    #     contexts.append(construct_message(formers, question, self.qtype))
+    #     self.reply, self.prompt_tokens, self.completion_tokens = generate_answer_aime(contexts, self.model)
+    #     print(self.get_reply())
+        
+    #     # Parse answer
+    #     self.answer = self.ans_parser(self.reply)
+    #     weights = self.weights_parser(self.reply)
+        
+    #     if len(weights) != len(formers):
+    #         print("miss match!")
+    #         weights = [0 for _ in range(len(formers))]
+
+    #     shuffled_pairs = list(zip(shuffled_idxs, weights, formers))
+    #     sorted_pairs = sorted(shuffled_pairs, key=lambda x: original_idxs.index(x[0]))
+    #     weights, formers = [weight for _, weight, _ in sorted_pairs], [(former, eid) for eid, _, former in sorted_pairs]
+
+    #     lp = 0
+    #     for _, eid in formers:
+    #         self.from_edges[eid].weight = weights[lp] / 5 if 0 < weights[lp] <= 5 else (1 if weights[lp] > 5 else 0)
+    #         lp += 1
+    #     print([self.from_edges[eid].weight for _, eid in formers])
+        
+    #     # Normalize weights
+    #     total = sum([self.from_edges[eid].weight for _, eid in formers])
+    #     if total > 0:
+    #         for _, eid in formers:
+    #             self.from_edges[eid].weight /= total
+    #     else:
+    #         for _, eid in formers:
+    #             self.from_edges[eid].weight = 1 / len(formers)
+
+    #     print(self.answer)
+    #     print([edge.weight for edge in self.from_edges])
+            
     def get_context(self):
         sys_prompt = ROLE_MAP_AIME.get(self.role, ROLE_MAP_AIME["Assistant"]) + "\n" + SYSTEM_PROMPT_AIME
         contexts = [{"role": "system", "content": sys_prompt}]

@@ -8,7 +8,7 @@ from common import EQUALITY_TEMPLATE, MCQ_EQUALITY_TEMPLATE, GAIA_EQUALITY_TEMPL
 from llm_judge import self_verifier_list_wise
 from sampler.chat_completion_sampler import ChatCompletionSampler
 from sampler.o_chat_completion_sampler import OChatCompletionSampler
-from sampler.together_completion_sampler import ChatCompletionSampler as ToChatCompletionSampler
+# from sampler.together_completion_sampler import ChatCompletionSampler as ToChatCompletionSampler
 from sampler.vllm_completion_sampler import ChatCompletionSampler as VllmChatCompletionSampler
 from sampler.gpt5_chat_completion_sampler import AsyncChatCompletionSampler as Gpt5ChatCompletionSampler
 
@@ -138,15 +138,15 @@ if __name__ == "__main__":
         "qwen3-30b-a3b": VllmChatCompletionSampler(
             model="qwen3-30b-a3b",
         ),
-        "qwq-32b": ToChatCompletionSampler(
-            model="Qwen/Qwen2.5-32B-Instruct",
-        ),
-        "llama-3.3-70b-instr": ToChatCompletionSampler(
-            model="meta-llama/Llama-3.3-70B-Instruct-Turbo",
-        ),
-        "deepseek-v3": ToChatCompletionSampler(
-            model="deepseek-ai/DeepSeek-V3"
-        ),
+        # "qwq-32b": ToChatCompletionSampler(
+        #     model="Qwen/Qwen2.5-32B-Instruct",
+        # ),
+        # "llama-3.3-70b-instr": ToChatCompletionSampler(
+        #     model="meta-llama/Llama-3.3-70B-Instruct-Turbo",
+        # ),
+        # "deepseek-v3": ToChatCompletionSampler(
+        #     model="deepseek-ai/DeepSeek-V3"
+        # ),
         "gpt-4.1-nano":ChatCompletionSampler(
             model="gpt-4.1-nano",
         ),
