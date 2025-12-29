@@ -189,7 +189,7 @@ if __name__ == "__main__":
 
         question = responses[0]['problem']  # all responses have the same answer
 
-        # accumulate
+        # # accumulate
         extracted_answers = []
         correct_answers = []
 
@@ -220,7 +220,8 @@ if __name__ == "__main__":
         #         mem_data = json.load(json_file)
             
         #     # Filter only entries that contain "Selected from greedy"
-        #     filtered_data = [item for item in mem_data if any("Selected from greedy" in str(v) for v in item.values())]
+        #     # filtered_data = [item for item in mem_data if any("Selected from greedy" in str(v) for v in item.values())]
+        #     filtered_data = [item for item in mem_data]
             
         #     if not filtered_data:
         #         print(f'example_id {example_id}: No "Selected from greedy" entries found in mem.json')
