@@ -224,7 +224,7 @@ if __name__ == "__main__":
 
     # Command to start vllm PRM server
     vllm_command = [
-        "CUDA_VISIBLE_DEVICES=1",
+        "CUDA_VISIBLE_DEVICES=0",
         "vllm",
         "serve",
         "/research/projects/mllab/public_llms/reward_models/Skywork-Reward-V2-Llama-3.1-8B",

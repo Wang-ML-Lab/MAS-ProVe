@@ -2,7 +2,8 @@ import asyncio
 import warnings
 from ..clients.client_base import BaseClient
 
-MAX_PARALLEL_SEARCH_CALLS = 3  # Can be overridden in the importing code
+# Define default if not present
+MAX_PARALLEL_SEARCH_CALLS = 3 
 
 def llm_parallel_search_decorator(llm_func):
     """
@@ -10,9 +11,11 @@ def llm_parallel_search_decorator(llm_func):
     send the results to the server via client, and pick the best response.
     """
     async def gather_calls(*args, **kwargs):
-        # Call the original LLM func in parallel
-        print(f" Generating {MAX_PARALLEL_SEARCH_CALLS} parallel candidates...")
+        # 1. Run the LLM generations in parallel
+        # print(f" Generating {MAX_PARALLEL_SEARCH_CALLS} parallel candidates...")
         tasks = [llm_func(*args, **kwargs) for _ in range(MAX_PARALLEL_SEARCH_CALLS)]
+        
+        # This await is non-blocking because it uses asyncio.gather
         responses = await asyncio.gather(*tasks, return_exceptions=True)
         
         # Handle exceptions - replace failed responses with placeholder
@@ -20,43 +23,36 @@ def llm_parallel_search_decorator(llm_func):
             if isinstance(response, Exception):
                 error_msg = str(response)
                 print(f"   WARNING: Candidate {i+1} failed with error: {error_msg[:100]}...")
-                # Replace with a safe placeholder response
                 responses[i] = {"response": "I cannot respond to this request due to content policy restrictions."}
         
-        print(f" Generated {len(responses)} candidates")
         return responses
 
-    def send_to_server(responses, task_type=None, question="", trajectory=None):
-        client = BaseClient(host='127.0.0.1', port=5555)
-        # Format responses as trajectories for the judge server
-        # Each response is a tuple: (content, usage, tool_calls_info)
-        print(f"Formatting {len(responses)} candidates for judging...")
+    def send_to_server_sync(responses, task_type=None, question="", trajectory=None):
+        """
+        Synchronous wrapper for the blocking BaseClient.
+        This function will be run in a separate thread.
+        """
+        # Ensure we use the correct port. Your server code said 5556, but client default is 5555.
+        # I am setting it to 5556 to match the server code you provided previously.
+        client = BaseClient(host='127.0.0.1', port=5556)
         
-        # Build context from trajectory[]
+        # Build context string
         context_str = ""
         if len(responses) > 0 and isinstance(responses[0], dict) and "context" in responses[0]:
             context_str = responses[0]["context"]
         elif trajectory and len(trajectory) > 0:
             context_str = "\n\n".join([f"Step {i+1}: {step}" for i, step in enumerate(trajectory)])
-            print(f"        Context: {len(trajectory)} previous steps")
         
         def flatten_to_str(obj):
-            if isinstance(obj, str):
-                return obj
-            elif isinstance(obj, (list, tuple)):
-                # Recursively flatten and join with newlines
-                return '\n'.join(flatten_to_str(item) for item in obj)
+            if isinstance(obj, str): return obj
+            elif isinstance(obj, (list, tuple)): return '\n'.join(flatten_to_str(item) for item in obj)
             elif isinstance(obj, dict):
-                # Try to extract 'response' or first non-empty value
-                if "response" in obj and obj["response"]:
-                    return flatten_to_str(obj["response"])
+                if "response" in obj and obj["response"]: return flatten_to_str(obj["response"])
                 else:
                     for v in obj.values():
-                        if v:
-                            return flatten_to_str(v)
+                        if v: return flatten_to_str(v)
                 return str(obj)
-            else:
-                return str(obj)
+            return str(obj)
 
         partial_trajectories = []
         for i, function_result in enumerate(responses):
@@ -66,41 +62,41 @@ def llm_parallel_search_decorator(llm_func):
                 "current-step": content
             })
             print(f"        Candidate {i+1}: {len(content)} chars")
-            print(f"        Candidate {i+1} content: {content[:200]}..." if len(content) > 200 else f"        Candidate {i+1} content: {content}")
-        
-        # Send to server for ranking
-        print(f"Sending to judge server (task_type={task_type})...")
-        result = client.send_request(task_type, "rm", partial_trajectories, question)
-        print(f"Received rankings from server: {result.get('rankings', [])}")
+        # This calls your BaseClient, which blocks. 
+        # But since we are in a thread, it won't block the main loop.
+        result = client.send_request(task_type, "judge", partial_trajectories, question)
         return result
     
     async def async_decorator_wrapper(*args, **kwargs):
         """
         Async wrapper that handles the decorated function call.
-        kwargs should include 'task_type', 'question', and optionally 'trajectory'.
-        The decorator creates its own client instance for thread-safe async operations.
         """
-        print(f"DECORATOR CALLED")
         task_type = kwargs.pop('task_type', None)
         trajectory = kwargs.pop('trajectory', None)
-        # trajectory=None
-        # Extract question - it's the second positional arg for both direct() and debate_refine()
         question = kwargs.get('question', args[1] if len(args) > 1 else "")
-        print(f"      Task type: {task_type}")
-        print(f"      Question: {question[:100]}..." if len(question) > 100 else f"      Question: {question}")
 
-        # Run the LLM calls in parallel & collect results
+        # 1. Generate candidates (Async/Parallel)
         responses = await gather_calls(*args, **kwargs)
 
-        # Send all results to the server judge and get rankings
-        # send_to_server creates its own client instance for this call
-        server_result = send_to_server(responses, task_type, question, trajectory)
+        # 2. Send to judge (Blocking I/O offloaded to Thread)
+        # CRITICAL FIX: For MAS-Zero
+        # server_result = send_to_server(responses, task_type, question, trajectory)
+        try:
+            server_result = await asyncio.to_thread(
+                send_to_server_sync, 
+                responses, 
+                task_type, 
+                question, 
+                trajectory
+            )
+        except Exception as e:
+            print(f"Error communicating with judge server: {e}")
+            # Fallback if judge fails
+            server_result = {"rankings": list(range(len(responses)))}
+
         rankings = server_result.get("rankings", list(range(len(responses))))
         best_idx = rankings[0] if rankings else 0
         
-        print(f"   Best candidate: #{best_idx + 1} (rank position 1/{len(responses)})")
-        print(f"   DECORATOR COMPLETE\n")
-
         return responses[best_idx]
     
     return async_decorator_wrapper
