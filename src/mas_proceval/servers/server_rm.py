@@ -176,7 +176,7 @@ class ServerRM(BaseServer):
             # Since requests is not async, run each prompt in thread pool
             import aiohttp
 
-            async with aiohttp.ClientSession(headers={"User-Agent": "PRM-Server"}) as session:
+            async with aiohttp.ClientSession(headers={"User-Agent": "RM-Server"}) as session:
                 for prompt in prompts:
                     # print(f"[DEBUG] Sending prompt to RM API: {prompt}")
                     async with session.post(self.api_url, json=prompt) as response:
@@ -205,7 +205,7 @@ class ServerRM(BaseServer):
 
         print(f"[DEBUG] Final rewards: {rewards}")
         rankings = self.rewards2rankings(rewards)
-
+        await asyncio.sleep(0.25)
         # print(f"[DEBUG] Rankings: {rankings}")
         return {
             "rewards": rewards,
@@ -224,7 +224,7 @@ if __name__ == "__main__":
 
     # Command to start vllm PRM server
     vllm_command = [
-        "CUDA_VISIBLE_DEVICES=0",
+        "CUDA_VISIBLE_DEVICES=3",
         "vllm",
         "serve",
         "/research/projects/mllab/public_llms/reward_models/Skywork-Reward-V2-Llama-3.1-8B",

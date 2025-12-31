@@ -56,12 +56,17 @@ def llm_parallel_search_decorator(llm_func):
 
         partial_trajectories = []
         for i, function_result in enumerate(responses):
-            content = flatten_to_str(function_result)
+            content = None
+            #Only for Mas-zero-iter
+            if isinstance(function_result, dict) and function_result.get("agents"):
+                content = flatten_to_str(function_result["agents"])
+            else:
+                content = flatten_to_str(function_result)
             partial_trajectories.append({
                 "context": context_str,
                 "current-step": content
             })
-            print(f"        Candidate {i+1}: {len(content)} chars")
+            # print(f"        Candidate {i+1}: {len(content)} chars")
         # This calls your BaseClient, which blocks. 
         # But since we are in a thread, it won't block the main loop.
         result = client.send_request(task_type, "judge", partial_trajectories, question)
@@ -74,7 +79,8 @@ def llm_parallel_search_decorator(llm_func):
         task_type = kwargs.pop('task_type', None)
         trajectory = kwargs.pop('trajectory', None)
         question = kwargs.get('question', args[1] if len(args) > 1 else "")
-
+        if isinstance(question, list):
+            question = question[0] if len(question) > 0 else ""
         # 1. Generate candidates (Async/Parallel)
         responses = await gather_calls(*args, **kwargs)
 
