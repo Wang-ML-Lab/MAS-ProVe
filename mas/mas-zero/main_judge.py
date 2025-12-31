@@ -194,11 +194,11 @@ if __name__ == "__main__":
         correct_answers = []
 
         for response in responses:
-            if isinstance(response['n'], int):
-                filter_response = response['response']
-            else:
-                continue
-            # filter_response = response['response']
+            # if isinstance(response['n'], int):
+            #     filter_response = response['response']
+            # else:
+            #     continue
+            filter_response = response['response']
             # TODO: for gpqa, in some cases, it gives the final answer instead of final selection
             if '<TOO_HARD>' in filter_response:
                 filter_response = filter_response[:filter_response.index('<TOO_HARD>')]
@@ -211,7 +211,7 @@ if __name__ == "__main__":
 
             correct_answer = response['correct_answer']
             correct_answers.append(correct_answer)
-        # print(len(responses), len(extracted_answers), len(correct_answers))
+        print(len(responses), len(extracted_answers), len(correct_answers))
         # Load extracted answers from mem.json and filter only those selected from greedy
         # mem_path = f'{root_dir}/{dataset}/{example_id}/{model}_{node_model}_gpt-4o_chatgpt_0_plan_mem.json'
         
@@ -220,8 +220,8 @@ if __name__ == "__main__":
         #         mem_data = json.load(json_file)
             
         #     # Filter only entries that contain "Selected from greedy"
-        #     # filtered_data = [item for item in mem_data if any("Selected from greedy" in str(v) for v in item.values())]
-        #     filtered_data = [item for item in mem_data]
+        #     filtered_data = [item for item in mem_data if any("Selected from greedy" in str(v) for v in item.values())]
+        #     # filtered_data = [item for item in mem_data]
             
         #     if not filtered_data:
         #         print(f'example_id {example_id}: No "Selected from greedy" entries found in mem.json')
@@ -243,11 +243,12 @@ if __name__ == "__main__":
         # if len(extracted_answers) < max_response_per_sample:
         #     print(f'filtered extracted_answers length {len(extracted_answers)} is lower than {max_response_per_sample}')
         #     special_ids.append(f'example_id {example_id}: filtered extracted_answers length {len(extracted_answers)} is lower than {max_response_per_sample}')
-        #     # just a warning is fine
-        #     # pass instead of return, continue processing
+        # #     just a warning is fine
+        # #     pass instead of return, continue processing
 
-        print('extracted_answers: ', extracted_answers)
-        print('correct_answers: ', correct_answers)
+        # print('extracted_answers: ', extracted_answers)
+        # print('correct_answers: ', correct_answers)
+        
         is_correct = False
 
         if judge_method == 'oracle':

@@ -84,7 +84,13 @@ class LLMAgentBase:
 
         sub_question = prompt[-1]['content']
         match = re.search(pattern, sub_question, re.DOTALL)
-        extracted_question = match.group(1)
+        if match:
+            extracted_question = match.group(1)
+        else:
+            # Fallback: If the strict pattern isn't found, use the whole content 
+            # or a safe substring to prevent the thread from crashing.
+            # print(f"Warning: Could not extract pattern from prompt. Using full content.")
+            extracted_question = sub_question
 
         return extracted_question
 
@@ -205,17 +211,7 @@ class AgentSystem:
         return final_answer
 
 
-@llm_parallel_search_decorator
-async def evaluate_forward_fn_parallel(extra_info, forward_str, **kwargs): 
-    acc_oracle_verifier_list, acc_model_verifier_list, results, sub_tasks, agents, final_response = await evaluate_forward_fn(extra_info, forward_str)
-    return {"acc_oracle_verifier_list": acc_oracle_verifier_list,
-                "acc_model_verifier_list": acc_model_verifier_list,
-                "results": results,
-                "sub_tasks": sub_tasks,
-                "context": agents,
-                "response": final_response}
-    
-    
+
 async def evaluate_forward_fn(extra_info, forward_str):
     # dynamically define forward()
     # modified from https://github.com/luchris429/DiscoPOP/blob/main/scripts/launch_evo.py
@@ -259,11 +255,30 @@ async def evaluate_forward_fn(extra_info, forward_str):
 
     # tasks = [agent_system.forward(item) for item in task_queue]
     # results = await tqdm_asyncio.gather(*tasks, desc="Evaluating forward function", total=len(tasks))
+    
     results = []
-    for item in tqdm(task_queue, desc="Evaluating forward function", total=len(task_queue)):
-        res = await agent_system.forward(item, extra_info)
-        results.append(res)
-
+    @llm_parallel_search_decorator
+    async def process_task_wrapper(taskInfo, extra_info, **kwargs):
+        return await agent_system.forward(taskInfo, extra_info)
+    
+    if isinstance(extra_info.get('n', -1), int):  
+        dataset = extra_info.get('dataset', '')
+        task_type = "math" if "aime" in dataset else "qa" if "gaia" in dataset else "math"
+        results = []
+        for item in tqdm(task_queue, desc="Evaluating forward function", total=len(task_queue)):
+            current_question = item.content if hasattr(item, 'content') else str(item)
+            res = await process_task_wrapper(
+                item, 
+                extra_info, 
+                question=current_question, 
+                task_type=task_type
+            )
+            results.append(res)    
+    else:
+        for item in tqdm(task_queue, desc="Evaluating forward function", total=len(task_queue)):
+            res = await agent_system.forward(item, extra_info)
+            results.append(res)
+        
     prompt_messages = [res.prompt for q_idx, res in enumerate(results)]
     response_texts = [str(res.content) for q_idx, res in enumerate(results)]
     if not extra_info["no_decompose"]:
@@ -545,19 +560,9 @@ async def search(extra_info, task_queue, meta_model, blocks, verifier_model, n_g
         final_response = None
         for _ in range(debug_max):
             try:  # in case the generated code is not correct
-                all_responses = await evaluate_forward_fn_parallel(extra_info, next_solution["code"], question= question, task_type= task_type)
-                if "acc_oracle_verifier_list" in all_responses:
-                    acc_oracle_verifier_list = all_responses["acc_oracle_verifier_list"]
-                if "acc_model_verifier_list" in all_responses:
-                    acc_model_verifier_list = all_responses["acc_model_verifier_list"]
-                if "results" in all_responses:
-                    results = all_responses["results"]
-                if "sub_tasks" in all_responses:
-                    sub_tasks = all_responses["sub_tasks"]
-                if "context" in all_responses:
-                    agents = all_responses["context"]
-                if "response" in all_responses:
-                    final_response = all_responses["response"]    
+                acc_oracle_verifier_list, acc_model_verifier_list, results, sub_tasks, agents, final_response = await evaluate_forward_fn(
+                    extra_info, next_solution["code"]
+                )
                 if use_oracle_verifier:
                     acc_list = acc_oracle_verifier_list
                 else:
@@ -615,6 +620,10 @@ async def search(extra_info, task_queue, meta_model, blocks, verifier_model, n_g
 
                 continue
 
+        if use_oracle_verifier:
+            acc_list = acc_oracle_verifier_list
+        else:
+            acc_list = acc_model_verifier_list
         # if not acc_list:
         #     n -= 1  # rerun
         #     continue

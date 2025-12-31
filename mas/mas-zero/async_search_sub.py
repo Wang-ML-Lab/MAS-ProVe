@@ -163,7 +163,7 @@ class LLMAgentBase:
             _pack_message(content=prompt, role="user")]
         
         dataset = extra_info.get('dataset', '')
-        task_type = "math" if "aime" in dataset else "qa" if "gaia" in dataset else "general"
+        task_type = "math" if "aime" in dataset else "qa" if "gaia" in dataset else "math"
         
         # 2. Extract Question
         question = extra_info.get('questions', '')
@@ -176,7 +176,7 @@ class LLMAgentBase:
             trajectory_context = []
             for info in input_infos:
                 # Only include if author is not 'User'
-                if hasattr(info, 'author') and info.author != 'User' and hasattr(info, 'content'):
+                if hasattr(info, 'author') and str(info.author).lower() != 'user' and hasattr(info, 'content'):
                     trajectory_context.append(f"[{info.author}]: {info.content}")
             response_json = await get_json_response_from_gpt_local_parallel(prompt, self.model, self.output_fields, self.temperature, extra_info,trajectory=trajectory_context, task_type=task_type, question=question)
         else:
