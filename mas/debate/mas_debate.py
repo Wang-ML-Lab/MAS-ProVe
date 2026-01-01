@@ -1,6 +1,6 @@
 from mas_proceval.mas.mas_base import MASBase
 from mas_proceval.clients.client_base import BaseClient
-from typing import Dict
+from typing import Dict, Any
 from llm_debate_tool_call import DebateConfig
 
 from llm_debate_tool_call import (
@@ -13,24 +13,32 @@ from mas_proceval.decorators.decorator_base import llm_parallel_search_decorator
 
 import asyncio
 import random
+import re
 import cost_tracker
 
 class MASDebate(MASBase):
-    def __init__(self, example: Dict, example_id: int, debate_config: DebateConfig, benchmtask_typeark: str, : str = "math"):
+    def __init__(self, example: Dict, example_id: int, debate_config: DebateConfig, benchmark: str, task_type: str = "math", 
+                 question_formatter=None, evaluate_fn=None):
         super().__init__()
         self.example = example
         self.example_id = example_id
         self.debate_config = debate_config
         self.benchmark = benchmark
         self.task_type = task_type
+        self.question_formatter = question_formatter
+        self.evaluate_fn = evaluate_fn
 
     async def run(self):
         print("Running MASDebate.run()")
         example, example_id, debate_config = self.example, self.example_id, self.debate_config
 
         print(f"Processing problem {example_id + 1}")
-        problem_text = example.get('problem', '')
-        question = f"Solve this AIME problem:\n\n{problem_text}\n\nAnswers are integers (0-999). Show your work."
+        # Use custom question formatter (required)
+        if self.question_formatter:
+            question = self.question_formatter(example)
+        else:
+            # Generic fallback - just use 'Question' or 'problem' field
+            question = example.get('Question', example.get('problem', str(example)))
         
         debate_result, log = await self.debate(
             model=debate_config.model,
@@ -45,10 +53,15 @@ class MASDebate(MASBase):
         all_round_responses = log[0]["refine_results"]
         final_responses = all_round_responses[-1]
         expected_answer = example.get('answer')
+        
+        # Use evaluation function (required from benchmark evaluator)
+        if not self.evaluate_fn:
+            raise ValueError("evaluate_fn must be provided by the benchmark evaluator")
+        
         evaluations = [{
             "agent_id": j,
             "answer": response,
-            "evaluation": self.evaluate_response(response, expected_answer)
+            "evaluation": self.evaluate_fn(response, expected_answer)
         } for j, response in enumerate(final_responses)]
         
         # Compute cost from usage data
@@ -192,12 +205,10 @@ class MASDebate(MASBase):
 
         return {"response": random_response, "answer": answer, "usage": all_usage, "tool_calls": all_tool_calls}, log
 
-    @MASBase.update_trajectory
     @llm_parallel_search_decorator
     async def direct(self, *args, **kwargs):
         return await direct_naive(*args, **kwargs)
 
-    @MASBase.update_trajectory
     @llm_parallel_search_decorator
     async def debate_refine(self, *args, **kwargs):
         return await debate_refine_naive(*args, **kwargs)
