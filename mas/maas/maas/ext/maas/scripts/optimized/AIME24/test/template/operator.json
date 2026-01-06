@@ -1,0 +1,30 @@
+{
+    "Generate": {
+        "description": "Generates anything based on customized input and instruction.",
+        "interface": "generate(input: str, instruction: str) -> dict with key 'response' of type str"
+    },
+    "GenerateCoT": {
+        "description": "Generates anything using a chain-of-thought approach, providing step-by-step reasoning before producing the final solution.If you need to solve mathematical or difficult reasoning problems, you can use this operator.",
+        "interface": "generate_cot(input: str, instruction: str) -> dict with key 'response' of type str"
+    },
+    "MultiGenerateCoT": {
+        "description": "Generates multiple solutions using diverse chain-of-thought reasoning processes to increase solution variety and robustness.",
+        "interface": "multi_generate_cot(input: str, instruction: str) -> dict with key 'response' of type List[str]"
+    },
+    "ScEnsemble": {
+        "description": "Uses self-consistency to select the solution that appears most frequently in the solution list, improve the selection to enhance the choice of the best solution.",
+        "interface": "sc_ensemble(solutions: List[str], problem: str) -> dict with key 'response' of type str"
+    },
+    "Programmer": {
+        "description": "Automatically writes, executes Python code, and returns the solution based on the provided problem description and analysis. The `output` only contains the final answer. If you want to see the detailed solution process, it's recommended to retrieve the `code`.",
+        "interface": "programmer(problem: str, analysis: str = 'None') -> dict with keys 'code' and 'output' of type str"
+    },
+    "SelfRefine": {
+        "description": "Refines the generated solution by analyzing errors or suboptimal aspects and making iterative improvements to enhance correctness and efficiency.",
+        "interface": "self_refine(problem: str, solution: str) -> dict with key 'response' of type str"
+    },
+    "EarlyStop": {
+        "description": "This issue has been correctly and effectively resolved. In order to prevent further activation of operators from wasting resources, we will immediately stop answering this question.Immediately terminates the workflow when selected, preventing any further operators from being invoked.",
+        "interface": "early_stop() -> dict with key 'terminate' of type bool"
+    }
+}

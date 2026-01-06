@@ -1,0 +1,12 @@
+llm:
+  api_type: "openai"  # or azure / ollama / groq etc.
+  model: "gpt-5-mini"  #  gpt-3.5-turbo or gpt-4-turbo
+  base_url: "https://api.openai.com/v1"  # or forward url / other llm url
+  api_key: "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"
+models:
+  gpt-5-mini:
+    api_type: "openai"  # or azure / ollama / groq etc.
+    model: "gpt-5-mini"  #  gpt-3.5-turbo or gpt-4-turbo
+    base_url: "https://api.openai.com/v1"  # or forward url / other llm url
+    api_key: "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"
+CALC_USAGE: True 
