@@ -15,9 +15,11 @@ from typing import List, Dict, Any
 from datasets import load_dataset
 from llm_debate_tool_call import DebateConfig, save_results
 import cost_tracker
+from cot import CoTConfig
 
 from mas_debate import MASDebate
 from mas_debate_iter import MASDebateIter
+from mas_cot import MASCoT
 
 
 class GAIAEvaluator:
@@ -116,65 +118,45 @@ class GAIAEvaluator:
             "expected_answer": expected_answer,
         }
 
-    # EVALUATION
-    # ----------------------------
-    def evaluate_response(self, response: str, expected_answer: str) -> Dict[str, Any]:
-        """Evaluate a model’s response against the expected answer."""
-        # Extract <answer> tags if present
-        if "<answer>" in response and "</answer>" in response:
-            start = response.find("<answer>") + len("<answer>")
-            end = response.find("</answer>")
-            extracted_answer = response[start:end].strip()
-        else:
-            extracted_answer = response.strip()
-
-        normalize = lambda x: str(x).lower().strip().replace(" ", "")
-        norm_resp = normalize(extracted_answer)
-        norm_expected = normalize(expected_answer)
-        
-        import re
-        # Check if expected answer is numerical (after removing commas)
-        norm_expected_no_comma = norm_expected.replace(",", "")
-        is_numerical = re.match(r'^-?\d+\.?\d*$', norm_expected_no_comma) is not None
-        
-        if is_numerical:
-            # For numerical answers, remove commas and do exact match
-            norm_resp_no_comma = norm_resp.replace(",", "")
-            flexible_match = norm_resp_no_comma == norm_expected_no_comma
-        else:
-            # For string answers, allow flexible matching
-            exact_match = norm_resp == norm_expected
-            
     async def process_example_async(
-        self, example: Dict, example_id: int, debate_config: DebateConfig
+        self, example: Dict, example_id: int, config, method: str = "debate"
     ) -> Dict:
         """Process a single GAIA example asynchronously."""
         task_id = example.get("task_id", f"gaia_{example_id}")
-        print(f"Processing example {example_id + 1} ({example.get('Level', 'Unknown')}) with process_eval={self.process_eval}")
+        print(f"Processing example {example_id + 1} ({example.get('Level', 'Unknown')}) with method={method}")
         
-        if self.process_eval == "round":
-            mas_debate = MASDebateIter(
-                example, example_id, debate_config, "gaia", "general",
+        if method == "cot":
+            mas_cot = MASCoT(
+                example, example_id, config, "gaia", "general",
                 question_formatter=self.format_question,
                 evaluate_fn=self.evaluate_answer
             )
+            result = await mas_cot.run()
+        elif self.process_eval == "round":
+            mas_debate = MASDebateIter(
+                example, example_id, config, "gaia", "general",
+                question_formatter=self.format_question,
+                evaluate_fn=self.evaluate_answer
+            )
+            result = await mas_debate.run()
         else:  # agent (default)
             mas_debate = MASDebate(
-                example, example_id, debate_config, "gaia", "general",
+                example, example_id, config, "gaia", "general",
                 question_formatter=self.format_question,
                 evaluate_fn=self.evaluate_answer
             )
+            result = await mas_debate.run()
         
-        result = await mas_debate.run()
         result["task_id"] = task_id
         result["level"] = example.get("Level")
         return result
 
     async def run_evaluation_async(
         self,
-        debate_config: DebateConfig,
+        config,
         max_examples: int = 20,
         specific_ids: list[int] | None = None,
+        method: str = "debate"
     ) -> List[Dict]:
         """Run GAIA evaluation asynchronously."""
         if not self.load_dataset():
@@ -203,7 +185,7 @@ class GAIAEvaluator:
         print(f"Running evaluation on {len(to_process)} new examples (skipped {len(examples_with_ids) - len(to_process)})...")
 
         tasks = [
-            self.process_example_async(ex, idx, debate_config)
+            self.process_example_async(ex, idx, config, method)
             for idx, ex in to_process
         ]
 
@@ -235,13 +217,14 @@ class GAIAEvaluator:
 
     def run_evaluation(
         self,
-        debate_config: DebateConfig,
+        config,
         max_examples: int = 20,
         specific_ids: list[int] | None = None,
+        method: str = "debate"
     ) -> List[Dict]:
         """Synchronous wrapper for async evaluation."""
         return asyncio.run(
-            self.run_evaluation_async(debate_config, max_examples, specific_ids)
+            self.run_evaluation_async(config, max_examples, specific_ids, method)
         )
 
     def print_summary(self, results: List[Dict]):
@@ -251,7 +234,18 @@ class GAIAEvaluator:
             return
 
         total_examples = len(results)
-        all_exact_matches = [res["evaluation"]["exact_match"] for r in results for res in r.get("agent_evaluations", [])]
+        
+        # Handle both debate results (with agent_evaluations) and CoT results (with evaluation)
+        if results[0].get("agent_evaluations"):
+            # Debate format
+            all_exact_matches = [res["evaluation"]["exact_match"] for r in results for res in r.get("agent_evaluations", [])]
+        elif results[0].get("evaluation"):
+            # CoT format (MASCoT)
+            all_exact_matches = [r["evaluation"]["exact_match"] for r in results]
+        else:
+            # Fallback for unexpected format
+            all_exact_matches = [False]
+        
         total_cost = sum(r.get("cost", 0.0) for r in results)
         
         accuracy = sum(all_exact_matches) / len(all_exact_matches) if all_exact_matches else 0.0

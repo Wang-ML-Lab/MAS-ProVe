@@ -47,7 +47,8 @@ class MASDebate(MASBase):
             num_rounds=debate_config.num_rounds,
             dataset=self.benchmark,
             temperature=debate_config.temperature,
-            max_tokens=debate_config.max_tokens
+            max_tokens=debate_config.max_tokens,
+            use_tools=debate_config.use_tools
         )
 
         all_round_responses = log[0]["refine_results"]
@@ -80,7 +81,7 @@ class MASDebate(MASBase):
         return {
             "example_id": example_id,
             "problem_id": example_id,
-            "problem": example['problem'],
+            "problem": example.get('problem') or example.get('Question', str(example)),
             "debate_result": {
                 "round_history": all_round_responses,
                 "final_responses": final_responses,
@@ -212,3 +213,5 @@ class MASDebate(MASBase):
     @llm_parallel_search_decorator
     async def debate_refine(self, *args, **kwargs):
         return await debate_refine_naive(*args, **kwargs)
+    
+    

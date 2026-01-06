@@ -1,28 +1,44 @@
 """
 Unified Benchmark Runner for LLM Debate System
-Supports AIME24/25 evaluations with process evaluation
+Supports AIME24/25 and GAIA evaluations with process evaluation
 """
 
 import argparse
 import os
 from llm_debate_tool_call import DebateConfig
+from cot import CoTConfig
 from aime_eval import AIMEEvaluator
+from gaia_eval import GAIAEvaluator
 
 
-def run_aime24(config: DebateConfig, max_examples: int = None, specific_ids: list = None, process_eval: str = "agent", output_dir: str = "results"):
+def run_aime24(config, max_examples: int = None, specific_ids: list = None, process_eval: str = "agent", method: str = "debate", output_dir: str = "results"):
     """Run AIME24 evaluation"""
     print("Starting AIME24 evaluation...")
     config.dataset = "aime24"
+    if hasattr(config, 'use_tools'):
+        config.use_tools = False  # AIME is pure math, no web search needed
     evaluator = AIMEEvaluator(benchmark="aime24", output_dir=output_dir, process_eval=process_eval)
-    return evaluator.run_evaluation(config, max_examples, specific_ids)
+    return evaluator.run_evaluation(config, max_examples, specific_ids, method=method)
 
 
-def run_aime25(config: DebateConfig, max_examples: int = None, specific_ids: list = None, process_eval: str = "agent", output_dir: str = "results"):
+def run_aime25(config, max_examples: int = None, specific_ids: list = None, process_eval: str = "agent", method: str = "debate", output_dir: str = "results"):
     """Run AIME25 evaluation"""
     print("Starting AIME25 evaluation...")
     config.dataset = "aime25"
+    if hasattr(config, 'use_tools'):
+        config.use_tools = False  # AIME is pure math, no web search needed
     evaluator = AIMEEvaluator(benchmark="aime25", output_dir=output_dir, process_eval=process_eval)
-    return evaluator.run_evaluation(config, max_examples, specific_ids)
+    return evaluator.run_evaluation(config, max_examples, specific_ids, method=method)
+
+
+def run_gaia(config, max_examples: int = None, specific_ids: list = None, process_eval: str = "agent", method: str = "debate", output_dir: str = "results"):
+    """Run GAIA evaluation"""
+    print("Starting GAIA evaluation...")
+    config.dataset = "gaia"
+    if hasattr(config, 'use_tools'):
+        config.use_tools = True  # GAIA often requires web search
+    evaluator = GAIAEvaluator(subset="test", output_dir=output_dir, process_eval=process_eval)
+    return evaluator.run_evaluation(config, max_examples, specific_ids, method=method)
 
 
 def main():
@@ -46,6 +62,12 @@ def main():
     parser.add_argument("--process-eval", type=str, choices=["agent", "round"], 
                        default="agent", help="Process evaluation type: 'agent' or 'round'")
     
+    # Method selection
+    parser.add_argument("--method", type=str, choices=["debate", "cot"], 
+                       default="debate", help="Reasoning method: 'debate' or 'cot' (Chain of Thought)")
+    parser.add_argument("--max-steps", type=int, default=4, 
+                       help="Maximum steps for CoT (only used when --method cot)")
+    
     # Evaluation limits
     parser.add_argument("--max-examples", type=int, default=None, 
                        help="Max examples to evaluate per benchmark")
@@ -60,22 +82,35 @@ def main():
     
     args = parser.parse_args()
     
-    # Create debate configuration
-    config = DebateConfig(
-        model=args.model,
-        num_agents=args.num_agents,
-        num_rounds=args.num_rounds,
-        temperature=args.temperature,
-        use_tools=False
-    )
+    # Create configuration based on method
+    if args.method == "cot":
+        config = CoTConfig(
+            model=args.model,
+            temperature=args.temperature,
+            max_steps=args.max_steps,
+            use_tools=False
+        )
+        print(f"Running Chain of Thought evaluation with configuration:")
+        print(f"  Model: {config.model}")
+        print(f"  Max Steps: {config.max_steps}")
+        print(f"  Temperature: {config.temperature}")
+    else:
+        config = DebateConfig(
+            model=args.model,
+            num_agents=args.num_agents,
+            num_rounds=args.num_rounds,
+            temperature=args.temperature,
+            use_tools=False
+        )
+        print(f"Running LLM Debate evaluation with configuration:")
+        print(f"  Model: {config.model}")
+        print(f"  Agents: {config.num_agents}")
+        print(f"  Rounds: {config.num_rounds}")
+        print(f"  Temperature: {config.temperature}")
+        print(f"  Process Eval: {args.process_eval}")
     
-    print(f"Running LLM Debate evaluation with configuration:")
-    print(f"  Model: {config.model}")
-    print(f"  Agents: {config.num_agents}")
-    print(f"  Rounds: {config.num_rounds}")
-    print(f"  Temperature: {config.temperature}")
     print(f"  Benchmark: {args.benchmark}")
-    print(f"  Process Eval: {args.process_eval}")
+    print(f"  Method: {args.method}")
     print()
     
     # Ensure output directory exists
@@ -95,6 +130,7 @@ def main():
             args.max_examples, 
             args.problem_ids,
             args.process_eval,
+            args.method,
             args.output_dir
         )
     
@@ -110,6 +146,23 @@ def main():
             args.max_examples, 
             args.problem_ids,
             args.process_eval,
+            args.method,
+            args.output_dir
+        )
+    
+    if args.benchmark in ["gaia", "all"]:
+        print(f"\n{'='*60}")
+        print("RUNNING GAIA EVALUATION")
+        if args.problem_ids:
+            print(f"Specific Problem IDs: {args.problem_ids}")
+        print(f"{'='*60}")
+        
+        results["gaia"] = run_gaia(
+            config, 
+            args.max_examples, 
+            args.problem_ids,
+            args.process_eval,
+            args.method,
             args.output_dir
         )
     

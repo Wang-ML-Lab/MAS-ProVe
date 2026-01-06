@@ -47,7 +47,8 @@ class MASDebateIter(MASBase):
             num_rounds=debate_config.num_rounds,
             dataset=self.benchmark,
             temperature=debate_config.temperature,
-            max_tokens=debate_config.max_tokens
+            max_tokens=debate_config.max_tokens,
+            use_tools=debate_config.use_tools
         )
 
         all_round_responses = log[0]["refine_results"]
@@ -80,7 +81,7 @@ class MASDebateIter(MASBase):
         return {
             "example_id": example_id,
             "problem_id": example_id,
-            "problem": example['problem'],
+            "problem": example.get('problem') or example.get('Question', str(example)),
             "debate_result": {
                 "round_history": all_round_responses,
                 "final_responses": final_responses,
@@ -130,8 +131,8 @@ class MASDebateIter(MASBase):
 
         if cot_response is None:
             # Generate complete rounds and select best round using judge
-            def create_direct_task(i):
-                return self.direct(model=model, 
+            async def create_direct_task(i):
+                return await self.direct(model=model, 
                                  question=question, 
                                  dataset=dataset, 
                                  use_tools=use_tools)
@@ -146,8 +147,8 @@ class MASDebateIter(MASBase):
             all_round_responses = [first_round_cot_responses]
         else:
             # One agent starts with given response, others generate fresh responses
-            def create_direct_task(i):
-                return self.direct(model=model, 
+            async def create_direct_task(i):
+                return await self.direct(model=model, 
                                  question=question, 
                                  dataset=dataset, 
                                  use_tools=use_tools)
@@ -163,9 +164,9 @@ class MASDebateIter(MASBase):
         # Refinement rounds - generate multiple complete rounds and select best
         for iteration in range(num_rounds):
             print(f"Refinement iteration {iteration + 1}/{num_rounds}")
-            def create_refine_task(i):
+            async def create_refine_task(i):
                 current_cot = all_round_responses[-1][i]
-                return self.debate_refine(model=model,
+                return await self.debate_refine(model=model,
                                         question=question,
                                         original_cot_response=current_cot,
                                         other_agents_responses=all_round_responses[-1][:i] + all_round_responses[-1][i+1:],
@@ -214,5 +215,5 @@ class MASDebateIter(MASBase):
         tasks = [task_factory(i) for i in range(count)]
         results = await asyncio.gather(*tasks)
         # print(results)
-        print("Data types of results:" , [type(r) for r in results])
+        # print("Data types of results:" , [type(r) for r in results])
         return results

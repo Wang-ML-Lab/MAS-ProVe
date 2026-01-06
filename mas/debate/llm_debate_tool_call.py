@@ -1,6 +1,6 @@
 """
 LLM Debate System for Multi-Agent Reasoning
-Supports HumanEval, SWE-bench, GAIA, and AIME24 benchmarks
+Supports GAIA, and AIME benchmarks
 """
 
 import json
@@ -21,17 +21,6 @@ from ddgs import DDGS
 # Add mas-process-eval to path for decorator import
 mas_eval_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../..'))
 sys.path.insert(0, mas_eval_path)
-
-try:
-    from mas_proceval import llm_parallel_search_decorator
-    DECORATOR_AVAILABLE = True
-except ImportError:
-    DECORATOR_AVAILABLE = False
-    import warnings
-    warnings.warn("mas_proceval library not found. Using no-op decorator.")
-    # Define a no-op decorator if the library is not available
-    def llm_parallel_search_decorator(func):
-        return func
 
 def web_search(search_query: str, max_results: int = 5):
     """Perform web search and return formatted results (synchronous for tool calling)"""
@@ -89,7 +78,7 @@ class DebateConfig:
     temperature: float = 0.7
     max_tokens: int = 2048
     dataset: str = "aime24"  # Dataset-specific prompts: 'aime24', 'humaneval', 'swe', 'gaia'
-    use_tools: bool = False  # Enable function calling (web search)
+    use_tools: bool = False  # Enable function calling (web search) - set per benchmark
 
 
 # Global async client
@@ -192,7 +181,6 @@ async def call_llm(model: str, prompt: str, temperature: float = 0.7, max_tokens
     return content, usage, tool_calls_info
 
 
-# @llm_parallel_search_decorator
 async def direct(model: str, question: str, dataset: str = "aime24", use_tools: bool = False, **kwargs) -> tuple:
     """Generate initial solution for a problem using dataset-specific prompts. 
     
@@ -205,16 +193,11 @@ async def direct(model: str, question: str, dataset: str = "aime24", use_tools: 
     
     Returns (response, usage, tool_calls_info)
     """
-    # Use gaia_tool prompts if tools are enabled and dataset is gaia
-    prompt_dataset = dataset
-    if use_tools and dataset == "gaia":
-        prompt_dataset = "gaia_tool"
-    
     try:
-        prompts = prompt_manager.get_prompts(prompt_dataset, model)
+        prompts = prompt_manager.get_prompts(dataset, model)
         instruction = prompts["direct"]
     except (ValueError, KeyError) as e:
-        error_msg = f"ERROR: Could not get prompts for dataset '{prompt_dataset}': {e}"
+        error_msg = f"ERROR: Could not get prompts for dataset '{dataset}': {e}"
         print(error_msg)
         raise RuntimeError(error_msg)
     
@@ -224,7 +207,6 @@ async def direct(model: str, question: str, dataset: str = "aime24", use_tools: 
     return response, usage, tool_calls_info
 
 
-# @llm_parallel_search_decorator
 async def debate_refine(model: str, question: str, original_cot_response: str, other_agents_responses: list, dataset: str = "aime24", use_tools: bool = False, **kwargs) -> tuple:
     """Refine solution based on other agents' responses using dataset-specific prompts.
     
@@ -237,16 +219,11 @@ async def debate_refine(model: str, question: str, original_cot_response: str, o
     
     Returns (response, usage, tool_calls_info)
     """
-    # Use gaia_tool prompts if tools are enabled and dataset is gaia
-    prompt_dataset = dataset
-    if use_tools and dataset == "gaia":
-        prompt_dataset = "gaia_tool"
-    
     try:
-        prompts = prompt_manager.get_prompts(prompt_dataset, model)
+        prompts = prompt_manager.get_prompts(dataset, model)
         instruction = prompts["refine"]
     except (ValueError, KeyError) as e:
-        error_msg = f"ERROR: Could not get refine prompts for dataset '{prompt_dataset}': {e}"
+        error_msg = f"ERROR: Could not get refine prompts for dataset '{dataset}': {e}"
         print(error_msg)
         raise RuntimeError(error_msg)
     
