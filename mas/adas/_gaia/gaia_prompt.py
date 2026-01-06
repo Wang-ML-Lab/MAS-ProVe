@@ -221,8 +221,6 @@ Role_Assignment = {"thought": "Similar to Auto-GPT and expert prompting, we can 
 """
                    }
 
-# Add this to gaia_prompt.py
-
 WebSearch = {
     "thought": "Web search allows models to access up-to-date information from the internet and provide answers with sourced citations. The agent first generates an optimal search query based on the task, executes a web search using DuckDuckGo, and then applies Chain of Thought reasoning using the retrieved information. This combined approach enables the model to provide well-researched answers grounded in current information while showing its reasoning process.",
     "name": "WebSearch",

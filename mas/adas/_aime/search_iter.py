@@ -29,6 +29,7 @@ ROLE_DESC = lambda role: f"You are a {role}."
 PRINT_LLM_DEBUG = False
 SEARCHING_MODE = True
 
+
 @backoff.on_exception(backoff.expo, openai.RateLimitError)
 async def get_json_response_from_gpt(msg, model, system_message, temperature=0.5):
     response = await client.chat.completions.create(
@@ -94,6 +95,7 @@ class LLMAgentBase():
         system_prompt, prompt = self.generate_prompt(input_infos, instruction)
         try:
             response_json = await get_json_response_from_gpt(prompt, self.model, system_prompt, self.temperature)
+            # print(f"[DEBUG] Agent Response: {response_json}")
             assert len(response_json) == len(self.output_fields), "not returning enough fields"
         except Exception as e:
             # print(f"[DEBUG] Agent Query Failed: {e}")
@@ -153,10 +155,12 @@ async def evaluate_forward_fn(args, forward_str):
     answers = [example['answer'] for example in examples]
 
     task_queue = [Info('task', 'User', q, -1) for q in questions]
-    
+
     @llm_parallel_search_decorator
     async def process_task_wrapper(taskInfo, **kwargs):
-        return await agentSystem.forward(taskInfo)
+        res = await agentSystem.forward(taskInfo)
+        print(f"[DEBUG] Task processed. Result: {res}")
+        return res
     
     acc_list = []
     
@@ -164,7 +168,11 @@ async def evaluate_forward_fn(args, forward_str):
     sem = asyncio.Semaphore(args.max_workers if args.multiprocessing else 1)
     async def sem_task(task):
         async with sem:
-            return await process_task_wrapper(task, question =task.content, task_type="math")
+            return await process_task_wrapper(
+                task, 
+                question=task.content, 
+                task_type="math" 
+            )
             
     # return_exceptions=True ensures one failure doesn't kill the batch
     results = await asyncio.gather(*(sem_task(task) for task in task_queue), return_exceptions=True)
@@ -294,7 +302,8 @@ async def evaluate(args):
     Evaluates all agents in the archive in parallel.
     """
     file_path = os.path.join(args.save_dir, f"{args.expr_name}_run_archive.json")
-    eval_file_path = str(os.path.join(args.save_dir, f"{args.expr_name}_run_archive.json")).strip(".json") + "_evaluate.json"
+    # eval_file_path = str(os.path.join(args.save_dir, f"{args.expr_name}_run_archive.json")).strip(".json") + "_evaluate.json"
+    eval_file_path = os.path.join(args.save_dir, f"{args.expr_name}_run_archive.json").replace(".json", "") + "_evaluate.json"
     
     with open(file_path, 'r') as json_file:
         archive = json.load(json_file)
@@ -350,9 +359,9 @@ if __name__ == "__main__":
                         help='Choose between aime24 and aime25 datasets')
     parser.add_argument('--n_repreat', type=int, default=1)
     parser.add_argument('--multiprocessing', action='store_true', default=True)
-    parser.add_argument('--max_workers', type=int, default=20)
+    parser.add_argument('--max_workers', type=int, default=48)
     parser.add_argument('--debug', action='store_true', default=True)
-    parser.add_argument('--save_dir', type=str, default='results/')
+    parser.add_argument('--save_dir', type=str, default='judge_iter_results/')
     parser.add_argument('--expr_name', type=str, default="gpt5_results")
     parser.add_argument('--n_generation', type=int, default=1)
     parser.add_argument('--debug_max', type=int, default=3)

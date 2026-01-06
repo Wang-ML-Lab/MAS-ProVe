@@ -118,6 +118,7 @@ class LLMAgentBase():
                     trajectory_context.append(f"[{info.author}]: {info.content}")
             question = input_infos[0].content if input_infos else ""
             response_json = await get_json_response_from_gpt_parallel(prompt, self.model, system_prompt, self.temperature, question = question, task_type = "math", trajectory = trajectory_context)
+            # print(f"[DEBUG] Agent Response: {response_json}")
             assert len(response_json) == len(self.output_fields), "not returning enough fields"
         except Exception as e:
             # print(f"[DEBUG] Agent Query Failed: {e}")
@@ -375,7 +376,7 @@ if __name__ == "__main__":
                         help='Choose between aime24 and aime25 datasets')
     parser.add_argument('--n_repreat', type=int, default=1)
     parser.add_argument('--multiprocessing', action='store_true', default=True)
-    parser.add_argument('--max_workers', type=int, default=16)
+    parser.add_argument('--max_workers', type=int, default=8)
     parser.add_argument('--debug', action='store_true', default=True)
     parser.add_argument('--save_dir', type=str, default='judge_sub_results/')
     parser.add_argument('--expr_name', type=str, default="gpt5_results")

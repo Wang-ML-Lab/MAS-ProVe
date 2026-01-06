@@ -29,6 +29,7 @@ ROLE_DESC = lambda role: f"You are a {role}."
 PRINT_LLM_DEBUG = False
 SEARCHING_MODE = True
 
+
 @backoff.on_exception(backoff.expo, openai.RateLimitError)
 async def get_json_response_from_gpt(msg, model, system_message, temperature=0.5):
     response = await client.chat.completions.create(
@@ -98,10 +99,11 @@ If you are asked for a comma separated list, apply the above rules depending of 
     async def query(self, input_infos: list, instruction, iteration_idx=-1) -> dict:
         system_prompt, prompt = self.generate_prompt(input_infos, instruction)
         try:
-            response_json = await get_json_response_from_gpt_parallel(prompt, self.model, system_prompt, self.temperature, question = question, task_type = "qa", trajectory = trajectory_context)
+            response_json = await get_json_response_from_gpt(prompt, self.model, system_prompt, self.temperature)
+            # print(f"[DEBUG] Agent Response: {response_json}")
             assert len(response_json) == len(self.output_fields), "not returning enough fields"
         except Exception as e:
-            # print(f"[DEBUG] Exception during LLM query: {e}")
+            # print(f"[DEBUG] Agent Query Failed: {e}")
             if "maximum context length" in str(e) and SEARCHING_MODE:
                 raise AssertionError("The context is too long. Please try to design the agent to have shorter context.")
             response_json = {} # Fallback
@@ -161,7 +163,9 @@ async def evaluate_forward_fn(args, forward_str):
 
     @llm_parallel_search_decorator
     async def process_task_wrapper(taskInfo, **kwargs):
-        return await agentSystem.forward(taskInfo)
+        res = await agentSystem.forward(taskInfo)
+        print(f"[DEBUG] Task processed. Result: {res}")
+        return res
     
     acc_list = []
     
@@ -169,7 +173,11 @@ async def evaluate_forward_fn(args, forward_str):
     sem = asyncio.Semaphore(args.max_workers if args.multiprocessing else 1)
     async def sem_task(task):
         async with sem:
-            return await process_task_wrapper(task, question = task.content, task_type="qa")
+            return await process_task_wrapper(
+                task, 
+                question=task.content, 
+                task_type="qa" 
+            )
             
     # return_exceptions=True ensures one failure doesn't kill the batch
     results = await asyncio.gather(*(sem_task(task) for task in task_queue), return_exceptions=True)
@@ -299,7 +307,8 @@ async def evaluate(args):
     Evaluates all agents in the archive in parallel.
     """
     file_path = os.path.join(args.save_dir, f"{args.expr_name}_run_archive.json")
-    eval_file_path = str(os.path.join(args.save_dir, f"{args.expr_name}_run_archive.json")).strip(".json") + "_evaluate.json"
+    # eval_file_path = str(os.path.join(args.save_dir, f"{args.expr_name}_run_archive.json")).strip(".json") + "_evaluate.json"
+    eval_file_path = os.path.join(args.save_dir, f"{args.expr_name}_run_archive.json").replace(".json", "") + "_evaluate.json"
     
     with open(file_path, 'r') as json_file:
         archive = json.load(json_file)
@@ -352,9 +361,9 @@ if __name__ == "__main__":
     parser.add_argument('--shuffle_seed', type=int, default=0)
     parser.add_argument('--n_repreat', type=int, default=1)
     parser.add_argument('--multiprocessing', action='store_true', default=True)
-    parser.add_argument('--max_workers', type=int, default=16)
+    parser.add_argument('--max_workers', type=int, default=32)
     parser.add_argument('--debug', action='store_true', default=True)
-    parser.add_argument('--save_dir', type=str, default='results/')
+    parser.add_argument('--save_dir', type=str, default='judge_iter_results/')
     parser.add_argument('--expr_name', type=str, default="gpt5_results")
     parser.add_argument('--n_generation', type=int, default=1)
     parser.add_argument('--debug_max', type=int, default=3)

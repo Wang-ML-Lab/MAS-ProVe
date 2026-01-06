@@ -323,7 +323,8 @@ async def evaluate(args):
     Evaluates all agents in the archive in parallel.
     """
     file_path = os.path.join(args.save_dir, f"{args.expr_name}_run_archive.json")
-    eval_file_path = str(os.path.join(args.save_dir, f"{args.expr_name}_run_archive.json")).strip(".json") + "_evaluate.json"
+    # eval_file_path = str(os.path.join(args.save_dir, f"{args.expr_name}_run_archive.json")).strip(".json") + "_evaluate.json"
+    eval_file_path = os.path.join(args.save_dir, f"{args.expr_name}_run_archive.json").replace(".json", "") + "_evaluate.json"
     
     with open(file_path, 'r') as json_file:
         archive = json.load(json_file)
@@ -376,9 +377,9 @@ if __name__ == "__main__":
     parser.add_argument('--shuffle_seed', type=int, default=0)
     parser.add_argument('--n_repreat', type=int, default=1)
     parser.add_argument('--multiprocessing', action='store_true', default=True)
-    parser.add_argument('--max_workers', type=int, default=16)
+    parser.add_argument('--max_workers', type=int, default=8)
     parser.add_argument('--debug', action='store_true', default=True)
-    parser.add_argument('--save_dir', type=str, default='results/')
+    parser.add_argument('--save_dir', type=str, default='judge_sub_results/')
     parser.add_argument('--expr_name', type=str, default="gpt5_results")
     parser.add_argument('--n_generation', type=int, default=1)
     parser.add_argument('--debug_max', type=int, default=3)
