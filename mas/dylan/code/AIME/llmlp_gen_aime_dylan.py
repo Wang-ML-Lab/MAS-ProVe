@@ -5,6 +5,7 @@ import openai
 import random
 import sys
 import re
+import math
 import asyncio
 from concurrent.futures import ThreadPoolExecutor
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'MMLU'))
@@ -64,7 +65,252 @@ class LLMLP_AIME(LLMLP):
             self.activation_cost = 1
         else:
             raise NotImplementedError("Error init activation func")
+    @llm_parallel_search_decorator
+    async def _execute_round_0(self, question, **kwargs):
+        """Execute Round 0 - EXACT same logic as original, just extracted"""
+        # Shuffle the order of agents for the first round
+        loop_indices = list(range(self.agents))
+        random.shuffle(loop_indices)
 
+        activated_indices = []
+        resp_cnt = 0
+        total_prompt_tokens, total_completion_tokens = 0, 0
+        
+        for idx, node_idx in enumerate(loop_indices):
+            # Run activation in thread (since neurons are synchronous)
+            await asyncio.to_thread(self.nodes[node_idx].activate, question)
+            resp_cnt += 1
+            total_prompt_tokens += self.nodes[node_idx].prompt_tokens
+            total_completion_tokens += self.nodes[node_idx].completion_tokens
+            activated_indices.append(node_idx)
+        
+            # Same consensus check as original
+            if idx >= math.floor(2/3 * self.agents):
+                reached, reply = self.check_consensus(activated_indices, list(range(self.agents)))
+                if reached:
+                    # Build trace for Judge
+                    trace = "=== Round 0 (Consensus Reached) ===\n"
+                    for a_idx in activated_indices:
+                        trace += f"Agent {a_idx}: {self.nodes[a_idx].get_reply()}...\n"
+                    
+                    return {
+                        "response": trace,  # For Judge
+                        "consensus_reached": True,
+                        "consensus_reply": reply,
+                        "activated_indices": activated_indices,
+                        "resp_cnt": resp_cnt,
+                        "prompt_tokens": total_prompt_tokens,
+                        "completion_tokens": total_completion_tokens
+                    }
+        
+        # No consensus - build full round trace
+        trace = "=== Round 0 ===\n"
+        for a_idx in activated_indices:
+            trace += f"Agent {a_idx}: {self.nodes[a_idx].get_reply()}...\n"
+        
+        return {
+            "response": trace,
+            "consensus_reached": False,
+            "activated_indices": activated_indices,
+            "resp_cnt": resp_cnt,
+            "prompt_tokens": total_prompt_tokens,
+            "completion_tokens": total_completion_tokens
+        }
+    
+    @llm_parallel_search_decorator
+    async def _execute_round_1(self, question, **kwargs):
+        """Execute Round 1 - EXACT same logic as original"""
+        # Shuffle the order of agents for the second round
+        loop_indices = list(range(self.agents, self.agents*2))
+        random.shuffle(loop_indices)
+
+        activated_indices = []
+        resp_cnt = 0
+        total_prompt_tokens, total_completion_tokens = 0, 0
+        
+        for idx, node_idx in enumerate(loop_indices):
+            await asyncio.to_thread(self.nodes[node_idx].activate, question)
+            resp_cnt += 1
+            total_prompt_tokens += self.nodes[node_idx].prompt_tokens
+            total_completion_tokens += self.nodes[node_idx].completion_tokens
+            activated_indices.append(node_idx)
+        
+            if idx >= math.floor(2/3 * self.agents):
+                reached, reply = self.check_consensus(activated_indices, list(range(self.agents)))
+                if reached:
+                    trace = "=== Round 1 (Consensus Reached) ===\n"
+                    for a_idx in activated_indices:
+                        trace += f"Agent {a_idx}: {self.nodes[a_idx].get_reply()}...\n"
+                    
+                    return {
+                        "response": trace,
+                        "consensus_reached": True,
+                        "consensus_reply": reply,
+                        "activated_indices": activated_indices,
+                        "resp_cnt": resp_cnt,
+                        "prompt_tokens": total_prompt_tokens,
+                        "completion_tokens": total_completion_tokens
+                    }
+        
+        trace = "=== Round 1 ===\n"
+        for a_idx in activated_indices:
+            trace += f"Agent {a_idx}: {self.nodes[a_idx].get_reply()}...\n"
+        
+        return {
+            "response": trace,
+            "consensus_reached": False,
+            "activated_indices": activated_indices,
+            "resp_cnt": resp_cnt,
+            "prompt_tokens": total_prompt_tokens,
+            "completion_tokens": total_completion_tokens
+        }
+    
+    @llm_parallel_search_decorator
+    async def _execute_round_n(self, question, rid, idxs_prev, **kwargs):
+        """Execute Round N (2+) - EXACT same logic as original"""
+        idx_mask = list(range(self.agents))
+        resp_cnt = 0
+        total_prompt_tokens, total_completion_tokens = 0, 0
+        
+        # Same activation logic as original
+        if self.agents > 3:
+            replies = [self.nodes[idx].get_reply() for idx in idxs_prev]
+            indices = list(range(len(replies)))
+            random.shuffle(indices)
+            shuffled_replies = [replies[idx] for idx in indices]
+            
+            # Run in thread since it's synchronous
+            tops, prompt_tokens, completion_tokens = await asyncio.to_thread(
+                self.activation, shuffled_replies, question, self.qtype, self.mtype
+            )
+            total_prompt_tokens += prompt_tokens
+            total_completion_tokens += completion_tokens
+            idx_mask = list(map(lambda x: idxs_prev[indices[x]] % self.agents, tops))
+            resp_cnt += self.activation_cost
+
+        # Shuffle and activate - same as original
+        loop_indices = list(range(self.agents*rid, self.agents*(rid+1)))
+        random.shuffle(loop_indices)
+        idxs = []
+        
+        for idx, node_idx in enumerate(loop_indices):
+            if idx in idx_mask:
+                await asyncio.to_thread(self.nodes[node_idx].activate, question)
+                resp_cnt += 1
+                total_prompt_tokens += self.nodes[node_idx].prompt_tokens
+                total_completion_tokens += self.nodes[node_idx].completion_tokens
+                idxs.append(node_idx)
+                
+                if len(idxs) > math.floor(2/3 * len(idx_mask)):
+                    reached, reply = self.check_consensus(idxs, idx_mask)
+                    if reached:
+                        trace = f"=== Round {rid} (Consensus Reached) ===\n"
+                        for a_idx in idxs:
+                            trace += f"Agent {a_idx}: {self.nodes[a_idx].get_reply()}...\n"
+                        
+                        return {
+                            "response": trace,
+                            "consensus_reached": True,
+                            "consensus_reply": reply,
+                            "activated_indices": idxs,
+                            "resp_cnt": resp_cnt,
+                            "prompt_tokens": total_prompt_tokens,
+                            "completion_tokens": total_completion_tokens
+                        }
+        
+        trace = f"=== Round {rid} ===\n"
+        for a_idx in idxs:
+            trace += f"Agent {a_idx}: {self.nodes[a_idx].get_reply()}...\n"
+        
+        return {
+            "response": trace,
+            "consensus_reached": False,
+            "activated_indices": idxs,
+            "resp_cnt": resp_cnt,
+            "prompt_tokens": total_prompt_tokens,
+            "completion_tokens": total_completion_tokens
+        }
+    
+    async def forward_async(self, question):
+        """Async forward using decorated rounds - SAME FLOW as original"""
+        def get_completions():
+            completions = [[] for _ in range(self.agents)]
+            for rid in range(self.rounds):
+                for idx in range(self.agents*rid, self.agents*(rid+1)):
+                    if self.nodes[idx].active:
+                        completions[idx % self.agents].append(self.nodes[idx].get_reply())
+                    else:
+                        completions[idx % self.agents].append(None)
+            return completions
+
+        resp_cnt = 0
+        total_prompt_tokens, total_completion_tokens = 0, 0
+        self.set_allnodes_deactivated()
+        assert self.rounds > 2
+
+        # Round 0 - decorated (runs 3x, judge picks best)
+        round0_result = await self._execute_round_0(
+            question=question,
+            task_type=self.qtype  # Required for Judge
+        )
+        
+        resp_cnt += round0_result["resp_cnt"]
+        total_prompt_tokens += round0_result["prompt_tokens"]
+        total_completion_tokens += round0_result["completion_tokens"]
+        
+        if round0_result["consensus_reached"]:
+            return (round0_result["consensus_reply"], resp_cnt, get_completions(), 
+                   total_prompt_tokens, total_completion_tokens)
+
+        # Round 1 - decorated
+        round1_result = await self._execute_round_1(
+            question=question,
+            task_type=self.qtype
+        )
+        
+        resp_cnt += round1_result["resp_cnt"]
+        total_prompt_tokens += round1_result["prompt_tokens"]
+        total_completion_tokens += round1_result["completion_tokens"]
+        
+        if round1_result["consensus_reached"]:
+            return (round1_result["consensus_reply"], resp_cnt, get_completions(),
+                   total_prompt_tokens, total_completion_tokens)
+
+        # Rounds 2+ - decorated
+        idxs = round1_result["activated_indices"]
+        for rid in range(2, self.rounds):
+            roundn_result = await self._execute_round_n(
+                question=question,
+                rid=rid,
+                idxs_prev=idxs,
+                task_type=self.qtype
+            )
+            
+            resp_cnt += roundn_result["resp_cnt"]
+            total_prompt_tokens += roundn_result["prompt_tokens"]
+            total_completion_tokens += roundn_result["completion_tokens"]
+            
+            if roundn_result["consensus_reached"]:
+                return (roundn_result["consensus_reply"], resp_cnt, get_completions(),
+                       total_prompt_tokens, total_completion_tokens)
+            
+            idxs = roundn_result["activated_indices"]
+
+        # Final result - same as original
+        completions = get_completions()
+        result = most_frequent([self.nodes[idx].get_answer() for idx in idxs], self.cmp_res)[0]
+        print(f"[LLMLP] Most frequent answer: {result}")
+        return result, resp_cnt, completions, total_prompt_tokens, total_completion_tokens
+    
+    def forward(self, question):
+        """Synchronous wrapper - maintains original interface"""
+        try:
+            loop = asyncio.get_running_loop()
+        except RuntimeError:
+            loop = asyncio.new_event_loop()
+            asyncio.set_event_loop(loop)
+        
+        return loop.run_until_complete(self.forward_async(question))
 
 def set_rd_seed(seed):
     random.seed(seed)
@@ -101,75 +347,11 @@ def get_aime_qa_pairs(query_dir, min_file, max_file):
     
     return sorted(ret_list, key=lambda x: x[0])
 
-# @llm_parallel_search_decorator
-# async def process_single_problem(que, ans, roles, model, activation, qtype, **kwargs):
-#     """Process a single problem asynchronously"""
-#     # Create a fresh LLMLP instance for this problem
-#     llmlp = LLMLP_AIME(model, len(roles), roles, 3, activation, qtype, model)
-    
-#     # Run in thread pool since LLMLP operations are synchronous
-#     loop = asyncio.get_event_loop()
-#     with ThreadPoolExecutor(max_workers=1) as executor:
-#         # Run forward pass
-#         llmlp.zero_grad()
-#         res, resp_cnt, completions, prompt_tokens, completion_tokens = await loop.run_in_executor(
-#             executor, llmlp.forward, que
-#         )
-#         # Run backward pass
-#         imp_score = await loop.run_in_executor(
-#             executor, llmlp.backward, res
-#         )
-    
-#     # 2. Construct the Trace String (SMARTER VERSION)
-#     trace_lines = []
-#     num_agents = len(roles)
-    
-#     try:
-#         # completions is [ [R0, R1, R2], [R0, R1, R2] ... ]
-#         # We need to know how many rounds actually occurred.
-#         # Assuming all agents have lists of the same length (padded with None if needed).
-#         max_rounds = len(completions[0]) if completions else 0
-        
-#         for r in range(max_rounds):
-#             # CHECK: Did any agent speak in this round?
-#             # If all agents returned None or empty string for this round, we STOP recording.
-#             active_responses = [completions[a_idx][r] for a_idx in range(num_agents)]
-#             if not any(active_responses):
-#                 break # Stop processing empty rounds (Enough thinking!)
-
-#             trace_lines.append(f"--- Round {r} ---")
-#             for a_idx in range(num_agents):
-#                 reply = active_responses[a_idx]
-#                 if reply:
-#                     # Truncate slightly to keep Judge context manageable
-#                     clean_reply = reply.strip()
-#                     trace_lines.append(f"Agent {a_idx} ({roles[a_idx]}): {clean_reply}...")
-            
-#             trace_lines.append("") # Spacer between rounds
-
-#     except Exception as e:
-#         trace_lines.append(f"Error parsing trace: {str(e)}")
-#         trace_lines.append(str(completions))
-
-#     trace_str = "\n".join(trace_lines) + f"\n\nFinal Answer: {res}"
-
-#     # 3. Return the Dictionary required by the Decorator/Judge
-#     # Keys 'response' and 'output' are mandatory for the parallel search logic
-#     return {
-#         'response': trace_str,      # The REASONING trace (Primary for Judge)
-#         'output': res,              # The actual return value
-#         'completion': completions,  # Original metadata
-#         'acc': is_equiv(ans, res),
-#         'resp_cnt': resp_cnt,
-#         'importance': imp_score,
-#         'prompt_tokens': prompt_tokens,
-#         'completion_tokens': completion_tokens
-#     }
 
 async def process_single_problem(que, ans, roles, model, activation, qtype):
     """Process a single problem asynchronously"""
     # Create a fresh LLMLP instance for this problem
-    llmlp = LLMLP_AIME(model, len(roles), roles, 3, activation, qtype, model)
+    llmlp = LLMLP_AIME(model, len(roles), roles, 4, activation, qtype, model)
     
     # Run in thread pool since LLMLP operations are synchronous
     loop = asyncio.get_event_loop()
@@ -213,11 +395,6 @@ async def main_async():
         batch = qa_pairs[batch_idx:batch_idx + batch_size]
         print(f"Processing batch {batch_idx//batch_size + 1}/{(len(qa_pairs)-1)//batch_size + 1} ({len(batch)} problems)...")
         
-        # Create tasks for this batch
-        # tasks = [
-        #     process_single_problem(que, ans, ROLES, MODEL, ACTIVATION, TYPE, question= que, task_type = TYPE)
-        #     for que, ans in batch
-        # ]
         tasks = [
             process_single_problem(que, ans, ROLES, MODEL, ACTIVATION, TYPE)
             for que, ans in batch

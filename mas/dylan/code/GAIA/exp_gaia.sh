@@ -5,18 +5,18 @@ MODEL=gpt-5-mini
 
 # Specify your GAIA dataset directory
 GAIA_DIR="/common/home/vv382/Datasets/GAIA"
-EXP_NAME="gaia_experiment_iter_rm3"
+EXP_NAME="gaia_iter1"
 OUTPUT_DIR="GAIA/results_gaia"
 
 # Agent roles for GAIA
-ROLES="['Assistant', 'Historian', 'Mathematician', 'Logician']"
+ROLES="['Assistant', 'Mathematician', 'Fact Checker', 'Domain Expert']"
 # Process different file ranges or levels
 # Example: Process first 50 problems (0-49)
 MIN_FILE=0
-MAX_FILE=102
+MAX_FILE=103
 
-RES_NAME="${OUTPUT_DIR}_Assistant_Historian_Mathematician_Logician/${EXP_NAME}_results.txt"
-LOG_NAME="${OUTPUT_DIR}_Assistant_Historian_Mathematician_Logician/${EXP_NAME}_log.txt"
+RES_NAME="${OUTPUT_DIR}_Assistant_Mathematician_Fact Checker_Domain Expert/${EXP_NAME}_results.txt"
+LOG_NAME="${OUTPUT_DIR}_Assistant_Mathematician_Fact Checker_Domain Expert/${EXP_NAME}_log.txt"
 
 # Check if already processed (4 lines means complete)
 if [ -f "$RES_NAME" ]; then

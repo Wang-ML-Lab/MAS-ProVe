@@ -4,7 +4,7 @@ MODEL=gpt-5-mini
 
 # Specify your AIME dataset directory and year
 AIME_DIR="/common/home/vv382/Datasets/AIME/2024"
-EXP_NAME="aime24_proc_prm3"
+EXP_NAME="aime24_iter2"
 OUTPUT_DIR="AIME/results_aime"
 
 # Agent roles for AIME (using math-specific experts)
