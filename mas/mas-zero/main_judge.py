@@ -190,64 +190,68 @@ if __name__ == "__main__":
         question = responses[0]['problem']  # all responses have the same answer
 
         # # accumulate
-        extracted_answers = []
-        correct_answers = []
+        # extracted_answers = []
+        # correct_answers = []
+        # for response in responses:
+        #     if isinstance(response['n'], int):
+        #         if response['n'] ==0:
+        #             filter_response = response['response']
+        #         else:
+        #             continue
+        #     else:
+        #         continue
+        #     # filter_response = response['response']
+        #     # TODO: for gpqa, in some cases, it gives the final answer instead of final selection
+            
+        #     if '<TOO_HARD>' in filter_response:
+        #         filter_response = filter_response[:filter_response.index('<TOO_HARD>')]
+        #         # print(f'<TOO_HARD> detected: response: {response['response']}; filter_response: {filter_response}')
 
-        for response in responses:
-            # if isinstance(response['n'], int):
-            #     filter_response = response['response']
-            # else:
-            #     continue
-            filter_response = response['response']
-            # TODO: for gpqa, in some cases, it gives the final answer instead of final selection
-            if '<TOO_HARD>' in filter_response:
-                filter_response = filter_response[:filter_response.index('<TOO_HARD>')]
-                # print(f'<TOO_HARD> detected: response: {response['response']}; filter_response: {filter_response}')
+        #     match = re.search(ANSWER_PATTERN, filter_response)
+        #     extracted_answer = match.group(1) if match else None
+        #     extracted_answers.append(
+        #         extracted_answer.strip() if extracted_answer is not None else extracted_answer)  # for exact match, "strip()" can make a significant difference
 
-            match = re.search(ANSWER_PATTERN, filter_response)
-            extracted_answer = match.group(1) if match else None
-            extracted_answers.append(
-                extracted_answer.strip() if extracted_answer is not None else extracted_answer)  # for exact match, "strip()" can make a significant difference
-
-            correct_answer = response['correct_answer']
-            correct_answers.append(correct_answer)
-        print(len(responses), len(extracted_answers), len(correct_answers))
+        #     correct_answer = response['correct_answer']
+        #     correct_answers.append(correct_answer)
+        # print(len(responses), len(extracted_answers), len(correct_answers))
         # Load extracted answers from mem.json and filter only those selected from greedy
-        # mem_path = f'{root_dir}/{dataset}/{example_id}/{model}_{node_model}_gpt-4o_chatgpt_0_plan_mem.json'
+        mem_path = f'{root_dir}/{dataset}/{example_id}/{model}_{node_model}_gpt-4o_chatgpt_0_plan_mem.json'
         
-        # try:
-        #     with open(mem_path, 'r') as json_file:
-        #         mem_data = json.load(json_file)
+        try:
+            with open(mem_path, 'r') as json_file:
+                mem_data = json.load(json_file)
             
-        #     # Filter only entries that contain "Selected from greedy"
-        #     filtered_data = [item for item in mem_data if any("Selected from greedy" in str(v) for v in item.values())]
-        #     # filtered_data = [item for item in mem_data]
+            # Filter the first instance of each "Selected from greedy" entry
             
-        #     if not filtered_data:
-        #         print(f'example_id {example_id}: No "Selected from greedy" entries found in mem.json')
-        #         special_ids.append(f'example_id {example_id}: No "Selected from greedy" entries found')
-        #         return False
+            filtered_data = [item for item in mem_data if any("Selected from greedy" in str(v) for v in item.values())]
+            # filtered_data = [item for item in mem_data]
+            filtered_data = filtered_data[:max_response_per_sample]  # Limit to max_response_per_sample
+            if not filtered_data:
+                print(f'example_id {example_id}: No "Selected from greedy" entries found in mem.json')
+                special_ids.append(f'example_id {example_id}: No "Selected from greedy" entries found')
+                return False
             
-        #     # Extract answers (the dictionary keys)
-        #     extracted_answers = [list(item.keys())[0] for item in filtered_data]
+            # Extract answers (the dictionary keys)
+            extracted_answers = [list(item.keys())[0] for item in filtered_data]
             
-        #     # Get correct answer from first response
-        #     correct_answer = responses[0]['correct_answer']
-        #     correct_answers = [correct_answer] * len(extracted_answers)
+            # Get correct answer from first response
+            correct_answer = responses[0]['correct_answer']
+            correct_answers = [correct_answer] * len(extracted_answers)
             
-        # except Exception as e:
-        #     print(f'example_id {example_id} mem file {mem_path} does not exist or error loading: {e}')
-        #     special_ids.append(f'example_id {example_id} mem file error: {e}')
-        #     return False
+        except Exception as e:
+            print(f'example_id {example_id} mem file {mem_path} does not exist or error loading: {e}')
+            special_ids.append(f'example_id {example_id} mem file error: {e}')
+            return False
         
-        # if len(extracted_answers) < max_response_per_sample:
-        #     print(f'filtered extracted_answers length {len(extracted_answers)} is lower than {max_response_per_sample}')
-        #     special_ids.append(f'example_id {example_id}: filtered extracted_answers length {len(extracted_answers)} is lower than {max_response_per_sample}')
-        # #     just a warning is fine
-        # #     pass instead of return, continue processing
+        if len(extracted_answers) < max_response_per_sample:
+            print(f'filtered extracted_answers length {len(extracted_answers)} is lower than {max_response_per_sample}')
+            special_ids.append(f'example_id {example_id}: filtered extracted_answers length {len(extracted_answers)} is lower than {max_response_per_sample}')
+            # just a warning is fine
+            # pass instead of return, continue processing
 
-        # print('extracted_answers: ', extracted_answers)
-        # print('correct_answers: ', correct_answers)
+        print('extracted_answers: ', extracted_answers)
+        print('correct_answers: ', correct_answers)
         
         is_correct = False
 
