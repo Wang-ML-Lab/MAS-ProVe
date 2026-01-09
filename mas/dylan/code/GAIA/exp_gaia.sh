@@ -5,7 +5,7 @@ MODEL=gpt-5-mini
 
 # Specify your GAIA dataset directory
 GAIA_DIR="/common/home/vv382/Datasets/GAIA"
-EXP_NAME="gaia_experiment_rm_3"
+EXP_NAME="gaia_experiment_iter_rm3"
 OUTPUT_DIR="GAIA/results_gaia"
 
 # Agent roles for GAIA

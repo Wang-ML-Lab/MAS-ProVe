@@ -76,7 +76,7 @@ class LLMNeuron_AIME:
         self.completion_tokens = 0
 
     # -------------------------------------------------------------------------
-    # NEW: Async Decorated Method for Process Evaluation
+    # NEW: Async Decorated Method for Process Evaluation (AgentWise)
     # -------------------------------------------------------------------------
     @llm_parallel_search_decorator
     async def _activate_async(self, question=None, **kwargs):

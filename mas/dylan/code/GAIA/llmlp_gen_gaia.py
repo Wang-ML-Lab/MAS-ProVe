@@ -12,6 +12,7 @@ from LLM_Neuron import LLMEdge, listwise_ranker_2
 from llm_neuron_gaia import LLMNeuron_GAIA
 from utils import *
 from gaia_utils import parse_gaia_answer, gaia_string_match
+from mas_proceval.decorators.decorator_base import llm_parallel_search_decorator
 
 QUERY_DIR = sys.argv[1]  # Directory containing GAIA JSON files
 MIN_FILE = int(sys.argv[2])  # Starting file number
@@ -94,8 +95,8 @@ def get_gaia_qa_pairs(query_dir, min_file, max_file):
     
     return sorted(ret_list, key=lambda x: x[0])  # Sort for consistency
 
-
-async def process_single_problem(que, ans, roles, model, activation, qtype):
+@llm_parallel_search_decorator
+async def process_single_problem(que, ans, roles, model, activation, qtype, **kwargs):
     """Process a single problem asynchronously"""
     llmlp = LLMLP_GAIA(model, len(roles), roles, 3, activation, qtype, model)
     loop = asyncio.get_event_loop()
@@ -107,8 +108,44 @@ async def process_single_problem(que, ans, roles, model, activation, qtype):
         imp_score = await loop.run_in_executor(
             executor, llmlp.backward, res
         )
+    # 2. Construct the Trace String (SMARTER VERSION)
+    trace_lines = []
+    num_agents = len(roles)
+    
+    try:
+        # completions is [ [R0, R1, R2], [R0, R1, R2] ... ]
+        # We need to know how many rounds actually occurred.
+        # Assuming all agents have lists of the same length (padded with None if needed).
+        max_rounds = len(completions[0]) if completions else 0
+        
+        for r in range(max_rounds):
+            # CHECK: Did any agent speak in this round?
+            # If all agents returned None or empty string for this round, we STOP recording.
+            active_responses = [completions[a_idx][r] for a_idx in range(num_agents)]
+            if not any(active_responses):
+                break # Stop processing empty rounds (Enough thinking!)
 
+            trace_lines.append(f"--- Round {r} ---")
+            for a_idx in range(num_agents):
+                reply = active_responses[a_idx]
+                if reply:
+                    # Truncate slightly to keep Judge context manageable
+                    clean_reply = reply.strip()
+                    trace_lines.append(f"Agent {a_idx} ({roles[a_idx]}): {clean_reply}...")
+            
+            trace_lines.append("") # Spacer between rounds
+
+    except Exception as e:
+        trace_lines.append(f"Error parsing trace: {str(e)}")
+        trace_lines.append(str(completions))
+
+    trace_str = "\n".join(trace_lines) + f"\n\nFinal Answer: {res}"
+
+    # 3. Return the Dictionary required by the Decorator/Judge
+    # Keys 'response' and 'output' are mandatory for the parallel search logic
     return {
+        'response': trace_str,      # The REASONING trace (Primary for Judge)
+        'output': res,              # The actual return value
         'completion': completions,
         'acc': gaia_string_match(ans, res),
         'resp_cnt': resp_cnt,
@@ -116,6 +153,28 @@ async def process_single_problem(que, ans, roles, model, activation, qtype):
         'prompt_tokens': prompt_tokens,
         'completion_tokens': completion_tokens
     }
+
+# async def process_single_problem(que, ans, roles, model, activation, qtype):
+#     """Process a single problem asynchronously"""
+#     llmlp = LLMLP_GAIA(model, len(roles), roles, 3, activation, qtype, model)
+#     loop = asyncio.get_event_loop()
+#     with ThreadPoolExecutor(max_workers=1) as executor:
+#         llmlp.zero_grad()
+#         res, resp_cnt, completions, prompt_tokens, completion_tokens = await loop.run_in_executor(
+#             executor, llmlp.forward, que
+#         )
+#         imp_score = await loop.run_in_executor(
+#             executor, llmlp.backward, res
+#         )
+
+#     return {
+#         'completion': completions,
+#         'acc': gaia_string_match(ans, res),
+#         'resp_cnt': resp_cnt,
+#         'importance': imp_score,
+#         'prompt_tokens': prompt_tokens,
+#         'completion_tokens': completion_tokens
+#     }
 
 
 async def main_async():
@@ -137,7 +196,9 @@ async def main_async():
         batch = qa_pairs[batch_idx:batch_idx + batch_size]
         print(f"Processing batch {batch_idx//batch_size + 1}/{(len(qa_pairs)-1)//batch_size + 1} ({len(batch)} problems)...")
 
-        tasks = [process_single_problem(que, ans, ROLES, MODEL, ACTIVATION, TYPE) for que, ans in batch]
+        # tasks = [process_single_problem(que, ans, ROLES, MODEL, ACTIVATION, TYPE) for que, ans in batch]
+        tasks = [process_single_problem(que, ans, ROLES, MODEL, ACTIVATION, TYPE,  question= que, task_type = TYPE) for que, ans in batch]
+        
         batch_results = await asyncio.gather(*tasks, return_exceptions=True)
 
         for result in batch_results:
