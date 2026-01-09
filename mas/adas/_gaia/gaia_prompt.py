@@ -106,7 +106,7 @@ LLM_debate = {
     debate_instruction = "Given solutions to the problem from other agents, consider their opinions as additional advice. Please think carefully and provide an updated answer."
     
     # Initialize debate agents with different roles and a moderate temperature for varied reasoning
-    debate_agents = [LLMAgentBase(['thinking', 'answer'], 'Debate Agent', temperature=0.8, role=role) for role in ['Math Professor', 'Grade School Teacher', 'Math Enthusiast']]
+    debate_agents = [LLMAgentBase(['thinking', 'answer'], 'Debate Agent', temperature=0.8, role=role) for role in ['Research Scientist', 'Knowledge Expert', 'Analytical Reasoner']]
 
     # Instruction for final decision-making based on all debates and solutions
     final_decision_instruction = "Given all the above thinking and answers, reason over them carefully and provide a final answer."
@@ -198,20 +198,20 @@ Role_Assignment = {"thought": "Similar to Auto-GPT and expert prompting, we can 
                    "code": """async def forward(self, taskInfo):
         # Instruction for step-by-step reasoning
         cot_instruction = "Please think step by step and then solve the task."
-        expert_agents = [LLMAgentBase(['thinking', 'answer'], 'Expert Agent', role=role) for role in ['Math Professor', 'Grade School Teacher', 'Math Enthusiast', 'Helpful Assistant']]
+        expert_agents = [LLMAgentBase(['thinking', 'answer'], 'Expert Agent', role=role) for role in ['Research Scientist', 'Knowledge Expert', 'Analytical Reasoner', 'Helpful Assistant']]
 
         # Instruction for routing the task to the appropriate expert
-        routing_instruction = "Given the task, please choose an Expert to answer the question. Choose from: Math Professor, Grade School Teacher, Math Enthusiast."
+        routing_instruction = "Given the task, please choose an Expert to answer the question. Choose from: Research Scientist, Knowledge Expert, Analytical Reasoner."
         routing_agent = LLMAgentBase(['choice'], 'Routing agent')
 
         # Get the choice of expert to route the task
         choice = (await routing_agent([taskInfo], routing_instruction))[0]
 
-        if 'professor' in choice.content.lower():
+        if 'scientist' in choice.content.lower():
             expert_id = 0
-        elif 'teacher' in choice.content.lower():
+        elif 'knowledge' in choice.content.lower():
             expert_id = 1
-        elif 'enthusiast' in choice.content.lower():
+        elif 'analytical' in choice.content.lower() or 'reasoner' in choice.content.lower():
             expert_id = 2
         else:
             expert_id = 3 # Default to helpful assistant
