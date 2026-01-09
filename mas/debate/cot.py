@@ -132,7 +132,7 @@ async def call_llm(model: str, prompt: str, temperature: float = 0.7, max_tokens
                 "function": function_name,
                 "arguments": function_args
             })
-            
+            print(f"  🔧 Tool call: {function_name}({function_args})")
             if function_name in TOOL_FUNCTIONS:
                 function_response = TOOL_FUNCTIONS[function_name](**function_args)
                 

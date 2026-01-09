@@ -127,21 +127,21 @@ class GAIAEvaluator:
         
         if method == "cot":
             mas_cot = MASCoT(
-                example, example_id, config, "gaia", "general",
+                example, example_id, config, "gaia", "qa",
                 question_formatter=self.format_question,
                 evaluate_fn=self.evaluate_answer
             )
             result = await mas_cot.run()
         elif self.process_eval == "round":
             mas_debate = MASDebateIter(
-                example, example_id, config, "gaia", "general",
+                example, example_id, config, "gaia", "qa",
                 question_formatter=self.format_question,
                 evaluate_fn=self.evaluate_answer
             )
             result = await mas_debate.run()
         else:  # agent (default)
             mas_debate = MASDebate(
-                example, example_id, config, "gaia", "general",
+                example, example_id, config, "gaia", "qa",
                 question_formatter=self.format_question,
                 evaluate_fn=self.evaluate_answer
             )

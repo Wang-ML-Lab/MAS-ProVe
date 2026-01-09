@@ -15,8 +15,7 @@ def run_aime24(config, max_examples: int = None, specific_ids: list = None, proc
     """Run AIME24 evaluation"""
     print("Starting AIME24 evaluation...")
     config.dataset = "aime24"
-    if hasattr(config, 'use_tools'):
-        config.use_tools = False  # AIME is pure math, no web search needed
+    config.use_tools = False  # AIME is pure math, no web search needed
     evaluator = AIMEEvaluator(benchmark="aime24", output_dir=output_dir, process_eval=process_eval)
     return evaluator.run_evaluation(config, max_examples, specific_ids, method=method)
 
@@ -25,8 +24,7 @@ def run_aime25(config, max_examples: int = None, specific_ids: list = None, proc
     """Run AIME25 evaluation"""
     print("Starting AIME25 evaluation...")
     config.dataset = "aime25"
-    if hasattr(config, 'use_tools'):
-        config.use_tools = False  # AIME is pure math, no web search needed
+    config.use_tools = False  # AIME is pure math, no web search needed
     evaluator = AIMEEvaluator(benchmark="aime25", output_dir=output_dir, process_eval=process_eval)
     return evaluator.run_evaluation(config, max_examples, specific_ids, method=method)
 
@@ -35,8 +33,7 @@ def run_gaia(config, max_examples: int = None, specific_ids: list = None, proces
     """Run GAIA evaluation"""
     print("Starting GAIA evaluation...")
     config.dataset = "gaia"
-    if hasattr(config, 'use_tools'):
-        config.use_tools = True  # GAIA often requires web search
+    config.use_tools = True  # GAIA often requires web search
     evaluator = GAIAEvaluator(subset="test", output_dir=output_dir, process_eval=process_eval)
     return evaluator.run_evaluation(config, max_examples, specific_ids, method=method)
 
