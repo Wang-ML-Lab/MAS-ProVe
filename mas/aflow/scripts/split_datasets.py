@@ -13,7 +13,7 @@ from sklearn.model_selection import train_test_split
 
 def split_and_save_dataset(dataset_name: str, hf_dataset_path: str = None, 
                            local_json_path: str = None, validation_size: float = 0.2,
-                           output_dir: str = "data/datasets", use_random_split: bool = True):
+                           output_dir: str = "data", use_random_split: bool = True):
     """
     Load a dataset and split it into validation and test sets.
     
@@ -90,20 +90,20 @@ def main():
     print("="*60)
     
     # GAIA dataset (from local JSON file) - use random split
-    try:
-        gaia_json = "data/datasets/GAIA.json"
-        if os.path.exists(gaia_json):
-            split_and_save_dataset(
-                dataset_name="gaia",
-                local_json_path=gaia_json,
-                validation_size=0.2,
-                use_random_split=True
-            )
-        else:
-            print(f"\n⚠ WARNING: GAIA dataset not found at {gaia_json}")
-            print("Please ensure GAIA.json exists in data/datasets/")
-    except Exception as e:
-        print(f"\n✗ Error processing GAIA: {e}")
+    # try:
+    #     gaia_json = "data/datasets/GAIA.json"
+    #     if os.path.exists(gaia_json):
+    #         split_and_save_dataset(
+    #             dataset_name="gaia",
+    #             local_json_path=gaia_json,
+    #             validation_size=0.2,
+    #             use_random_split=True
+    #         )
+    #     else:
+    #         print(f"\n⚠ WARNING: GAIA dataset not found at {gaia_json}")
+    #         print("Please ensure GAIA.json exists in data/datasets/")
+    # except Exception as e:
+    #     print(f"\n✗ Error processing GAIA: {e}")
     
     # AIME24 dataset (from HuggingFace) - use random split
     try:
@@ -111,21 +111,21 @@ def main():
             dataset_name="aime24",
             hf_dataset_path="simplescaling/aime24_nofigures",
             validation_size=0.2,
-            use_random_split=True
+            use_random_split=False
         )
     except Exception as e:
         print(f"\n✗ Error processing AIME24: {e}")
     
     # AIME25 dataset (from HuggingFace) - use random split
-    try:
-        split_and_save_dataset(
-            dataset_name="aime25",
-            hf_dataset_path="simplescaling/aime25_nofigures",
-            validation_size=0.2,
-            use_random_split=True
-        )
-    except Exception as e:
-        print(f"\n✗ Error processing AIME25: {e}")
+    # try:
+    #     split_and_save_dataset(
+    #         dataset_name="aime25",
+    #         hf_dataset_path="simplescaling/aime25_nofigures",
+    #         validation_size=0.2,
+    #         use_random_split=True
+    #     )
+    # except Exception as e:
+    #     print(f"\n✗ Error processing AIME25: {e}")
     
     print("\n" + "="*60)
     print("DATASET SPLITTING COMPLETED")

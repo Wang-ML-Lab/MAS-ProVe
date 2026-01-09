@@ -57,7 +57,7 @@ class Evaluator:
         }
 
     async def graph_evaluate(
-        self, dataset: DatasetType, graph, params: dict, path: str, is_test: bool = False, use_mas: bool = False
+        self, dataset: DatasetType, graph, params: dict, path: str, is_test: bool = False, use_mas: bool = True
     ) -> Tuple[float, float, float]:
         if dataset not in self.dataset_configs:
             raise ValueError(f"Unsupported dataset: {dataset}")
@@ -74,7 +74,7 @@ class Evaluator:
             va_list = None # Use None to test all Validation data, or set va_list (e.g., [1, 2, 3]) to use partial data
         return await benchmark.run_evaluation(configured_graph, va_list)
 
-    async def _configure_graph(self, dataset, graph, params: dict, use_mas: bool = False, tools=None, tool_functions=None):
+    async def _configure_graph(self, dataset, graph, params: dict, use_mas: bool = True, tools=None, tool_functions=None):
     # Here you can configure the graph based on params
     # For example: set LLM configuration, dataset configuration, etc.
         dataset_config = params.get("dataset", {})
