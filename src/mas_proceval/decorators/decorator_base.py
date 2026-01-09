@@ -22,7 +22,7 @@ def llm_parallel_search_decorator(llm_func):
         for i, response in enumerate(responses):
             if isinstance(response, Exception):
                 error_msg = str(response)
-                print(f"   WARNING: Candidate {i+1} failed with error: {error_msg[:100]}...")
+                print(f"   WARNING: Candidate {i+1} failed with error: {error_msg}...")
                 responses[i] = {"response": "I cannot respond to this request due to content policy restrictions."}
         
         return responses
@@ -48,6 +48,7 @@ def llm_parallel_search_decorator(llm_func):
             elif isinstance(obj, (list, tuple)): return '\n'.join(flatten_to_str(item) for item in obj)
             elif isinstance(obj, dict):
                 if "response" in obj and obj["response"]: return flatten_to_str(obj["response"])
+                elif "agents" in obj and obj["agents"]: return flatten_to_str(obj["agents"])
                 else:
                     for v in obj.values():
                         if v: return flatten_to_str(v)
@@ -56,12 +57,7 @@ def llm_parallel_search_decorator(llm_func):
 
         partial_trajectories = []
         for i, function_result in enumerate(responses):
-            content = None
-            #Only for Mas-zero-iter
-            if isinstance(function_result, dict) and function_result.get("agents"):
-                content = flatten_to_str(function_result["agents"])
-            else:
-                content = flatten_to_str(function_result)
+            content = flatten_to_str(function_result)
             partial_trajectories.append({
                 "context": context_str,
                 "current-step": content
@@ -85,7 +81,6 @@ def llm_parallel_search_decorator(llm_func):
         responses = await gather_calls(*args, **kwargs)
 
         # 2. Send to judge (Blocking I/O offloaded to Thread)
-        # CRITICAL FIX: For MAS-Zero
         # server_result = send_to_server(responses, task_type, question, trajectory)
         try:
             server_result = await asyncio.to_thread(
