@@ -40,27 +40,27 @@ class Workflow:
             for operator_name in operator_names
         }
         self.selection_operator_names = operator_names
+        self.trajectory = []
+        
+    @llm_parallel_search_decorator
+    async def execute_generate(self, operator, input, instruction, **kwargs):
+        """Decorated Generate operator - generates 3 candidates, judge picks best"""
+        result = await operator(input=input, instruction=instruction)
+        return result.get('response', "")
+    
+    @llm_parallel_search_decorator
+    async def execute_self_refine(self, operator, problem, solution, **kwargs):
+        """Decorated SelfRefine operator - generates 3 candidates, judge picks best"""
+        result = await operator(problem=problem, solution=solution)
+        return result.get('response', "")
+        
+    @llm_parallel_search_decorator
+    async def execute_custom(self, input, instruction, **kwargs):
+        """Decorated custom operator - generates 3 candidates, judge picks best"""
+        result = await self.custom(input=input, instruction=instruction)
+        return result.get('response', "")
     
     async def __call__(self, problem: str):
-        """
-        Wrapper that triggers the parallel search.
-        The decorator runs the logic 3 times in parallel and the Judge picks the best.
-        """
-        # Call the decorated function with required Judge parameters
-        best_result = await self._run_logic_async(
-            problem=problem,
-            question=problem,      # REQUIRED: User prompt for the Judge
-            task_type="qa"    # REQUIRED: Triggers the Math/QA prompt template
-        )
-        
-        # Unpack the best result
-        if isinstance(best_result, dict):
-            return best_result["response"], best_result["cost"], best_result["log_prob"]
-        else:
-            return str(best_result), 0, 0.0
-     
-    @llm_parallel_search_decorator
-    async def _run_logic_async(self, problem: str, **kwargs):    
         log_probs_layers, selected_names_layers = self.controller.forward(problem, self.operator_embeddings, self.selection_operator_names)
         
         current_solution = "" 
@@ -68,39 +68,60 @@ class Workflow:
         sum_log_prob = 0.0
         
         # Generate initial solution - LLM will autonomously call web_search if needed
-        initial_solution = await self.custom(
-            input=problem, 
-            instruction=prompt_custom.GENERATE_SOLUTION_PROMPT
+        initial_solution = await self.execute_custom(
+            input=problem,
+            instruction=prompt_custom.GENERATE_SOLUTION_PROMPT,
+            task_type="qa",
+            question=problem,
+            trajectory=self.trajectory.copy()
         )
-        current_solution = initial_solution['response']
+        current_solution = initial_solution
         solutions.append(current_solution)
-        
+        self.trajectory.append(f"Initial Solution: {current_solution[:300]}...")
+
         for layer_idx, selected_names in enumerate(selected_names_layers):
             for op_name in selected_names:
                 selected_operator = self.selection_operator_instances[op_name]
 
                 if op_name in ["Generate", "GenerateCoT"]:
-                    result = await selected_operator(
-                        input=problem, 
-                        instruction=prompt_custom.DETAILED_SOLUTION_PROMPT
+                    # Use decorated method with process evaluation
+                    new_solution = await self.execute_generate(
+                        operator=selected_operator,
+                        input=problem,
+                        instruction=prompt_custom.DETAILED_SOLUTION_PROMPT,
+                        task_type="qa",
+                        question=problem,
+                        trajectory=self.trajectory.copy()
                     )
-                    new_solution = result.get('response', "")
                     solutions.append(new_solution)
+                    self.trajectory.append(f"{op_name}: {new_solution[:300]}...")
+                    
                 elif op_name == "SelfRefine":
-                    result = await selected_operator(problem=problem, solution=current_solution)
-                    new_solution = result.get('response', "")
+                    # Use decorated method with process evaluation
+                    new_solution = await self.execute_self_refine(
+                        operator=selected_operator,
+                        problem=problem,
+                        solution=current_solution,
+                        task_type="qa",
+                        question=problem,
+                        trajectory=self.trajectory.copy()
+                    )
                     solutions.append(new_solution)
+                    self.trajectory.append(f"SelfRefine: {new_solution[:300]}...")                
                 elif op_name == "ScEnsemble":
                     result = await selected_operator(problem=problem, solutions=solutions)
                     solutions = []
                     new_solution = result.get('response', "")
                     solutions.append(new_solution)
+                    self.trajectory.append(f"ScEnsemble: {new_solution[:300]}...")
+                    
                 elif op_name == "MultiGenerateCoT":
                     result = await selected_operator(input=problem, instruction=prompt_custom.GENERATE_SOLUTION_PROMPT)
                     if isinstance(result, dict) and 'response' in result:
                         for res in result['response']:
                             new_solution = res.get('response', "")
                             solutions.append(new_solution)
+                        self.trajectory.append(f"MultiGenerateCoT: {len(result['response'])} solutions")
                     else:
                         logger.error(f"Expected dict with 'responses' from MultiGenerateCoT, got {type(result)}")
                         new_solution = current_solution
@@ -117,8 +138,4 @@ class Workflow:
         else:
             final_solution = current_solution
 
-        return {
-            "response": final_solution,      # The reasoning trace (Primary for Judge)
-            "cost": self.llm.cost_manager.total_cost,          # Total cost incurred (Primary for Judge)
-            "log_prob": sum_log_prob         # Cumulative log probability (Primary for Judge)
-            }
+        return final_solution, self.llm.cost_manager.total_cost, sum_log_prob

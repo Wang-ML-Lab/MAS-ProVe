@@ -186,7 +186,7 @@ class BaseBenchmark(ABC):
         return results
     
     async def evaluate_all_problems_test(self, data: List[dict], graph: Callable, max_concurrent_tasks: int = 20):
-        semaphore = asyncio.Semaphore(5)
+        semaphore = asyncio.Semaphore(max_concurrent_tasks)
 
         async def sem_evaluate(problem):
             async with semaphore:

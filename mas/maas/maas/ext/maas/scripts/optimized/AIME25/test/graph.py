@@ -5,7 +5,6 @@ from maas.ext.maas.scripts.optimized.AIME25.test.template.operator_registry impo
 from maas.provider.llm_provider_registry import create_llm_instance
 from maas.utils.cost_manager import CostManager
 from maas.logs import logger
-from mas_proceval.decorators.decorator_base import llm_parallel_search_decorator
 
 
 class Workflow:
@@ -33,27 +32,8 @@ class Workflow:
             for operator_name in operator_names
         }
         self.selection_operator_names = operator_names
-    
-    async def __call__(self, problem: str):
-        """
-        Wrapper that triggers the parallel search.
-        The decorator runs the logic 3 times in parallel and the Judge picks the best.
-        """
-        # Call the decorated function with required Judge parameters
-        best_result = await self._run_logic_async(
-            problem=problem,
-            question=problem,      # REQUIRED: User prompt for the Judge
-            task_type="math"    # REQUIRED: Triggers the Math/QA prompt template
-        )
         
-        # Unpack the best result
-        if isinstance(best_result, dict):
-            return best_result["response"], best_result["cost"], best_result["log_prob"]
-        else:
-            return str(best_result), 0, 0.0
-     
-    @llm_parallel_search_decorator
-    async def _run_logic_async(self, problem: str, **kwargs):
+    async def __call__(self, problem: str):
         log_probs_layers, selected_names_layers = self.controller.forward(problem, self.operator_embeddings, self.selection_operator_names)
         
         current_solution = "" 
@@ -62,7 +42,12 @@ class Workflow:
         
         code_solution = await self.programmer(problem=problem)
 
-        refined_solution = await self.custom(input=problem + f"\nCode output: {code_solution['output']}", instruction=prompt_custom.REFINE_ANSWER_PROMPT)
+        # Only use code output if it succeeded, otherwise generate from scratch
+        if code_solution and code_solution.get('output') and 'Error' not in str(code_solution.get('output', '')) and 'timeout' not in str(code_solution.get('output', '')).lower():
+            refined_solution = await self.custom(input=problem + f"\nCode output: {code_solution['output']}", instruction=prompt_custom.REFINE_ANSWER_PROMPT)
+        else:
+            # Programmer failed, generate solution without code
+            refined_solution = await self.custom(input=problem, instruction=prompt_custom.GENERATE_SOLUTION_PROMPT)
 
         solutions.append(refined_solution['response'])
 
@@ -80,8 +65,7 @@ class Workflow:
                     solutions.append(new_solution)
                 elif op_name == "Programmer":
                     result = await selected_operator(problem=problem, analysis=current_solution)
-                    refined_solution = await self.custom(input=problem + f"\nCode output: {result['code']}", instruction=prompt_custom.REFINE_ANSWER_PROMPT)
-                    new_solution = refined_solution['response']
+                    new_solution = result['output']
                     solutions.append(new_solution)
                 elif op_name == "ScEnsemble":
                     result = await selected_operator(problem=problem, solutions=solutions)
@@ -110,8 +94,4 @@ class Workflow:
         else:
             final_solution = current_solution
 
-        return {
-            "response": final_solution,      # The reasoning trace (Primary for Judge)
-            "cost": self.llm.cost_manager.total_cost,          # Total cost incurred (Primary for Judge)
-            "log_prob": sum_log_prob         # Cumulative log probability (Primary for Judge)
-            }
+        return final_solution, self.llm.cost_manager.total_cost, sum_log_prob

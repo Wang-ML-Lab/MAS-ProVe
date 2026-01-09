@@ -6,6 +6,7 @@ from maas.provider.llm_provider_registry import create_llm_instance
 from maas.utils.cost_manager import CostManager
 from maas.logs import logger
 from maas.tools.web_search_tool import WEB_SEARCH_TOOL, TOOL_FUNCTIONS
+from mas_proceval.decorators.decorator_base import llm_parallel_search_decorator
 
 class Workflow:
     def __init__(
@@ -99,3 +100,4 @@ class Workflow:
             final_solution = current_solution
 
         return final_solution, self.llm.cost_manager.total_cost, sum_log_prob
+

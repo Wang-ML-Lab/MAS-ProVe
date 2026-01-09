@@ -36,7 +36,7 @@ class Evaluator:
         )
         configured_graph = await self._configure_graph(dataset, graph, params)
         if is_test:
-            va_list = [0]
+            va_list = None
         else:
             va_list = None
         return await benchmark.run_evaluation(configured_graph, va_list, is_test, params["sample"], params["is_textgrad"])
