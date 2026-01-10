@@ -39,19 +39,21 @@ class BaseClient:
         }
         data = json.dumps(request).encode("utf-8")
         msglen = len(data).to_bytes(4, "big")
-        
+
         # Apply backoff decorator with instance-specific parameters
         @backoff.on_exception(
             backoff.expo,
-            (ConnectionRefusedError, ConnectionError, OSError, socket.timeout, socket.error),
+            (ConnectionRefusedError, ConnectionError,
+             OSError, socket.timeout, socket.error),
             max_tries=self.max_retries,
             base=self.initial_backoff,
             max_value=self.max_backoff,
-            on_backoff=lambda details: print(f"Connection attempt {details['tries']} failed: {details['exception']}. Retrying in {details['wait']:.2f} seconds...")
+            on_backoff=lambda details: print(
+                f"Connection attempt {details['tries']} failed: {details['exception']}. Retrying in {details['wait']:.2f} seconds...")
         )
         def send_with_retry(msglen, data):
             return self._send_request_internal(msglen, data)
-        
+
         return send_with_retry(msglen, data)
 
 
@@ -62,9 +64,11 @@ if __name__ == "__main__":
         judge_type="judge",
         question="What is 2+2?",
         partial_trajectories=[
-            {"context": "Let me calculate: 2+2 = 4", "current-step": "Calculating sum"},
-            {"context": "The sum of 2 and 2 equals 5... wait, that's wrong. It's 4.", "current-step": "Correcting calculation"},
-            {"context": "2+2 is obviously 4", "current-step": "Returning answer"}
+            {"context": "2+2 is obviously 4", "current-step": "Returning answer"},
+            {"context": "Let me calculate: 2+2 = 4",
+                "current-step": "Calculating sum"},
+            {"context": "The sum of 2 and 2 equals 5... wait, that's wrong. It's 4.",
+                "current-step": "Correcting calculation"},
         ]
     )
     print("Client received response:")
