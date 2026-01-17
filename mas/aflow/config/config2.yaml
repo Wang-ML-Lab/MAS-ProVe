@@ -1,7 +1,0 @@
-models:
- "gpt-5-mini": # model: "gpt-4-turbo"  # or gpt-3.5-turbo
-   api_type: "openai"  # or azure / ollama / groq etc.
-   base_url: "https://api.openai.com/v1" 
-   api_key: "OPENAI_API_KEY"
-   temperature: 0
-   reasoning_effort: "minimal"
