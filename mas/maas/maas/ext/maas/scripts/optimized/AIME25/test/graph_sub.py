@@ -31,8 +31,7 @@ class Workflow:
             operator_name: operator_mapping[operator_name](self.llm)
             for operator_name in operator_names
         }
-        self.selection_operator_names = operator_names
-        self.trajectory = []  # Track execution path for process evaluation
+        self.selection_operator_names = operator_names # Track execution path for process evaluation
     
     @llm_parallel_search_decorator
     async def execute_generate(self, operator, input, instruction, **kwargs):
@@ -52,7 +51,7 @@ class Workflow:
         current_solution = "" 
         solutions = []
         sum_log_prob = 0.0
-        self.trajectory = []  # Reset trajectory for this problem
+        trajectory = []  # Reset trajectory for this problem
         
         code_solution = await self.programmer(problem=problem)
 
@@ -60,12 +59,12 @@ class Workflow:
         if code_solution and code_solution.get('output') and 'Error' not in str(code_solution.get('output', '')) and 'timeout' not in str(code_solution.get('output', '')).lower():
             refined_solution = await self.custom(input=problem + f"\nCode output: {code_solution['output']}", instruction=prompt_custom.REFINE_ANSWER_PROMPT)
             current_solution = refined_solution['response']
-            self.trajectory.append(f"Programmer(success): {current_solution[:300]}...")
+            trajectory.append(f"Programmer(success): {current_solution}...")
         else:
             # Programmer failed, generate solution without code
             refined_solution = await self.custom(input=problem, instruction=prompt_custom.GENERATE_SOLUTION_PROMPT)
             current_solution = refined_solution['response']
-            self.trajectory.append(f"Programmer(failed): {current_solution[:300]}...")
+            trajectory.append(f"Programmer(failed): {current_solution}...")
 
         solutions.append(refined_solution['response'])
 
@@ -81,10 +80,10 @@ class Workflow:
                         instruction=prompt_custom.DETAILED_SOLUTION_PROMPT,
                         task_type="math",
                         question=problem,
-                        trajectory=self.trajectory.copy()
+                        trajectory=trajectory.copy()
                     )
                     solutions.append(new_solution)
-                    self.trajectory.append(f"{op_name}: {new_solution[:300]}...")
+                    trajectory.append(f"{op_name}: {new_solution}...")
                     
                 elif op_name == "SelfRefine":
                     # Use decorated method with process evaluation
@@ -94,23 +93,23 @@ class Workflow:
                         solution=current_solution,
                         task_type="math",
                         question=problem,
-                        trajectory=self.trajectory.copy()
+                        trajectory=trajectory.copy()
                     )
                     solutions.append(new_solution)
-                    self.trajectory.append(f"SelfRefine: {new_solution[:300]}...")
+                    trajectory.append(f"SelfRefine: {new_solution}...")
                 elif op_name == "Programmer":
                     result = await selected_operator(problem=problem, analysis=current_solution)
                     refined_solution = await self.custom(input=problem + f"\nCode output: {result['code']}", instruction=prompt_custom.REFINE_ANSWER_PROMPT)
                     new_solution = refined_solution['response']
                     solutions.append(new_solution)
-                    self.trajectory.append(f"Programmer: {new_solution[:300]}...")
+                    trajectory.append(f"Programmer: {new_solution}...")
                     
                 elif op_name == "ScEnsemble":
                     result = await selected_operator(problem=problem, solutions=solutions)
                     solutions = []
                     new_solution = result.get('response', "")
                     solutions.append(new_solution)
-                    self.trajectory.append(f"ScEnsemble: {new_solution[:300]}...")
+                    trajectory.append(f"ScEnsemble: {new_solution}...")
                     
                 elif op_name == "MultiGenerateCoT":
                     result = await selected_operator(input=problem, instruction=prompt_custom.GENERATE_SOLUTION_PROMPT)
@@ -118,7 +117,7 @@ class Workflow:
                         for res in result['response']:
                             new_solution = res.get('response', "")
                             solutions.append(new_solution)
-                        self.trajectory.append(f"MultiGenerateCoT: {len(result['response'])} solutions")
+                        trajectory.append(f"MultiGenerateCoT: {len(result['response'])} solutions")
                     else:
                         logger.error(f"Expected dict with 'responses' from MultiGenerateCoT, got {type(result)}")
                         new_solution = current_solution
