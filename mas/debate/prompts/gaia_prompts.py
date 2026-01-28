@@ -19,7 +19,7 @@ Call it with specific search queries when you need factual information, current 
 
 You can freely reason in your response, please: 
 1. include the thinking process in your response, in a detailed and extended manner, and after that, 
-2. enclose the final answer within <answer></answer> tags (pure number without units and explanations)
+2. enclose the final answer within <answer></answer> tags.
 
 """
 
@@ -39,7 +39,7 @@ Call it with specific search queries when you need factual information, current 
 
 You can freely reason in your response, please: 
 1. include the thinking process in your response, in a detailed and extended manner, and after that, 
-2. enclose the final answer within <answer></answer> tags (pure number without units and explanations)
+2. enclose the final answer within <answer></answer> tags.
 
 """
 
@@ -117,3 +117,4 @@ def get_gaia_prompts(model: str):
         "cot_first": GAIA_COT_FIRST_PROMPT,
         "cot_next": GAIA_COT_NEXT_PROMPT
     }
+
