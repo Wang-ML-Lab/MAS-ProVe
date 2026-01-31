@@ -52,15 +52,13 @@ Each MAS architecture has its own mechanism for enabling process verification. B
 ### Debate
 **Agent-level verification** evaluates each individual debater's response:
 ```bash
-python run_benchmarks.py --benchmark aime24 --process-eval agent
+python run_benchmarks.py --benchmark {dataset} --process-eval agent
 ```
 
 **Round-level verification** evaluates complete debate rounds:
 ```bash
-python run_benchmarks.py --benchmark aime24 --process-eval round
+python run_benchmarks.py --benchmark {dataset} --process-eval round
 ```
-
-You can substitute `aime24` with other benchmarks like `aime25` and `gaia` as needed. The `--process-eval` flag controls the granularity level, automatically connecting to the running judge servers through the `mas_proceval` middleware. Other settings can be altered in the ```run_benchmarks.py```
 
 ---
 
