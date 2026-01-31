@@ -11,14 +11,11 @@ def llm_parallel_search_decorator(llm_func):
     send the results to the server via client, and pick the best response.
     """
     async def gather_calls(*args, **kwargs):
-        # 1. Run the LLM generations in parallel
-        # print(f" Generating {MAX_PARALLEL_SEARCH_CALLS} parallel candidates...")
         tasks = [llm_func(*args, **kwargs) for _ in range(MAX_PARALLEL_SEARCH_CALLS)]
         
-        # This await is non-blocking because it uses asyncio.gather
+
         responses = await asyncio.gather(*tasks, return_exceptions=True)
         
-        # Handle exceptions - replace failed responses with placeholder
         for i, response in enumerate(responses):
             if isinstance(response, Exception):
                 error_msg = str(response)
@@ -32,13 +29,12 @@ def llm_parallel_search_decorator(llm_func):
         Synchronous wrapper for the blocking BaseClient.
         This function will be run in a separate thread.
         """
-        # Ensure we use the correct port. Your server code said 5556, but client default is 5555.
-        # I am setting it to 5556 to match the server code you provided previously.
-        client = BaseClient(host='127.0.0.1', port=5556)
+        
+        client = BaseClient(host='127.0.0.1', port=5555)
         
         # Build context string
         context_str = ""
-        if len(responses) > 0 and isinstance(responses[0], dict) and "context" in responses[0]:
+        if len(responses) > 0 and isinstance(responses[0], dict) and "context" in responses[0]: # For inherently context managed MAS instead of manual trajectory
             context_str = responses[0]["context"]
         elif trajectory and len(trajectory) > 0:
             context_str = "\n\n".join([f"Step {i+1}: {step}" for i, step in enumerate(trajectory)])
@@ -47,8 +43,8 @@ def llm_parallel_search_decorator(llm_func):
             if isinstance(obj, str): return obj
             elif isinstance(obj, (list, tuple)): return '\n'.join(flatten_to_str(item) for item in obj)
             elif isinstance(obj, dict):
-                if "response" in obj and obj["response"]: return flatten_to_str(obj["response"])
-                elif "agents" in obj and obj["agents"]: return flatten_to_str(obj["agents"])
+                if "response" in obj and obj["response"]: return flatten_to_str(obj["response"]) # For DyLAN
+                elif "agents" in obj and obj["agents"]: return flatten_to_str(obj["agents"]) #For MAS-Zero
                 else:
                     for v in obj.values():
                         if v: return flatten_to_str(v)
@@ -63,8 +59,7 @@ def llm_parallel_search_decorator(llm_func):
                 "current-step": content
             })
             # print(f"        Candidate {i+1}: {len(content)} chars")
-        # This calls your BaseClient, which blocks. 
-        # But since we are in a thread, it won't block the main loop.
+
         result = client.send_request(task_type, "judge", partial_trajectories, question)
         return result
     

@@ -20,10 +20,9 @@ tmp/
 src/*/config.yaml
 results/
 mas/aflow/logs/*
-mas/aflow/workspace/*
+mas/aflow/workspace/**/round_*/**
 mas/maas/maas/ext/maas/scripts/optimized/**/round_*/**
 mas/maas/logs/*
-mas/aflow/*.txt
 **/results*/
 **/*result*
 **/*config*.yaml*

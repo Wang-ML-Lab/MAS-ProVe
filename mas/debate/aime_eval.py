@@ -18,12 +18,9 @@ from typing import List, Dict, Any
 from datasets import load_dataset
 from llm_debate_tool_call import DebateConfig, save_results
 import cost_tracker
-from cot import CoTConfig
 
 from mas_debate import MASDebate
 from mas_debate_iter import MASDebateIter
-from mas_cot import MASCoT
-
 
 class AIMEEvaluator:
     def __init__(self, benchmark: str = "aime24", output_dir: str = "results", process_eval: str = "agent"):
@@ -124,32 +121,25 @@ class AIMEEvaluator:
         }
 
     
-    async def process_problem_async(self, example: Dict, example_id: int, config, method: str = "debate") -> Dict:
-        print(f"Processing problem {example_id + 1} with method={method}")
+    async def process_problem_async(self, example: Dict, example_id: int, debate_config: DebateConfig) -> Dict:
+        print(f"Processing problem {example_id + 1} with process_eval={self.process_eval}")
         
-        if method == "cot":
-            mas_cot = MASCoT(
-                example, example_id, config, self.benchmark, "math",
-                question_formatter=self.format_question,
-                evaluate_fn=self.evaluate_answer
-            )
-            return await mas_cot.run()
-        elif self.process_eval == "round":
+        if self.process_eval == "round":
             mas_debate = MASDebateIter(
-                example, example_id, config, self.benchmark, "math",
+                example, example_id, debate_config, self.benchmark, "math",
                 question_formatter=self.format_question,
                 evaluate_fn=self.evaluate_answer
             )
         else:  # agent (default)
             mas_debate = MASDebate(
-                example, example_id, config, self.benchmark, "math",
+                example, example_id, debate_config, self.benchmark, "math",
                 question_formatter=self.format_question,
                 evaluate_fn=self.evaluate_answer
             )
         
         return await mas_debate.run()
 
-    async def run_evaluation_async(self, config, max_examples=None, specific_ids=None, force_reprocess=None, method="debate"):
+    async def run_evaluation_async(self, debate_config: DebateConfig, max_examples=None, specific_ids=None, force_reprocess=None):
         if not self.load_dataset():
             return
         self.load_existing_results()
@@ -166,7 +156,7 @@ class AIMEEvaluator:
             return [self.existing_results[pid] for pid in requested_ids if pid in self.existing_results]
         examples_to_process = [(self.dataset[i], i) for i in missing_ids]
         results = []
-        tasks = [self.process_problem_async(example, example_id, config, method) for example, example_id in examples_to_process]
+        tasks = [self.process_problem_async(example, example_id, debate_config) for example, example_id in examples_to_process]
         batch_size = 10
         for i in range(0, len(tasks), batch_size):
             batch_tasks = tasks[i:i + batch_size]
@@ -195,31 +185,17 @@ class AIMEEvaluator:
         self.print_summary(all_results)
         return all_results
 
-    def run_evaluation(self, config, max_examples=None, specific_ids=None, force_reprocess=None, method="debate"):
-        return asyncio.run(self.run_evaluation_async(config, max_examples, specific_ids, force_reprocess, method))
+    def run_evaluation(self, debate_config: DebateConfig, max_examples=None, specific_ids=None, force_reprocess=None):
+        return asyncio.run(self.run_evaluation_async(debate_config, max_examples, specific_ids, force_reprocess))
 
     def print_summary(self, results: List[Dict]):
         if not results:
             print("No results to summarize")
             return
         total_problems = len(results)
-        
-        # Handle both debate results (with agent_evaluations) and CoT results (with evaluation)
-        if results[0].get("agent_evaluations"):
-            # Debate format
-            all_scores = [res["evaluation"]["score"] for r in results for res in r["agent_evaluations"]]
-            exact_matches = [res["evaluation"]["exact_match"] for r in results for res in r["agent_evaluations"]]
-            valid_answers = [res["evaluation"]["valid_range"] for r in results for res in r["agent_evaluations"]]
-        elif results[0].get("evaluation"):
-            # CoT format (MASCoT)
-            all_scores = [r["evaluation"]["score"] for r in results]
-            exact_matches = [r["evaluation"]["exact_match"] for r in results]
-            valid_answers = [r["evaluation"]["valid_range"] for r in results]
-        else:
-            # Fallback for unexpected format
-            all_scores = [0.0]
-            exact_matches = [False]
-            valid_answers = [False]
+        all_scores = [res["evaluation"]["score"] for r in results for res in r["agent_evaluations"]]
+        exact_matches = [res["evaluation"]["exact_match"] for r in results for res in r["agent_evaluations"]]
+        valid_answers = [res["evaluation"]["valid_range"] for r in results for res in r["agent_evaluations"]]
         
         # Accumulate total cost
         total_cost = sum(r.get("cost", 0.0) for r in results)

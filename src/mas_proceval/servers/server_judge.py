@@ -79,12 +79,6 @@ class ServerJudge(BaseServer):
 
 
 def build_messages_for_judge(trajectories_for_eval, task_type=None, question=""): 
-    # (vishal) implement this function with our current prompt template.
-    # should be in the format of: 
-    # [
-    #     {"role": "system", "content": content},
-    #     {"role": "user", "content": trajectories_for_eval},
-    # ]
     PROMPT_RANKING = """
     <|User Prompt|>
     {question}
@@ -123,10 +117,6 @@ After providing your explanation, you must output the ranking as a comma-separat
             {"role": "user", "content": prompt_formatted}
         ]
         return messages
-    # elif task_type == "swe":
-    #     pass
-    # elif task_type == "web-search":
-    #     pass
     else: 
         warnings.warn(f"Unknown task type: {task_type}, using the default prompt for judge.")
         messages = [
@@ -138,6 +128,6 @@ After providing your explanation, you must output the ranking as a comma-separat
 
 if __name__ == "__main__":
     print("Starting ServerJudge...")
-    server = ServerJudge(model="gpt-5-mini", max_parallel_calls=100, port=5556)
+    server = ServerJudge(model="gpt-5-mini", max_parallel_calls=10, port=5555)
     print(f"Judge server listening on {server.host}:{server.port}")
     server.start()
