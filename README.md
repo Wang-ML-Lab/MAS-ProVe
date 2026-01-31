@@ -82,7 +82,6 @@ python llmlp_gen_{dataset}_sub.py  # Agent call level
 
 Then execute the same bash commands as above.
 
-**Customizing Agent Roles**: You can configure the number of agents, their roles, and reasoning prompts in the dataset-specific prompt libraries (`prompt_lib_aime.py` or `prompt_lib_gaia.py`).
 
 ---
 ### MaAS
