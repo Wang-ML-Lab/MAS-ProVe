@@ -106,7 +106,7 @@ python -m examples.maas.optimize --dataset {dataset} --round 1 --sample 4 --exec
 ```
 
 The template files contain pre-configured decorators:
-- `graph_sub.py`: Individual operators (Generate, Refine, Programmer, etc.) are decorated for fine-grained evaluation
+- `graph_sub.py`: Individual operators are decorated for fine-grained evaluation
 - `graph_iter.py`: Complete workflow iterations are decorated for coarse-grained evaluation
 
 ---
@@ -135,8 +135,6 @@ After optimization completes and generates the workflow graph:
 1. Set `use_mas = False` in `optimizer.py`
 2. Manually add the `@llm_parallel_search_decorator` to appropriate methods in the generated `graph.py`
 3. Refer to `MaAS/.../graph_iter.py` for examples of proper decorator placement
-
-The manual decorator step is necessary because AFlow generates custom graphs dynamically. Setting `use_mas=True` automatically decorates individual operators during generation, while manual decoration of complete execution methods enables iteration-level verification during testing.
 
 ---
 
@@ -180,7 +178,7 @@ from async_search_iter import search  # Iteration level
 
 After setting the appropriate import, run the planning phase:
 
-**AIME24 Planning:**
+**AIME24/25 Planning:**
 ```bash
 python async_main_question.py --dataset workflow_search/aime24 --option plan --meta_model gpt-5-mini --node_model gpt-5-mini --blocks COT COT_SC Reflexion LLM_debate --n_generation 2 --save_dir test_iter_results
 ```
@@ -200,7 +198,7 @@ python main_judge.py --dataset aime24 --judge_method oracle --baseline workflow_
 
 This repository extends and builds upon several foundational works in the field of Multi-Agent Systems (MAS). We are grateful to the authors of the following projects for open-sourcing their codebases:
 
-* **[MAS-ZERO](https://arxiv.org/abs/2505.14996)**
+* **[MAS-Zero](https://arxiv.org/abs/2505.14996)**
 * **[MaaS](https://arxiv.org/abs/2502.04180)**
 * **[AFlow](https://arxiv.org/abs/2410.10762)**
 * **[DyLAN](https://arxiv.org/abs/2310.02170)**
