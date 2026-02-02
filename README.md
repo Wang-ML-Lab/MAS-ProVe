@@ -26,7 +26,7 @@ def function():
 
 ### Available Judge Servers
 
-**GPT-4o Standard Judge** (Recommended for general use):
+**GPT-5-mini Judge**:
 ```bash
 python -m mas_proceval.servers.server_judge
 ```
