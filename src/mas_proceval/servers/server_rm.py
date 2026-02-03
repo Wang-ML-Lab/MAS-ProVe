@@ -50,7 +50,6 @@ class ServerRM(BaseServer):
                  summary_model="gpt-5-mini",
                  max_context_length=16384):
         config = global_config.copy()
-        # print(f"[DEBUG] Initializing ServerRM with config: {config}")
         host = host or config["server"].get("host", "localhost")
         port = port or config["server"].get("port", 8001)
         super().__init__(host, port)
@@ -77,7 +76,6 @@ class ServerRM(BaseServer):
             {"role": "system", "content": SYSTEM_PROMPT.format(max_context_length=self.max_context_length)},
             {"role": "user", "content": f"Please summarize the given context into a concise and informative summary. The total length of the summary should be fewer than 4096 tokens.\n\nContext: {context}"},
         ]
-        # print(f"[DEBUG] Summarize context called with context length: {len(context)}")
         semaphore = await self._get_semaphore()
         async with semaphore:
             response = await acompletion(
@@ -94,7 +92,6 @@ class ServerRM(BaseServer):
         # For PRM, the candidate should be just the 'response'
         context = candidate["context"] if isinstance(candidate["context"], str) else str(candidate["context"])
         current_step = candidate["current-step"] if isinstance(candidate["current-step"], str) else str(candidate["current-step"])
-        # print(f"[DEBUG] Formatting candidate for eval: context={context[:50]}, current_step={current_step[:50]}")
         return "\n".join([context, current_step])
 
     def _assemble_conversation_str(self, query, response):
@@ -103,7 +100,6 @@ class ServerRM(BaseServer):
             from transformers import AutoTokenizer
             tokenizer = AutoTokenizer.from_pretrained(
                 self.model, trust_remote_code=True)
-            # print(f"[DEBUG] Assembling conversation string for model: {self.model}")
             # from the skywork's huggingface repo:
             messages = [
                 {"role": "user", "content": query}, 
@@ -116,32 +112,24 @@ class ServerRM(BaseServer):
             if tokenizer.bos_token is not None \
                 and conversation_str.startswith(tokenizer.bos_token):
                 conversation_str = conversation_str[len(tokenizer.bos_token):]
-            # print(f"[DEBUG] Conversation string: {conversation_str[:100]}")
             return conversation_str
         else:
             raise ValueError(f"Unsupported model: {self.model}")
 
     def _post_http_request(self, prompt: dict):
         headers = {"User-Agent": "RM-Server"}
-        # print(f"[DEBUG] Posting HTTP request to {self.api_url} with prompt: {prompt}")
         response = requests.post(self.api_url, headers=headers, json=prompt)
-        # print(f"[DEBUG] HTTP response status: {response.status_code}")
         return response
 
     def rewards2rankings(self, rewards):
         # Returns [0,1,2,...] sorted by reward descending (best first)
         indices = list(range(len(rewards)))
-        # print(f"[DEBUG] Rewards: {rewards}")
         return sorted(indices, key=lambda i: rewards[i], reverse=True)
 
     async def _process_request(self, request):
-        # assert request.get(
-        #     "judge-type", None) == "prm", "Invalid judge type for PRM"
         task_type = request.get("task-type", None)
         candidates = request["partial_trajectories"]
         query = request.get("question", "")
-
-        # print(f"[DEBUG] Processing request: task_type={task_type}, num_candidates={len(candidates)}")
 
         # Prepare candidate responses
         responses = [self.format_candidate_for_eval(candidate)
@@ -156,19 +144,15 @@ class ServerRM(BaseServer):
             tasks = [self.summarize_context(response) for response in responses]
             summarized_responses = await asyncio.gather(*tasks)
             responses = summarized_responses
-        # print(f"[DEBUG] Summarized responses: {responses}")
 
         conversation_strs = [self._assemble_conversation_str(
             query, response) for response in responses]
-        # print(f"[DEBUG] Conversation strings: {[s[:100] for s in conversation_strs]}")
         
         prompts = [{
             "model": self.model, 
             "input": conversation_str, 
             "activation": False, # should not apply the activation function to match the real reward values.
         } for conversation_str in conversation_strs]
-
-        # print(f"[DEBUG] Prompts: {prompts}")
 
         rewards = []
         semaphore = await self._get_semaphore()
@@ -178,9 +162,7 @@ class ServerRM(BaseServer):
 
             async with aiohttp.ClientSession(headers={"User-Agent": "RM-Server"}) as session:
                 for prompt in prompts:
-                    # print(f"[DEBUG] Sending prompt to RM API: {prompt}")
                     async with session.post(self.api_url, json=prompt) as response:
-                        # print(f"[DEBUG] RM API response status: {response.status}")
                         if response.status != 200:
                             text = await response.text()
                             warnings.warn(
@@ -189,12 +171,10 @@ class ServerRM(BaseServer):
                             reward = -float('inf')
                         try:
                             resp_json = await response.json()
-                            # print(f"[DEBUG] RM API response JSON: {resp_json}")
                             # Assuming response.json()["data"][0]["probs"][0] gives the reward for this prompt
                             reward = resp_json["data"][0]["probs"][0]
                         except Exception as e:
                             text = await response.text()
-                            # print(f"[DEBUG] Exception parsing RM API response: {e}, text: {text}")
                             raise ValueError(
                                 f"Malformed response from RM API: {text}"
                             ) from e
@@ -206,7 +186,6 @@ class ServerRM(BaseServer):
         print(f"[DEBUG] Final rewards: {rewards}")
         rankings = self.rewards2rankings(rewards)
         await asyncio.sleep(0.25)
-        # print(f"[DEBUG] Rankings: {rankings}")
         return {
             "rewards": rewards,
             "rankings": rankings
@@ -217,12 +196,10 @@ class ServerRM(BaseServer):
 
 
 if __name__ == "__main__":
-    # To run the PRM server in the shell, execute the following command:
-    # CUDA_VISIBLE_DEVICES=0 vllm serve "/research/projects/mllab/public_llms/reward_models/Skywork-Reward-V2-Llama-3.1-8B" --task classify --tensor-parallel-size 1 --dtype bfloat16
     import subprocess
     import time
 
-    # Command to start vllm PRM server
+    # Command to start vllm RM server
     vllm_command = [
         "CUDA_VISIBLE_DEVICES=3",
         "vllm",
@@ -243,7 +220,7 @@ if __name__ == "__main__":
         stderr=subprocess.DEVNULL
     )
 
-    # Wait a few seconds for the PRM server to warm up
+    # Wait a few seconds for the RM server to warm up
     print("Waiting 40 seconds for vllm server to start...")
     time.sleep(40)
 

@@ -65,8 +65,6 @@ class ServerPRM(BaseServer):
         self.summary_model_name = summary_model
     
     async def summarize_context(self, context: str, semaphore) -> str:
-        # print("[DEBUG] summarize_context called")
-        # print(f"[DEBUG] Context to summarize (first 200 chars): {context[:200]}")
         messages = [
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": f"Please summarize the given context into a concise and informative summary. The total length of the summary should be fewer than 4096 tokens.\n\nContext: {context}"},
@@ -80,9 +78,7 @@ class ServerPRM(BaseServer):
                     reasoning_effort="minimal",
                     verbosity="low",
                 )
-                # print("[DEBUG] Summarization response received.")
             except Exception as e:
-                # print(f"[ERROR] Exception in summarize_context: {e}")
                 raise
         return response.choices[0].message.content
 
@@ -125,9 +121,7 @@ class ServerPRM(BaseServer):
         return sorted(indices, key=lambda i: rewards[i], reverse=True)
 
     async def _process_request(self, request):
-        # print("[DEBUG] _process_request called")
         semaphore = asyncio.Semaphore(self.max_parallel_calls)
-        # print(f"[DEBUG] Request: {request}")
         assert request.get(
             "judge-type", None) == "prm", "Invalid judge type for PRM"
         task_type = request.get("task-type", None)
@@ -137,7 +131,6 @@ class ServerPRM(BaseServer):
         # Prepare candidate responses
         responses = [self.format_candidate_for_eval(candidate)
                      for candidate in candidates]
-        # print(f"[DEBUG] Prepared {len(responses)} candidate responses.")
 
         # summarize the context;
         from transformers import AutoTokenizer
@@ -145,19 +138,15 @@ class ServerPRM(BaseServer):
             self.model, trust_remote_code=True)
         if self.summary_mode == "enforce" or \
             any(len(tokenizer.encode(response)) > self.max_context_length for response in responses):
-            # print("[DEBUG] Summarizing context for responses...")
             tasks = [self.summarize_context(response, semaphore) for response in responses]
             summarized_responses = await asyncio.gather(*tasks)
             responses = summarized_responses
-        # print(f"[DEBUG] Summarized responses: {responses}")
 
         conversation_strs = [self._assemble_conversation_str(
             query, response) for response in responses]
-        # print(f"[DEBUG] Built {len(conversation_strs)} conversation strings.")
         
         prompts = [{"model": self.model, "input": conversation_str}
                    for conversation_str in conversation_strs]
-        # print(f"[DEBUG] Built {len(prompts)} prompts for backend.")
 
         rewards = []
         async with semaphore:
@@ -166,13 +155,10 @@ class ServerPRM(BaseServer):
 
             async with aiohttp.ClientSession(headers={"User-Agent": "PRM-Server"}) as session:
                 for idx, prompt in enumerate(prompts):
-                    # print(f"[DEBUG] Sending prompt {idx+1}/{len(prompts)} to backend API...")
                     try:
                         async with session.post(self.api_url, json=prompt) as response:
-                            # print(f"[DEBUG] Received response with status {response.status}")
                             if response.status != 200:
                                 text = await response.text()
-                                # print(f"[ERROR] Backend returned status {response.status}: {text}")
                                 warnings.warn(
                                     f"Request failed with status code {response.status}: {text}; assigning a reward of 0.0"
                                 )
@@ -180,26 +166,21 @@ class ServerPRM(BaseServer):
                             else:
                                 try:
                                     resp_json = await response.json()
-                                    # print(f"[DEBUG] Backend JSON: {resp_json}")
                                     # Assuming response.json()["data"][0]["data"][0][1] gives the reward for this prompt
                                     reward = resp_json["data"][0]["data"][0][1]
                                 except Exception as e:
                                     text = await response.text()
-                                    # print(f"[ERROR] Exception parsing backend JSON: {e}\nRaw text: {text}")
                                     raise ValueError(
                                         f"Malformed response from PRM API: {text}"
                                     ) from e
                             rewards.append(reward)
                     except Exception as e:
-                        # print(f"[ERROR] Exception during backend call: {e}")
                         raise
 
-        print(f"[DEBUG] Rewards: {rewards}")
         assert len(rewards) == len(
             responses), "Rewards length mismatch with candidates"
 
         rankings = self.rewards2rankings(rewards)
-        # print(f"[DEBUG] Rankings: {rankings}")
 
         return {
             "rewards": rewards,
@@ -211,8 +192,6 @@ class ServerPRM(BaseServer):
 
 
 if __name__ == "__main__":
-    # To run the PRM server in the shell, execute the following command:
-    # CUDA_VISIBLE_DEVICES=0 vllm serve "/research/projects/mllab/public_llms/reward_models/qwen_rms/Qwen2.5-Math-PRM-7B" --task reward --tensor-parallel-size 1 --dtype bfloat16
     import subprocess
     import time
 

@@ -1,5 +1,9 @@
-# Library of Process Evaluation for Multi-Agent Systems (MAS Proc-Eval)
+# Library of Multi-Agent Systems Process Verification (MAS-ProVe)
 
+This repo contains the code for the following work:
+- **MAS-ProVe: Understanding the Process Verification of Multi-Agent Systems**  
+Vishal Venkataramani, Haizhou Shi, Zixuan Ke, Austin Xu, Xiaoxiao He, Yingbo Zhou, Semih Yavuz, Hao Wang, Shafiq Joty  
+[[📄 Paper](https://github.com/Wang-ML-Lab/MAS-ProVe)]
 
 ### Usage
 Installing the client-server framework for MAS process evaluation:
@@ -206,10 +210,11 @@ This repository extends and builds upon several foundational works in the field 
 
 Our work introduces MAS-ProVe, a systematic empirical study of process verification for MAS.
 
-## Citation
+## Reference
 
 If you use this codebase or the integrated architectures in your research, please cite our work and the original papers:
 
 ### MAS-ProVe
 ```bibtex
 @article{}
+```

@@ -89,7 +89,6 @@ class ServerRM(BaseServer):
                  summary_model="gpt-5-mini",
                  max_context_length=16384):
         config = global_config.copy()
-        # print(f"[DEBUG] Initializing ServerRM with config: {config}")
         host = host or config["server"].get("host", "localhost")
         port = port or config["server"].get("port", 8001)
         super().__init__(host, port)
@@ -98,7 +97,6 @@ class ServerRM(BaseServer):
         self.max_parallel_calls = max_parallel_calls
         self._semaphore = None  # Will be created per event loop
 
-        # summarization should be performed when the context is too long for the PRM model.
         assert summary_mode in ["enforce", "optional"], "Invalid summary mode"
         self.summary_mode = summary_mode
         self.max_context_length = max_context_length
@@ -106,7 +104,6 @@ class ServerRM(BaseServer):
         self.summary_model_name = summary_model
 
     async def _get_semaphore(self):
-        # Ensure semaphore is created per event loop
         if self._semaphore is None or self._semaphore._loop != asyncio.get_running_loop():
             self._semaphore = asyncio.Semaphore(self.max_parallel_calls)
         return self._semaphore
@@ -117,7 +114,6 @@ class ServerRM(BaseServer):
                 max_context_length=self.max_context_length)},
             {"role": "user", "content": f"Please summarize the given context into a concise and informative summary. The total length of the summary should be fewer than 4096 tokens.\n\nContext: {context}"},
         ]
-        # print(f"[DEBUG] Summarize context called with context length: {len(context)}")
         semaphore = await self._get_semaphore()
         async with semaphore:
             response = await acompletion(
@@ -131,12 +127,10 @@ class ServerRM(BaseServer):
         return response.choices[0].message.content
 
     def format_candidate_for_eval(self, candidate):
-        # For PRM, the candidate should be just the 'response'
         context = candidate["context"] if isinstance(
             candidate["context"], str) else str(candidate["context"])
         current_step = candidate["current-step"] if isinstance(
             candidate["current-step"], str) else str(candidate["current-step"])
-        # print(f"[DEBUG] Formatting candidate for eval: context={context[:50]}, current_step={current_step[:50]}")
         return "\n".join([context, current_step])
 
     def _assemble_conversation_str(self, query, responses):
@@ -144,8 +138,6 @@ class ServerRM(BaseServer):
             from transformers import AutoTokenizer
             tokenizer = AutoTokenizer.from_pretrained(
                 self.model, trust_remote_code=True)
-            # print(f"[DEBUG] Assembling conversation string for model: {self.model}")
-            # from the skywork's huggingface repo:
             messages = [
                 {"role": "system", "content": PROMPT_RANKING_SYSTEM},
                 {"role": "user", "content": PROMPT_PAIRWISE.format(
@@ -181,7 +173,6 @@ class ServerRM(BaseServer):
         # Support modern verdicts that may have `[A]`, `[B]`, `[C]` anywhere in the feedback
         verdict_pattern = r'\[([ABC])\]'
         verdict_match = re.search(verdict_pattern, feedback)
-        # print(f"[DEBUG] feedback2rankings(): feedback={feedback!r}, verdict_match={verdict_match}")
 
         print(verdict_match)
 
@@ -203,15 +194,10 @@ class ServerRM(BaseServer):
         return [0, 1, 2]
 
     async def _process_request(self, request):
-        # assert request.get(
-        #     "judge-type", None) == "prm", "Invalid judge type for PRM"
         task_type = request.get("task-type", None)
         candidates = request["partial_trajectories"]
         query = request.get("question", "")
 
-        # print(f"[DEBUG] Processing request: task_type={task_type}, num_candidates={len(candidates)}")
-
-        # Prepare candidate responses
         responses = [self.format_candidate_for_eval(candidate)
                      for candidate in candidates]
 
@@ -225,7 +211,6 @@ class ServerRM(BaseServer):
                      for response in responses]
             summarized_responses = await asyncio.gather(*tasks)
             responses = summarized_responses
-        # print(f"[DEBUG] Summarized responses: {responses}")
 
         messages, conversation_str = self._assemble_conversation_str(
             query, responses)
@@ -284,10 +269,7 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    # To run the PRM server in the shell, execute the following command:
-    # CUDA_VISIBLE_DEVICES=0 vllm serve "/research/projects/mllab/public_llms/reward_models/Skywork-Reward-V2-Llama-3.1-8B" --task classify --tensor-parallel-size 1 --dtype bfloat16
-
-    # Command to start vllm PRM server
+    # Command to start vllm FARE server
     vllm_command = [
         "CUDA_VISIBLE_DEVICES=0",
         "vllm",
