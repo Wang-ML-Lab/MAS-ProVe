@@ -3,7 +3,7 @@
 This repo contains the code for the following work:
 - **MAS-ProVe: Understanding the Process Verification of Multi-Agent Systems**  
 Vishal Venkataramani, Haizhou Shi, Zixuan Ke, Austin Xu, Xiaoxiao He, Yingbo Zhou, Semih Yavuz, Hao Wang, Shafiq Joty  
-[[📄 Paper](https://github.com/Wang-ML-Lab/MAS-ProVe)]
+[[📄 Paper](https://arxiv.org/abs/2602.03053)]
 
 ### Usage
 Installing the client-server framework for MAS process evaluation:
@@ -216,5 +216,13 @@ If you use this codebase or the integrated architectures in your research, pleas
 
 ### MAS-ProVe
 ```bibtex
-@article{}
+@misc{venkataramani2026masproveunderstandingprocessverification,
+      title={MAS-ProVe: Understanding the Process Verification of Multi-Agent Systems}, 
+      author={Vishal Venkataramani and Haizhou Shi and Zixuan Ke and Austin Xu and Xiaoxiao He and Yingbo Zhou and Semih Yavuz and Hao Wang and Shafiq Joty},
+      year={2026},
+      eprint={2602.03053},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI},
+      url={https://arxiv.org/abs/2602.03053}, 
+}
 ```
