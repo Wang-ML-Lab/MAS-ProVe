@@ -1,5 +1,5 @@
 # Library of Multi-Agent Systems Process Verification (MAS-ProVe)
-
+[![Architecture Diagram](./assets/mas-ProVe.png)](./assets/mas-proVe.pdf)
 This repo contains the code for the following work:
 - **MAS-ProVe: Understanding the Process Verification of Multi-Agent Systems**  
 Vishal Venkataramani, Haizhou Shi, Zixuan Ke, Austin Xu, Xiaoxiao He, Yingbo Zhou, Semih Yavuz, Hao Wang, Shafiq Joty  
