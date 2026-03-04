@@ -5,6 +5,8 @@ This repo contains the code for the following work:
 Vishal Venkataramani, Haizhou Shi, Zixuan Ke, Austin Xu, Xiaoxiao He, Yingbo Zhou, Semih Yavuz, Hao Wang, Shafiq Joty  
 [[📄 Paper](https://arxiv.org/abs/2602.03053)]
 
+**Jump to a specific MAS setup:** [Debate](#debate) | [DyLAN](#dylan) | [MaAS](#maas) | [AFlow](#aflow) | [ADAS](#adas) | [MAS-ZERO](#mas-zero)
+
 ### Usage
 Installing the client-server framework for MAS process evaluation:
 ```bash
