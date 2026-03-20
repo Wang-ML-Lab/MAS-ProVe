@@ -11,8 +11,6 @@ Installing the client-server framework for MAS process evaluation:
 pip install -e .
 python -c "import mas_proceval"
 ```
-**Jump to a specific MAS setup:** [Debate](#debate) | [DyLAN](#dylan) | [MaAS](#maas) | [AFlow](#aflow) | [ADAS](#adas) | [MAS-Zero](#mas-zero)
-
 
 Starting the Judge server: 
 ```bash
@@ -49,6 +47,7 @@ python -m mas_proceval.servers.server_rm
 
 Judge servers should be started before launching any MAS experiments and will remain running to serve evaluation requests. You can run multiple judge servers simultaneously if needed.
 
+**Jump to a specific MAS setup:** [Debate](#debate) | [DyLAN](#dylan) | [MaAS](#maas) | [AFlow](#aflow) | [ADAS](#adas) | [MAS-Zero](#mas-zero)
 ---
 
 ## Process Verification by MAS System
