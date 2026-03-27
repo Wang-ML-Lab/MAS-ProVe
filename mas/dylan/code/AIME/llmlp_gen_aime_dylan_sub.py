@@ -10,7 +10,7 @@ from concurrent.futures import ThreadPoolExecutor
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'MMLU'))
 from LLMLP import LLMLP, ACTIVATION_MAP
 from LLM_Neuron import LLMEdge, listwise_ranker_2
-from llm_neuron_aime import LLMNeuron_AIME
+from llm_neuron_aime_sub import LLMNeuron_AIME
 from utils import *
 from aime_utils import extract_math_answer, is_equiv
 
