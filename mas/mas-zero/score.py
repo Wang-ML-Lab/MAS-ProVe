@@ -14,7 +14,7 @@ class DataScorer:
     def __init__(self, dataset, technique, mode_verifier):
         self.dataset = dataset
         self.technique = technique
-        self.equality_checker = AsyncChatCompletionSampler(model="gpt-4-turbo-preview")
+        self.equality_checker = AsyncChatCompletionSampler(model="gpt-4.1-mini")
         self.mode_verifier = mode_verifier
         self.LETTER_TO_INDEX = {'A': 0, 'B': 1, 'C': 2, 'D': 3}
 
@@ -115,20 +115,34 @@ class DataScorer:
             
             return score
 
+        elif 'humaneval' in self.dataset:
+            # For HumanEval, compare generated code text with canonical solution text.
+            normalize_code = lambda x: "\n".join([line.rstrip() for line in str(x).strip().splitlines()])
+            norm_extracted = normalize_code(extracted_answer)
+            norm_answer = normalize_code(answer)
+
+            if norm_extracted == norm_answer:
+                return 1
+
+            # Accept wrapped outputs that contain the canonical implementation.
+            if norm_answer in norm_extracted:
+                return 1
+
+            return 0
+
         else:
             raise NotImplementedError
 
     async def score(self, example_id, n, prompt_message, question, response_text, answer, sub_tasks_text, use_oracle_verifier, judge_path, response_path,
                     response_dict, instance_id, code_snippet):
 
-        if 'swe_bench' in self.dataset:
+        if 'swe_bench' in self.dataset or 'humaneval' in self.dataset:
             extracted_answer = response_text.split('\n\nAnswer:', 1)[-1].strip()
             if '<patch>' in extracted_answer:
                 extracted_answer = extract_xml(extracted_answer, 'patch').strip()
         else:
             match = re.search(ANSWER_PATTERN, response_text)
-            extracted_answer = match.group(1) if match else None
-            extracted_answer = extracted_answer.strip()
+            extracted_answer = match.group(1).strip() if match else str(response_text).strip()
 
         print('extracted_answer: ', extracted_answer)
 

@@ -84,6 +84,106 @@ async def check_equality(dataset, question, correct, candidate):
         print(f'json_dict: {json_dict}')
         score = json_dict['equal'].lower().strip() == "yes"
 
+    elif dataset == 'humaneval':
+        def clean_code_block(code_text):
+            code_text = str(code_text).strip()
+            if code_text.startswith('```'):
+                code_text = re.sub(r'^```(?:python)?\s*', '', code_text, flags=re.IGNORECASE)
+                code_text = re.sub(r'\s*```$', '', code_text)
+            if code_text.startswith('Answer:'):
+                code_text = code_text.split('Answer:', 1)[-1].strip()
+            return code_text.strip()
+
+        def extract_entry_point(prompt_text):
+            match = re.search(r'entry point:\s*([A-Za-z_][A-Za-z0-9_]*)', str(prompt_text), re.IGNORECASE)
+            return match.group(1) if match else None
+
+        def extract_validation_tests(prompt_text):
+            prompt_text = str(prompt_text)
+            if 'Validation tests:' not in prompt_text:
+                return None
+            tests_block = prompt_text.split('Validation tests:', 1)[-1]
+            if 'Return ONLY valid Python code for the solution function.' in tests_block:
+                tests_block = tests_block.split('Return ONLY valid Python code for the solution function.', 1)[0]
+            return tests_block.strip()
+
+        entry_point = extract_entry_point(question)
+        tests_code = extract_validation_tests(question)
+        candidate_code = clean_code_block(candidate)
+
+        if not entry_point or not tests_code:
+            print('HumanEval judge could not parse the prompt, treating as incorrect')
+            return False
+
+        namespace = {}
+        try:
+            # Make typing names available for type-annotated solutions.
+            exec('from typing import *\n', namespace)
+            exec(candidate_code, namespace)
+
+            candidate_fn = namespace.get(entry_point)
+            if not callable(candidate_fn):
+                print(f'HumanEval entry point missing or not callable: {entry_point}')
+                return False
+
+            exec(tests_code, namespace)
+            check_fn = namespace.get('check')
+            if not callable(check_fn):
+                print('HumanEval validation check() missing or not callable')
+                return False
+
+            check_fn(candidate_fn)
+            score = True
+        except AssertionError as e:
+            print(f'HumanEval tests failed: {e}')
+            score = False
+        except Exception as e:
+            print(f'HumanEval execution error: {e}')
+            score = False
+
+    elif dataset == 'gpqa_diamond':
+
+        index_to_letter = {0: 'A', 1: 'B', 2: 'C', 3: 'D'}
+
+        def normalize_gpqa_option(x):
+            if x is None:
+                return x
+            if isinstance(x, int) and x in index_to_letter:
+                return index_to_letter[x]
+            s = str(x).strip()
+            if s.isdigit():
+                idx = int(s)
+                if idx in index_to_letter:
+                    return index_to_letter[idx]
+            upper = s.upper()
+            if upper in {'A', 'B', 'C', 'D'}:
+                return upper
+            return s
+
+        correct = normalize_gpqa_option(correct)
+        candidate = normalize_gpqa_option(candidate)
+
+        prompt = MCQ_EQUALITY_TEMPLATE % {"question": question, "expression1": correct, "expression2": candidate}
+
+        msg = [
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": prompt},
+        ]
+
+        while True:
+            try:
+                response, _ = await equality_checker(msg)
+                json_dict = json.loads(response)
+                break
+            except Exception as e:
+                print(f'Error: {e}')
+
+        print(f'json_dict: {json_dict}')
+        score = json_dict['equal'].lower().strip() == "yes"
+
+    else:
+        raise NotImplementedError(f"Unsupported dataset for equality check: {dataset}")
+
     return score
 
 
@@ -194,24 +294,76 @@ if __name__ == "__main__":
         correct_answers = []
         for response in responses:
             if isinstance(response['n'], int):
+                # if response['n'] ==0:
                 filter_response = response['response']
+                # else:
+                #     continue
             else:
                 continue
-            # filter_response = response['response']
+            filter_response = response['response']
             # TODO: for gpqa, in some cases, it gives the final answer instead of final selection
             
             if '<TOO_HARD>' in filter_response:
                 filter_response = filter_response[:filter_response.index('<TOO_HARD>')]
                 # print(f'<TOO_HARD> detected: response: {response['response']}; filter_response: {filter_response}')
 
-            match = re.search(ANSWER_PATTERN, filter_response)
-            extracted_answer = match.group(1) if match else None
+            if dataset == 'humaneval':
+                extracted_answer = filter_response.split('\n\nAnswer:', 1)[-1].strip()
+            else:
+                match = re.search(ANSWER_PATTERN, filter_response)
+                extracted_answer = match.group(1) if match else None
+
+            # GPQA may return plain option letters without an explicit "Answer:" prefix.
+            if extracted_answer is None and dataset == 'gpqa_diamond':
+                mcq_match = re.findall(r'(?i)(?:final\s*answer|answer|option|choice)\s*[:\-]?\s*\(?([ABCD])\)?', filter_response)
+                if mcq_match:
+                    extracted_answer = mcq_match[-1].upper()
+                else:
+                    stripped = filter_response.strip()
+                    if len(stripped) == 1 and stripped.upper() in {"A", "B", "C", "D"}:
+                        extracted_answer = stripped.upper()
+
             extracted_answers.append(
                 extracted_answer.strip() if extracted_answer is not None else extracted_answer)  # for exact match, "strip()" can make a significant difference
 
             correct_answer = response['correct_answer']
             correct_answers.append(correct_answer)
+        print(len(responses), len(extracted_answers), len(correct_answers))
+        # Load extracted answers from mem.json and filter only those selected from greedy
+        # mem_path = f'{root_dir}/{dataset}/{example_id}/{model}_{node_model}_gpt-4o_chatgpt_0_plan_mem.json'
         
+        # try:
+        #     with open(mem_path, 'r') as json_file:
+        #         mem_data = json.load(json_file)
+            
+        #     # Filter the first instance of each "Selected from greedy" entry
+            
+        #     filtered_data = [item for item in mem_data if any("Selected from greedy" in str(v) for v in item.values())]
+        #     # filtered_data = [item for item in mem_data]
+        #     filtered_data = filtered_data[:max_response_per_sample]  # Limit to max_response_per_sample
+        #     if not filtered_data:
+        #         print(f'example_id {example_id}: No "Selected from greedy" entries found in mem.json')
+        #         special_ids.append(f'example_id {example_id}: No "Selected from greedy" entries found')
+        #         return False
+            
+        #     # Extract answers (the dictionary keys)
+        #     extracted_answers = [list(item.keys())[0] for item in filtered_data]
+            
+        #     # Get correct answer from first response
+        #     correct_answer = responses[0]['correct_answer']
+        #     correct_answers = [correct_answer] * len(extracted_answers)
+            
+        # except Exception as e:
+        #     print(f'example_id {example_id} mem file {mem_path} does not exist or error loading: {e}')
+        #     special_ids.append(f'example_id {example_id} mem file error: {e}')
+        #     return False
+        
+        # if len(extracted_answers) < max_response_per_sample:
+        #     print(f'filtered extracted_answers length {len(extracted_answers)} is lower than {max_response_per_sample}')
+        #     special_ids.append(f'example_id {example_id}: filtered extracted_answers length {len(extracted_answers)} is lower than {max_response_per_sample}')
+        #     # just a warning is fine
+        #     # pass instead of return, continue processing
+
         print('extracted_answers: ', extracted_answers)
         print('correct_answers: ', correct_answers)
         

@@ -163,7 +163,7 @@ class LLMAgentBase:
             _pack_message(content=prompt, role="user")]
         
         dataset = extra_info.get('dataset', '')
-        task_type = "math" if "aime" in dataset else "qa" if "gaia" in dataset else "math"
+        task_type = "math" if "aime" in dataset else "code" if "humaneval" in dataset else "qa" if "gaia" in dataset else "math"
         
         # 2. Extract Question
         question = extra_info.get('questions', '')
@@ -178,7 +178,7 @@ class LLMAgentBase:
                 # Only include if author is not 'User'
                 if hasattr(info, 'author') and str(info.author).lower() != 'user' and hasattr(info, 'content'):
                     trajectory_context.append(f"[{info.author}]: {info.content}")
-            response_json = await get_json_response_from_gpt_local_parallel(prompt, self.model, self.output_fields, self.temperature, extra_info,trajectory=trajectory_context, task_type=task_type, question=question)
+            response_json = await get_json_response_from_gpt_local_parallel(prompt, self.model, self.output_fields, self.temperature, extra_info, task_type=task_type, question=question, trajectory=trajectory_context)
         else:
             response_json = await get_json_response_from_gpt_local(prompt, self.model, self.output_fields, self.temperature, extra_info)
         # print("\n This is the response from agent:", self.__repr__(), "content:", response_json)
@@ -438,7 +438,7 @@ async def search(extra_info, task_queue, meta_model, blocks, verifier_model, n_g
         print(f"mean acc_list:", np.mean(acc_list))
         print(f"bootstrap_confidence_interval: {fitness_str}")
 
-        if 'swe_bench' in dataset:
+        if 'swe_bench' in dataset or 'humaneval' in dataset:
             extracted_answer = final_response[0].split('\n\nAnswer:', 1)[-1].strip()
             if '<patch>' in extracted_answer:
                 extracted_answer = extract_xml(extracted_answer, 'patch').strip()
@@ -544,18 +544,75 @@ async def search(extra_info, task_queue, meta_model, blocks, verifier_model, n_g
         results = None
         sub_tasks = None
         final_response = None
-        try:
-            acc_oracle_verifier_list, acc_model_verifier_list, results, agents, sub_tasks, final_response = await evaluate_forward_fn(extra_info, next_solution["code"])
-        except Exception as e:
-            import traceback
-            traceback.print_exc()
-            # print(solution['code'])
-            continue
+        for _ in range(debug_max):
+            try:  # in case the generated code is not correct
+                acc_oracle_verifier_list, acc_model_verifier_list, results, sub_tasks, agents, final_response = await evaluate_forward_fn(
+                    extra_info, next_solution["code"]
+                )
+                if use_oracle_verifier:
+                    acc_list = acc_oracle_verifier_list
+                else:
+                    acc_list = acc_model_verifier_list
+                break
+            except Exception as e:
+                # %%%%%%%%%%%%% only for debug
+                import traceback
+                traceback.print_exc()
+                print("During evaluation:")
+                print(e)
+                debug_list = copy.deepcopy(msg_list)  # deep copy
+                print('finish deep copy')
+
+                debug_list.append({"role": "assistant", "content": next_solution})
+
+                if format_choice == 'xml':
+
+                    _shorten_context = extra_info["shorten_context"]
+                    if _shorten_context:
+                        debug_list_reflect = shorten_context(debug_list)
+                    else:
+                        debug_list_reflect = debug_list
+                    debug_list_reflect.append({"role": "user",
+                                               "content": f"Error during evaluation:\n{e}\n"
+                                                          f"Carefully consider where you went wrong in your latest implementation. "
+                                                          f"Using insights from previous attempts, try to debug the current code to implement the exact same "
+                                                          f"thought without any shortcut. You still need to follow all the requirement mentioned "
+                                                          f"in this history. Give the fixed (implement the same thought) code in 'code'. "
+                                                          f"Repeat your previous thought in 'thought', and put your thinking for debugging in 'debug_thought'. "
+                                                          f"Repeat name in 'name'\n\nMake sure to return in a WELL-FORMED XML object. "
+                                                          f"Wrap the required entries with <(entry_name)> and </(entry_name)>. "
+                                                          f"For example, 'code' entry should be wrapped by <code> ...(your code)... </code>. "
+                                                          f"However, Do not use XML format inside each entry"})
+                else:
+                    debug_list_reflect = debug_list  # if you have enough length
+                    debug_list_reflect.append({"role": "user",
+                                               "content": f"Error during evaluation:\n{e}\n"
+                                                          f"Carefully consider where you went wrong in your latest implementation. "
+                                                          f"Using insights from previous attempts, try to debug the current code to implement the same thought. "
+                                                          f"You still need to follow all the requirement mentioned in this history. "
+                                                          f"Give the fixed (implement the same thought) code in 'code'. "
+                                                          f"Repeat your previous thought in 'thought', and put your thinking for debugging in 'debug_thought'. "
+                                                          f"Repeat name in 'name',"})
+                    # TODO: sometimes still cannot fix. The reason is, the forward is a string, which provide limited error information
+                try:
+                    next_solution = await get_json_response_from_gpt_reflect_local(debug_list_reflect, meta_model, extra_info)
+                except Exception as e:
+                    import traceback
+                    traceback.print_exc()
+                    print("During LLM generate new solution:")
+                    print(e)
+                    continue
+                # %%%%%%%%%%%%%
+
+                continue
         if use_oracle_verifier:
             acc_list = acc_oracle_verifier_list
         else:
             acc_list = acc_model_verifier_list
 
+        if type(next_solution) == str and next_solution == 'bad_request':
+            print('bad_request; break for now')
+            break
         
         if defer_verifier:
             fitness_str = bootstrap_confidence_interval([0.0])
@@ -577,10 +634,13 @@ async def search(extra_info, task_queue, meta_model, blocks, verifier_model, n_g
 
         next_solution["final_response"] = final_response
 
-        if 'swe_bench' in dataset:
-            extracted_answer = final_response[0].split('\n\nAnswer:', 1)[-1].strip()
-            if '<patch>' in extracted_answer:
-                extracted_answer = extract_xml(extracted_answer, 'patch').strip()
+        if 'swe_bench' in dataset or 'humaneval' in dataset:
+            if final_response is None:
+                extracted_answer = '[TOO_HARD]'
+            else:
+                extracted_answer = final_response[0].split('\n\nAnswer:', 1)[-1].strip()
+                if '<patch>' in extracted_answer:
+                    extracted_answer = extract_xml(extracted_answer, 'patch').strip()
         else:
             if final_response is None:
                 extracted_answer = '[TOO_HARD]'

@@ -263,7 +263,7 @@ async def evaluate_forward_fn(extra_info, forward_str):
     
     if isinstance(extra_info.get('n', -1), int):  
         dataset = extra_info.get('dataset', '')
-        task_type = "math" if "aime" in dataset else "qa" if "gaia" in dataset else "math"
+        task_type = "math" if "aime" in dataset else "code" if "humaneval" in dataset else "qa" if "gaia" in dataset else "math"
         results = []
         for item in tqdm(task_queue, desc="Evaluating forward function", total=len(task_queue)):
             current_question = item.content if hasattr(item, 'content') else str(item)
@@ -628,6 +628,10 @@ async def search(extra_info, task_queue, meta_model, blocks, verifier_model, n_g
         #     n -= 1  # rerun
         #     continue
 
+        if type(next_solution) == str and next_solution == 'bad_request':
+            print('bad_request; break for now')
+            break
+        
         if defer_verifier:
             fitness_str = bootstrap_confidence_interval([0.0])
             next_solution["acc"] = [0.0]
@@ -648,23 +652,19 @@ async def search(extra_info, task_queue, meta_model, blocks, verifier_model, n_g
 
         next_solution["final_response"] = final_response
 
-        if 'swe_bench' in dataset:
-            extracted_answer = final_response[0].split('\n\nAnswer:', 1)[-1].strip()
-            if '<patch>' in extracted_answer:
-                extracted_answer = extract_xml(extracted_answer, 'patch').strip()
+        if 'swe_bench' in dataset or 'humaneval' in dataset:
+            if final_response is None:
+                extracted_answer = '[TOO_HARD]'
+            else:
+                extracted_answer = final_response[0].split('\n\nAnswer:', 1)[-1].strip()
+                if '<patch>' in extracted_answer:
+                    extracted_answer = extract_xml(extracted_answer, 'patch').strip()
         else:
             if final_response is None:
                 extracted_answer = '[TOO_HARD]'
             else:
-                match = re.search(ANSWER_PATTERN, final_response[0])
-    
-                # 2. Check if a match was actually found
-                if match:
-                    extracted_answer = match.group(1)
-                else:
-                    # Fallback if the model didn't output the expected format
-                    print(f"Warning: ANSWER_PATTERN not found in: {final_response}...")
-                    extracted_answer = '[TOO_HARD]'
+                extracted_answer = re.search(ANSWER_PATTERN, final_response[0]).group(1)
+
         
         if '[TOO_HARD]' in extracted_answer:
             extracted_answer = extracted_answer[:extracted_answer.index('[TOO_HARD]')]

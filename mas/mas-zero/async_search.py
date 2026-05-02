@@ -420,7 +420,7 @@ async def search(extra_info, task_queue, meta_model, blocks, verifier_model, n_g
         print(f"mean acc_list:", np.mean(acc_list))
         print(f"bootstrap_confidence_interval: {fitness_str}")
 
-        if 'swe_bench' in dataset:
+        if 'swe_bench' in dataset or 'humaneval' in dataset:
             extracted_answer = final_response[0].split('\n\nAnswer:', 1)[-1].strip()
             if '<patch>' in extracted_answer:
                 extracted_answer = extract_xml(extracted_answer, 'patch').strip()
@@ -587,8 +587,9 @@ async def search(extra_info, task_queue, meta_model, blocks, verifier_model, n_g
                 # %%%%%%%%%%%%%
 
                 continue
-
-        
+        if type(next_solution) == str and next_solution == 'bad_request':
+            print('bad_request; break for now')
+            break
         if defer_verifier:
             fitness_str = bootstrap_confidence_interval([0.0])
             next_solution["acc"] = [0.0]
@@ -609,10 +610,13 @@ async def search(extra_info, task_queue, meta_model, blocks, verifier_model, n_g
 
         next_solution["final_response"] = final_response
 
-        if 'swe_bench' in dataset:
-            extracted_answer = final_response[0].split('\n\nAnswer:', 1)[-1].strip()
-            if '<patch>' in extracted_answer:
-                extracted_answer = extract_xml(extracted_answer, 'patch').strip()
+        if 'swe_bench' in dataset or 'humaneval' in dataset:
+            if final_response is None:
+                extracted_answer = '[TOO_HARD]'
+            else:
+                extracted_answer = final_response[0].split('\n\nAnswer:', 1)[-1].strip()
+                if '<patch>' in extracted_answer:
+                    extracted_answer = extract_xml(extracted_answer, 'patch').strip()
         else:
             if final_response is None:
                 extracted_answer = '[TOO_HARD]'

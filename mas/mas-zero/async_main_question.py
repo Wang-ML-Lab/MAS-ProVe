@@ -5,9 +5,8 @@ import copy
 import pandas as pd
 from datasets import load_dataset
 from tqdm.asyncio import tqdm_asyncio
-
 # import async_search_iter as search
-import async_search as search
+# import async_search as search
 import async_search_sub as search
 from prompts.swe.patch_oracle import AGENTLESS_REPAIR
 from sampler import init_model
@@ -29,7 +28,7 @@ def parse_arguments():
     parser.add_argument('--n_generation', type=int, default=10)
     parser.add_argument('--max_round', type=int, default=5)
     parser.add_argument('--max_sc', type=int, default=5)
-    parser.add_argument('--debug_max', type=int, default=3)
+    parser.add_argument('--debug_max', type=int, default=2)
     parser.add_argument('--option', type=str, default='')
     parser.add_argument('--meta_model',
                         type=str)
@@ -111,6 +110,57 @@ async def run_gaia_search(example, example_id, meta_model, node_model, verifier_
     # search
     await search.search(extra_info, task_queue, meta_model, blocks, verifier_model, n_generation,
                                   save_dir, expr_name, option, dataset, defer_verifier, debug_max)
+
+
+async def run_gpqa_search(example, example_id, meta_model, node_model, verifier_model, n, dataset, extra_info,
+                          blocks, n_generation, save_dir, option, defer_verifier, debug_max):
+    expr_name = f'question/meta_agent/{dataset}/{example_id}/{meta_model}_{node_model}_{verifier_model}_{n}'
+    print('args.expr_name: ', expr_name)
+
+    question = example['problem']
+    answer = example['answer']
+
+    task_content = f"What is the correct answer to this question: {question.question}" \
+                   + f"\n\nChoices:\n(A) {question.choice1}\n(B) {question.choice2}\n(C) {question.choice3}\n(D) {question.choice4}"
+    task_queue = [('task', 'User', task_content, None, None, None, -1)]
+
+    extra_info["answers"] = [answer]
+    extra_info["questions"] = [task_content]
+    extra_info["example_id"] = example_id
+    extra_info["instance_id"] = example_id
+    extra_info["response_dict"] = []
+
+    await search.search(extra_info, task_queue, meta_model, blocks, verifier_model, n_generation,
+                        save_dir, expr_name, option, dataset, defer_verifier, debug_max)
+
+
+async def run_humaneval_search(example, example_id, meta_model, node_model, verifier_model, n, dataset, extra_info,
+                               blocks, n_generation, save_dir, option, defer_verifier, debug_max):
+    expr_name = f'question/meta_agent/{dataset}/{example_id}/{meta_model}_{node_model}_{verifier_model}_{n}'
+    print('args.expr_name: ', expr_name)
+
+    test_id = example.get('test_id', f'humaneval_{example_id}')
+    prompt = example['prompt']
+    canonical_solution = example['canonical_solution']
+    unit_test = example['test']
+    entry_point = example['entry_point']
+
+    task_content = (
+        f"You are solving a HumanEval coding task. Complete the Python function for entry point: {entry_point}.\n\n"
+        f"Problem prompt:\n{prompt}\n\n"
+        f"Validation tests:\n{unit_test}\n\n"
+        "Return ONLY valid Python code for the solution function."
+    )
+    task_queue = [('task', 'User', task_content, None, None, None, -1)]
+
+    extra_info["answers"] = [canonical_solution]
+    extra_info["questions"] = [task_content]
+    extra_info["example_id"] = example_id
+    extra_info["instance_id"] = test_id
+    extra_info["response_dict"] = []
+
+    await search.search(extra_info, task_queue, meta_model, blocks, verifier_model, n_generation,
+                        save_dir, expr_name, option, dataset, defer_verifier, debug_max)
 
 
 async def main(args):
@@ -260,10 +310,10 @@ async def main(args):
 
             # Global semaphore to control total concurrent API calls across all searches and evaluations
             # With max_workers=48, limit to 40 to stay under rate limits
-            global_api_semaphore = asyncio.Semaphore(40)
+            global_api_semaphore = asyncio.Semaphore(32)
             
             # 控制并发数量的信号量，最多同时运行5个任务
-            search_semaphore = asyncio.Semaphore(32)
+            search_semaphore = asyncio.Semaphore(30)
 
             async def run_task_with_semaphore(*a, **kw):
                 async with search_semaphore:
@@ -355,48 +405,36 @@ async def main(args):
 
             examples = [{'problem': questions[i], 'answer': answers[i]} for i in range(len(questions))]
 
-            for example_id, example in enumerate(examples):
-                instance_id = example_id
+            extra_info["node_model"] = node_model
+            extra_info["verifier_model"] = verifier_model
+            extra_info["output_description"] = output_description
+            extra_info["max_round"] = max_round
+            extra_info["max_sc"] = max_sc
+            extra_info["debate_role"] = debate_role
+            extra_info["cot_instruction"] = cot_instruction
+            extra_info["use_oracle_verifier"] = use_oracle_verifier
+            extra_info["dataset"] = args.dataset
+            extra_info["code_snippet"] = code_snippet
 
+            semaphore = asyncio.Semaphore(40)
+
+            async def run_task_with_semaphore(*a, **kw):
+                async with semaphore:
+                    return await run_gpqa_search(*a, **kw)
+
+            tasks = []
+            for example_id, example in enumerate(examples):
                 if args.given_examples:
                     if example_id not in args.given_examples:
                         continue
 
-                args.expr_name = f'question/meta_agent/{args.dataset}/{example_id}/{meta_model}_{node_model}_{verifier_model}_{n}'
-                print('args.expr_name: ', args.expr_name)
+                _info = copy.deepcopy(extra_info)
+                tasks.append(run_task_with_semaphore(
+                    example, example_id, meta_model, node_model, verifier_model, n, args.dataset, _info,
+                    blocks, args.n_generation, args.save_dir, args.option, args.defer_verifier, args.debug_max
+                ))
 
-                questions = [example['problem']]
-                answers = [example['answer']]
-
-                final_question = []
-                task_queue = []
-                for q in questions:
-                    task_content = f"What is the correct answer to this question: {q.question}" \
-                                   + f"\n\nChoices:\n(A) {q.choice1}\n(B) {q.choice2}\n(C) {q.choice3}\n(D) {q.choice4}"
-                    taskInfo = ('task', 'User', task_content, None, None, None, -1)
-                    task_queue.append(taskInfo)
-                    final_question.append(task_content)
-
-                extra_info["output_description"] = output_description
-                # extra_info["score_compute"] = data_scorer.score
-                extra_info["max_round"] = max_round
-                extra_info["max_sc"] = max_sc
-                extra_info["debate_role"] = debate_role
-                extra_info["cot_instruction"] = cot_instruction
-                extra_info["node_model"] = node_model
-                extra_info["answers"] = answers
-                extra_info["questions"] = final_question  # 注意：此处原始代码使用了 final_question 变量
-                extra_info["use_oracle_verifier"] = use_oracle_verifier
-                extra_info["example_id"] = example_id
-                extra_info["response_dict"] = []
-                extra_info["dataset"] = args.dataset
-                extra_info["instance_id"] = instance_id
-                extra_info["code_snippet"] = code_snippet
-                # extra_info["mas_trajectory"] = []
-
-                # search
-                await search.search(extra_info, task_queue, meta_model, blocks, verifier_model, args.n_generation,
-                                  args.save_dir, args.expr_name, args.option, args.dataset, args.defer_verifier, args.debug_max)
+            await tqdm_asyncio.gather(*tasks)
 
         elif 'gaia' in args.dataset:
 
@@ -428,7 +466,7 @@ to be put in the list is a number or a string.""")
             extra_info["code_snippet"] = code_snippet
 
             # Control concurrent tasks
-            semaphore = asyncio.Semaphore(52)
+            semaphore = asyncio.Semaphore(31)
 
             async def run_task_with_semaphore(*a, **kw):
                 async with semaphore:
@@ -443,6 +481,50 @@ to be put in the list is a number or a string.""")
 
                 _info = copy.deepcopy(extra_info)
                 
+                tasks.append(run_task_with_semaphore(
+                    example, example_id, meta_model, node_model, verifier_model, n, args.dataset, _info,
+                    blocks, args.n_generation, args.save_dir, args.option, args.defer_verifier, args.debug_max
+                ))
+
+            await tqdm_asyncio.gather(*tasks)
+
+        elif 'humaneval' in args.dataset:
+
+            cot_instruction = "Please think step by step and then solve the task."
+            output_description = (
+                "If the question is asked for code, return ONLY valid Python code and nothing else; "
+                "if the question asks for additional explanation, include only what is explicitly requested."
+            )
+            debate_role = ['Software Engineer', 'Code Reviewer', 'Python Expert']
+
+            dataset = load_dataset("openai/openai_humaneval", split="test")
+            examples = [row for row in dataset]
+
+            extra_info["node_model"] = node_model
+            extra_info["verifier_model"] = verifier_model
+            extra_info["output_description"] = output_description
+            extra_info["max_round"] = max_round
+            extra_info["max_sc"] = max_sc
+            extra_info["debate_role"] = debate_role
+            extra_info["cot_instruction"] = cot_instruction
+            extra_info["use_oracle_verifier"] = use_oracle_verifier
+            extra_info["dataset"] = args.dataset
+            extra_info["code_snippet"] = code_snippet
+
+            semaphore = asyncio.Semaphore(40)
+
+            async def run_task_with_semaphore(*a, **kw):
+                async with semaphore:
+                    return await run_humaneval_search(*a, **kw)
+
+            tasks = []
+            for example_id, example in enumerate(examples):
+
+                if args.given_examples:
+                    if example_id not in args.given_examples:
+                        continue
+
+                _info = copy.deepcopy(extra_info)
                 tasks.append(run_task_with_semaphore(
                     example, example_id, meta_model, node_model, verifier_model, n, args.dataset, _info,
                     blocks, args.n_generation, args.save_dir, args.option, args.defer_verifier, args.debug_max
