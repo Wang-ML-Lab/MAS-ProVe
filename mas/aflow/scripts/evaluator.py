@@ -16,10 +16,11 @@ from benchmarks.livecodebench import LiveCodeBench
 from benchmarks.aime24 import AIME24Benchmark
 from benchmarks.aime25 import AIME25Benchmark
 from benchmarks.gaia import GAIABenchmark
+from benchmarks.gpqa import GPQABenchmark
 from scripts.mas_aflow import MASAFlow
 
 # If you want to customize tasks, add task types here and provide evaluation functions, just like the ones given above
-DatasetType = Literal["HumanEval", "MBPP", "GSM8K", "MATH", "HotpotQA", "DROP", "LiveCodeBench", "AIME24", "AIME25", "GAIA"]
+DatasetType = Literal["HumanEval", "MBPP", "GSM8K", "MATH", "HotpotQA", "DROP", "LiveCodeBench", "AIME24", "AIME25", "GAIA","GPQA"]
 
 
 class Evaluator:
@@ -40,6 +41,7 @@ class Evaluator:
             "AIME24": AIME24Benchmark,
             "AIME25": AIME25Benchmark,
             "GAIA": GAIABenchmark,
+            "GPQA": GPQABenchmark,
         }
         
         # Map datasets to their task types
@@ -54,6 +56,7 @@ class Evaluator:
             "HotpotQA": "qa",
             "DROP": "qa",
             "GAIA": "qa",
+            "GPQA": "qa"
         }
 
     async def graph_evaluate(
@@ -115,7 +118,7 @@ class Evaluator:
             def tool_functions(self, value):
                 self._tool_functions = value
             
-            async def __call__(self, problem):
+            async def __call__(self, *args, **kwargs):
                 # Create fresh workflow instance for this problem
                 workflow = self.graph_class(name=self.dataset, llm_config=self.llm_config, dataset=self.dataset_config)
                 
@@ -129,7 +132,7 @@ class Evaluator:
                 mas_aflow = MASAFlow(workflow, self.task_type)
                 
                 # Execute and return
-                return await mas_aflow(problem)
+                return await mas_aflow(*args, **kwargs)
         
         return MASAFlowWrapper(graph, dataset, llm_config, dataset_config, task_type)
 

@@ -1,0 +1,62 @@
+{
+    "1": {
+        "score": 0.6794871794871795,
+        "success": {},
+        "failure": {
+            "7": {
+                "modification": "Modified to add AnswerGenerate and ScEnsemble operators in sequence with Custom, include required tool properties/getters/setters in __init__, and use an ensemble approach: generate 3 candidates via Custom (instructed to produce 3 numbered concise answers with brief reasoning), call AnswerGenerate to produce a detailed chain-of-thought + answer, then aggregate the three Custom candidates plus AnswerGenerate answer via ScEnsemble to pick final response. Changes kept minimal and within 5 lines for core logic; added prompt_custom.XXX_PROMPT as required. Also changed variable names and return format to match extraction rules (single-letter answer like 'A', 'B', ...). Ensured no None outputs and included imports already available.",
+                "score": 0.41025641025641024
+            },
+            "9": {
+                "modification": "modified: added tool properties/getters/setters in __init__; added AnswerGenerate call to produce a detailed chain-of-thought and final answer; call Custom twice with two different concise-answer prompts (one asks for 3 concise numbered candidates, another asks for a single concise answer with rationale) to create diversity; use ScEnsemble to aggregate all candidate strings (3 from first Custom, 1 from second Custom, 1 from AnswerGenerate) and return ensemble's response. Kept changes minimal and within 5-7 logical edits; ensured no None outputs and final returned answer is single-letter like 'A','B',...; included only the prompt used by Custom as required (PROMPT_CUSTOM_CONCISE_PROMPT). Ensured imports already available are respected and included required properties in Workflow.__init__.",
+                "score": 0.34615384615384615
+            },
+            "4": {
+                "modification": "Modified Workflow to include AnswerGenerate and ScEnsemble operators and an internal AnswerGenerate+Custom ensemble: (1) added tool properties in __init__ (as required) (2) added AnswerGenerate and ScEnsemble calls to produce 3 candidate answers (via Custom prompt requesting 3 diverse candidates) and then vote via ScEnsemble; (3) limited code changes to <=5 lines and kept overall structure—changed prompt to instruct Custom to produce three numbered candidate answers and brief rationales. Differences from sample: (a) integrated AnswerGenerate operator call before Custom for additional reasoning, (b) Custom now returns 3 diverse numbered candidates (not single), (c) added ScEnsemble aggregation step to pick final answer, (d) ensured required tool properties and getters/setters present in Workflow.__init__ as mandated.",
+                "score": 0.48717948717948717
+            },
+            "2": {
+                "modification": "modify: Added an AnswerGenerate step and a ScEnsemble voting step; changed Custom prompt to request 3 diverse candidate answers to enable ensemble voting. Also added required tool properties in Workflow __init__. (Lines changed <=5)",
+                "score": 0.47435897435897434
+            }
+        }
+    },
+    "2": {
+        "score": 0.23717948717948717,
+        "success": {
+            "3": {
+                "modification": "modify: improve candidate parsing to accept formats like \"A) X - rationale\" and ensure deduplication and fallback; limit added lines <=5",
+                "score": 0.4358974358974359
+            }
+        },
+        "failure": {}
+    },
+    "4": {
+        "score": 0.48717948717948717,
+        "success": {},
+        "failure": {
+            "6": {
+                "modification": "Modified parsing and ensemble input handling: (1) improved robust extraction of single-letter answers from Custom by using regex to find lines starting with numbering and a letter choice; (2) added lightweight normalization to map full-word answers (e.g., \"Choice A\", \"a\") and multi-char answers to single uppercase letters A-D; (3) include fallback to extract any standalone capital A-D occurrences and ensure deduplication while preserving order; (4) pass also candidate rationales to ScEnsemble by sending tuples (choice, rationale) to allow better ensemble reasoning (changed how ensemble is called and how final is read) — total changed lines <=5.",
+                "score": 0.48717948717948717
+            },
+            "5": {
+                "modification": "modify: Improve candidate extraction and add a lightweight normalization step before ensemble; changed parsing loop and added small normalization function (3 lines changed)",
+                "score": 0.44871794871794873
+            },
+            "8": {
+                "modification": "modify: Improve Custom parsing robustness and pass candidate (choice, rationale) pairs to ScEnsemble; change parsing to use regex to extract numbered entries with single-letter choices and short rationales, normalize choices to uppercase single A-D, deduplicate preserving order, and include AnswerGenerate candidate as (choice, rationale) with a short auto-rationale. Changes <=5 lines in workflow parsing and ensemble call. Also ensure fallback extracts any standalone A-D occurrences with a surrounding short rationale sentence fragment.",
+                "score": 0.41025641025641024
+            }
+        }
+    },
+    "6": {
+        "score": 0.48717948717948717,
+        "success": {
+            "10": {
+                "modification": "modify: tightened candidate extraction regex and added fallback to extract standalone letters; changed 3 lines in candidate extraction and 2 lines in fallback handling.",
+                "score": 0.5384615384615384
+            }
+        },
+        "failure": {}
+    }
+}
