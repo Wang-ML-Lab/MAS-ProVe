@@ -139,6 +139,8 @@ class OpenAILLM(BaseLLM):
         if "gpt-5" in self.model:
             kwargs.pop("max_tokens")
             kwargs.pop("temperature")
+        if "gpt-5" not in self.model and "gpt-4" in self.model:
+            kwargs.pop("reasoning_effort")
         if "o1-" in self.model:
             # compatible to openai o1-series
             kwargs["temperature"] = 1

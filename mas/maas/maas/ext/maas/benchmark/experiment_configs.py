@@ -21,5 +21,15 @@ EXPERIMENT_CONFIGS: Dict[str, ExperimentConfig] = {
         dataset="GAIA",
         question_type="qa",
         operators=["Generate", "GenerateCoT", "MultiGenerateCoT", "ScEnsemble", "SelfRefine", "EarlyStop"],
-    )
+    ),
+    "HumanEval": ExperimentConfig(
+        dataset="HumanEval",
+        question_type="code",
+        operators=["Generate", "GenerateCoT", "MultiGenerateCoT", "ScEnsemble", "Test", "SelfRefine", "EarlyStop"],
+    ),
+    "GPQA": ExperimentConfig(
+        dataset="GPQA",
+        question_type="qa",
+        operators=["Generate", "GenerateCoT", "MultiGenerateCoT", "ScEnsemble", "SelfRefine", "EarlyStop"],
+    ),
 }

@@ -1,0 +1,30 @@
+{
+    "Generate": {
+        "description": "Generates code based on customized input and instruction.",
+        "interface": "generate(problem: str, entry_point: str, instruction: str) -> dict with key 'response' of type str"
+    },
+    "GenerateCoT": {
+        "description": "Generates code using a chain-of-thought approach, providing step-by-step reasoning before producing the final solution.",
+        "interface": "generate_cot(problem: str, entry_point: str, instruction: str) -> dict with key 'response' of type str"
+    },
+    "MultiGenerateCoT": {
+        "description": "Generates multiple code solutions using diverse chain-of-thought reasoning processes to increase solution variety and robustness.",
+        "interface": "multi_generate_cot(problem: str, entry_point: str, instruction: str) -> dict with key 'response' of type List[str]"
+    },
+    "ScEnsemble": {
+        "description": "Uses self-consistency to select the solution that appears most frequently in the solution list, improve the selection to enhance the choice of the best solution.",
+        "interface": "sc_ensemble(solutions: List[str], problem: str) -> dict with key 'response' of type str"
+    },
+    "Test": {
+        "description": "Tests the solution using public test cases. If the solution fails, it reflects on the errors and attempts to modify the solution. Returns True and the solution if all tests pass after modifications. Returns False and the current solution if it still fails after modifications.",
+        "interface": "test(problem: str, solution: str, entry_point: str) -> dict with key 'result' of type bool and key 'solution' of type str"
+    },
+    "SelfRefine": {
+        "description": "Refines the generated solution by analyzing errors or suboptimal aspects and making iterative improvements to enhance correctness and efficiency.",
+        "interface": "self_refine(problem: str, solution: str, instruction: str) -> dict with key 'response' of type str"
+    },
+    "EarlyStop": {
+        "description": "Immediately terminates the workflow when selected, preventing any further operators from being invoked.",
+        "interface": "early_stop() -> dict with key 'terminate' of type bool"
+    }
+}

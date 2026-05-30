@@ -105,7 +105,7 @@ class BaseBenchmark(ABC):
     def get_result_columns(self) -> List[str]:
         pass
 
-    async def evaluate_all_problems(self, data: List[dict], graph: Callable, max_concurrent_tasks: int = 10, repetitions: int = 4, is_textgrad: bool = False):
+    async def evaluate_all_problems(self, data: List[dict], graph: Callable, max_concurrent_tasks: int = 50, repetitions: int = 4, is_textgrad: bool = False):
         semaphore = asyncio.Semaphore(max_concurrent_tasks)
         results = []
         previous_cost = 0.0
@@ -186,7 +186,7 @@ class BaseBenchmark(ABC):
         return results
     
     async def evaluate_all_problems_test(self, data: List[dict], graph: Callable, max_concurrent_tasks: int = 20):
-        semaphore = asyncio.Semaphore(max_concurrent_tasks)
+        semaphore = asyncio.Semaphore(10)
 
         async def sem_evaluate(problem):
             async with semaphore:

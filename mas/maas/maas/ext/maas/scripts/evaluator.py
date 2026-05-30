@@ -2,8 +2,9 @@ from typing import Dict, Literal, Tuple
 from maas.ext.maas.benchmark.benchmark import BaseBenchmark
 from maas.ext.maas.benchmark.aime import AIMEBenchmark
 from maas.ext.maas.benchmark.gaia import GAIABenchmark
-
-DatasetType = Literal["AIME24", "AIME25", "GAIA"]
+from maas.ext.maas.benchmark.humaneval import HumanEvalBenchmark
+from maas.ext.maas.benchmark.gpqa import GPQABenchmark
+DatasetType = Literal["AIME24", "AIME25", "GAIA", "HumanEval", "GPQA"]
 
 
 class Evaluator:
@@ -13,7 +14,9 @@ class Evaluator:
         self.dataset_configs: Dict[DatasetType, BaseBenchmark] = {
             "AIME24": AIMEBenchmark,
             "AIME25": AIMEBenchmark,
-            "GAIA": GAIABenchmark
+            "GAIA": GAIABenchmark,
+            "HumanEval": HumanEvalBenchmark,
+            "GPQA": GPQABenchmark,
         }
 
     async def graph_evaluate(

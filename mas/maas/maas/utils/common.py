@@ -30,12 +30,12 @@ from typing import Any, Callable, List, Literal, Tuple, Union
 from urllib.parse import quote, unquote
 
 import aiofiles
-import chardet
+# import chardet
 import loguru
 import requests
 from PIL import Image
 from pydantic_core import to_jsonable_python
-from tenacity import RetryCallState, RetryError, _utils
+# from tenacity import RetryCallState, RetryError, _utils
 
 from maas.const import MESSAGE_ROUTE_TO_ALL
 from maas.logs import logger
