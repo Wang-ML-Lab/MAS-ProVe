@@ -1,9 +1,13 @@
 # Library of Multi-Agent Systems Process Verification (MAS-ProVe)
 [![Architecture Diagram](./assets/mas-ProVe.png)](./assets/mas-proVe.pdf)
+
+> **Accepted at the Forty-Third International Conference on Machine Learning (ICML 2026)**
+
 This repo contains the code for the following work:
 - **MAS-ProVe: Understanding the Process Verification of Multi-Agent Systems**  
-Vishal Venkataramani, Haizhou Shi, Zixuan Ke, Austin Xu, Xiaoxiao He, Yingbo Zhou, Semih Yavuz, Hao Wang, Shafiq Joty  
-[![arXiv](https://img.shields.io/badge/arXiv-2602.03053-b31b1b.svg)](https://arxiv.org/abs/2602.03053)
+  Vishal Venkataramani, Haizhou Shi, Zixuan Ke, Austin Xu, Xiaoxiao He, Yingbo Zhou, Semih Yavuz, Hao Wang, Shafiq Joty  
+  [![arXiv](https://img.shields.io/badge/arXiv-2602.03053-b31b1b.svg)](https://arxiv.org/abs/2602.03053)
+  [![ICML](https://img.shields.io/badge/ICML-2026-007ec6.svg)](https://openreview.net/forum?id=UoM3G7nKr0)
 
 ### Usage
 Installing the client-server framework for MAS process evaluation:
@@ -216,13 +220,12 @@ If you use this codebase or the integrated architectures in your research, pleas
 
 ### MAS-ProVe
 ```bibtex
-@misc{venkataramani2026masproveunderstandingprocessverification,
-      title={MAS-ProVe: Understanding the Process Verification of Multi-Agent Systems}, 
-      author={Vishal Venkataramani and Haizhou Shi and Zixuan Ke and Austin Xu and Xiaoxiao He and Yingbo Zhou and Semih Yavuz and Hao Wang and Shafiq Joty},
-      year={2026},
-      eprint={2602.03053},
-      archivePrefix={arXiv},
-      primaryClass={cs.AI},
-      url={https://arxiv.org/abs/2602.03053}, 
+@inproceedings{
+venkataramani2026masprove,
+title={{MAS}-ProVe: Understanding the Process Verification of Multi-Agent Systems},
+author={Vishal Venkataramani and Haizhou Shi and Zixuan Ke and Austin Xu and Xiaoxiao He and Yingbo Zhou and Semih Yavuz and Hao Wang and Shafiq Joty},
+booktitle={Forty-third International Conference on Machine Learning},
+year={2026},
+url={https://openreview.net/forum?id=UoM3G7nKr0}
 }
 ```
